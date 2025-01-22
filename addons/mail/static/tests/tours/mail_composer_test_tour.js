@@ -105,7 +105,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
                 const files = [new File(["hi there"], "file2.txt", { type: "text/plain" })];
                 await dragenterFiles(".o_mail_composer_form_view .o_form_renderer", files);
                 await dropFiles(".o-Dropzone", files);
-            }
+            },
         },
         {
             content: "Check the attachment is listed",
@@ -173,7 +173,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
                 if ((bodyContent.match(/--\nErnest/g) || []).length !== 1) {
                     console.log("Full composer should contain the user's signature once.");
                 }
-            }
+            },
         },
         {
             content: "Write something in full composer",
@@ -220,7 +220,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
                 if ((bodyContent.match(/--\nErnest/g) || []).length !== 0) {
                     console.error("The composer should not contain the user's signature.");
                 }
-            }
+            },
         },
         {
             content: "Close full composer",
@@ -235,7 +235,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
         {
             content: "Send message from chatter",
             trigger: ".o-mail-Composer-send",
-            run: "click"
+            run: "click",
         },
         {
             content: "Check message is shown",
@@ -256,48 +256,11 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
         {
             content: "Send message from chatter",
             trigger: ".o-mail-Composer-send",
-            run: "click"
+            run: "click",
         },
         {
             content: "Check message is shown",
             trigger: '.o-mail-Message-body:contains("hello world")',
-        },
-        // Test text input lines are each wrapped in <p> in editor
-        // this makes each line editable without impacting the other lines
-        {
-            content: "Click on Send Message",
-            trigger: "button:contains(Send message)",
-            run: "click",
-        },
-        {
-            content: "Write first line",
-            trigger: ".o-mail-Composer-input",
-            run: "edit abc",
-        },
-        {
-            content: "Press enter to go to next line",
-            trigger: ".o-mail-Composer-input",
-            run: "press enter",
-        },
-        {
-            content: "write second line",
-            trigger: ".o-mail-Composer-input",
-            run: "fill efg",
-        },
-        {
-            content: "Open full composer",
-            trigger: "button[aria-label='Full composer']",
-            run: "click",
-        },
-        {
-            content: "Check the content of the editor",
-            trigger:
-                ".o_mail_composer_form_view .odoo-editor-editable > p:contains(abc):not(:contains(efg))",
-        },
-        {
-            content: "Check the content of the editor",
-            trigger:
-                ".o_mail_composer_form_view .odoo-editor-editable > p:contains(efg):not(:contains(abc))",
         },
     ],
 });

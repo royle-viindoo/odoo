@@ -25,7 +25,9 @@ export class MultiTimeOffGenerationMenu extends Component {
         if (resModel === "hr.leave") {
             return this.action.doAction("hr_holidays.action_hr_leave_generate_multi_wizard");
         } else {
-            return this.action.doAction("hr_holidays.action_hr_leave_allocation_generate_multi_wizard");
+            return this.action.doAction(
+                "hr_holidays.action_hr_leave_allocation_generate_multi_wizard"
+            );
         }
     }
 }
@@ -35,6 +37,7 @@ export const multiTimeOffGenerationMenu = {
     groupNumber: STATIC_ACTIONS_GROUP_NUMBER,
     isDisplayed: async ({ config, searchModel }) => {
         return (
+            config.viewType !== "form" &&
             ["hr.leave", "hr.leave.allocation"].includes(searchModel.resModel) &&
             (await user.hasGroup("hr_holidays.group_hr_holidays_user"))
         );

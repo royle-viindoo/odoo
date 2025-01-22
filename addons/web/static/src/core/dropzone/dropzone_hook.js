@@ -8,7 +8,12 @@ import { useService } from "@web/core/utils/hooks";
  * @param {Object} dropzoneComponentProps - Props given to the instantiated dropzone component.
  * @param {function} isDropzoneEnabled - Function that determines whether the dropzone should be enabled.
  */
-export function useCustomDropzone(targetRef, dropzoneComponent, dropzoneComponentProps, isDropzoneEnabled = () => true) {
+export function useCustomDropzone(
+    targetRef,
+    dropzoneComponent,
+    dropzoneComponentProps,
+    isDropzoneEnabled = () => true
+) {
     const overlayService = useService("overlay");
     const uiService = useService("ui");
 
@@ -20,22 +25,34 @@ export function useCustomDropzone(targetRef, dropzoneComponent, dropzoneComponen
     useExternalListener(document, "dragleave", onDragLeave, { capture: true });
     // Prevents the browser to open or download the file when it is dropped
     // outside of the dropzone.
-    useExternalListener(window, "dragover", (ev) => ev.preventDefault());
-    useExternalListener(window, "drop", (ev) => {
-        ev.preventDefault();
-        dragCount = 0;
-        updateDropzone();
-    }, { capture: true });
+    useExternalListener(window, "dragover", (ev) => {
+        if (ev.dataTransfer && ev.dataTransfer.types.includes("Files")) {
+            ev.preventDefault();
+        }
+    });
+    useExternalListener(
+        window,
+        "drop",
+        (ev) => {
+            if (ev.dataTransfer && ev.dataTransfer.types.includes("Files")) {
+                ev.preventDefault();
+            }
+            dragCount = 0;
+            updateDropzone();
+        },
+        { capture: true }
+    );
 
     function updateDropzone() {
         const hasDropzone = !!removeDropzone;
         const isTargetInActiveElement = uiService.activeElement.contains(targetRef.el);
-        const shouldDisplayDropzone = dragCount && hasTarget && isTargetInActiveElement && isDropzoneEnabled();
+        const shouldDisplayDropzone =
+            dragCount && hasTarget && isTargetInActiveElement && isDropzoneEnabled();
 
         if (shouldDisplayDropzone && !hasDropzone) {
             removeDropzone = overlayService.add(dropzoneComponent, {
                 ref: targetRef,
-                ...dropzoneComponentProps
+                ...dropzoneComponentProps,
             });
         }
         if (!shouldDisplayDropzone && hasDropzone) {
