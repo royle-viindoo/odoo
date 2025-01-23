@@ -5,19 +5,19 @@
 # Translators:
 # Konstantins Zabogonskis <inculin4ik@gmail.com>, 2024
 # InfernalLV <karlisdreizis@gmail.com>, 2024
-# Martin Trigaux, 2024
 # Arnis Putniņš <arnis@allegro.lv>, 2024
 # ievaputnina <ievai.putninai@gmail.com>, 2024
 # Will Sensors, 2024
-# Armīns Jeltajevs <armins.jeltajevs@gmail.com>, 2024
+# Martin Trigaux, 2024
+# Armīns Jeltajevs <armins.jeltajevs@gmail.com>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-25 07:49+0000\n"
+"POT-Creation-Date: 2024-12-16 13:40+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Armīns Jeltajevs <armins.jeltajevs@gmail.com>, 2024\n"
+"Last-Translator: Armīns Jeltajevs <armins.jeltajevs@gmail.com>, 2025\n"
 "Language-Team: Latvian (https://app.transifex.com/odoo/teams/41243/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,7 +123,7 @@ msgstr ""
 #. module: sale_stock
 #: model:ir.model.fields.selection,name:sale_stock.selection__sale_order__picking_policy__direct
 msgid "As soon as possible"
-msgstr ""
+msgstr "Pēc iespējas ātrāk"
 
 #. module: sale_stock
 #. odoo-javascript
@@ -255,7 +255,7 @@ msgstr "Izņēmums(-i):"
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order__expected_date
 msgid "Expected Date"
-msgstr "Paredzamais Datums"
+msgstr "Paredzamais datums"
 
 #. module: sale_stock
 #. odoo-javascript
@@ -266,7 +266,7 @@ msgstr ""
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.view_order_form_inherit_sale_stock
 msgid "Expected:"
-msgstr "Paredzamais:"
+msgstr "Paredzams:"
 
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order_line__forecast_expected_date
@@ -310,7 +310,7 @@ msgstr ""
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order__incoterm
 msgid "Incoterm"
-msgstr "Inkoterms"
+msgstr "Incoterm"
 
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order__incoterm_location
@@ -524,6 +524,11 @@ msgid "Reserved"
 msgstr ""
 
 #. module: sale_stock
+#: model:ir.model,name:sale_stock.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Preču Atgriešana"
+
+#. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.sale_order_portal_content_inherit_sale_stock
 msgid "Returns"
 msgstr ""
@@ -711,12 +716,12 @@ msgstr ""
 #. module: sale_stock
 #: model:ir.model,name:sale_stock.model_stock_picking
 msgid "Transfer"
-msgstr "Pārskaitījums"
+msgstr "Pārsūtījums"
 
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order__picking_ids
 msgid "Transfers"
-msgstr "Pārvedumi"
+msgstr "Pārsūtījumi"
 
 #. module: sale_stock
 #: model:ir.model,name:sale_stock.model_res_users
@@ -750,7 +755,7 @@ msgstr "Brīdinājums!"
 #. module: sale_stock
 #: model:ir.model.fields.selection,name:sale_stock.selection__sale_order__picking_policy__one
 msgid "When all products are ready"
-msgstr ""
+msgstr "Kad visa prece ir gatava"
 
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.res_config_settings_view_form_stock

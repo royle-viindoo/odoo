@@ -5,18 +5,18 @@
 # Translators:
 # Lars Aam <lars.aam@vikenfiber.no>, 2024
 # Lars Petter Lilleng, 2024
-# Rune Restad, 2024
 # Jorunn D. Newth, 2024
 # Marius Stedjan <marius@stedjan.com>, 2024
 # Martin Trigaux, 2024
+# Rune Restad, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 08:56+0000\n"
+"POT-Creation-Date: 2024-12-16 13:40+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Martin Trigaux, 2024\n"
+"Last-Translator: Rune Restad, 2025\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/odoo/teams/41243/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr "Antall vedlegg"
 #: model:ir.model.fields,field_description:rating.field_rating_mixin__rating_avg
 #: model:ir.model.fields,field_description:rating.field_rating_parent_mixin__rating_avg
 msgid "Average Rating"
-msgstr ""
+msgstr "Gjennomsnittlig rating"
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_parent_mixin__rating_avg_percentage
@@ -90,12 +90,6 @@ msgstr "Opprettet av"
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_search
 msgid "Customer"
 msgstr "Kunde"
-
-#. module: rating
-#. odoo-python
-#: code:addons/rating/controllers/main.py:0
-msgid "Customer rated “%s”."
-msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__display_name

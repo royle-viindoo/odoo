@@ -134,10 +134,15 @@ export class Composer extends Component {
         });
         useExternalListener(window, "beforeunload", this.saveContent.bind(this));
         if (this.props.dropzoneRef) {
-            useCustomDropzone(this.props.dropzoneRef, MailAttachmentDropzone, {
-                extraClass: "o-mail-Composer-dropzone",
-                onDrop: this.onDropFile,
-            }, () => this.allowUpload);
+            useCustomDropzone(
+                this.props.dropzoneRef,
+                MailAttachmentDropzone,
+                {
+                    extraClass: "o-mail-Composer-dropzone",
+                    onDrop: this.onDropFile,
+                },
+                () => this.allowUpload
+            );
         }
         if (this.props.messageEdition) {
             this.props.messageEdition.composerOfThread = this;
@@ -534,11 +539,12 @@ export class Composer extends Component {
             mentionedPartners: this.props.composer.mentionedPartners,
         });
         const signature = this.store.self.signature;
-        const default_body = await prettifyMessageContent(body, validMentions) +
-            ((this.props.composer.emailAddSignature && signature) ? ("<br>" + signature) : "");
+        const default_body =
+            (await prettifyMessageContent(body, validMentions)) +
+            (this.props.composer.emailAddSignature && signature ? "<br>" + signature : "");
         const context = {
             default_attachment_ids: attachmentIds,
-            default_body: "<div>" + default_body + "</div>", // as to not wrap in <p> by html_sanitize,
+            default_body,
             default_email_add_signature: false,
             default_model: this.thread.model,
             default_partner_ids:
@@ -576,7 +582,7 @@ export class Composer extends Component {
                     );
                     const editorIsEmpty = !editor || !editor.innerText.replace(/^\s*$/gm, "");
                     if (!editorIsEmpty) {
-                        this.saveContent();
+                        this.saveContent({ editor });
                         this.restoreContent();
                     }
                 } else {
@@ -739,19 +745,19 @@ export class Composer extends Component {
         this.props.composer.isFocused = false;
     }
 
-    saveContent() {
+    /** @param {HTMLElement} [editor] if set, this is a save from full composer editor. */
+    saveContent({ editor = false } = {}) {
         const composer = toRaw(this.props.composer);
-        const editable = document.querySelector(".o_mail_composer_form_view .note-editable");
         const config = {};
-        if (editable) {
+        if (editor) {
             Object.assign(config, {
                 emailAddSignature: false,
-                text: editable.innerText.replace(/(\t|\n)+/g, "\n")
+                text: editor.innerText.replace(/(\t|\n)+/g, "\n"),
             });
         } else {
             Object.assign(config, {
                 emailAddSignature: true,
-                text: composer.text
+                text: composer.text,
             });
         }
         browser.localStorage.setItem(composer.localId, JSON.stringify(config));
@@ -767,6 +773,6 @@ export class Composer extends Component {
             }
         } catch {
             browser.localStorage.removeItem(composer.localId);
-        };
+        }
     }
 }

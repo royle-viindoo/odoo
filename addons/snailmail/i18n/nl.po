@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Wil Odoo, 2024
-# Erwin van der Ploeg <erwin@odooexperts.nl>, 2024
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2025
 # 
 msgid ""
 msgstr ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 08:56+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2024\n"
+"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2025\n"
 "Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,6 +37,15 @@ msgstr "Een voorpagina toevoegen"
 #: model_terms:ir.ui.view,arch_db:snailmail.snailmail_letter_missing_required_fields
 msgid "Address"
 msgstr "Adres"
+
+#. module: snailmail
+#. odoo-javascript
+#: code:addons/snailmail/static/src/core/failure_model_patch.js:0
+msgid ""
+"An error occurred when sending a letter with Snailmail on “%(record_name)s”"
+msgstr ""
+"Er is een fout opgetreden bij het verzenden van een brief met Snailmail op "
+"“%(record_name)s”"
 
 #. module: snailmail
 #. odoo-javascript
@@ -466,6 +475,12 @@ msgstr "Snailmail-omslag Alleen-lezen"
 #: model:ir.model.fields.selection,name:snailmail.selection__mail_notification__failure_type__sn_credit
 msgid "Snailmail Credit Error"
 msgstr "Snailmail kredietfout"
+
+#. module: snailmail
+#. odoo-javascript
+#: code:addons/snailmail/static/src/messaging_menu/messaging_menu_patch.js:0
+msgid "Snailmail Failure: %(modelName)s"
+msgstr "Snailmail fout: %(modelName)s"
 
 #. module: snailmail
 #. odoo-javascript
