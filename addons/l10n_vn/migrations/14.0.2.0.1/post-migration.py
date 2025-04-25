@@ -19,5 +19,5 @@ def _fix_revenue_deduction_accounts_code(env):
 
 def migrate(cr, version):
     env = api.Environment(cr, SUPERUSER_ID, {})
-    _fix_revenue_deduction_accounts_code(env)
+    #_fix_revenue_deduction_accounts_code(env)
 
