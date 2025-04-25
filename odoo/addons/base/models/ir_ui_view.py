@@ -467,12 +467,12 @@ actual arch.
                         _logger.warning('Invalid view %s definition in %s \n%s', view_name, view.arch_fs, view.arch)
             except ValueError as e:
                 lines = etree.tostring(combined_arch, encoding='unicode').splitlines(keepends=True)
-                fivelines = "".join(lines[max(0, e.context["line"]-3):e.context["line"]+2])
+                fivelines = "".join(lines)
                 err = ValidationError(_(
                     "Error while validating view near:\n\n%(fivelines)s\n%(error)s",
                     fivelines=fivelines, error=tools.ustr(e),
                 ))
-                err.context = e.context
+                err.context = getattr(e, 'context', None)
                 raise err.with_traceback(e.__traceback__) from None
 
         return True
@@ -934,6 +934,10 @@ actual arch.
         queue = collections.deque(sorted(hierarchy[self], key=lambda v: v.mode))
         while queue:
             view = queue.popleft()
+            try:
+                arch = etree.fromstring(view.arch)
+            except Exception as e:
+                print(e)
             arch = etree.fromstring(view.arch)
             if view.env.context.get('inherit_branding'):
                 view.inherit_branding(arch)
@@ -1970,7 +1974,7 @@ actual arch.
                     self._raise_view_error(msg, node)
                 try:
                     field = Model._fields[name]
-                except KeyError:
+                except Exception:
                     msg = _(
                         'Unknown field "%(model)s.%(field)s" in %(use)s)',
                         model=Model._name, field=name, use=use,

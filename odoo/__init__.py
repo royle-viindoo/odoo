@@ -3,7 +3,7 @@
 
 """ OpenERP core library."""
 
-
+from . import profiler2
 #----------------------------------------------------------
 # odoo must be a namespace package for odoo.addons to become one too
 # https://packaging.python.org/guides/packaging-namespace-packages/
