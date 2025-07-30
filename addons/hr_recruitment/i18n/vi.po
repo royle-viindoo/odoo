@@ -2606,7 +2606,7 @@ msgstr "Bị từ chối"
 #. module: hr_recruitment
 #: model:hr.applicant.refuse.reason,name:hr_recruitment.refuse_reason_3
 msgid "Refused by Applicant: better offer"
-msgstr "Bị từ chối bởi ứng viên: có lời mời hấp dẫn hơn"
+msgstr "Bị từ chối bởi ứng viên: có đề xuất hấp dẫn hơn"
 
 #. module: hr_recruitment
 #: model:hr.applicant.refuse.reason,name:hr_recruitment.refuse_reason_2
