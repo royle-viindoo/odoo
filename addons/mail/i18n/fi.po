@@ -10894,7 +10894,7 @@ msgstr "Voit huoletta jättää tämän viestin huomiotta"
 msgid ""
 "You cannot delete %(activity_names)s as it is required in various apps."
 msgstr ""
-"Et voi poistaa kohdetta %s, koska sitä käytetään monissu muissa "
+"Et voi poistaa kohdetta %(activity_names)s, koska sitä käytetään monissu muissa "
 "sovelluksissa."
 
 #. module: mail

@@ -145,7 +145,7 @@ msgid ""
 "According to the contract's end date, this contract has been put in red on "
 "the %s. Please advise and correct."
 msgstr ""
-"Glede na datum konca pogodbe je bila ta pogodba dne %s označena z rdečo %s. "
+"Glede na datum konca pogodbe je bila ta pogodba dne označena z rdečo %s. "
 "Prosim za nasvet in popravek."
 
 #. module: hr_contract
