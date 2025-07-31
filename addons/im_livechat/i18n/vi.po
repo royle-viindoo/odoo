@@ -140,7 +140,7 @@ msgstr "<i class=\"oi oi-fw oi-arrow-right\"/>Trở lại chế độ chỉnh s�
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_view_form
 msgid "<i title=\"Remove operator\" class=\"fa fa-fw fa-lg fa-close\"/>"
-msgstr "<i title=\"Xóa nhân viên hỗ trợ\" class=\"fa fa-fw fa-lg fa-close\"/>"
+msgstr "<i title=\"Xóa tổng đài viên\" class=\"fa fa-fw fa-lg fa-close\"/>"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.livechat_email_template
@@ -192,7 +192,7 @@ msgid ""
 "available.</span>"
 msgstr ""
 "<span>Mẹo: Lên kế hoạch các bước tiếp theo cho Bot trong trường hợp không có"
-" nhân viên hỗ trợ.</span>"
+" tổng đài viên.</span>"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.chatbot_test_script_page
@@ -280,7 +280,7 @@ msgstr "Số lượng tệp đính kèm"
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel__available_operator_ids
 msgid "Available Operator"
-msgstr "Nhân viên hỗ trợ đang rảnh"
+msgstr "Tổng đài viên đang rảnh"
 
 #. module: im_livechat
 #: model_terms:ir.ui.view,arch_db:im_livechat.discuss_channel_view_form
@@ -739,13 +739,13 @@ msgstr "Email"
 #. module: im_livechat
 #: model:ir.model.fields,help:im_livechat.field_im_livechat_channel_rule__chatbot_only_if_no_operator
 msgid "Enable the bot only if there is no operator available"
-msgstr "Chỉ kích hoạt bot nếu không có nhân viên hỗ trợ nào rảnh"
+msgstr "Chỉ kích hoạt bot nếu không có tổng đài viên nào rảnh"
 
 #. module: im_livechat
 #: model:ir.model.fields,field_description:im_livechat.field_im_livechat_channel_rule__chatbot_only_if_no_operator
 #: model_terms:ir.ui.view,arch_db:im_livechat.im_livechat_channel_rule_view_form
 msgid "Enabled only if no operator"
-msgstr "Chỉ kích hoạt nếu không có nhân viên hỗ trợ"
+msgstr "Chỉ kích hoạt nếu không có tổng đài viên"
 
 #. module: im_livechat
 #. odoo-javascript
@@ -793,7 +793,7 @@ msgstr ""
 #. module: im_livechat
 #: model:ir.model.fields.selection,name:im_livechat.selection__chatbot_script_step__step_type__forward_operator
 msgid "Forward to Operator"
-msgstr "Chuyển tiếp cho nhân viên hỗ trợ"
+msgstr "Chuyển tiếp cho tổng đài viên"
 
 #. module: im_livechat
 #: model:ir.model.fields.selection,name:im_livechat.selection__chatbot_script_step__step_type__free_input_single

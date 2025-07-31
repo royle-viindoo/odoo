@@ -283,7 +283,7 @@ msgstr "Λειτουργίες"
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_stock_picking__move_line_ids_without_package
 msgid "Operations without package"
-msgstr ""
+msgstr "Ενέργειες χωρίς συσκευασία"
 
 #. module: mrp_subcontracting
 #: model_terms:ir.ui.view,arch_db:mrp_subcontracting.portal_my_productions
@@ -616,6 +616,9 @@ msgid ""
 "Wizard in case of consumption in warning/strict and more component has been "
 "used for a MO (related to the bom)"
 msgstr ""
+"Οδηγός σε περίπτωση ανάλωσης σε προειδοποίηση/αυστηρότητα και χρήσης "
+"περισσότερων συστατικών για μια Εντολή Παραγωγής (σχετικά με τη συνταγή "
+"παραγωγής)"
 
 #. module: mrp_subcontracting
 #. odoo-python

@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Jolien De Paepe, 2023
-# Wil Odoo, 2025
 # Manon Rondou, 2025
+# Wil Odoo, 2025
 # Erwin van der Ploeg <erwin@odooexperts.nl>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 18:37+0000\n"
+"POT-Creation-Date: 2025-07-25 00:40+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2025\n"
 "Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
@@ -228,6 +228,11 @@ msgid "0216 - OVTcode"
 msgstr "0216 - OVTcode"
 
 #. module: account_edi_ubl_cii
+#: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0218
+msgid "0218 - Unified registration number (Latvia)"
+msgstr ""
+
+#. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0221
 msgid "0221 - The registered number of the qualified invoice issuer (Japan)"
 msgstr ""
@@ -235,19 +240,29 @@ msgstr ""
 "(Japan)"
 
 #. module: account_edi_ubl_cii
+#: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0225
+msgid "0225 - FRCTC Electronic Address (France)"
+msgstr ""
+
+#. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0230
 msgid "0230 - National e-Invoicing Framework (Malaysia)"
 msgstr "0230 - Nationaal raamwerk voor e-facturering (Maleisië)"
 
 #. module: account_edi_ubl_cii
+#: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0235
+msgid "0235 - UAE Tax Identification Number (TIN)"
+msgstr ""
+
+#. module: account_edi_ubl_cii
+#: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0240
+msgid "0240 - Register of legal persons (France)"
+msgstr ""
+
+#. module: account_edi_ubl_cii
 #: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
 msgid "1.0"
 msgstr "1.0"
-
-#. module: account_edi_ubl_cii
-#: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_facturx_export_22
-msgid "42"
-msgstr "42"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__9901
@@ -485,6 +500,13 @@ msgid "A payment of %s was detected."
 msgstr "Een betaling van %s werd gedetecteerd."
 
 #. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
+#, python-format
+msgid "A rounding amount of %s was detected."
+msgstr "Er is een afrondingsbedrag van %s gedetecteerd."
+
+#. module: account_edi_ubl_cii
 #: model:ir.model,name:account_edi_ubl_cii.model_account_edi_xml_ubl_a_nz
 msgid "A-NZ BIS Billing 3.0"
 msgstr "A-NZ BIS Billing 3.0"
@@ -492,22 +514,22 @@ msgstr "A-NZ BIS Billing 3.0"
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__an
 msgid "AN - O.F.T.P. (ODETTE File Transfer Protocol)"
-msgstr ""
+msgstr "AN - O.F.T.P. (ODETTE File Transfer Protocol)"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__aq
 msgid "AQ - X.400 address for mail text"
-msgstr ""
+msgstr "AQ - X.400 adres voor e-mailtekst"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__as
 msgid "AS - AS2 exchange"
-msgstr ""
+msgstr "AS - AS2-uitwisseling"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__au
 msgid "AU - File Transfer Protocol"
-msgstr ""
+msgstr "AU - File Transfer Protocol"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model,name:account_edi_ubl_cii.model_account_move_send
@@ -653,7 +675,7 @@ msgstr "EDI-formaat"
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__em
 msgid "EM - Electronic mail"
-msgstr ""
+msgstr "EM - Elektronische e-mail"
 
 #. module: account_edi_ubl_cii
 #: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
@@ -860,6 +882,13 @@ msgstr ""
 #: model:ir.model,name:account_edi_ubl_cii.model_ir_actions_report
 msgid "Report Action"
 msgstr "Rapport actie"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
+#, python-format
+msgid "Rounding"
+msgstr "Afronding"
 
 #. module: account_edi_ubl_cii
 #: model:ir.model,name:account_edi_ubl_cii.model_account_edi_xml_ubl_sg

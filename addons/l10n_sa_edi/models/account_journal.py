@@ -88,7 +88,7 @@ class AccountJournal(models.Model):
                                                 readonly=True, copy=False)
 
     l10n_sa_serial_number = fields.Char("Serial Number", copy=False,
-                                        help="The serial number of the Taxpayer solution unit. Provided by ZATCA")
+                                        help="Unique Serial Number automatically filled when the journal is onboarded")
 
     l10n_sa_latest_submission_hash = fields.Char("Latest Submission Hash", copy=False,
                                                  help="Hash of the latest submitted invoice to be used as the Previous Invoice Hash (KSA-13)")
@@ -119,6 +119,16 @@ class AccountJournal(models.Model):
         stuck_moves = [move for move in move_ids if not move._l10n_sa_is_in_chain()]
         if stuck_moves:
             raise UserError(_("Oops! The journal is stuck. Please submit the pending invoices to ZATCA and try again."))
+
+    def _l10n_sa_edi_set_csr_fields(self):
+        '''
+            Sets default values for CSR generation fields in Odoo, if their values do not exist
+        '''
+        self.ensure_one()
+        # Avoid unnecessary write calls
+        if self.l10n_sa_serial_number != str(self.id):
+            self.l10n_sa_serial_number = self.id
+
     # ====== CSR Generation =======
 
     def _l10n_sa_csr_required_fields(self):
@@ -133,19 +143,20 @@ class AccountJournal(models.Model):
         self.ensure_one()
 
         company_id = self.company_id
+        parent_company_id = self.company_id.parent_id
         version_info = service.common.exp_version()
         builder = x509.CertificateSigningRequestBuilder()
         subject_names = (
             # Country Name
             (NameOID.COUNTRY_NAME, company_id.country_id.code),
             # Organization Unit Name
-            (NameOID.ORGANIZATIONAL_UNIT_NAME, (company_id.vat or '')[:10]),
+            (NameOID.ORGANIZATIONAL_UNIT_NAME, company_id.name if parent_company_id else company_id.vat[:10]),
             # Organization Name
-            (NameOID.ORGANIZATION_NAME, company_id.name),
-            # Subject Common Name
-            (NameOID.COMMON_NAME, company_id.name),
+            (NameOID.ORGANIZATION_NAME, parent_company_id.name if parent_company_id else company_id.name),
+            # Subject Common Name (Short Code - Journal Name - Company Name)
+            (NameOID.COMMON_NAME, "%s-%s-%s" % (self.code, self.name, company_id.name)),
             # Organization Identifier
-            (ObjectIdentifier('2.5.4.97'), company_id.vat),
+            (ObjectIdentifier('2.5.4.97'), parent_company_id.vat if parent_company_id else company_id.vat),
             # State/Province Name
             (NameOID.STATE_OR_PROVINCE_NAME, company_id.state_id.name),
             # Locality Name
@@ -238,6 +249,7 @@ class AccountJournal(models.Model):
         # we want to perform sanity checks to ensure that the journal is ready to be onboarded
         # If the check fails, we do not want to revoke the existing PCSID because the user might still need it to post hanging invoices
         self._l10n_sa_api_onboard_sanity_checks()
+        self._l10n_sa_edi_set_csr_fields()
 
         try:
             # If the company does not have a private key, we generate it.
@@ -599,7 +611,7 @@ class AccountJournal(models.Model):
                                                 headers={
                                                     **self._l10n_sa_api_headers(),
                                                     **request_data.get('header')
-                                                }, timeout=(30, 30))
+                                                }, timeout=30)
             request_response.raise_for_status()
         except (ValueError, HTTPError) as ex:
             # The 400 case means that it is rejected by ZATCA, but we need to update the hash as done for accepted.

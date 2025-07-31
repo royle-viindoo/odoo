@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 18:35+0000\n"
+"POT-Creation-Date: 2025-06-27 02:30+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Sarah Park, 2025\n"
 "Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
@@ -5655,6 +5655,11 @@ msgid "Display Account Prefix"
 msgstr "계정 머릿말 표시"
 
 #. module: account
+#: model:ir.model.fields,field_description:account.field_account_journal__display_alias_fields
+msgid "Display Alias Fields"
+msgstr "별칭 필드 표시"
+
+#. module: account
 #: model:ir.model.fields,field_description:account.field_account_accrued_orders_wizard__display_amount
 msgid "Display Amount"
 msgstr "표시 금액"
@@ -8987,7 +8992,7 @@ msgstr "\"%s\" 내역은 \"%s\"을 상위 항목으로 정의하지만, 보고�
 #. module: account
 #: model:account.reconcile.model,name:account.1_reconcile_from_label
 msgid "Line with Bank Fees"
-msgstr "은행 수수료 행"
+msgstr "은행 수수료 내역"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_report__line_ids

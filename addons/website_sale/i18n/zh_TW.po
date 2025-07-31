@@ -538,7 +538,7 @@ msgid ""
 "A description of the Product that you want to communicate to your customers."
 " This description will be copied to every Sales Order, Delivery Order and "
 "Customer Invoice/Credit Note"
-msgstr "您想與客戶溝通的產品說明。 此說明將被複製到每個銷售訂單，交貨訂單和客戶憑單/折讓單"
+msgstr "你希望傳達給客戶的產品描述。此描述將會複製至每份銷售單、送貨單，以及客戶發票/退款單。"
 
 #. module: website_sale
 #: model_terms:ir.ui.view,arch_db:website_sale.product
@@ -4065,7 +4065,8 @@ msgid ""
 "To send invitations in B2B mode, open a contact or select several ones in "
 "list view and click on 'Portal Access Management' option in the dropdown "
 "menu *Action*."
-msgstr "要在 B2B 模式下發出邀請，請開啟一個聯絡人或在清單檢視中選取多人，然後在*動作*下拉選單中點擊「入口網站存取管理」選項."
+msgstr ""
+"若要在 B2B 模式中傳送邀請，請開啟一個聯絡人，或在列表檢視畫面中選擇多個聯絡人，然後在 *動作* 下拉式選單中，按一下「門戶網站存取管理」選項。"
 
 #. module: website_sale
 #: model_terms:ir.ui.view,arch_db:website_sale.snippet_options
@@ -4360,7 +4361,7 @@ msgstr "網站溝通記錄"
 #: model:ir.model.fields,field_description:website_sale.field_product_public_category__website_meta_description
 #: model:ir.model.fields,field_description:website_sale.field_product_template__website_meta_description
 msgid "Website meta description"
-msgstr "網站 meta 說明"
+msgstr "網站 meta 描述"
 
 #. module: website_sale
 #: model:ir.model.fields,field_description:website_sale.field_product_public_category__website_meta_keywords
