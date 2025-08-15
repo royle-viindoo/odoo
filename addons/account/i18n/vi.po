@@ -7358,8 +7358,8 @@ msgid ""
 "Groupby feature isn't supported by '%(engine)s' engine. Please remove the "
 "groupby value on '%(report_line)s'"
 msgstr ""
-"Tính năng nhóm không được hỗ trợ bởi công cụ tổng hợp. Vui lòng xóa giá "
-"trị theo nhóm trên '%s'"
+"Tính năng nhóm không được hỗ trợ bởi công cụ tổng hợp '%(engine)s'. Vui lòng xóa giá "
+"trị nhóm theo trên '%(report_line)s'"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_report__filter_growth_comparison
