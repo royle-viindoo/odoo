@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Wil Odoo, 2024
+# Thi Huong Nguyen, 2025
 # 
 msgid ""
 msgstr ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-25 08:39+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Wil Odoo, 2024\n"
+"Last-Translator: Thi Huong Nguyen, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +53,7 @@ msgstr "Hoá đơn"
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_fleet_vehicle__bill_count
 msgid "Bills Count"
-msgstr "SL hóa đơn"
+msgstr "Số hoá đơn"
 
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_fleet_vehicle_log_services__amount
@@ -72,28 +73,28 @@ msgstr "Ngày tạo"
 #. module: account_fleet
 #: model:ir.model,name:account_fleet.model_account_move
 msgid "Journal Entry"
-msgstr "Bút toán sổ nhật ký"
+msgstr "Bút toán"
 
 #. module: account_fleet
 #: model:ir.model,name:account_fleet.model_account_move_line
 msgid "Journal Item"
-msgstr "Phát sinh Kế toán"
+msgstr "Hạng mục bút toán"
 
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_account_move_line__need_vehicle
 msgid "Need Vehicle"
-msgstr "Cần phương tiện"
+msgstr "Cần xe"
 
 #. module: account_fleet
 #. odoo-python
 #: code:addons/account_fleet/models/account_move.py:0
 msgid "Service Vendor Bill: %s"
-msgstr "Hoá đơn mua hàng dịch vụ: %s"
+msgstr "Hoá đơn mua dịch vụ: %s"
 
 #. module: account_fleet
 #: model:ir.model,name:account_fleet.model_fleet_vehicle_log_services
 msgid "Services for vehicles"
-msgstr "Dịch vụ cho phương tiện"
+msgstr "Dịch vụ cho xe"
 
 #. module: account_fleet
 #: model:ir.model.fields,field_description:account_fleet.field_fleet_vehicle_log_services__account_move_state
@@ -105,12 +106,12 @@ msgstr "Trạng thái"
 #: model:ir.model.fields,field_description:account_fleet.field_account_move_line__vehicle_id
 #: model:ir.model.fields,field_description:account_fleet.field_fleet_vehicle_log_services__vehicle_id
 msgid "Vehicle"
-msgstr "Phương tiện"
+msgstr "Xe"
 
 #. module: account_fleet
 #: model:fleet.service.type,name:account_fleet.data_fleet_service_type_vendor_bill
 msgid "Vendor Bill"
-msgstr "Hóa đơn nhà cung cấp"
+msgstr "Hóa đơn mua hàng"
 
 #. module: account_fleet
 #. odoo-python
@@ -135,4 +136,4 @@ msgstr ""
 #. module: account_fleet
 #: model_terms:ir.ui.view,arch_db:account_fleet.fleet_vehicle_view_form
 msgid "show the vendor bills for this vehicle"
-msgstr "hiển thị hóa đơn NCC cho phương tiện này"
+msgstr "hiển thị hoá đơn mua hàng cho xe này"

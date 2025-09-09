@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Wil Odoo, 2024
-# Thi Huong Nguyen, 2024
+# Thi Huong Nguyen, 2025
 # 
 msgid ""
 msgstr ""
@@ -12,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 08:56+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2024\n"
+"Last-Translator: Thi Huong Nguyen, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. module: purchase_mrp
 #: model_terms:ir.ui.view,arch_db:purchase_mrp.purchase_order_form_mrp
 msgid "<span class=\"o_stat_text\">Manufacturing</span>"
-msgstr "<span class=\"o_stat_text\">Lệnh sản xuất</span>"
+msgstr "<span class=\"o_stat_text\">Sản xuất</span>"
 
 #. module: purchase_mrp
 #: model_terms:ir.ui.view,arch_db:purchase_mrp.mrp_production_form_view_purchase
@@ -33,7 +33,7 @@ msgstr "<span class=\"o_stat_text\">Mua hàng</span>"
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_report_mrp_report_bom_structure
 msgid "BOM Overview Report"
-msgstr "Báo cáo tổng quan ĐMNVL"
+msgstr "Báo cáo tổng quan BoM"
 
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_mrp_bom
@@ -59,7 +59,7 @@ msgstr "Tỷ lệ chi phí (%)"
 #. module: purchase_mrp
 #: model:ir.model.fields,field_description:purchase_mrp.field_purchase_order__mrp_production_count
 msgid "Count of MO Source"
-msgstr "SL lệnh sản xuất nguồn"
+msgstr "Số lượng lệnh sản xuất nguồn"
 
 #. module: purchase_mrp
 #: model:ir.model.fields,field_description:purchase_mrp.field_mrp_production__purchase_order_count
@@ -74,7 +74,7 @@ msgstr "Hạng mục bút toán"
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_report_mrp_report_mo_overview
 msgid "MO Overview Report"
-msgstr "Báo cáo tổng quan ĐMNL"
+msgstr "Báo cáo tổng quan MO"
 
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_mrp_production
@@ -85,7 +85,7 @@ msgstr "Lệnh sản xuất"
 #. odoo-python
 #: code:addons/purchase_mrp/models/purchase.py:0
 msgid "Manufacturing Source of %s"
-msgstr "Lệnh sản xuất nguồn của %s"
+msgstr "Nguồn sản xuất của %s"
 
 #. module: purchase_mrp
 #. odoo-python
@@ -104,18 +104,18 @@ msgstr "Đơn mua hàng"
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Dòng đơn mua"
+msgstr "Dòng đơn mua hàng"
 
 #. module: purchase_mrp
 #. odoo-python
 #: code:addons/purchase_mrp/models/mrp_production.py:0
 msgid "Purchase Order generated from %s"
-msgstr "Đơn mua được sinh ra từ %s"
+msgstr "Đơn mua hàng được tạo từ %s"
 
 #. module: purchase_mrp
 #: model:ir.model,name:purchase_mrp.model_stock_move
 msgid "Stock Move"
-msgstr "Dịch chuyển kho"
+msgstr "Điều chuyển tồn kho"
 
 #. module: purchase_mrp
 #: model:ir.model.fields,help:purchase_mrp.field_mrp_bom_line__cost_share
@@ -130,5 +130,4 @@ msgstr ""
 #. odoo-python
 #: code:addons/purchase_mrp/models/mrp_bom.py:0
 msgid "The total cost share for a BoM's component have to be 100"
-msgstr ""
-"Tổng chia sẻ chi phí cho một linh kiện của danh mục vật tư phải là 100"
+msgstr "Tổng tỷ lệ chi phí cho các phụ phẩm của BoM không thể vượt quá 100. "

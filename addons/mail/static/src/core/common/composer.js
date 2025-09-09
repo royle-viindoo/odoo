@@ -18,12 +18,14 @@ import {
     Component,
     markup,
     onMounted,
+    onWillUnmount,
     useChildSubEnv,
     useEffect,
     useRef,
     useState,
     useExternalListener,
     toRaw,
+    EventBus,
 } from "@odoo/owl";
 
 import { _t } from "@web/core/l10n/translation";
@@ -109,7 +111,9 @@ export class Composer extends Component {
         this.inputContainerRef = useRef("input-container");
         this.state = useState({
             active: true,
+            isFullComposerOpen: false,
         });
+        this.fullComposerBus = new EventBus();
         this.selection = useSelection({
             refName: "textarea",
             model: this.props.composer.selection,
@@ -171,7 +175,15 @@ export class Composer extends Component {
         useEffect(
             () => {
                 if (this.fakeTextarea.el.scrollHeight) {
+                    let wasEmpty = false;
+                    if (!this.fakeTextarea.el.value) {
+                        wasEmpty = true;
+                        this.fakeTextarea.el.value = "0";
+                    }
                     this.ref.el.style.height = this.fakeTextarea.el.scrollHeight + "px";
+                    if (wasEmpty) {
+                        this.fakeTextarea.el.value = "";
+                    }
                 }
                 this.saveContentDebounced();
             },
@@ -193,6 +205,17 @@ export class Composer extends Component {
                 this.restoreContent();
             }
         });
+        onWillUnmount(() => {
+            this.props.composer.isFocused = false;
+        });
+        useEffect(
+            (composerThread, replyToThread) => {
+                if (replyToThread && replyToThread !== composerThread) {
+                    this.props.messageToReplyTo.cancel();
+                }
+            },
+            () => [this.props.composer.thread, this.props.messageToReplyTo?.thread]
+        );
     }
 
     get pickerSettings() {
@@ -235,6 +258,7 @@ export class Composer extends Component {
     }
 
     onClickCancelOrSaveEditText(ev) {
+        ev.preventDefault();
         const composer = toRaw(this.props.composer);
         if (composer.message && ev.target.dataset?.type === EDIT_CLICK_TYPE.CANCEL) {
             this.props.onDiscardCallback(ev);
@@ -333,7 +357,7 @@ export class Composer extends Component {
     }
 
     get hasSendButtonNonEditing() {
-        return !this.extended;
+        return !this.extended && !this.props.composer.message;
     }
 
     get hasSuggestions() {
@@ -474,6 +498,9 @@ export class Composer extends Component {
                     ev.preventDefault();
                     return;
                 }
+                if (this.isMobileOS || ev.isComposing) {
+                    return;
+                }
                 const shouldPost = this.props.mode === "extended" ? ev.ctrlKey : !ev.shiftKey;
                 if (!shouldPost) {
                     return;
@@ -538,10 +565,16 @@ export class Composer extends Component {
             mentionedChannels: this.props.composer.mentionedChannels,
             mentionedPartners: this.props.composer.mentionedPartners,
         });
-        const signature = this.store.self.signature;
-        const default_body =
-            (await prettifyMessageContent(body, validMentions)) +
-            (this.props.composer.emailAddSignature && signature ? "<br>" + signature : "");
+        let default_body = await prettifyMessageContent(body, validMentions);
+        if (!default_body) {
+            const composer = toRaw(this.props.composer);
+            // Reset signature when recovering an empty body.
+            composer.emailAddSignature = true;
+        }
+        default_body = this.formatDefaultBodyForFullComposer(
+            default_body,
+            this.props.composer.emailAddSignature ? this.thread.effectiveSelf.signature : ""
+        );
         const context = {
             default_attachment_ids: attachmentIds,
             default_body,
@@ -577,22 +610,37 @@ export class Composer extends Component {
                     this.notifySendFromMailbox();
                 }
                 if (accidentalDiscard) {
-                    const editor = document.querySelector(
-                        ".o_mail_composer_form_view .note-editable"
-                    );
-                    const editorIsEmpty = !editor || !editor.innerText.replace(/^\s*$/gm, "");
-                    if (!editorIsEmpty) {
-                        this.saveContent({ editor });
-                        this.restoreContent();
-                    }
+                    this.fullComposerBus.trigger("ACCIDENTAL_DISCARD", {
+                        onAccidentalDiscard: (isEmpty) => {
+                            if (!isEmpty) {
+                                this.saveContent();
+                                this.restoreContent();
+                            }
+                        },
+                    });
                 } else {
                     this.clear();
                 }
                 this.props.messageToReplyTo?.cancel();
                 this.onCloseFullComposerCallback();
+                this.state.isFullComposerOpen = false;
+                // Use another event bus so that no message is sent to the
+                // closed composer.
+                this.fullComposerBus = new EventBus();
+            },
+            props: {
+                fullComposerBus: this.fullComposerBus,
             },
         };
         await this.env.services.action.doAction(action, options);
+        this.state.isFullComposerOpen = true;
+    }
+
+    formatDefaultBodyForFullComposer(defaultBody, signature = "") {
+        if (signature) {
+            defaultBody = `${defaultBody}<br>${signature}`;
+        }
+        return `<div>${defaultBody}</div>`; // as to not wrap in <p> by html_sanitize
     }
 
     clear() {
@@ -745,22 +793,22 @@ export class Composer extends Component {
         this.props.composer.isFocused = false;
     }
 
-    /** @param {HTMLElement} [editor] if set, this is a save from full composer editor. */
-    saveContent({ editor = false } = {}) {
+    saveContent() {
         const composer = toRaw(this.props.composer);
-        const config = {};
-        if (editor) {
-            Object.assign(config, {
-                emailAddSignature: false,
-                text: editor.innerText.replace(/(\t|\n)+/g, "\n"),
+        const saveContentToLocalStorage = (text, emailAddSignature) => {
+            const config = {
+                emailAddSignature,
+                text,
+            };
+            browser.localStorage.setItem(composer.localId, JSON.stringify(config));
+        };
+        if (this.state.isFullComposerOpen) {
+            this.fullComposerBus.trigger("SAVE_CONTENT", {
+                onSaveContent: saveContentToLocalStorage,
             });
         } else {
-            Object.assign(config, {
-                emailAddSignature: true,
-                text: composer.text,
-            });
+            saveContentToLocalStorage(composer.text, true);
         }
-        browser.localStorage.setItem(composer.localId, JSON.stringify(config));
     }
 
     restoreContent() {

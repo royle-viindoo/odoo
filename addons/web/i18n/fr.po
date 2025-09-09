@@ -1,25 +1,29 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* web
-# 
+# * web
+#
 # Translators:
 # Martin Trigaux, 2024
-# Wil Odoo, 2024
+# Wil Odoo, 2025
+# Fabien Pinckaers <fp@openerp.com>, 2025
+# Camille Dantinne <cmd@odoo.com>, 2025
 # Manon Rondou, 2025
-# 
+# "Manon Rondou (ronm)" <ronm@odoo.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 11:53+0000\n"
-"PO-Revision-Date: 2024-09-25 09:42+0000\n"
-"Last-Translator: Manon Rondou, 2025\n"
-"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
+"POT-Creation-Date: 2025-05-23 18:39+0000\n"
+"PO-Revision-Date: 2025-08-27 15:44+0000\n"
+"Last-Translator: \"Manon Rondou (ronm)\" <ronm@odoo.com>\n"
+"Language-Team: French <https://translate.odoo.com/projects/odoo-18/web/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : ((n != 0 && n % "
+"1000000 == 0) ? 1 : 2);\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #. module: web
 #. odoo-javascript
@@ -1015,6 +1019,12 @@ msgstr "Tous les utilisateurs"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/fields/domain/domain_field.js:0
+msgid "Allow expressions"
+msgstr "Autoriser les expressions"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/colorlist/colorlist.js:0
 msgid "Almond"
 msgstr "Amande"
@@ -2005,7 +2015,6 @@ msgstr "Copyright © 2004"
 
 #. module: web
 #. odoo-javascript
-#: code:addons/web/static/src/views/fields/image/image_field.js:0
 #: code:addons/web/static/src/views/fields/signature/signature_field.js:0
 msgid "Could not display the selected image"
 msgstr "Impossible d'afficher l'image sélectionnée"
@@ -2021,12 +2030,6 @@ msgstr "Impossible d'afficher le PDF sélectionné"
 #: code:addons/web/static/src/views/fields/google_slide_viewer/google_slide_viewer.js:0
 msgid "Could not display the selected spreadsheet"
 msgstr "Impossible d'afficher la feuille de calcul sélectionnée"
-
-#. module: web
-#. odoo-javascript
-#: code:addons/web/static/src/views/fields/image_url/image_url_field.js:0
-msgid "Could not display the specified image url."
-msgstr "Impossible d'afficher l'url de l'image spécifiée."
 
 #. module: web
 #. odoo-javascript
@@ -2750,6 +2753,12 @@ msgstr "Entreprise"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/webclient/debug/profiling/profiling_item.xml:0
+msgid "Entry Count"
+msgstr "Nombre d'entrées"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/file_upload/file_upload_service.js:0
 msgid "Error"
 msgstr "Erreur"
@@ -3396,6 +3405,12 @@ msgstr ""
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/fields/domain/domain_field.js:0
+msgid "If true, non-literals are accepted"
+msgstr "Si true, les éléments non littéraux sont acceptés"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/file_viewer/file_viewer.xml:0
 #: code:addons/web/static/src/views/fields/attachment_image/attachment_image_field.xml:0
 #: code:addons/web/static/src/views/fields/image/image_field.js:0
@@ -3960,6 +3975,12 @@ msgstr "Charger les données de démonstration"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/graph/graph_controller.xml:0
+msgid "Load everything anyway."
+msgstr "Tout charger malgré tout."
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/search/search_bar/search_bar.js:0
 msgid "Load more"
 msgstr "Charger plus"
@@ -4340,6 +4361,12 @@ msgstr "Menu Plus"
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/fields/statusbar/statusbar_field.xml:0
+msgid "More..."
+msgstr "Plus..."
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 msgid "Mother"
 msgstr "mère"
@@ -4697,6 +4724,7 @@ msgstr "Non, laissez comme ça"
 #: code:addons/web/static/src/views/kanban/kanban_header.js:0
 #: code:addons/web/static/src/views/list/list_renderer.js:0
 #: code:addons/web/static/src/views/pivot/pivot_model.js:0
+#: code:addons/web/static/src/webclient/debug/profiling/profiling_item.xml:0
 msgid "None"
 msgstr "Aucun"
 
@@ -6235,7 +6263,7 @@ msgstr "Taille"
 #: code:addons/web/static/src/views/fields/image_url/image_url_field.js:0
 #: code:addons/web/static/src/views/fields/signature/signature_field.js:0
 msgid "Small"
-msgstr "Petite"
+msgstr "Petit(e)"
 
 #. module: web
 #. odoo-javascript
@@ -6326,6 +6354,12 @@ msgstr "statue de la liberté"
 #: code:addons/web/static/src/views/fields/statusbar/statusbar_field.js:0
 msgid "Status"
 msgstr "Statut"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/statusbar/statusbar_field.xml:0
+msgid "Statusbar"
+msgstr "Barre de statut"
 
 #. module: web
 #. odoo-javascript
@@ -6582,6 +6616,20 @@ msgstr ""
 
 #. module: web
 #. odoo-javascript
+#: code:addons/web/static/src/views/fields/domain/domain_field.js:0
+msgid "The domain involves non-literals. Their evaluation might fail."
+msgstr ""
+"Le domaine contient des éléments non littéraux. Leur évaluation pourrait "
+"échouer."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/fields/domain/domain_field.js:0
+msgid "The domain should not involve non-literals"
+msgstr "Le domaine ne peut pas contenir d’éléments non littéraux"
+
+#. module: web
+#. odoo-javascript
 #: code:addons/web/static/src/core/errors/error_dialogs.xml:0
 #: code:addons/web/static/src/public/error_notifications.js:0
 msgid ""
@@ -6619,6 +6667,16 @@ msgstr ""
 "développeur qui doit être corrigée pour l'ensemble de la base de données "
 "avant de continuer à travailler. Consultez les journaux du serveur ou la "
 "console du navigateur pour obtenir plus de détails."
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/views/graph/graph_controller.xml:0
+msgid ""
+"There are too many data. The graph only shows a sample. Use the filters to "
+"refine the scope."
+msgstr ""
+"Il y a trop de données. Le graphique n'affiche qu'une petite partie. "
+"Utilisez les filtres pour affiner la portée."
 
 #. module: web
 #. odoo-python
@@ -6777,6 +6835,18 @@ msgstr "Titania"
 #: code:addons/web/static/src/views/widgets/ribbon/ribbon.js:0
 msgid "Title"
 msgstr "Titre"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_picker.xml:0
+msgid "To next categories"
+msgstr "Vers les catégories suivantes"
+
+#. module: web
+#. odoo-javascript
+#: code:addons/web/static/src/core/emoji_picker/emoji_picker.xml:0
+msgid "To previous categories"
+msgstr "Vers les catégories précédentes"
 
 #. module: web
 #. odoo-javascript
@@ -7460,7 +7530,7 @@ msgstr ""
 msgid "Write your phone, email, bank account, tax ID, ..."
 msgstr ""
 "Saisissez votre numéro de téléphone, adresse e-mail, compte bancaire, numéro"
-" d'identification fiscale,..."
+" de TVA,..."
 
 #. module: web
 #. odoo-python
@@ -7863,7 +7933,6 @@ msgstr "montre de l'espace"
 
 #. module: web
 #. odoo-javascript
-#: code:addons/web/static/src/core/debug/debug_menu_items.xml:0
 #: code:addons/web/static/src/core/tree_editor/tree_editor.xml:0
 msgid "all"
 msgstr "toutes les"
@@ -8426,7 +8495,7 @@ msgstr "crème renversée"
 #. odoo-javascript
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 msgid "bakery"
-msgstr "pâtisserie"
+msgstr "boulangerie"
 
 #. module: web
 #. odoo-javascript
@@ -8636,7 +8705,7 @@ msgstr "maillot de bail"
 #. odoo-javascript
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 msgid "bathroom"
-msgstr "salle de bains"
+msgstr "salle de bain"
 
 #. module: web
 #. odoo-javascript
@@ -8732,7 +8801,7 @@ msgstr "beauté"
 #. odoo-javascript
 #: code:addons/web/static/src/core/ui/block_ui.js:0
 msgid "because it's loading..."
-msgstr "parce qu'il charge..."
+msgstr "parce que ça charge ..."
 
 #. module: web
 #. odoo-javascript
@@ -18335,12 +18404,6 @@ msgstr "nouvel onglet"
 
 #. module: web
 #. odoo-javascript
-#: code:addons/web/static/src/views/view_dialogs/export_data_dialog.xml:0
-msgid "new_template"
-msgstr "nouveau modèle"
-
-#. module: web
-#. odoo-javascript
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 msgid "news"
 msgstr "actualités"
@@ -21848,12 +21911,6 @@ msgstr "sélectionné(s)"
 #: code:addons/web/static/src/views/list/list_confirmation_dialog.xml:0
 msgid "selected records,"
 msgstr "enregistrements sélectionnés,"
-
-#. module: web
-#. odoo-javascript
-#: code:addons/web/static/src/core/debug/debug_menu_items.xml:0
-msgid "self"
-msgstr "self"
 
 #. module: web
 #. odoo-javascript
@@ -26440,18 +26497,6 @@ msgstr "zodiaque"
 #: code:addons/web/static/src/core/emoji_picker/emoji_data.js:0
 msgid "zombie"
 msgstr "zombie"
-
-#. module: web
-#. odoo-javascript
-#: code:addons/web/static/src/views/view_components/column_progress.xml:0
-msgid "{{ bar.count }} {{ bar.string }}"
-msgstr "{{ bar.count }} {{ bar.string }}"
-
-#. module: web
-#. odoo-javascript
-#: code:addons/web/static/src/views/kanban/kanban_column_quick_create.xml:0
-msgid "{{ relatedFieldName }}..."
-msgstr "{{ relatedFieldName }}..."
 
 #. module: web
 #. odoo-javascript

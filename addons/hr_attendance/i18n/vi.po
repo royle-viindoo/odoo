@@ -3,16 +3,16 @@
 # 	* hr_attendance
 # 
 # Translators:
-# Wil Odoo, 2024
 # Thi Huong Nguyen, 2025
+# Wil Odoo, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 13:39+0000\n"
+"POT-Creation-Date: 2025-06-20 18:39+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2025\n"
+"Last-Translator: Wil Odoo, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +115,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_user_view_form
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_employee_form_inherit_hr_attendance
 msgid "<span class=\"o_stat_text\">Extra Hours</span>"
-msgstr "<span class=\"o_stat_text\">Giờ làm thêm</span>"
+msgstr "<span class=\"o_stat_text\">Thêm giờ</span>"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
@@ -202,7 +202,7 @@ msgstr ""
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_user_view_form
 msgid "Amount of extra hours"
-msgstr "Số giờ làm thêm"
+msgstr "Số giờ thêm"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_form
@@ -252,7 +252,7 @@ msgstr "Số lượng tệp đính kèm"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_employee_form_inherit_hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_employee_tree_inherit_leave
 msgid "Attendance"
-msgstr "Vào/Ra"
+msgstr "Chấm công"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_res_company__attendance_from_systray
@@ -305,7 +305,7 @@ msgstr "Có mặt quá giờ"
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee_public__attendance_state
 #: model:ir.model.fields,field_description:hr_attendance.field_res_users__attendance_state
 msgid "Attendance Status"
-msgstr "Trạng thái điểm danh"
+msgstr "Trạng thái Chấm công"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -330,7 +330,7 @@ msgstr "Chấm công: Phát hiện nhân viên vắng mặt"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_department_view_kanban
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Attendances"
-msgstr "Quản lý vào/ra"
+msgstr "Chấm công"
 
 #. module: hr_attendance
 #. odoo-python
@@ -370,10 +370,11 @@ msgstr "Được phê duyệt tự động"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid ""
 "Automatically Check-Out Employees based on their working schedule with an "
-"additional tolerance."
+"additional tolerance. Does not apply to employees with a flexible working "
+"schedule."
 msgstr ""
 "Tự động check-out nhân viên dựa trên lịch làm việc của họ với một khoảng sai"
-" số bổ sung."
+" số bổ sung. Không áp dụng cho nhân viên có lịch làm việc linh hoạt."
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_filter
@@ -450,7 +451,7 @@ msgstr "Trình duyệt"
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Can be converted as Time Off (cfr Time Off configuration)."
-msgstr "Có thể chuyển đổi thành Nghỉ phép (cfr cấu hình Nghỉ phép)."
+msgstr "Có thể chuyển đổi thành Ngày nghỉ (cfr cấu hình Ngày nghỉ)."
 
 #. module: hr_attendance
 #. odoo-python
@@ -469,8 +470,8 @@ msgid ""
 "Cannot create new attendance record for %(empl_name)s, the employee was "
 "already checked in on %(datetime)s"
 msgstr ""
-"Không thể tạo mới bản ghi vào/ra cho %(empl_name)s, người này đã đăng nhập "
-"vào %(datetime)s"
+"Không thể tạo mới đăng nhập/đăng xuất cho %(empl_name)s, người mà đã đăng "
+"nhập vào %(datetime)s"
 
 #. module: hr_attendance
 #. odoo-python
@@ -481,8 +482,8 @@ msgid ""
 "resources."
 msgstr ""
 "Không thể thực hiện việc đăng xuất cho nhân viên %(empl_name)s, do không tìm"
-" thấy lần đăng nhập tương ứng. Số liệu vào/ra của bạn chắc là đã được điều "
-"chỉnh bởi bộ phận nhân sự."
+" thấy lần đăng nhập tương ứng. Dữ liệu Chấm công của bạn có thể đã được điều"
+" chỉnh bởi bộ phận nhân sự."
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -599,12 +600,12 @@ msgstr "Công ty"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/public_kiosk/public_kiosk_app.xml:0
 msgid "Company Logo"
-msgstr "Logo công ty"
+msgstr "Logo Công ty"
 
 #. module: hr_attendance
 #: model:ir.model,name:hr_attendance.model_res_config_settings
 msgid "Config Settings"
-msgstr "Thiết lập cấu hình"
+msgstr "Cài đặt cấu hình"
 
 #. module: hr_attendance
 #: model:ir.ui.menu,name:hr_attendance.menu_hr_attendance_settings
@@ -635,19 +636,19 @@ msgstr "Quốc gia (Ra)"
 #. module: hr_attendance
 #: model_terms:ir.actions.act_window,help:hr_attendance.hr_employee_attendance_action_kanban
 msgid "Create a new employee"
-msgstr "Tạo nhân viên mới"
+msgstr "Tạo một nhân viên mới"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__create_uid
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_overtime__create_uid
 msgid "Created by"
-msgstr "Tạo bởi"
+msgstr "Được tạo bởi"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__create_date
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_overtime__create_date
 msgid "Created on"
-msgstr "Tạo vào"
+msgstr "Được tạo vào"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_form
@@ -756,7 +757,7 @@ msgstr "Nhận dạng mã PIN của nhân viên"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_attendance_tree
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_attendance_tree_management
 msgid "Employee attendances"
-msgstr "Điểm danh của nhân viên"
+msgstr "Chấm công của nhân viên"
 
 #. module: hr_attendance
 #: model:ir.actions.act_window,name:hr_attendance.hr_employee_attendance_action_kanban
@@ -767,7 +768,7 @@ msgstr "Nhân viên"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "Error: could not find corresponding employee."
-msgstr "Lỗi: không tìm thấy nhân viên tương ứng."
+msgstr "Lỗi: Không tìm thấy nhân viên tương ứng."
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_filter
@@ -794,7 +795,7 @@ msgstr "Giờ làm thêm"
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_overtime__duration_real
 msgid "Extra Hours (Real)"
-msgstr "Giờ làm thêm (Thực tế)"
+msgstr "Giờ làm thêm (thực tế)"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_res_company__attendance_overtime_validation
@@ -852,7 +853,7 @@ msgstr "Tạo URL mới"
 #: code:addons/hr_attendance/static/src/components/manual_selection/manual_selection.xml:0
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "Go back"
-msgstr "Quay lại"
+msgstr "Trở lại"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -882,13 +883,13 @@ msgstr "Giờ"
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee__hours_last_month
 #: model:ir.model.fields,field_description:hr_attendance.field_res_users__hours_last_month
 msgid "Hours Last Month"
-msgstr "Giờ tháng trước"
+msgstr "Giờ làm tháng gần nhất"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee__hours_last_month_display
 #: model:ir.model.fields,field_description:hr_attendance.field_res_users__hours_last_month_display
 msgid "Hours Last Month Display"
-msgstr "Hiển thị giờ tháng trước"
+msgstr "Hiển thị giờ làm tháng gần nhất"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee__hours_previously_today
@@ -905,7 +906,7 @@ msgstr "Hours Previously Today:"
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee__hours_today
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee_public__hours_today
 msgid "Hours Today"
-msgstr "Giờ hôm nay"
+msgstr "Giờ làm hôm nay"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -916,7 +917,7 @@ msgstr "Giờ hôm nay:"
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_filter
 msgid "Hr Attendance Search"
-msgstr "Tìm kiếm vào/ra"
+msgstr "Tìm kiếm Chấm công"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__id
@@ -934,15 +935,16 @@ msgstr "Địa chỉ IP"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/public_kiosk/public_kiosk_app.xml:0
 msgid "Identify Manually"
-msgstr "Xác định danh tính thủ công"
+msgstr "Nhận dạng thủ công"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid ""
 "If checked, days not covered by an attendance will be visible in the Report."
+" Does not apply to employees with a flexible working schedule."
 msgstr ""
-"Nếu được chọn, những ngày không có trong chấm công sẽ hiển thị trong Báo "
-"cáo."
+"Nếu được chọn, những ngày không có chấm công sẽ hiển thị trong Báo cáo. Điều"
+" này không áp dụng đối với nhân viên có lịch làm việc linh hoạt."
 
 #. module: hr_attendance
 #: model:ir.model.fields,help:hr_attendance.field_hr_attendance__message_needaction
@@ -967,6 +969,12 @@ msgstr "Chế độ nhập (Ra)"
 
 #. module: hr_attendance
 #. odoo-javascript
+#: code:addons/hr_attendance/static/src/public_kiosk/public_kiosk_app.xml:0
+msgid "Install"
+msgstr "Cài đặt"
+
+#. module: hr_attendance
+#. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/greetings/greetings.xml:0
 msgid "Invalid request"
 msgstr "Yêu cầu không hợp lệ"
@@ -986,7 +994,7 @@ msgstr "Ki-ốt"
 #: model:ir.ui.menu,name:hr_attendance.menu_action_open_form
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Kiosk Mode"
-msgstr "Chế độ ki-ốt"
+msgstr "Chế độ Ki-ốt"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
@@ -1116,7 +1124,7 @@ msgstr "Thủ công (PIN tuỳ chọn)"
 #. module: hr_attendance
 #: model:ir.actions.client,name:hr_attendance.hr_attendance_action_greeting_message
 msgid "Message"
-msgstr "Thông điệp"
+msgstr "Tin nhắn"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__message_has_error
@@ -1148,7 +1156,7 @@ msgstr "Chế độ"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_management_view_filter
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_filter
 msgid "My Attendances"
-msgstr "Vào/Ra của tôi"
+msgstr "Chấm công của tôi"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_management_view_filter
@@ -1165,18 +1173,23 @@ msgstr ""
 "tra."
 
 #. module: hr_attendance
+#: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__no_validated_overtime_hours
+msgid "No Validated Overtime Hours"
+msgstr "Không có giờ làm thêm được xác thực"
+
+#. module: hr_attendance
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/views/attendance_helper_view.xml:0
 #: model_terms:ir.actions.act_window,help:hr_attendance.hr_attendance_management_action
 #: model_terms:ir.actions.act_window,help:hr_attendance.hr_attendance_reporting
 msgid "No attendance records found"
-msgstr "Không tìm thấy bản ghi điểm danh nào"
+msgstr "Không tìm thấy dữ liệu chấm công"
 
 #. module: hr_attendance
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/public_kiosk/public_kiosk_app.js:0
 msgid "No employee corresponding to Badge ID '%(barcode)s.'"
-msgstr "Không có nhân viên tương ứng với Mã số thẻ '%(barcode)s.'"
+msgstr "Không có nhân viên tương ứng với mã số thẻ '%(barcode)s.'"
 
 #. module: hr_attendance
 #: model_terms:ir.actions.act_window,help:hr_attendance.hr_attendance_overtime_action
@@ -1207,7 +1220,7 @@ msgstr "Số tin nhắn bị gửi lỗi"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/greetings/greetings.xml:0
 msgid "OK"
-msgstr "Đồng ý"
+msgstr "OK"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -1219,6 +1232,11 @@ msgstr "Logo Odoo"
 #: model:res.groups,name:hr_attendance.group_hr_attendance_officer
 msgid "Officer: Manage attendances"
 msgstr "Người phụ trách: Quản lý chấm công"
+
+#. module: hr_attendance
+#: model:ir.actions.server,name:hr_attendance.open_kiosk_url
+msgid "Open Kiosk Url"
+msgstr "Mở URL ki-ốt"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__out_browser
@@ -1266,7 +1284,7 @@ msgstr "Làm thêm"
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_employee__overtime_ids
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_attendance_overtime_graph
 msgid "Overtime"
-msgstr "Quá giờ"
+msgstr "Overtime"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance__overtime_status
@@ -1282,14 +1300,14 @@ msgstr "Tổng quan"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "Please enter your PIN to"
-msgstr "Nhập mã PIN của bạn"
+msgstr "Vui lòng nhập mã PIN của bạn vào"
 
 #. module: hr_attendance
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/greetings/greetings.xml:0
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "Please return to the main menu."
-msgstr "Vui lòng quay về menu chính."
+msgstr "Vui lòng qua về trình đơn chính."
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -1356,7 +1374,7 @@ msgstr "Lỗi gửi SMS"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/public_kiosk/public_kiosk_app.xml:0
 msgid "Scan your badge"
-msgstr "Quét Thẻ"
+msgstr "Quét thẻ nhân viên"
 
 #. module: hr_attendance
 #: model:ir.model.fields.selection,name:hr_attendance.selection__res_company__attendance_barcode_source__scanner
@@ -1389,7 +1407,7 @@ msgstr "Thiết lập thẻ của tôi"
 #. module: hr_attendance
 #: model:ir.actions.act_window,name:hr_attendance.action_hr_attendance_settings
 msgid "Settings"
-msgstr "Thiết lập"
+msgstr "Cài đặt"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -1419,7 +1437,7 @@ msgstr "Kỹ thuật"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/views/attendance_helper_view.xml:0
 msgid "The attendance records of your employees will be displayed here."
-msgstr "Các bản ghi vào/ra của nhân viên sẽ được hiển thị ở đây."
+msgstr "Dữ liệu đăng nhập/ đăng xuất của nhân viên sẽ được hiển thị ở đây."
 
 #. module: hr_attendance
 #: model_terms:ir.actions.act_window,help:hr_attendance.hr_attendance_management_action
@@ -1498,14 +1516,14 @@ msgstr "Hôm nay"
 #: model:ir.model.fields,field_description:hr_attendance.field_res_config_settings__overtime_company_threshold
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Tolerance Time In Favor Of Company"
-msgstr "Thời gian dung sai cho công ty"
+msgstr "Thời gian dung sai có lợi cho công ty"
 
 #. module: hr_attendance
 #: model:ir.model.fields,field_description:hr_attendance.field_res_company__overtime_employee_threshold
 #: model:ir.model.fields,field_description:hr_attendance.field_res_config_settings__overtime_employee_threshold
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Tolerance Time In Favor Of Employee"
-msgstr "Thời gian dung sai cho nhân viên"
+msgstr "Thời gian dung sai có lợi cho nhân viên"
 
 #. module: hr_attendance
 #. odoo-javascript
@@ -1558,7 +1576,7 @@ msgstr "Không xác định"
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
 msgid "Use PIN codes (defined on the Employee's profile) to check-in."
-msgstr "Sử dụng mã PIN (được xác định trên hồ sơ của nhân viên) để đăng nhập."
+msgstr "Sử dụng mã PIN (được xác định trên hồ sơ của Nhân viên) để đăng nhập."
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
@@ -1595,12 +1613,12 @@ msgstr "Lịch sử trao đổi qua trang web"
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/greetings/greetings.xml:0
 msgid "Welcome"
-msgstr "Chào đón"
+msgstr "Chào mừng"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_employee_simple_tree_view
 msgid "Work Hours"
-msgstr "Số giờ làm việc"
+msgstr "Giờ làm việc"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_form
@@ -1617,7 +1635,7 @@ msgstr "Giờ làm thêm đã làm"
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_pivot
 #: model_terms:ir.ui.view,arch_db:hr_attendance.view_attendance_tree
 msgid "Worked Hours"
-msgstr "Số giờ đã làm"
+msgstr "Giờ đã làm việc"
 
 #. module: hr_attendance
 #: model_terms:ir.ui.view,arch_db:hr_attendance.hr_attendance_view_form
@@ -1641,7 +1659,7 @@ msgstr "Mã PIN không chính xác"
 #. odoo-python
 #: code:addons/hr_attendance/models/hr_attendance.py:0
 msgid "You cannot duplicate an attendance."
-msgstr "Bạn không thể nhân bản dữ liệu có vắng."
+msgstr "Bạn không thể nhân bản dữ liệu chấm công"
 
 #. module: hr_attendance
 #. odoo-python
@@ -1665,13 +1683,13 @@ msgstr "Thẻ của bạn đã được thiết lập."
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "check in"
-msgstr "vào"
+msgstr "đăng nhập"
 
 #. module: hr_attendance
 #. odoo-javascript
 #: code:addons/hr_attendance/static/src/components/pin_code/pin_code.xml:0
 msgid "check out"
-msgstr "ra"
+msgstr "đăng xuất"
 
 #. module: hr_attendance
 #. odoo-javascript

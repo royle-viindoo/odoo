@@ -94,7 +94,7 @@ class LeaveReportCalendar(models.Model):
     def _compute_name(self):
         for leave in self:
             leave.name = leave.employee_id.name
-            if self.env.user.has_group('hr_holidays.group_hr_holidays_manager') or self.env.user.has_group('hr_holidays.group_hr_holidays_user'):
+            if self.env.user.has_group('hr_holidays.group_hr_holidays_user'):
                 # Include the time off type name
                 leave.name += f" {leave.leave_id.holiday_status_id.name}"
             # Include the time off duration.

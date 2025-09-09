@@ -8,9 +8,9 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.2alpha1\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 10:37+0000\n"
+"POT-Creation-Date: 2025-05-07 20:37+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. module: google_recaptcha
 #: model_terms:ir.ui.view,arch_db:google_recaptcha.res_config_settings_view_form
 msgid "<i class=\"oi oi-arrow-right\"/> Generate reCAPTCHA v3 keys"
-msgstr "<i class=\"oi oi-arrow-right\"/> Tạo mã khoá reCAPTCHA v3"
+msgstr "<i class=\"oi oi-arrow-right\"/> Tạo khoá reCAPTCHA v3"
 
 #. module: google_recaptcha
 #: model:ir.model.fields,help:google_recaptcha.field_res_config_settings__recaptcha_min_score
@@ -37,7 +37,7 @@ msgstr ""
 #. module: google_recaptcha
 #: model:ir.model,name:google_recaptcha.model_res_config_settings
 msgid "Config Settings"
-msgstr "Thiết lập cấu hình"
+msgstr "Cài đặt cấu hình"
 
 #. module: google_recaptcha
 #: model:ir.model,name:google_recaptcha.model_ir_http
@@ -53,53 +53,60 @@ msgstr "Điểm tối thiểu"
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/js/recaptcha.js:0
 msgid "No recaptcha site key set."
-msgstr "Không có khoá trang recaptcha nào được thiết lập"
+msgstr "Chưa thiết lập mã khóa trang web recaptcha."
 
 #. module: google_recaptcha
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
 msgid "Privacy Policy"
-msgstr "Chính sách Bảo mật"
+msgstr "Chính sách quyền riêng tư"
+
+#. module: google_recaptcha
+#: model_terms:ir.ui.view,arch_db:google_recaptcha.res_config_settings_view_form
+msgid ""
+"Protect your forms from spam and abuse. If no keys are provided, no checks "
+"will be done."
+msgstr ""
 
 #. module: google_recaptcha
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
 msgid "Protected by reCAPTCHA,"
-msgstr "Được bảo vệ bởi reCAPTCHA,"
+msgstr "Protected by reCAPTCHA,"
 
 #. module: google_recaptcha
 #: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__recaptcha_private_key
 msgid "Secret Key"
-msgstr "Khoá bí mật"
+msgstr "Secret Key"
 
 #. module: google_recaptcha
 #: model:ir.model.fields,field_description:google_recaptcha.field_res_config_settings__recaptcha_public_key
 msgid "Site Key"
-msgstr "Khoá trang"
+msgstr "Site Key"
 
 #. module: google_recaptcha
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
 msgid "Terms of Service"
-msgstr "Điều khoản dịch vụ"
+msgstr "Terms of Service"
 
 #. module: google_recaptcha
 #. odoo-python
 #: code:addons/google_recaptcha/models/ir_http.py:0
 msgid "The reCaptcha private key is invalid."
-msgstr "Khoá riêng tư reCaptcha không hợp lệ."
+msgstr "Khóa riêng tư reCaptcha không hợp lệ."
 
 #. module: google_recaptcha
 #. odoo-python
 #: code:addons/google_recaptcha/models/ir_http.py:0
 msgid "The reCaptcha token is invalid."
-msgstr "reCaptcha token không hợp lệ."
+msgstr "The reCaptcha token is invalid."
 
 #. module: google_recaptcha
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/js/recaptcha.js:0
 msgid "The recaptcha site key is invalid."
-msgstr "Khoá trang recaptcha không hợp lệ"
+msgstr "Mã khóa trang web recaptcha không hợp lệ."
 
 #. module: google_recaptcha
 #. odoo-python
@@ -117,4 +124,4 @@ msgstr "Yêu cầu của bạn đã quá thời gian chờ, vui lòng thử lạ
 #. odoo-javascript
 #: code:addons/google_recaptcha/static/src/xml/recaptcha.xml:0
 msgid "apply."
-msgstr "được áp dụng."
+msgstr "apply."

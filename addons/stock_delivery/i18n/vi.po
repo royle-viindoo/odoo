@@ -108,7 +108,7 @@ msgid ""
 "Cancelling a delivery may not be undoable. Are you sure you want to "
 "continue?"
 msgstr ""
-"Bạn có thể không hoàn tác được việc huỷ một phiếu xuất kho. Bạn có chắc muốn"
+"Bạn có thể không hoàn tác được việc huỷ một lệnh giao hàng. Bạn có chắc muốn"
 " tiếp tục không?"
 
 #. module: stock_delivery
@@ -168,12 +168,12 @@ msgstr "Công cụ chọn kiện giao hàng"
 #. module: stock_delivery
 #: model:ir.model.fields,field_description:stock_delivery.field_choose_delivery_package__delivery_package_type_id
 msgid "Delivery Package Type"
-msgstr "Loại kiện giao hàng"
+msgstr "Loại kiện hàng giao hàng"
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.vpicktree_view_tree
 msgid "Destination"
-msgstr "Đích"
+msgstr "Điểm đến"
 
 #. module: stock_delivery
 #: model:ir.model.fields,field_description:stock_delivery.field_stock_move_line__destination_country_code
@@ -269,7 +269,7 @@ msgstr "Có thể cần thao tác thủ công."
 #. module: stock_delivery
 #: model:ir.model.fields.selection,name:stock_delivery.selection__stock_package_type__package_carrier_type__none
 msgid "No carrier integration"
-msgstr "Không tích hợp nhà vận chuyển"
+msgstr "Không tích hợp đơn vị vận chuyển"
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.delivery_tracking_url_warning_form
@@ -333,7 +333,7 @@ msgstr "Nhà cung cấp"
 #. module: stock_delivery
 #: model:ir.model.fields.selection,name:stock_delivery.selection__delivery_carrier__invoice_policy__real
 msgid "Real cost"
-msgstr "Phí thực tế"
+msgstr "Chi phí thực tế"
 
 #. module: stock_delivery
 #: model:ir.model.fields,field_description:stock_delivery.field_stock_picking__return_label_ids
@@ -343,7 +343,7 @@ msgstr "Nhãn trả hàng"
 #. module: stock_delivery
 #: model:ir.model,name:stock_delivery.model_stock_return_picking
 msgid "Return Picking"
-msgstr "Phiếu lấy hàng trả lại"
+msgstr "Phiếu xuất kho trả hàng"
 
 #. module: stock_delivery
 #: model:ir.model.fields,field_description:stock_delivery.field_delivery_carrier__route_ids
@@ -466,8 +466,8 @@ msgid ""
 "The package cannot be created because the total weight of the products in "
 "the picking is 0.0 %s"
 msgstr ""
-"Không thể tạo kiện hàng vì tổng khối lượng của các sản phẩm trong phiếu lấy "
-"hàng là 0,0 %s"
+"Không thể tạo kiện hàng vì tổng khối lượng của các sản phẩm trong phiếu xuất"
+" kho là 0,0 %s"
 
 #. module: stock_delivery
 #. odoo-python
@@ -499,7 +499,7 @@ msgstr "Tổng khối lượng của tất cả sản phẩm trong kiện hàng.
 #. module: stock_delivery
 #: model:ir.model.fields,help:stock_delivery.field_stock_picking__weight
 msgid "Total weight of the products in the picking."
-msgstr "Tổng khối lượng của các sản phẩm trong phiếu lấy hàng."
+msgstr "Tổng khối lượng của các sản phẩm trong phiếu xuất kho."
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.delivery_tracking_url_warning_form
@@ -571,15 +571,14 @@ msgid ""
 " are using the same carrier)."
 msgstr ""
 "Bạn không thể đóng gói sản phẩm vào cùng một kiện hàng khi chúng được vận "
-"chuyển bởi các hãng vận chuyển khác nhau (nghĩa là hãy kiểm tra để đảm bảo "
-"tất cả lệnh chuyển hàng của chúng đã được chỉ định cho cùng một hãng vận "
+"chuyển bởi các đơn vị vận chuyển khác nhau (nghĩa là hãy kiểm tra để đảm bảo"
+" tất cả lệnh chuyển hàng của chúng đã được chỉ định cho cùng một đơn vị vận "
 "chuyển)."
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.delivery_tracking_url_warning_form
 msgid "You have multiple tracker links, they are available in the chatter."
-msgstr ""
-"Bạn có nhiều liên kết theo dõi đơn hàng, hãy xem trong cửa sổ trò chuyện."
+msgstr "Bạn có nhiều liên kết theo dõi đơn hàng, hãy xem trong chatter."
 
 #. module: stock_delivery
 #. odoo-python
@@ -599,12 +598,12 @@ msgstr "Tiền tố mã bưu chính"
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.label_package_template_view_delivery
 msgid "^A0N,44,33^FDShipping Weight:"
-msgstr "^A0N,44,33^FDCân nặng vận chuyển:"
+msgstr "^A0N,44,33^FDShipping Weight:"
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.label_package_template_view_delivery
 msgid "^A0N,44,33^FDWeight:"
-msgstr "^A0N,44,33^FDCân nặng:"
+msgstr "^A0N,44,33^FDWeight:"
 
 #. module: stock_delivery
 #: model_terms:ir.ui.view,arch_db:stock_delivery.label_package_template_view_delivery

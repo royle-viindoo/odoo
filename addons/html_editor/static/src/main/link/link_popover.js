@@ -16,6 +16,8 @@ export class LinkPopover extends Component {
         getExternalMetaData: Function,
         getAttachmentMetadata: Function,
         isImage: Boolean,
+        LinkPopoverState: Object,
+        type: String,
         recordInfo: Object,
         canEdit: { type: Boolean, optional: true },
         canUpload: { type: Boolean, optional: true },
@@ -51,7 +53,7 @@ export class LinkPopover extends Component {
         this.uploadService = useService("uploadLocalFiles");
 
         this.state = useState({
-            editing: this.props.linkEl.href ? false : true,
+            editing: this.props.LinkPopoverState.editing,
             url: this.props.linkEl.href || "",
             label: cleanZWChars(this.props.linkEl.textContent),
             previewIcon: {
@@ -63,13 +65,19 @@ export class LinkPopover extends Component {
             urlDescription: "",
             linkPreviewName: "",
             imgSrc: "",
-            classes: this.props.linkEl.className || "",
+            iconSrc: "",
+            classes:
+                this.props.type === "primary"
+                    ? "btn btn-primary"
+                    : this.props.linkEl.className || "",
             type:
+                this.props.type ||
                 this.props.linkEl.className.match(/btn(-[a-z0-9_-]*)(primary|secondary)/)?.pop() ||
                 "",
             buttonSize: this.props.linkEl.className.match(/btn-(sm|lg)/)?.[1] || "",
             buttonStyle: this.initButtonStyle(this.props.linkEl.className),
             isImage: this.props.isImage,
+            showLabel: !this.props.linkEl.childElementCount,
         });
 
         this.editingWrapper = useRef("editing-wrapper");
@@ -101,8 +109,12 @@ export class LinkPopover extends Component {
         this.state.url = deducedUrl
             ? this.correctLink(deducedUrl)
             : this.correctLink(this.state.url);
-        this.loadAsyncLinkPreview();
-        this.props.onApply(this.state.url, this.state.label, this.state.classes);
+        this.props.onApply(
+            this.state.url,
+            this.state.label,
+            this.state.classes,
+            this.state.attachmentId
+        );
     }
     onClickEdit() {
         this.state.editing = true;
@@ -145,15 +157,14 @@ export class LinkPopover extends Component {
      * @private
      */
     correctLink(url) {
-        if (url.indexOf("tel:") === 0) {
-            url = url.replace(/^tel:([0-9]+)$/, "tel://$1");
-        } else if (
+        if (
             url &&
+            !url.startsWith("tel:") &&
             !url.startsWith("mailto:") &&
-            url.indexOf("://") === -1 &&
-            url[0] !== "/" &&
-            url[0] !== "#" &&
-            url.slice(0, 2) !== "${"
+            !url.includes("://") &&
+            !url.startsWith("/") &&
+            !url.startsWith("#") &&
+            !url.startsWith("${")
         ) {
             url = "http://" + url;
         }
@@ -298,6 +309,7 @@ export class LinkPopover extends Component {
         this.props.onUpload?.(attachment);
         this.state.url = getURL(attachment, { download: true, unique: true, accessToken: true });
         this.state.label ||= attachment.name;
+        this.state.attachmentId = attachment.id;
     }
 
     isAttachmentUrl() {

@@ -3,31 +3,31 @@
 # 	* mail
 # 
 # Translators:
+# Piia Paurson <piia@avalah.ee>, 2024
 # Patrick-Jordan Kiudorv, 2024
 # Birgit Vijar, 2024
 # Martin Aavastik <martin@avalah.ee>, 2024
 # Martin Trigaux, 2024
-# Rivo Zängov <eraser@eraser.ee>, 2024
+# Triine Aavik <triine@avalah.ee>, 2024
 # Andre Roomet <andreroomet@gmail.com>, 2024
 # Eneli Õigus <enelioigus@gmail.com>, 2024
-# Triine Aavik <triine@avalah.ee>, 2024
-# Siim Raasuke, 2024
 # Tairi Tiimann, 2024
-# Piia Paurson <piia@avalah.ee>, 2024
 # Algo Kärp <algokarp@gmail.com>, 2024
 # Katrin Kampura, 2024
 # Anna, 2024
-# JanaAvalah, 2024
-# Stevin Lilla, 2024
 # Leaanika Randmets, 2024
+# JanaAvalah, 2025
+# Stevin Lilla, 2025
+# Rivo Zängov <eraser@eraser.ee>, 2025
+# Siim Raasuke, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 13:39+0000\n"
+"POT-Creation-Date: 2025-07-25 18:39+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
-"Last-Translator: Leaanika Randmets, 2024\n"
+"Last-Translator: Siim Raasuke, 2025\n"
 "Language-Team: Estonian (https://app.transifex.com/odoo/teams/41243/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,6 +154,18 @@ msgstr "%(model_name)s.%(field_path)s ei ole sobiv välja path"
 #: code:addons/mail/static/src/discuss/call/common/rtc_service.js:0
 msgid "%(name)s: %(message)s)"
 msgstr "%(name)s: %(message)s)"
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid ""
+"%(new_line)s%(new_line)sType %(bold_start)s@username%(bold_end)s to mention "
+"someone, and grab their attention.%(new_line)sType "
+"%(bold_start)s#channel%(bold_end)s to mention a channel.%(new_line)sType "
+"%(bold_start)s/command%(bold_end)s to execute a command.%(new_line)sType "
+"%(bold_start)s:shortcut%(bold_end)s to insert a canned response in your "
+"message."
+msgstr ""
 
 #. module: mail
 #. odoo-javascript
@@ -544,15 +556,6 @@ msgid "<span>We suggest you start by</span>"
 msgstr "<span>Soovitame alustada </span>"
 
 #. module: mail
-#: model_terms:ir.ui.view,arch_db:mail.mail_notification_layout
-msgid ""
-"<strong>Internal communication</strong>: Replying will post an internal "
-"note. Followers won't receive any email notification."
-msgstr ""
-"<strong>Ettevõttesisene suhtlus</strong>Vastamine jätab Odoosse sisemise "
-"märkuse. Jälgijad ei saa e-maili teavitusi."
-
-#. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid ""
 "<strong>Save</strong> this page and come back here to set up the feature."
@@ -632,6 +635,12 @@ msgid "A next activity can only be planned on models that use activities."
 msgstr ""
 "Järgmist tegevust saab planeerida ainult moodulitele, mis kasutavad "
 "tegevusi."
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/mail_scheduled_message.py:0
+msgid "A scheduled message could not be sent"
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_res_config_settings__google_translate_api_key
@@ -1589,6 +1598,11 @@ msgid ""
 msgstr "Ajastage see tegevus automaatselt, kui praegune on märgitud tehtuks."
 
 #. module: mail
+#: model_terms:ir.ui.view,arch_db:mail.mail_activity_plan_view_form
+msgid "Available for all Companies"
+msgstr ""
+
+#. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/core/common/chat_window.xml:0
 #: code:addons/mail/static/src/core/common/message_in_reply.xml:0
@@ -2224,12 +2238,6 @@ msgstr "Uuesti proovimiseks klõpsake siin"
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/js/tours/discuss_channel_tour.js:0
-msgid "Click on your message"
-msgstr "Klõpsake oma sõnumil"
-
-#. module: mail
-#. odoo-javascript
 #: code:addons/mail/static/src/core/common/message_in_reply.xml:0
 msgid "Click to see the attachments"
 msgstr "Klõpsake vaatamiseks manusel"
@@ -2470,8 +2478,9 @@ msgstr "Ühenduse testimine ebaõnnestus: %s"
 #. module: mail
 #. odoo-javascript
 #: code:addons/mail/static/src/discuss/call/common/rtc_service.js:0
-msgid "Connection to SFU server closed by the server"
-msgstr "Ühendus SFU serveriga suletud serveri poolt"
+msgid ""
+"Connection to SFU server closed by the server, falling back to peer-to-peer"
+msgstr ""
 
 #. module: mail
 #. odoo-javascript
@@ -3056,6 +3065,12 @@ msgstr "Kustuta mal"
 #: code:addons/mail/static/src/core/common/link_preview_confirm_delete.xml:0
 msgid "Delete all previews"
 msgstr "Kustuta kõik eelvaated"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/core/common/message.xml:0
+msgid "Deleted document"
+msgstr ""
 
 #. module: mail
 #. odoo-javascript
@@ -3861,12 +3876,6 @@ msgstr "Laienda"
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/js/tours/discuss_channel_tour.js:0
-msgid "Expand options"
-msgstr "Laienda valikuid"
-
-#. module: mail
-#. odoo-javascript
 #: code:addons/mail/static/src/core/public_web/discuss_sidebar.xml:0
 msgid "Expand panel"
 msgstr "Laienda paneeli"
@@ -4066,11 +4075,6 @@ msgid ""
 msgstr ""
 "Fail, kust mall esialgselt pärineb. Kasutatakse katkise malli "
 "lähtestamiseks."
-
-#. module: mail
-#: model:ir.model,name:mail.model_ir_binary
-msgid "File streaming helper model for controllers"
-msgstr "Faili voogesituse abimudel kontrollerite jaoks"
 
 #. module: mail
 #. odoo-javascript
@@ -4550,6 +4554,12 @@ msgid "Hostname or IP of the mail server"
 msgstr "Meili serveri hostname või IP"
 
 #. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/js/tours/discuss_channel_tour.js:0
+msgid "Hover on your message and mark as todo"
+msgstr ""
+
+#. module: mail
 #: model:ir.model.fields,help:mail.field_res_users_settings__voice_active_duration
 msgid ""
 "How long the audio broadcast will remain active after passing the volume "
@@ -4560,6 +4570,12 @@ msgstr "Kui kaua jääb audio käima peale volüümi piiri ületamist"
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
 msgid "ICE Servers"
 msgstr "ICE Serverid"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/discuss/call/common/call_context_menu.xml:0
+msgid "ICE connection:"
+msgstr ""
 
 #. module: mail
 #. odoo-javascript
@@ -6228,12 +6244,6 @@ msgid "Messages Search"
 msgstr "Sõnumite Otsing"
 
 #. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/js/tours/discuss_channel_tour.js:0
-msgid "Messages can be <b>starred</b> to remind you to check back later."
-msgstr "Sõnumid võivad olla <b>tähistatud</b> tuletamaks meelde vaadata üle."
-
-#. module: mail
 #: model:ir.model.constraint,message:mail.constraint_discuss_channel_from_message_id_unique
 msgid "Messages can only be linked to one sub-channel"
 msgstr ""
@@ -7135,6 +7145,12 @@ msgid "Open in Discuss"
 msgstr "Ava vestluses"
 
 #. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/core/common/attachment_view.xml:0
+msgid "Open preview in a separate window."
+msgstr ""
+
+#. module: mail
 #. odoo-python
 #: code:addons/mail/models/mail_template.py:0
 msgid "Operation not supported"
@@ -7212,7 +7228,7 @@ msgstr "Algne sõnum kustutati"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.message_activity_done
 msgid "Original note:"
-msgstr "Algne märtkus:"
+msgstr "Algne märkus:"
 
 #. module: mail
 #. odoo-python
@@ -7679,20 +7695,8 @@ msgstr ""
 
 #. module: mail
 #. odoo-javascript
-#: code:addons/mail/static/src/core/common/attachment_view.xml:0
-msgid "Pop out"
-msgstr ""
-
-#. module: mail
-#. odoo-javascript
 #: code:addons/mail/static/src/chatter/web/chatter.xml:0
 msgid "Pop out Attachments"
-msgstr ""
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/core/common/attachment_view.xml:0
-msgid "Open preview in a separate window."
 msgstr ""
 
 #. module: mail
@@ -7711,6 +7715,12 @@ msgstr "Portaali ligipääs antud"
 #: code:addons/mail/models/res_users.py:0
 msgid "Portal Access Revoked"
 msgstr "Portaali ligipääs tühistatud"
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/mail_thread.py:0
+msgid "Portal users can only filter threads by themselves as followers."
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_compose_message__composition_mode__comment
@@ -7988,6 +7998,12 @@ msgstr "Valmis"
 #: model:ir.model.fields.selection,name:mail.selection__mail_notification__notification_status__ready
 msgid "Ready to Send"
 msgstr "Valmis saatmiseks"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/discuss/core/public_web/bus_connection_alert.xml:0
+msgid "Real-time connection lost..."
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_blacklist_remove__reason
@@ -8762,12 +8778,6 @@ msgstr "Vali keel"
 #: code:addons/mail/static/src/views/web/fields/assign_user_command_hook.js:0
 msgid "Select a user..."
 msgstr "Vali kasutaja..."
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/discuss/core/common/discuss_notification_settings.xml:0
-msgid "Select duration"
-msgstr "Vali kestus"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -9693,6 +9703,14 @@ msgid ""
 msgstr ""
 "Allolevat sõnumit ei saanud antud aadress%(alias_display_name)s vastu võtta. \n"
 "Proovi hiljem uuesti või võta ühendust %(company_name)s-ga."
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/mail_scheduled_message.py:0
+msgid ""
+"The message scheduled on %(model)s(%(id)s) with the following content could "
+"not be sent:%(original_message)s"
+msgstr ""
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_discuss_channel__from_message_id
@@ -10733,6 +10751,12 @@ msgid "Username"
 msgstr "Kasutajanimi"
 
 #. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "Users in this channel: %(members)s."
+msgstr ""
+
+#. module: mail
 #: model:ir.model.fields,help:mail.field_res_config_settings__restrict_template_rendering
 msgid ""
 "Users will still be able to render templates.\n"
@@ -11078,6 +11102,24 @@ msgstr ""
 #. module: mail
 #. odoo-python
 #: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "You are alone in a private conversation."
+msgstr "Olete üksi privaatses vestluses."
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "You are alone in this channel."
+msgstr "Sa oled selles kanalis üksinda."
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "You are in a private conversation with %(member_names)s."
+msgstr ""
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
 msgid "You are in channel %(bold_start)s#%(channel_name)s%(bold_end)s."
 msgstr "Oled kanalis %(bold_start)s#%(channel_name)s%(bold_end)s."
 
@@ -11153,10 +11195,25 @@ msgstr "Sa võid ignoreerida sõnumit"
 
 #. module: mail
 #. odoo-python
+#: code:addons/mail/models/mail_activity_type.py:0
+msgid ""
+"You cannot delete %(activity_names)s as it is required in various apps."
+msgstr ""
+
+#. module: mail
+#. odoo-python
 #: code:addons/mail/models/discuss/discuss_channel.py:0
 msgid ""
 "You cannot delete those groups, as the Whole Company group is required by "
 "other modules."
+msgstr ""
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/mail_activity_type.py:0
+msgid ""
+"You cannot modify %(activities_names)s target model as they are are required"
+" in various apps."
 msgstr ""
 
 #. module: mail
@@ -11342,12 +11399,6 @@ msgid "after previous activity deadline"
 msgstr "Pärast eelneva tegevuse tähtaega"
 
 #. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/chatter/web/mail_composer_schedule_dialog.xml:0
-msgid "afternoon"
-msgstr "pärastlõuna"
-
-#. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_alias_view_form
 msgid "alias"
 msgstr "alias"
@@ -11435,12 +11486,6 @@ msgid "created this channel."
 msgstr "lõi selle kanali."
 
 #. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/chatter/web/mail_composer_schedule_dialog.xml:0
-msgid "custom"
-msgstr "kohandatud"
-
-#. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_plan_template__delay_unit__days
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__days
 msgid "days"
@@ -11463,12 +11508,6 @@ msgstr "päeva:"
 #: code:addons/mail/static/src/discuss/call/common/call_participant_card.xml:0
 msgid "deaf"
 msgstr "deaf"
-
-#. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/discuss/core/common/discuss_notification_settings.xml:0
-msgid "default"
-msgstr "vaikimisi"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_push__mail_push_device_id
@@ -11727,22 +11766,16 @@ msgid "model %s does not accept document creation"
 msgstr "mudel%s ei luba dokumendi loomist"
 
 #. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/chatter/web/mail_composer_schedule_dialog.xml:0
-msgid "monday"
-msgstr "esmaspäev"
-
-#. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_plan_template__delay_unit__months
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__months
 msgid "months"
 msgstr "kuud"
 
 #. module: mail
-#. odoo-javascript
-#: code:addons/mail/static/src/chatter/web/mail_composer_schedule_dialog.xml:0
-msgid "morning"
-msgstr "morning"
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "more"
+msgstr "rohkem"
 
 #. module: mail
 #. odoo-javascript
@@ -11936,6 +11969,12 @@ msgstr "websocket sõnumite käsitlus"
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__weeks
 msgid "weeks"
 msgstr "nädalad"
+
+#. module: mail
+#. odoo-python
+#: code:addons/mail/models/discuss/discuss_channel.py:0
+msgid "you"
+msgstr "teie"
 
 #. module: mail
 #. odoo-python
