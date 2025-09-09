@@ -42,9 +42,10 @@ export class ProductProduct extends Base {
 
     needToConfigure() {
         return (
-            this.isConfigurable() &&
-            this.attribute_line_ids.length > 0 &&
-            !this.attribute_line_ids.every((l) => l.attribute_id.create_variant === "always")
+            this.isCombo() ||
+            (this.isConfigurable() &&
+                this.attribute_line_ids.length > 0 &&
+                !this.attribute_line_ids.every((l) => l.attribute_id.create_variant === "always"))
         );
     }
 
@@ -206,16 +207,16 @@ export class ProductProduct extends Base {
     }
 
     get searchString() {
-        const fields = ["display_name", "description_sale", "description"];
+        const fields = ["display_name", "barcode", "default_code"];
         return fields
             .map((field) => this[field] || "")
             .filter(Boolean)
             .join(" ");
     }
 
-    exactMatch(searchWord) {
-        const fields = ["barcode", "default_code"];
-        return fields.some((field) => this[field] && this[field].includes(searchWord));
+    exactMatch() {
+        // this method is kept for backward compatibility
+        return [];
     }
 
     _isArchivedCombination(attributeValueIds) {
@@ -252,6 +253,12 @@ export class ProductProduct extends Base {
 
     get productDisplayName() {
         return this.default_code ? `[${this.default_code}] ${this.name}` : this.name;
+    }
+    get canBeDisplayed() {
+        return this.active && this.available_in_pos;
+    }
+    get variants() {
+        return this.product_tmpl_id?.["<-product.product.product_tmpl_id"];
     }
 }
 registry.category("pos_available_models").add(ProductProduct.pythonModel, ProductProduct);

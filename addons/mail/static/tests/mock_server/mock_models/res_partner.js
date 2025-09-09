@@ -1,7 +1,6 @@
 import { mailDataHelpers } from "@mail/../tests/mock_server/mail_mock_server";
 
 import { fields, getKwArgs, makeKwArgs, webModels } from "@web/../tests/web_test_helpers";
-import { DEFAULT_MAIL_SEARCH_ID, DEFAULT_MAIL_VIEW_ID } from "./constants";
 
 /** @typedef {import("@web/../tests/web_test_helpers").ModelRecord} ModelRecord */
 
@@ -16,8 +15,7 @@ export class ResPartner extends webModels.ResPartner {
     });
 
     _views = {
-        [`search, ${DEFAULT_MAIL_SEARCH_ID}`]: /* xml */ `<search/>`,
-        [`form,${DEFAULT_MAIL_VIEW_ID}`]: /* xml */ `
+        form: /* xml */ `
             <form>
                 <sheet>
                     <field name="name"/>
@@ -25,6 +23,18 @@ export class ResPartner extends webModels.ResPartner {
                 <chatter/>
             </form>`,
     };
+
+    /* override */
+    _compute_display_name() {
+        super._compute_display_name();
+        for (const record of this) {
+            if (record.parent_id && !record.name) {
+                const [parent] = this.env["res.partner"].browse(record.parent_id);
+                const type = this._fields.type.selection.find((item) => item[0] === record.type);
+                record.display_name = `${parent.name}, ${type[1]}`;
+            }
+        }
+    }
 
     /**
      * @param {string} [search]
@@ -113,8 +123,10 @@ export class ResPartner extends webModels.ResPartner {
             ["active", "=", true],
             ["partner_share", "=", false],
         ];
-        if (channel.group_public_id) {
-            extraDomain.push(["groups_id", "in", channel.group_public_id]);
+        const parent_channel = this.browse(channel.parent_channel_id);
+        const allowed_group = parent_channel?.group_public_id ?? channel.group_public_id;
+        if (allowed_group) {
+            extraDomain.push(["groups_id", "in", allowed_group]);
         }
         const baseDomain = search
             ? ["|", ["name", "ilike", searchLower], ["email", "ilike", searchLower]]
@@ -146,8 +158,8 @@ export class ResPartner extends webModels.ResPartner {
         for (const partnerId of partners) {
             const data = {
                 name: users[partnerId]?.name,
-                groups_id: users[partnerId]?.groups_id.includes(channel.group_public_id)
-                    ? channel.group_public_id
+                groups_id: users[partnerId]?.groups_id.includes(allowed_group)
+                    ? allowed_group
                     : undefined,
             };
             store.add(this.browse(partnerId), data);

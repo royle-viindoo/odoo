@@ -40,7 +40,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
             },
         },
         {
-            trigger: ".o-mail-AttachmentCard:not(.o-isUploading)", // waiting the attachment to be uploaded
+            trigger: '.o-mail-AttachmentCard:not(.o-isUploading):contains("file1.txt")',
         },
         {
             content: "Open full composer",
@@ -120,6 +120,20 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
             content: "Check a template is listed",
             trigger:
                 '.mail-composer-template-dropdown.popover .o-dropdown-item:contains("Test template")',
+        },
+        {
+            content: "Verify admin template is NOT listed",
+            trigger: ".mail-composer-template-dropdown.popover",
+            run() {
+                const hasAdminTemplate = [...document.querySelectorAll(".o-dropdown-item")].some(
+                    (item) => item.textContent.includes("Test template for admin")
+                );
+                if (hasAdminTemplate) {
+                    console.error(
+                        "Template assigned to the admin is visible to a non-assigned user! This should not happen."
+                    );
+                }
+            },
         },
         {
             content: "Send message from full composer",
@@ -234,7 +248,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
         },
         {
             content: "Send message from chatter",
-            trigger: ".o-mail-Composer-send",
+            trigger: ".o-mail-Composer-send:enabled",
             run: "click",
         },
         {
@@ -255,7 +269,7 @@ registry.category("web_tour.tours").add("mail/static/tests/tours/mail_composer_t
         },
         {
             content: "Send message from chatter",
-            trigger: ".o-mail-Composer-send",
+            trigger: ".o-mail-Composer-send:enabled",
             run: "click",
         },
         {

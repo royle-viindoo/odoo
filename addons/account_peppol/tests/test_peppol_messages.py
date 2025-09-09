@@ -183,7 +183,7 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
         move = self.create_move(self.valid_partner)
         move.action_post()
 
-        wizard = self.create_send_and_print(move, sending_methods=['email'])
+        wizard = self.create_send_and_print(move, sending_methods=['email', 'peppol'])
         self.assertEqual(wizard.invoice_edi_format, 'ubl_bis3')
 
         # the ubl xml placeholder should be generated
@@ -200,7 +200,6 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
             },
         ])
 
-        # we don't want to email the xml file in addition to sending via peppol
         wizard.sending_methods = ['peppol']
         wizard.action_send_and_print()
         self.assertEqual(self._get_mail_message(move).preview, 'The document has been sent to the Peppol Access Point for processing')
@@ -208,11 +207,11 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
     def test_send_peppol_alerts_not_valid_partner(self):
         move = self.create_move(self.invalid_partner)
         move.action_post()
-        wizard = self.create_send_and_print(move)
-
-        self.assertEqual(wizard.invoice_edi_format, 'ubl_bis3')
+        wizard = self.env['account.move.send.wizard'].create({
+            'move_id': move.id,
+        })
         self.assertEqual(self.invalid_partner.peppol_verification_state, 'not_valid')  # not on peppol at all
-        self.assertFalse('peppol' in wizard.sending_methods)  # peppol is not checked
+        self.assertFalse('peppol' in wizard.sending_methods)  # peppol is not checked by default
         self.assertTrue(wizard.sending_method_checkboxes['peppol']['readonly'])  # peppol is not possible to select
         self.assertFalse(wizard.alerts)  # there is no alerts
 
@@ -225,7 +224,6 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
         self.assertEqual(wizard.invoice_edi_format, 'ubl_bis3')
         self.assertEqual(self.valid_partner.peppol_verification_state, 'not_valid_format')  # on peppol but can't receive bis3
         self.assertTrue('account_peppol_warning_partner' in wizard.alerts)
-        self.assertTrue('account_peppol_demo_test_mode' in wizard.alerts)
 
     def test_send_peppol_alerts_invalid_partner(self):
         """If there's already account_edi_ubl_cii_configure_partner, the warning should not appear."""
@@ -351,9 +349,6 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
                 'peppol_endpoint': '3141592654',
             }])
 
-        new_partner.invoice_edi_format = False
-        self.assertFalse(new_partner.peppol_verification_state)
-
         # the participant exists on the network but cannot receive XRechnung
         new_partner.write({
             'invoice_edi_format': 'xrechnung',
@@ -379,7 +374,7 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
             'peppol_endpoint': '0477472701',
             'invoice_edi_format': 'ubl_bis3',
         })
-        new_partner.with_company(company_2).invoice_edi_format = False
+
         # partner is valid for company 1
         self.assertRecordValues(new_partner, [{
             'peppol_verification_state': 'valid',
@@ -389,11 +384,12 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
             'invoice_sending_method': 'peppol',
         }])
         # but not valid for company 2
+        new_partner.with_company(company_2).invoice_edi_format = 'nlcius'
         self.assertRecordValues(new_partner.with_company(company_2), [{
-            'peppol_verification_state': False,
+            'peppol_verification_state': 'not_valid_format',
             'peppol_eas': '0208',
             'peppol_endpoint': '0477472701',
-            'invoice_edi_format': False,
+            'invoice_edi_format': 'nlcius',
             'invoice_sending_method': 'peppol',
         }])
         move_1 = self.create_move(new_partner)
@@ -404,10 +400,10 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
         wizard = self.create_send_and_print(move_1 + move_2 + move_3)
         wizard.action_send_and_print()
         self.assertEqual((move_1 + move_2 + move_3).mapped('is_being_sent'), [True, True, True])
-        # the cron is ran asynchronously and should be agnostic from the current self.env.company
+        # the cron is run asynchronously and should be agnostic from the current self.env.company
         self.env.ref('account.ir_cron_account_move_send').with_company(company_2).method_direct_trigger()
         # only move 1 & 2 should be processed, move_3 is related to an invalid partner (with regard to company_2) thus should fail to send
-        self.assertEqual((move_1 + move_2 + move_3).mapped('peppol_move_state'), ['processing', 'processing', 'skipped'])
+        self.assertEqual((move_1 + move_2 + move_3).mapped('peppol_move_state'), ['processing', 'processing', 'error'])
 
     def test_available_peppol_sending_methods(self):
         company_us = self.setup_other_company()['company']  # not a valid Peppol country
@@ -419,3 +415,74 @@ class TestPeppolMessage(TestAccountMoveSendCommon):
         self.assertFalse('facturx' in self.valid_partner.available_peppol_edi_formats)
         self.valid_partner.invoice_sending_method = 'email'
         self.assertTrue('facturx' in self.valid_partner.available_peppol_edi_formats)
+
+    def test_peppol_default_ubl_bis3_single(self):
+        """In single invoice sending, if a partner is set on 'by Peppol' sending method,
+        and has no specific e-invoice format, we should default on BIS3
+        and generate invoices without errors.
+        """
+        self.valid_partner.invoice_sending_method = 'peppol'
+        self.valid_partner.invoice_edi_format = False
+
+        move = self.create_move(self.valid_partner)
+        move.action_post()
+        wizard = self.create_send_and_print(move)
+        self.assertEqual(wizard.invoice_edi_format, 'ubl_bis3')
+        wizard.action_send_and_print()
+        self.assertTrue(move.ubl_cii_xml_id)
+        self.assertEqual(move.peppol_move_state, 'processing')
+
+    def test_peppol_default_ubl_bis3_multi(self):
+        """In multi-sending, if a partner is set on 'by Peppol' sending method, and
+        has no specific e-invoice format, we should default on BIS3
+        and generate invoices without errors.
+        """
+        self.valid_partner.invoice_sending_method = 'peppol'
+        self.valid_partner.invoice_edi_format = False
+
+        move_1 = self.create_move(self.valid_partner)
+        move_2 = self.create_move(self.valid_partner)
+        moves = (move_1 + move_2)
+        moves.action_post()
+        wizard = self.create_send_and_print(moves)
+        self.assertEqual(wizard.summary_data, {
+            'peppol': {'count': 2, 'label': 'by Peppol'},
+        })
+        wizard.action_send_and_print()
+        self.env.ref('account.ir_cron_account_move_send').method_direct_trigger()
+
+        self.assertEqual(len(moves.ubl_cii_xml_id), 2)
+        self.assertEqual(moves.mapped('peppol_move_state'), ['processing', 'processing'])
+
+    def test_silent_error_while_creating_xml(self):
+        """When in multi/async mode, the generation of XML can fail silently (without raising).
+        This needs to be reflected as an error and put the move in Peppol Error state.
+        """
+        def mocked_export_invoice_constraints(self, invoice, vals):
+            return {'test_error_key': 'test_error_description'}
+
+        self.valid_partner.invoice_edi_format = 'ubl_bis3'
+        move_1 = self.create_move(self.valid_partner)
+        move_2 = self.create_move(self.valid_partner)
+        (move_1 + move_2).action_post()
+
+        wizard = self.create_send_and_print(move_1 + move_2)
+        with patch(
+            'odoo.addons.account_edi_ubl_cii.models.account_edi_xml_ubl_20.AccountEdiXmlUBL20._export_invoice_constraints',
+            mocked_export_invoice_constraints
+        ):
+            wizard.action_send_and_print()
+            self.env.ref('account.ir_cron_account_move_send').method_direct_trigger()
+        self.assertEqual(move_1.peppol_move_state, 'error')
+
+    def test_compute_available_peppol_eas_multi_partner(self):
+        """Check _compute_available_peppol_eas works with multiple partners"""
+
+        # Create multiple partners
+        partners = self.env['res.partner'].create([
+            {'name': 'Partner A'},
+            {'name': 'Partner B'},
+        ])
+        partners._compute_available_peppol_eas()
+        for partner in partners:
+            self.assertFalse('odemo' in partner.available_peppol_eas)
