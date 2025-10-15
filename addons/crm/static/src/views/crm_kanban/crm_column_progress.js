@@ -30,6 +30,14 @@ export class CrmColumnProgress extends ColumnProgress {
         let currency = false;
         if (aggregatedValue.value && rrField.currency_field) {
             currency = getCurrency(session.company_currency_id);
+            if (!currency && group.list.records.length > 0) {
+                const record = group.list.records[0];
+                const currencyId = record.data?.[rrField.currency_field]
+                currency = currencyId ? getCurrency(currencyId[0]) : false;
+                if (currency) {
+                    currency.id = currencyId[0];
+                }
+            }
         }
         return { ...aggregatedValue, currency };
     }

@@ -4,6 +4,7 @@ import { reactive } from "@odoo/owl";
 import { Domain } from "@web/core/domain";
 import { _t } from "@web/core/l10n/translation";
 import { extractInfoFromGroupData } from "@web/model/relational_model/utils";
+import { getCurrency } from "@web/core/currency";
 
 const FALSE = Symbol("False");
 
@@ -135,6 +136,7 @@ class ProgressBarState {
     getAggregateValue(group, aggregateField) {
         const title = aggregateField ? aggregateField.string : _t("Count");
         let value = 0;
+        let currency = false;
         if (!this.activeBars[group.serverValue]) {
             value = group.count;
             if (aggregateField) {
@@ -150,6 +152,16 @@ class ProgressBarState {
                     (this.activeBars[group.serverValue]?.aggregates &&
                         this.activeBars[group.serverValue]?.aggregates[aggregateField.name]) ||
                     0;
+            }
+        }
+
+        if (aggregateField.currency_field && group.list.records.length > 0) {
+            const record = group.list.records[0];
+            const currencyId = record.data[aggregateField.currency_field]
+            currency = currencyId ? getCurrency(currencyId[0]) : false;
+            if (currency) {
+                currency.id = currencyId[0];
+                return { title, value, currency };
             }
         }
         return { title, value };
