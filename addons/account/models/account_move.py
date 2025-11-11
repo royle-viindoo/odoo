@@ -956,6 +956,15 @@ class AccountMove(models.Model):
         'line_ids.full_reconcile_id',
         'state')
     def _compute_amount(self):
+        self.line_ids.fetch([
+            'debit',
+            'balance',
+            'amount_currency',
+            'amount_residual',
+            'amount_residual_currency',
+            'display_type',
+            'tax_repartition_line_id'
+        ])
         for move in self:
             total_untaxed, total_untaxed_currency = 0.0, 0.0
             total_tax, total_tax_currency = 0.0, 0.0
@@ -3933,6 +3942,15 @@ class AccountMove(models.Model):
 
             if move.line_ids.account_id.filtered(lambda account: account.deprecated) and not self._context.get('skip_account_deprecation_check'):
                 raise UserError(_("A line of this move is using a deprecated account, you cannot post it."))
+
+            account_companies = move.line_ids.account_id.company_id
+
+            if not ((move.journal_id.company_id.sudo().child_ids | move.journal_id.company_id) & account_companies == account_companies):
+                raise UserError(_(
+                    "The entry %s (id %s) is using accounts from a different company.",
+                    move.name,
+                    move.id
+                ))
 
         if soft:
             future_moves = self.filtered(lambda move: move.date > fields.Date.context_today(self))
