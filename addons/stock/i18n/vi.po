@@ -9844,7 +9844,7 @@ msgstr "Dòng theo dõi"
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Transfer"
-msgstr "Lệnh chuyển hàng hàng"
+msgstr "Lệnh chuyển hàng"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_production_lot_tree
