@@ -247,7 +247,7 @@ msgstr "Tất cả bảng chấm công"
 #. module: hr_timesheet
 #: model:ir.model.fields,field_description:hr_timesheet.field_project_project__allocated_hours
 msgid "Allocated Hours"
-msgstr "Số ngày giờ cấp phát"
+msgstr "Số giờ cấp phát"
 
 #. module: hr_timesheet
 #: model:ir.model.fields,field_description:hr_timesheet.field_project_update__allocated_time
