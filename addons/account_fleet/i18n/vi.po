@@ -72,7 +72,7 @@ msgstr "Hoá đơn mua hàng dịch vụ: %s"
 #: model:ir.model,name:account_fleet.model_fleet_vehicle
 #: model:ir.model.fields,field_description:account_fleet.field_account_move_line__vehicle_id
 msgid "Vehicle"
-msgstr "Xe"
+msgstr "Phương tiện"
 
 #. module: account_fleet
 #: model:fleet.service.type,name:account_fleet.data_fleet_service_type_vendor_bill
