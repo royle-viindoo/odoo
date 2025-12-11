@@ -33053,7 +33053,6 @@ msgid ""
 "One or more of the selected modules have already been uninstalled, if you "
 "believe this to be an error, you may try again later or contact support."
 msgstr ""
-
 "Một hoặc nhiều phân hệ được chọn đã được gỡ cài đặt, nếu bạn cho rằng đây là "
 "lỗi, bạn có thể thử lại sau hoặc liên hệ với bộ phận hỗ trợ."
 
