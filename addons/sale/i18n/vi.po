@@ -1131,7 +1131,7 @@ msgstr "Thêm sản phẩm"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Add a section"
-msgstr "Thêm phần"
+msgstr "Thêm tiêu đề"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form

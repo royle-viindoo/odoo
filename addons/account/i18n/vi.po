@@ -2373,7 +2373,7 @@ msgstr "Thêm một dòng làm tròn"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Add a section"
-msgstr "Thêm phần"
+msgstr "Thêm tiêu đề"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
