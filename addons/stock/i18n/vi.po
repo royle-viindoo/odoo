@@ -4862,7 +4862,7 @@ msgstr "Dịch chuyển liên kết"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 msgid "List view of detailed operations"
-msgstr "Chế độ xem danh sách của hoạt động chi tiết"
+msgstr "Giao diện danh sách của hoạt động chi tiết"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form

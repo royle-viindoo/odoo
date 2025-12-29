@@ -2825,7 +2825,7 @@ msgstr "URL cuộc gọi video"
 #: code:addons/calendar/static/src/views/attendee_calendar/common/attendee_calendar_common_popover.xml:0
 #, python-format
 msgid "View"
-msgstr "Chế độ xem"
+msgstr "Xem"
 
 #. module: calendar
 #: model:ir.model.fields,field_description:calendar.field_calendar_event__wed

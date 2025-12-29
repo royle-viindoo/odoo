@@ -24,7 +24,7 @@ msgstr ""
 #. module: web_hierarchy
 #: model:ir.model,name:web_hierarchy.model_ir_actions_act_window_view
 msgid "Action Window View"
-msgstr "Chế độ xem cửa sổ tác vụ"
+msgstr "Giao diện cửa sổ tác vụ"
 
 #. module: web_hierarchy
 #: model:ir.model,name:web_hierarchy.model_base
@@ -66,7 +66,7 @@ msgstr "Phân cấp phụ chỉ có thể là trường hoặc mẫu, nhưng đ�
 #: code:addons/web_hierarchy/models/ir_ui_view.py:0
 #, python-format
 msgid "Hierarchy view can contain only one templates tag"
-msgstr "Chế độ xem phân cấp chỉ có thể chứa một thẻ mẫu"
+msgstr "Giao diện phân cấp chỉ có thể chứa một thẻ mẫu"
 
 #. module: web_hierarchy
 #. odoo-javascript

@@ -5025,7 +5025,7 @@ msgstr ""
 #: code:addons/project/report/project_task_burndown_chart_report.py:0
 #, python-format
 msgid "The view must be grouped by date and by stage_id"
-msgstr "Chế độ xem phải được nhóm theo ngày và theo stage_id"
+msgstr "Giao diện phải được nhóm theo ngày và theo stage_id"
 
 #. module: project
 #. odoo-javascript
