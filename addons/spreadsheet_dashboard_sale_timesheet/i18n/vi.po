@@ -32,7 +32,7 @@ msgstr "Số giờ có thể tính phí"
 #: code:addons/spreadsheet_dashboard_sale_timesheet/data/files/timesheet_dashboard.json:0
 #, python-format
 msgid "Billable Rate"
-msgstr "Tỷ lệ có thể tính phí"
+msgstr "Tỷ lệ tính phí"
 
 #. module: spreadsheet_dashboard_sale_timesheet
 #. odoo-javascript
@@ -50,7 +50,7 @@ msgstr "Giờ có thể tính phí"
 #: code:addons/spreadsheet_dashboard_sale_timesheet/data/files/timesheet_dashboard.json:0
 #, python-format
 msgid "Billable rate"
-msgstr "Tỷ lệ có thể tính phí"
+msgstr "Tỷ lệ tính phí"
 
 #. module: spreadsheet_dashboard_sale_timesheet
 #. odoo-javascript

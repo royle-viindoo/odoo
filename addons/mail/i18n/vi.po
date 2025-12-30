@@ -5960,7 +5960,7 @@ msgstr "Nội dung #%(thread name)s…"
 #: code:addons/mail/static/src/core/common/composer.js:0
 #, python-format
 msgid "Message %(thread name)s…"
-msgstr "Nội dung %(thread name)s…"
+msgstr "Nhắn tin cho %(thread name)s…"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_discuss_channel__message_has_error

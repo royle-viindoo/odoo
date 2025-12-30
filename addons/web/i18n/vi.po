@@ -6305,7 +6305,7 @@ msgstr "Tìm kiếm menu..."
 #: code:addons/web/static/src/core/emoji_picker/emoji_picker.xml:0
 #, python-format
 msgid "Search for an emoji"
-msgstr "Tìm kiếm một biểu tượng cảm xúc..."
+msgstr "Tìm một biểu tượng cảm xúc..."
 
 #. module: web
 #. odoo-javascript

@@ -25,7 +25,7 @@ msgstr ""
 #: code:addons/spreadsheet_dashboard_hr_expense/data/files/expense_dashboard.json:0
 #, python-format
 msgid "# Expenses"
-msgstr "# Chi phí"
+msgstr "# Chi tiêu"
 
 #. module: spreadsheet_dashboard_hr_expense
 #. odoo-javascript
@@ -46,7 +46,7 @@ msgstr "Nhân viên"
 #: code:addons/spreadsheet_dashboard_hr_expense/data/files/expense_dashboard.json:0
 #, python-format
 msgid "Expense"
-msgstr "Chi phí"
+msgstr "Chi tiêu"
 
 #. module: spreadsheet_dashboard_hr_expense
 #. odoo-javascript
@@ -54,7 +54,7 @@ msgstr "Chi phí"
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_hr_expense.spreadsheet_dashboard_expense
 #, python-format
 msgid "Expenses"
-msgstr "Chi phí"
+msgstr "Chi tiêu"
 
 #. module: spreadsheet_dashboard_hr_expense
 #. odoo-javascript
@@ -68,14 +68,14 @@ msgstr "Phân tích Chi tiêu"
 #: code:addons/spreadsheet_dashboard_hr_expense/data/files/expense_dashboard.json:0
 #, python-format
 msgid "Expenses Analysis by Customer to Reinvoice"
-msgstr "Phân tích chi phí theo khách hàng để lập lại hóa đơn"
+msgstr "Phân tích tiêu theo khách hàng để lập lại hóa đơn"
 
 #. module: spreadsheet_dashboard_hr_expense
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_hr_expense/data/files/expense_dashboard.json:0
 #, python-format
 msgid "KPI - Expenses"
-msgstr "KPI - Chi phí"
+msgstr "KPI - Chi tiêu"
 
 #. module: spreadsheet_dashboard_hr_expense
 #. odoo-javascript
