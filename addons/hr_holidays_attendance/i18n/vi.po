@@ -5,19 +5,19 @@
 # Translators:
 # Wil Odoo, 2023
 # Thi Huong Nguyen, 2025
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 10:08+0000\n"
+"POT-Creation-Date: 2025-12-29 18:37+0000\n"
 "PO-Revision-Date: 2023-10-26 23:09+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: hr_holidays_attendance
@@ -81,7 +81,7 @@ msgstr "Trừ giờ làm thêm"
 #. module: hr_holidays_attendance
 #: model_terms:ir.ui.view,arch_db:hr_holidays_attendance.hr_leave_allocation_overtime_view_form
 msgid "Discard"
-msgstr "Huỷ"
+msgstr "Huỷ bỏ"
 
 #. module: hr_holidays_attendance
 #: model:hr.leave.type,name:hr_holidays_attendance.holiday_status_extra_hours
@@ -117,13 +117,13 @@ msgstr "Nhân sự có mặt quá giờ "
 #: model:ir.model.fields,help:hr_holidays_attendance.field_hr_leave_accrual_level__frequency_hourly_source
 msgid ""
 "If the source is set to Calendar, the amount of worked hours will be "
-"computed from employee calendar and time off (if the plan is based on worked"
-" time). Otherwise, the amount of worked hours will be based on Attendance "
+"computed from employee calendar and time off (if the plan is based on worked "
+"time). Otherwise, the amount of worked hours will be based on Attendance "
 "records."
 msgstr ""
-"Nếu nguồn được đặt thành Lịch, số giờ làm việc sẽ được tính từ lịch của nhân"
-" viên và thời gian ngày nghỉ (nếu kế hoạch dựa trên thời gian làm việc). Nếu"
-" không, số giờ làm việc sẽ dựa trên dữ liệu Chấm công."
+"Nếu nguồn được đặt thành Lịch, số giờ làm việc sẽ được tính từ lịch của nhân "
+"viên và thời gian ngày nghỉ (nếu kế hoạch dựa trên thời gian làm việc). Nếu "
+"không, số giờ làm việc sẽ dựa trên dữ liệu Chấm công."
 
 #. module: hr_holidays_attendance
 #: model:ir.actions.act_window,name:hr_holidays_attendance.hr_leave_allocation_overtime_action
@@ -134,8 +134,8 @@ msgstr "Yêu cầu phân bổ mới"
 #. module: hr_holidays_attendance
 #: model:ir.model.fields,help:hr_holidays_attendance.field_hr_leave_type__overtime_deductible
 msgid ""
-"Once a time off of this type is approved, extra hours in attendances will be"
-" deducted."
+"Once a time off of this type is approved, extra hours in attendances will be "
+"deducted."
 msgstr ""
 "Khi nghỉ của loại này được duyệt, giờ làm thêm trong điểm danh sẽ được trừ "
 "đi."
