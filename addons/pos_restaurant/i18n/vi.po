@@ -1,23 +1,23 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pos_restaurant
-# 
+#
 # Translators:
 # Wil Odoo, 2025
 # Thi Huong Nguyen, 2025
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 13:39+0000\n"
+"POT-Creation-Date: 2025-12-29 18:36+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
 "Last-Translator: Thi Huong Nguyen, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: pos_restaurant
@@ -64,17 +64,19 @@ msgstr "<strong>POS:</strong>"
 #. module: pos_restaurant
 #: model_terms:ir.actions.act_window,help:pos_restaurant.action_restaurant_floor_form
 msgid ""
-"A restaurant floor represents the place where customers are served, this is where you can\n"
+"A restaurant floor represents the place where customers are served, this is "
+"where you can\n"
 "                define and position the tables."
 msgstr ""
-"Một tầng nhà hàng đại diện cho một nơi mà khách hàng được phục vụ. Đây là nơi mà bạn xác\n"
+"Một tầng nhà hàng đại diện cho một nơi mà khách hàng được phục vụ. Đây là "
+"nơi mà bạn xác\n"
 "                định và định vị các bàn."
 
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_floor__active
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_table__active
 msgid "Active"
-msgstr "Có hiệu lực"
+msgstr "Đang hoạt động"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -97,7 +99,7 @@ msgstr "Thêm một tầng mới để bắt đầu."
 #. module: pos_restaurant
 #: model_terms:ir.actions.act_window,help:pos_restaurant.action_restaurant_floor_form
 msgid "Add a new restaurant floor"
-msgstr "Thêm một sản/lầu nhà hàng"
+msgstr "Thêm tầng nhà hàng mới "
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -128,8 +130,8 @@ msgid ""
 "Adjust the amount authorized by payment terminals to add a tip after the "
 "customers left or at the end of the day."
 msgstr ""
-"Điều chỉnh số tiền được thiết bị đầu cuối thanh toán cho phép để thêm tiền "
-"tip sau khi khách hàng đã rời đi hoặc vào cuối ngày."
+"Điều chỉnh số tiền được thiết bị thanh toán cho phép để thêm tiền tip sau "
+"khi khách hàng đã rời đi hoặc vào cuối ngày. "
 
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
@@ -142,7 +144,7 @@ msgstr ""
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
 msgid "Allow Bill Splitting"
-msgstr "Cho phép Tách Hóa đơn"
+msgstr "Cho phép tách hóa đơn "
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_pos_config__takeaway
@@ -153,12 +155,12 @@ msgstr "Cho phép tạo đơn hàng cho khách hàng mua mang đi."
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
 msgid "Allow to print receipt before payment"
-msgstr "Cho phép in hóa đơn trước khi thanh toán"
+msgstr "Cho phép in biên lai trước khi thanh toán"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_pos_config__iface_printbill
 msgid "Allows to print the Bill before payment."
-msgstr "Cho phép in Hoá đơn trước khi thanh toán"
+msgstr "Cho phép in hoá đơn trước khi thanh toán"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_pos_config__takeaway_fp_id
@@ -329,7 +331,7 @@ msgstr "Màu sắc"
 #. module: pos_restaurant
 #: model:ir.model,name:pos_restaurant.model_res_config_settings
 msgid "Config Settings"
-msgstr "Thiết lập cấu hình"
+msgstr "Cài đặt cấu hình"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -351,13 +353,13 @@ msgstr "Nước ép nam việt quất, nước cốt chanh, rượu vodka và Co
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_floor__create_uid
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_table__create_uid
 msgid "Created by"
-msgstr "Tạo bởi"
+msgstr "Được tạo bởi"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_floor__create_date
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_table__create_date
 msgid "Created on"
-msgstr "Tạo vào"
+msgstr "Được tạo vào"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -374,7 +376,7 @@ msgstr "Lỗi xoá"
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
 msgid "Design floors and assign orders to tables"
-msgstr "Thiết kế tầng và giao đơn hàng cho từng bàn"
+msgstr "Thiết kế tầng và gán đơn hàng cho từng bàn"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -396,7 +398,7 @@ msgstr "Đồ uống"
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
 msgid "Early Receipt Printing"
-msgstr "In Hóa đơn Sớm"
+msgstr "In biên lai sớm"
 
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.res_config_settings_view_form
@@ -419,7 +421,7 @@ msgstr "Chỉnh sửa sơ đồ"
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_pos_config__iface_splitbill
 msgid "Enables Bill Splitting in the Point of Sale."
-msgstr "Kích hoạt tính năng Tách hoá đơn ở Điểm bán lẻ"
+msgstr "Kích hoạt tính năng Tách hoá đơn ở POS"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -530,7 +532,7 @@ msgstr "Sơ đồ tầng & bàn"
 #. module: pos_restaurant
 #: model:pos.category,name:pos_restaurant.food
 msgid "Food"
-msgstr "Món ăn"
+msgstr "Thực phẩm"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -596,11 +598,9 @@ msgstr "Trà đá"
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__active
 msgid ""
-"If false, the table is deactivated and will not be available in the point of"
-" sale"
-msgstr ""
-"Nếu sai, bàn sẽ bị hủy kích hoạt và sẽ không còn hiển thị trong điểm bán "
-"hàng"
+"If false, the table is deactivated and will not be available in the point of "
+"sale"
+msgstr "Nếu sai, bàn sẽ bị hủy kích hoạt và sẽ không khả dụng trong POS"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -857,17 +857,17 @@ msgstr "Kế hoạch"
 #. module: pos_restaurant
 #: model:ir.model,name:pos_restaurant.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr "Cấu hình Điểm bán lẻ"
+msgstr "Cấu hình POS"
 
 #. module: pos_restaurant
 #: model:ir.model,name:pos_restaurant.model_pos_order
 msgid "Point of Sale Orders"
-msgstr "Đơn hàng PoS"
+msgstr "Đơn hàng POS"
 
 #. module: pos_restaurant
 #: model:ir.model,name:pos_restaurant.model_pos_payment
 msgid "Point of Sale Payments"
-msgstr "Thanh toán điểm bán lẻ"
+msgstr "Thanh toán POS"
 
 #. module: pos_restaurant
 #: model:ir.model,name:pos_restaurant.model_pos_session
@@ -882,17 +882,17 @@ msgstr "POS"
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_res_config_settings__pos_iface_printbill
 msgid "Pos Iface Printbill"
-msgstr "Hóa đơn in Pos Iface"
+msgstr "Pos Iface In hoá đơn"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_res_config_settings__pos_iface_splitbill
 msgid "Pos Iface Splitbill"
-msgstr "Giao diện Pos Tách bill"
+msgstr "Pos Iface Tách hoá đơn"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_res_config_settings__pos_set_tip_after_payment
 msgid "Pos Set Tip After Payment"
-msgstr "Pos Thiết lập Tip Sau khi Thanh toán"
+msgstr "POS Đặt tiền tip sau thanh toán"
 
 #. module: pos_restaurant
 #: model:product.attribute.value,name:pos_restaurant.product_attribute_value_potato_thyme
@@ -938,7 +938,7 @@ msgstr "Không thể hoàn tác việc xóa bàn"
 #. odoo-javascript
 #: code:addons/pos_restaurant/static/src/app/floor_screen/floor_screen.xml:0
 msgid "Rename"
-msgstr "Đặt lại tên"
+msgstr "Đổi tên"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1041,7 +1041,7 @@ msgstr "Trình tự"
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_pos_config__set_tip_after_payment
 msgid "Set Tip After Payment"
-msgstr "Định tiền tip sau thanh toán"
+msgstr "Đặt tiền tip sau thanh toán"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1113,7 +1113,7 @@ msgstr "Hình vuông"
 #. odoo-javascript
 #: code:addons/pos_restaurant/static/src/app/tip_receipt/tip_receipt.xml:0
 msgid "Subtotal"
-msgstr "Tổng phụ"
+msgstr "Thành tiền"
 
 #. module: pos_restaurant
 #: model:product.attribute.value,name:pos_restaurant.product_attribute_sweet_potato
@@ -1220,7 +1220,7 @@ msgstr "Số lượng khách hàng được phục vụ bởi đơn hàng này."
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_floor__background_color
 msgid "The background color of the floor in a html-compatible format"
-msgstr "Màu nền của sàn ở định dạng tương thích với html"
+msgstr "Màu nền của tầng ở định dạng tương thích với html"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__seats
@@ -1250,9 +1250,9 @@ msgstr "Bàn phục vụ đơn hàng này"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__color
-msgid ""
-"The table's color, expressed as a valid 'background' CSS property value"
-msgstr "Màu bàn, được thể hiện bằng giá trị thuộc tính 'background' của CSS"
+msgid "The table's color, expressed as a valid 'background' CSS property value"
+msgstr ""
+"Màu của bàn, được thể hiện dưới dạng giá trị thuộc tính CSS 'nền' hợp lệ"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__height
@@ -1262,11 +1262,11 @@ msgstr "Chiều cao bàn tính bằng pixel"
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__position_h
 msgid ""
-"The table's horizontal position from the left side to the table's center, in"
-" pixels"
+"The table's horizontal position from the left side to the table's center, in "
+"pixels"
 msgstr ""
-"Vị trí của bàn theo phương ngang từ phía bên trái đến tâm của bàn, tính bằng"
-" pixel"
+"Vị trí của bàn theo phương ngang từ phía bên trái đến tâm của bàn, tính bằng "
+"pixel"
 
 #. module: pos_restaurant
 #: model:ir.model.fields,help:pos_restaurant.field_restaurant_table__position_v
@@ -1285,8 +1285,8 @@ msgstr "Chiều rộng của bàn tính bằng pixel"
 #: model:ir.model.fields,help:pos_restaurant.field_pos_config__takeaway_fp_id
 #: model:ir.model.fields,help:pos_restaurant.field_res_config_settings__pos_takeaway_fp_id
 msgid ""
-"This is useful for restaurants with onsite and take-away services that imply"
-" specific tax rates."
+"This is useful for restaurants with onsite and take-away services that imply "
+"specific tax rates."
 msgstr ""
 "Đây là tính năng hữu ích cho nhà hàng cung cấp dịch vụ tại chỗ và bán mang "
 "về có áp dụng mức thuế cụ thể. "
@@ -1298,14 +1298,14 @@ msgid ""
 "This order is not yet synced to server. Make sure it is synced then try "
 "again."
 msgstr ""
-"Đơn hàng này chưa được đồng bộ với máy chủ. Bảo đảm đơn đã được đồng bộ và "
-"thử lại."
+"Đơn hàng này chưa được đồng bộ với máy chủ. Hãy đảm bảo đơn đã được đồng bộ "
+"và thử lại. "
 
 #. module: pos_restaurant
 #. odoo-javascript
 #: code:addons/pos_restaurant/static/src/overrides/components/ticket_screen/ticket_screen.xml:0
 msgid "Tip"
-msgstr "Hướng dẫn"
+msgstr "Tiền tip"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1317,7 +1317,7 @@ msgstr "Số tiền tip"
 #. odoo-javascript
 #: code:addons/pos_restaurant/static/src/app/tip_receipt/tip_receipt.xml:0
 msgid "Tip:"
-msgstr "Tiền tip: "
+msgstr "Tip:"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1328,7 +1328,8 @@ msgstr "Tip"
 #. module: pos_restaurant
 #: model:product.template,description_sale:pos_restaurant.pos_food_margherita_product_template
 msgid "Tomato sauce, Agerola mozzarella \"fior di latte\", fresh basil"
-msgstr "Sốt cà chua, phô mai Agerola mozzarella \"fior di latte\", húng quế tươi"
+msgstr ""
+"Sốt cà chua, phô mai Agerola mozzarella \"fior di latte\", húng quế tươi"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1352,7 +1353,7 @@ msgstr "Định dạng tập tin không được hỗ trợ"
 #. odoo-javascript
 #: code:addons/pos_restaurant/static/src/app/tip_screen/tip_screen.js:0
 msgid "Unsynced order"
-msgstr "Đơn hàng chưa đồng bộ"
+msgstr "Đơn hàng chưa được đồng bộ"
 
 #. module: pos_restaurant
 #. odoo-javascript
@@ -1363,7 +1364,7 @@ msgstr "Tên đăng nhập"
 #. module: pos_restaurant
 #: model:ir.model.fields,field_description:pos_restaurant.field_restaurant_table__position_v
 msgid "Vertical Position"
-msgstr "Ví trị theo phương dọc"
+msgstr "Ví trí theo phương dọc"
 
 #. module: pos_restaurant
 #: model:product.template,description_sale:pos_restaurant.product_moscow_mule_product_template
@@ -1373,7 +1374,7 @@ msgstr "Vodka 42 Below, chanh, đường, bia gừng"
 #. module: pos_restaurant
 #: model:product.template,name:pos_restaurant.water_product_template
 msgid "Water"
-msgstr "Nước trắng"
+msgstr "Nước "
 
 #. module: pos_restaurant
 #: model:product.template,name:pos_restaurant.product_whiskey_sour_product_template
@@ -1433,8 +1434,8 @@ msgid ""
 "You cannot remove a floor that is used in a PoS session, close the "
 "session(s) first: \n"
 msgstr ""
-"Bạn không thể gỡ một sàn mà đang được sử dụng bởi một phiên POS. Hãy đóng "
-"phiên trước:"
+"Bạn không thể xóa tầng đang được sử dụng trong một phiên PoS, hãy đóng (các) "
+"phiên trước:\n"
 
 #. module: pos_restaurant
 #. odoo-python
@@ -1443,8 +1444,8 @@ msgid ""
 "You cannot remove a table that is used in a PoS session, close the "
 "session(s) first."
 msgstr ""
-"Bạn không thể xóa một bàn đang được sử dụng trong một phiên PoS, đóng (các) "
-"phiên trước."
+"Bạn không thể xóa bàn đang được sử dụng trong một phiên PoS, hãy đóng (các) "
+"phiên trước. "
 
 #. module: pos_restaurant
 #. odoo-javascript

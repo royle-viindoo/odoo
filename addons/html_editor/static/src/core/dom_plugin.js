@@ -29,6 +29,7 @@ import {
     listElementSelector,
     paragraphRelatedElementsSelector,
     isEditorTab,
+    isPhrasingContent,
 } from "../utils/dom_info";
 import {
     childNodes,
@@ -181,12 +182,19 @@ export class DomPlugin extends Plugin {
             !this.isEditionBoundary(selection.anchorNode);
 
         // Empty block must contain a br element to allow cursor placement.
+        const firstLeafNode = firstLeaf(container);
         if (
-            container.lastElementChild &&
-            isBlock(container.lastElementChild) &&
-            !container.lastElementChild.hasChildNodes()
+            isBlock(firstLeafNode) &&
+            !(closestElement(firstLeafNode, "[contenteditable]")?.contentEditable === "false")
         ) {
-            fillEmpty(container.lastElementChild);
+            fillEmpty(firstLeafNode);
+        }
+        const lastLeafNode = lastLeaf(container);
+        if (
+            isBlock(lastLeafNode) &&
+            !(closestElement(lastLeafNode, "[contenteditable]")?.contentEditable === "false")
+        ) {
+            fillEmpty(lastLeafNode);
         }
 
         // In case the html inserted is all contained in a single root <p> or <li>
@@ -572,6 +580,7 @@ export class DomPlugin extends Plugin {
         for (const block of deepestTargetedBlocks) {
             if (
                 isParagraphRelatedElement(block) ||
+                isPhrasingContent(block) ||
                 block.nodeName === "PRE" || // TODO remove: PRE should be a paragraphRelatedElement
                 isListItemElement(block)
             ) {

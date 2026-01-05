@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 13:41+0000\n"
-"PO-Revision-Date: 2025-09-11 17:20+0000\n"
+"POT-Creation-Date: 2025-12-29 18:38+0000\n"
+"PO-Revision-Date: 2025-10-28 19:44+0000\n"
 "Last-Translator: Oakarmin Iron <oakarminiron@gmail.com>\n"
 "Language-Team: Burmese <https://translate.odoo.com/projects/odoo-18/"
 "website_sale_collect/my/>\n"
@@ -22,8 +22,8 @@ msgstr ""
 #. module: website_sale_collect
 #: model_terms:payment.provider,pending_msg:website_sale_collect.payment_provider_on_site
 msgid ""
-"<i>Your order has been confirmed.</i><br>Please come to the store to pay for"
-" your products."
+"<i>Your order has been confirmed.</i><br>Please come to the store to pay for "
+"your products."
 msgstr ""
 
 #. module: website_sale_collect
@@ -36,7 +36,7 @@ msgstr ""
 #: code:addons/website_sale_collect/static/src/js/click_and_collect_availability/click_and_collect_availability.xml:0
 #: code:addons/website_sale_collect/static/src/js/location_selector/location/location.xml:0
 msgid "Available"
-msgstr ""
+msgstr "ရနိုင်သည်"
 
 #. module: website_sale_collect
 #. odoo-javascript
@@ -63,7 +63,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/website_sale_collect/models/res_config_settings.py:0
 msgid "Delivery Methods"
-msgstr ""
+msgstr "ပစ္စည်းပို့ရမည့် နည်းလမ်းများ"
 
 #. module: website_sale_collect
 #: model:ir.model.fields,field_description:website_sale_collect.field_website__in_store_dm_id
@@ -92,7 +92,7 @@ msgstr ""
 #. module: website_sale_collect
 #: model:ir.model.fields,field_description:website_sale_collect.field_stock_warehouse__opening_hours
 msgid "Opening Hours"
-msgstr ""
+msgstr "ဖွင့်ချိန် နာရီများ"
 
 #. module: website_sale_collect
 #. odoo-javascript
@@ -119,7 +119,7 @@ msgstr "ပေးချေမှူ ဝန်ဆောင်သူ"
 #. module: website_sale_collect
 #: model:ir.model,name:website_sale_collect.model_payment_transaction
 msgid "Payment Transaction"
-msgstr ""
+msgstr "ပေးချေမှူ မှတ်တမ်း"
 
 #. module: website_sale_collect
 #. odoo-javascript
@@ -144,7 +144,7 @@ msgstr "ပစ္စည်း"
 #. module: website_sale_collect
 #: model:ir.model.fields,field_description:website_sale_collect.field_delivery_carrier__delivery_type
 msgid "Provider"
-msgstr ""
+msgstr "ထောက်ပံ့သူ"
 
 #. module: website_sale_collect
 #: model_terms:ir.ui.view,arch_db:website_sale_collect.unavailable_products_warning
@@ -211,8 +211,7 @@ msgstr "ဝဘ်ဆိုဒ်"
 #. odoo-python
 #: code:addons/website_sale_collect/controllers/payment.py:0
 msgid ""
-"You can only pay on site when selecting the pick up in store delivery "
-"method."
+"You can only pay on site when selecting the pick up in store delivery method."
 msgstr ""
 
 #. module: website_sale_collect

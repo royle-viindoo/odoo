@@ -1,10 +1,12 @@
 from collections import defaultdict
+from datetime import date
 
 import markupsafe
 
 from odoo import Command, models, fields, api, _
 from odoo.exceptions import UserError
 from odoo.tools import frozendict, SQL
+from odoo.tools.misc import clean_context
 
 
 class AccountPaymentRegister(models.TransientModel):
@@ -126,6 +128,7 @@ class AccountPaymentRegister(models.TransientModel):
         "SEPA Credit Transfer: Pay in the SEPA zone by submitting a SEPA Credit Transfer file to your bank. Module account_sepa is necessary.\n"
         "SEPA Direct Debit: Get paid in the SEPA zone thanks to a mandate your partner will have granted to you. Module account_sepa is necessary.\n")
     available_payment_method_line_ids = fields.Many2many('account.payment.method.line', compute='_compute_payment_method_line_fields')
+    payment_method_code = fields.Char(related='payment_method_line_id.code')
 
     # == Payment difference fields ==
     payment_difference = fields.Monetary(
@@ -393,7 +396,7 @@ class AccountPaymentRegister(models.TransientModel):
 
             wizard.batches = batch_vals
 
-    @api.depends('payment_method_line_id', 'line_ids', 'group_payment')
+    @api.depends('payment_method_line_id', 'line_ids', 'group_payment', 'partner_bank_id')
     def _compute_trust_values(self):
         for wizard in self:
             total_payment_count = 0
@@ -405,7 +408,8 @@ class AccountPaymentRegister(models.TransientModel):
             for batch in wizard.batches:
                 payment_count = 1 if wizard.group_payment else len(batch['lines'])
                 total_payment_count += payment_count
-                batch_account = wizard._get_batch_account(batch)
+                # Use the currently selected partner_bank_id if in edit mode, otherwise use batch account
+                batch_account = wizard.partner_bank_id or wizard._get_batch_account(batch)
                 if wizard.require_partner_bank_account:
                     if not batch_account:
                         missing_account_partners += batch['lines'].partner_id
@@ -577,7 +581,7 @@ class AccountPaymentRegister(models.TransientModel):
     def _compute_actionable_errors(self):
         for wizard in self:
             actionable_errors = {}
-            if unpaid_matched_payments := wizard.line_ids.move_id.matched_payment_ids.filtered(lambda p: p.state == 'in_process'):
+            if unpaid_matched_payments := wizard.line_ids.move_id.reconciled_payment_ids.filtered(lambda p: p.state == 'in_process'):
                 actionable_errors['unpaid_matched_payments'] = {
                     'message': self.env._("There are payments in progress. Make sure you don't pay twice."),
                     'action_text': self.env._("Check them"),
@@ -629,7 +633,7 @@ class AccountPaymentRegister(models.TransientModel):
         all_lines = self.env['account.move.line']
         for batch_result in batch_results:
             all_lines |= batch_result['lines']
-        all_lines = all_lines.sorted(key=lambda line: (line.move_id, line.date_maturity))
+        all_lines = all_lines.sorted(key=lambda line: (line.move_id, line.date_maturity or date.max))
         for move, lines in all_lines.grouped('move_id').items():
             installments = lines._get_installments_data(payment_currency=self.currency_id, payment_date=self.payment_date, next_payment_date=next_payment_date)
             last_installment_mode = False
@@ -1271,7 +1275,9 @@ class AccountPaymentRegister(models.TransientModel):
 
         wizard = self.sudo() if from_sibling_companies else self
 
-        payments = wizard._init_payments(to_process, edit_mode=edit_mode)
+        # Prevent default_ context keys to interfere with account.payment context (eg: ``default_partner_bank_id``
+        # transfered from ``account.payment.register`` wizard to ``account.payment`` creation.
+        payments = wizard.with_context(clean_context(self.env.context))._init_payments(to_process, edit_mode=edit_mode)
         wizard._post_payments(to_process, edit_mode=edit_mode)
         wizard._reconcile_payments(to_process, edit_mode=edit_mode)
         return payments.sudo(flag=False)

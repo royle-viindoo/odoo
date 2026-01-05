@@ -342,8 +342,9 @@ class AccountChartTemplate(models.AbstractModel):
             for xmlid, values in records.items():
                 if model_name == 'account.fiscal.position':
                     # if xmlid is not in xmlid2fiscal_position and we do not force create so we will skip_update for that record
-                    if xmlid not in xmlid2fiscal_position and not force_create:
-                        skip_update.add((model_name, xmlid))
+                    if xmlid not in xmlid2fiscal_position:
+                        if not force_create:
+                            skip_update.add((model_name, xmlid))
                         continue
                     # Only add accounts and taxes mappings containing new records
                     for model in ['account', 'tax']:
@@ -1430,10 +1431,11 @@ class AccountChartTemplate(models.AbstractModel):
         translation_importer = TranslationImporter(self.env.cr, verbose=False)
 
         # Gather translations for records that are created from the chart_template data
-        for chart_template, chart_companies in groupby(companies, lambda c: c.chart_template):
+        for company in companies:
             chart_template_data = template_data or self.env['account.chart.template'] \
                 .with_context(ignore_missing_tags=True) \
-                ._get_chart_template_data(chart_template)
+                .with_company(company) \
+                ._get_chart_template_data(company.chart_template)
             chart_template_data.pop('template_data', None)
             for mname, data in chart_template_data.items():
                 for _xml_id, record in data.items():
@@ -1445,9 +1447,8 @@ class AccountChartTemplate(models.AbstractModel):
                                 continue
                             field_translation = self._get_field_translation(record, fname, lang)
                             if field_translation:
-                                for company in chart_companies:
-                                    xml_id = _xml_id if '.' in _xml_id else f"account.{company.id}_{_xml_id}"
-                                    translation_importer.model_translations[mname][fname][xml_id][lang] = field_translation
+                                xml_id = _xml_id if '.' in _xml_id else f"account.{company.id}_{_xml_id}"
+                                translation_importer.model_translations[mname][fname][xml_id][lang] = field_translation
 
         # Gather translations for the TEMPLATE_MODELS records that are not created from the chart_template data
         translation_langs = [lang for lang in langs if lang != 'en_US']  # there are no code translations for 'en_US' (original language)

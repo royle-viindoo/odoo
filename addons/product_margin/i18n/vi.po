@@ -1,38 +1,38 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* product_margin
-# 
+#
 # Translators:
 # Wil Odoo, 2024
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-26 21:55+0000\n"
+"POT-Creation-Date: 2025-12-29 18:37+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
 "Last-Translator: Wil Odoo, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__purchase_num_invoiced
 msgid "# Invoiced in Purchase"
-msgstr "SL đã xuất hoá đơn mua"
+msgstr "# Đã lập hoá đơn trong mua hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__sale_num_invoiced
 msgid "# Invoiced in Sale"
-msgstr "SL đã xuất hoá đơn bán"
+msgstr "# Đã lập hoá đơn trong bán hàng"
 
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_tree
 msgid "# Purchased"
-msgstr "SL đơn mua"
+msgstr "# Đã mua"
 
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_form
@@ -42,12 +42,12 @@ msgstr "Tiêu chí phân tích"
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__sale_avg_price
 msgid "Avg. Price in Customer Invoices."
-msgstr "Giá trung bình trên hoá đơn khách hàng"
+msgstr "Giá trung bình trên hóa đơn bán hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__purchase_avg_price
 msgid "Avg. Price in Vendor Bills"
-msgstr "Giá trung bình trên hoá đơn nhà cung cấp"
+msgstr "Giá trung bình trên hoá đơn mua hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__purchase_avg_price
@@ -72,17 +72,17 @@ msgstr "Hủy"
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_form
 msgid "Catalog Price"
-msgstr "Giá nhóm"
+msgstr "Giá danh mục"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__create_uid
 msgid "Created by"
-msgstr "Tạo bởi"
+msgstr "Được tạo bởi"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__create_date
 msgid "Created on"
-msgstr "Tạo vào"
+msgstr "Được tạo vào"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__display_name
@@ -93,37 +93,37 @@ msgstr "Tên hiển thị"
 #: model:ir.model.fields.selection,name:product_margin.selection__product_margin__invoice_state__draft_open_paid
 #: model:ir.model.fields.selection,name:product_margin.selection__product_product__invoice_state__draft_open_paid
 msgid "Draft, Open and Paid"
-msgstr "Dự thảo, mở và đã thanh toán"
+msgstr "Nháp, mở và đã thanh toán"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__expected_margin
 msgid "Expected Margin"
-msgstr "Biên lợi nhuận mong đợi"
+msgstr "Biên lợi nhuận dự kiến"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__expected_margin_rate
 msgid "Expected Margin (%)"
-msgstr "Biên lợi nhuận mong đợi (%)"
+msgstr "Biên lợi nhuận dự kiến (%)"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__sale_expected
 msgid "Expected Sale"
-msgstr "Doanh số bán dự kiến"
+msgstr "Bán hàng dự kiến"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__expected_margin
 msgid "Expected Sale - Normal Cost"
-msgstr "Doanh số bán dự kiến - Chi phí thông thường"
+msgstr "Bán hàng dự kiến - Chi phí thông thường"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__sales_gap
 msgid "Expected Sale - Turn Over"
-msgstr "Doanh số bán dự kiến - doanh thu"
+msgstr "Bán hàng dự kiến - Doanh số"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__expected_margin_rate
 msgid "Expected margin * 100 / Expected Sale"
-msgstr "Biên độ dự kiến * 100 / doanh số bán dự kiến"
+msgstr "Biên lợi nhuận dự kiến * 100/Bán hàng dự kiến"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__from_date
@@ -133,7 +133,7 @@ msgstr "Từ"
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.product_margin_form_view
 msgid "General Information"
-msgstr "Thông tin chung"
+msgstr "Thông tin Tổng quan"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__id
@@ -144,7 +144,7 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__invoice_state
 #: model:ir.model.fields,field_description:product_margin.field_product_product__invoice_state
 msgid "Invoice State"
-msgstr "Trạng thái hoá đơn"
+msgstr "Trạng thái hóa đơn"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__write_uid
@@ -159,12 +159,12 @@ msgstr "Cập nhật lần cuối vào"
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__date_from
 msgid "Margin Date From"
-msgstr "Tính biên lợi nhuận từ"
+msgstr "Ngày tính biên lợi nhuận từ"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__date_to
 msgid "Margin Date To"
-msgstr "Tính biên lợi nhuận đến"
+msgstr "Ngày tính biên lợi nhuận đến"
 
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_form
@@ -179,7 +179,7 @@ msgstr "Chi phí thông thường"
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__purchase_gap
 msgid "Normal Cost - Total Cost"
-msgstr "Chi phí thông thường - tổng chi phí"
+msgstr "Chi phí thông thường - Tổng chi phí"
 
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.product_margin_form_view
@@ -243,7 +243,7 @@ msgstr "Bán hàng"
 #: model:ir.model.fields,field_description:product_margin.field_product_product__sales_gap
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_tree
 msgid "Sales Gap"
-msgstr "Phân tích bán"
+msgstr "Chênh lệch bán hàng"
 
 #. module: product_margin
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_form
@@ -253,35 +253,35 @@ msgstr "Giá tiêu chuẩn"
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__normal_cost
 msgid "Sum of Multiplication of Cost price and quantity of Vendor Bills"
-msgstr "Tổng số nhân giá chi phí và số lượng của nhà cung cấp hoá đơn"
+msgstr "Tổng của bội số giữa giá vốn và số lượng trên hóa đơn mua hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__turnover
 msgid ""
 "Sum of Multiplication of Invoice price and quantity of Customer Invoices"
-msgstr "Tổng số nhân của giá hoá đơn và số lượng hoá đơn khách hàng"
+msgstr "Tổng của bội số giữa giá hoá đơn và số lượng trên hóa đơn bán hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__total_cost
 msgid "Sum of Multiplication of Invoice price and quantity of Vendor Bills "
-msgstr "Tổng số nhân của giá hoá đơn và số lượng hoá đơn của nhà cung cấp"
+msgstr "Tổng của bội số giữa giá hoá đơn và số lượng trên hóa đơn mua hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__sale_expected
 msgid ""
-"Sum of Multiplication of Sale Catalog price and quantity of Customer "
-"Invoices"
-msgstr "Tổng của tích giá catalô và số lượng trong hoá đơn khách hàng"
+"Sum of Multiplication of Sale Catalog price and quantity of Customer Invoices"
+msgstr ""
+"Tổng của bội số giữa giá danh mục bán hàng và số lượng trên hóa đơn bán hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__sale_num_invoiced
 msgid "Sum of Quantity in Customer Invoices"
-msgstr "Tổng số lượng trong hoá đơn khách hàng"
+msgstr "Tổng số lượng trên hóa đơn bán hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__purchase_num_invoiced
 msgid "Sum of Quantity in Vendor Bills"
-msgstr "Tổng số lượng trên hóa đơn mua hàng"
+msgstr "Tổng số lượng trên hoá đơn mua hàng"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_margin__to_date
@@ -308,15 +308,15 @@ msgstr "Tổng tỷ lệ biên lợi nhuận(%)"
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__total_margin_rate
 msgid "Total margin * 100 / Turnover"
-msgstr "Tổng biên lợi nhuận * 100 / doanh thu"
+msgstr "Tổng biên lợi nhuận * 100/Doanh số"
 
 #. module: product_margin
 #: model:ir.model.fields,field_description:product_margin.field_product_product__turnover
 #: model_terms:ir.ui.view,arch_db:product_margin.view_product_margin_tree
 msgid "Turnover"
-msgstr "Doanh thu"
+msgstr "Doanh số"
 
 #. module: product_margin
 #: model:ir.model.fields,help:product_margin.field_product_product__total_margin
 msgid "Turnover - Total cost"
-msgstr "Doanh thu - tổng chi phí"
+msgstr "Doanh số - Tổng chi phí"

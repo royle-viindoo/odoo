@@ -145,7 +145,9 @@ export class ProductScreen extends Component {
                     ? `/web/image?model=pos.category&field=image_128&id=${category.id}`
                     : undefined,
             isSelected: this.getAncestorsAndCurrent().includes(category),
-            isChildren: this.getChildCategories(this.pos.selectedCategory).includes(category),
+            isChildren: this.pos.selectedCategory
+                ? this.pos.selectedCategory.child_ids.includes(category)
+                : !category.parent_id,
         };
     }
 
@@ -282,6 +284,7 @@ export class ProductScreen extends Component {
     async _barcodeGS1Action(parsed_results) {
         const productBarcode = parsed_results.find((element) => element.type === "product");
         const lotBarcode = parsed_results.find((element) => element.type === "lot");
+        const qty = parsed_results.find((element) => element.type === "quantity");
         const product = await this._getProductByBarcode(productBarcode);
 
         if (!product) {
@@ -290,8 +293,21 @@ export class ProductScreen extends Component {
             );
             return;
         }
+        const vals = { product_id: product };
+        if (
+            qty &&
+            product.uom_id &&
+            qty.rule?.associated_uom_id &&
+            product.uom_id.id == qty.rule.associated_uom_id[0]
+        ) {
+            vals.qty = qty.value;
+        }
+        const packaging = this.pos.models["product.packaging"].getAllBy("barcode");
+        if (packaging[productBarcode.code]) {
+            vals.qty = (vals.qty || 1) * packaging[productBarcode.code].qty;
+        }
 
-        await this.pos.addLineToCurrentOrder({ product_id: product }, { code: lotBarcode });
+        await this.pos.addLineToCurrentOrder(vals, { code: lotBarcode });
         this.numberBuffer.reset();
     }
     displayAllControlPopup() {
@@ -351,7 +367,11 @@ export class ProductScreen extends Component {
                     productIds.add(p.id);
                 }
             }
-            return this.pos.models["product.product"].filter((p) => productIds.has(p.id));
+            return this.pos.models["product.product"].filter(
+                (p) =>
+                    productIds.has(p.id) ||
+                    this.pos.session._pos_special_display_products_ids?.includes(p.id)
+            );
         }
         return this.pos.models["product.product"].getAll();
     }

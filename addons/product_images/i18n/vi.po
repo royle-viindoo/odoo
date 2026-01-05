@@ -1,44 +1,46 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* product_images
-# 
+#
 # Translators:
 # Wil Odoo, 2024
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 08:55+0000\n"
+"POT-Creation-Date: 2025-12-29 18:37+0000\n"
 "PO-Revision-Date: 2024-09-25 09:41+0000\n"
 "Last-Translator: Wil Odoo, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: product_images
 #. odoo-python
 #: code:addons/product_images/wizard/product_fetch_image_wizard.py:0
 msgid ""
-"%(matching_images_count)s matching images have been found for "
-"%(product_count)s products."
+"%(matching_images_count)s matching images have been found for %"
+"(product_count)s products."
 msgstr ""
-"%(matching_images_count)s hình ảnh trùng lặp được tìm thấy cho "
-"%(product_count)s sản phẩm."
+"%(matching_images_count)s hình ảnh trùng khớp được tìm thấy cho %"
+"(product_count)s sản phẩm."
 
 #. module: product_images
 #: model_terms:ir.ui.view,arch_db:product_images.product_fetch_image_wizard_view_form
 msgid ""
 "<span invisible=\"nb_products_selected &lt;= 10000\">\n"
-"                            As only 10,000 products can be processed per day, the remaining will be\n"
+"                            As only 10,000 products can be processed per "
+"day, the remaining will be\n"
 "                            done tomorrow.\n"
 "                        </span>"
 msgstr ""
 "<span invisible=\"nb_products_selected &lt;= 10000\">\n"
-"                            Vì chỉ có 10.000 sản phẩm có thể được xử lý mỗi ngày, số còn lại sẽ được\n"
+"                            Vì chỉ có 10.000 sản phẩm có thể được xử lý mỗi "
+"ngày, số còn lại sẽ được\n"
 "                            hoàn thành vào ngày mai.\n"
 "                        </span>"
 
@@ -48,8 +50,7 @@ msgstr ""
 msgid ""
 "A task to process products in the background is already running. Please try "
 "againlater."
-msgstr ""
-"Một nhiệm vụ xử lý sản phẩm trong nền đang chạy. Vui lòng thử lại sau."
+msgstr "Một nhiệm vụ xử lý sản phẩm trong nền đang chạy. Vui lòng thử lại sau."
 
 #. module: product_images
 #: model_terms:ir.ui.view,arch_db:product_images.res_config_settings_view_form
@@ -64,17 +65,17 @@ msgstr "Hủy"
 #. module: product_images
 #: model:ir.model,name:product_images.model_res_config_settings
 msgid "Config Settings"
-msgstr "Thiết lập cấu hình"
+msgstr "Cài đặt cấu hình"
 
 #. module: product_images
 #: model:ir.model.fields,field_description:product_images.field_product_fetch_image_wizard__create_uid
 msgid "Created by"
-msgstr "Tạo bởi"
+msgstr "Được tạo bởi"
 
 #. module: product_images
 #: model:ir.model.fields,field_description:product_images.field_product_fetch_image_wizard__create_date
 msgid "Created on"
-msgstr "Tạo vào"
+msgstr "Được tạo vào"
 
 #. module: product_images
 #: model:ir.model.fields,field_description:product_images.field_product_fetch_image_wizard__display_name
@@ -87,7 +88,7 @@ msgid ""
 "Fetch product images from Google Images based on the product's barcode "
 "number."
 msgstr ""
-"Tìm nạp hình ảnh sản phẩm từ Google hình ảnh dựa trên số mã vạch của sản "
+"Tìm nạp hình ảnh sản phẩm từ Google Hình ảnh dựa trên số mã vạch của sản "
 "phẩm."
 
 #. module: product_images
@@ -99,7 +100,7 @@ msgstr "Lấy hình ảnh"
 #: model:ir.actions.act_window,name:product_images.product_product_action_get_pic_with_barcode
 #: model:ir.actions.act_window,name:product_images.product_template_action_get_pic_with_barcode
 msgid "Get Pictures from Google Images"
-msgstr "Lấy hình ảnh từ Google hình ảnh"
+msgstr "Lấy hình ảnh từ Google Hình ảnh"
 
 #. module: product_images
 #: model:ir.model.fields,field_description:product_images.field_res_config_settings__google_custom_search_key
@@ -147,13 +148,14 @@ msgid ""
 "Please note that some images might not be royalty-free. You should not\n"
 "                        publish these on your website."
 msgstr ""
-"Xin lưu ý rằng một số hình ảnh có thể không được miễn phí bản quyền. Bạn không nên\n"
+"Xin lưu ý rằng một số hình ảnh có thể không được miễn phí bản quyền. Bạn "
+"không nên\n"
 "                        đăng những hình ảnh đó lên trang web."
 
 #. module: product_images
 #: model:ir.actions.server,name:product_images.ir_cron_fetch_image_ir_actions_server
 msgid "Product Images: Get product images from Google"
-msgstr "Hình ảnh sản phẩm: lấy hình ảnh sản phẩm từ Google"
+msgstr "Hình ảnh sản phẩm: Lấy hình ảnh sản phẩm từ Google"
 
 #. module: product_images
 #: model:ir.model,name:product_images.model_product_product
@@ -177,8 +179,7 @@ msgstr "Sản phẩm cần xử lý"
 msgid ""
 "Products are processed in the background. Images will be updated "
 "progressively."
-msgstr ""
-"Sản phẩm đang được xử lý trong nền. Hình ảnh sẽ được cập nhật dần dần."
+msgstr "Sản phẩm đang được xử lý trong nền. Hình ảnh sẽ được cập nhật dần dần."
 
 #. module: product_images
 #: model_terms:ir.ui.view,arch_db:product_images.res_config_settings_view_form
@@ -207,7 +208,7 @@ msgstr ""
 #. module: product_images
 #: model:ir.model.fields,field_description:product_images.field_res_config_settings__google_pse_id
 msgid "The identifier of the Google Programmable Search Engine"
-msgstr "Mã định danh của công cụ tìm kiếm có thể lập trình của Google"
+msgstr "Mã định danh của Công cụ tìm kiếm có thể lập trình của Google"
 
 #. module: product_images
 #: model:ir.model.fields,help:product_images.field_product_fetch_image_wizard__products_to_process
@@ -226,20 +227,20 @@ msgid ""
 "been deleted. Please contact your administrator to have the action restored "
 "or to reinstall the module \"product_images\"."
 msgstr ""
-"Hành động được lên lịch \"Hình ảnh sản phẩm: Lấy hình ảnh sản phẩm từ "
-"Google\" đã bị xóa. Vui lòng liên hệ với quản trị viên để khôi phục hành "
-"động hoặc cài đặt lại phân hệ \"product_images\"."
+"Tác vụ đã lên lịch \"Hình ảnh sản phẩm: Lấy hình ảnh sản phẩm từ Google\" đã "
+"bị xóa. Vui lòng liên hệ với quản trị viên để khôi phục tác vụ hoặc cài đặt "
+"lại phân hệ \"product_images\"."
 
 #. module: product_images
 #. odoo-python
 #: code:addons/product_images/models/ir_cron_trigger.py:0
 msgid "This action is already scheduled. Please try again later."
-msgstr "Hành động này đã được lên lịch. Vui lòng thử lại sau."
+msgstr "Tác vụ này đã được lên lịch. Vui lòng thử lại sau. "
 
 #. module: product_images
 #: model:ir.model,name:product_images.model_ir_cron_trigger
 msgid "Triggered actions"
-msgstr "Hành động được kích hoạt"
+msgstr "Tác vụ được kích hoạt"
 
 #. module: product_images
 #: model:ir.model.fields,help:product_images.field_product_product__image_fetch_pending
@@ -268,11 +269,13 @@ msgstr "mà sẽ được xử lý."
 #: model_terms:ir.ui.view,arch_db:product_images.product_fetch_image_wizard_view_form
 msgid ""
 "products will not be\n"
-"                            processed because they either already have an image or their barcode\n"
+"                            processed because they either already have an "
+"image or their barcode\n"
 "                            number is not set."
 msgstr ""
 "sản phẩm sẽ không\n"
-"                            được xử lý bởi vì chúng đã có hình ảnh hoặc mã vạch của chúng\n"
+"                            được xử lý bởi vì chúng đã có hình ảnh hoặc mã "
+"vạch của chúng\n"
 "                            không được thiết lập."
 
 #. module: product_images
