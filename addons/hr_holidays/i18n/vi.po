@@ -2771,7 +2771,7 @@ msgstr "Đội của tôi"
 #. module: hr_holidays
 #: model:ir.ui.menu,name:hr_holidays.menu_hr_holidays_my_leaves
 msgid "My Time"
-msgstr "Không gian của tôi"
+msgstr "Nghỉ của tôi"
 
 #. module: hr_holidays
 #: model:ir.actions.act_window,name:hr_holidays.hr_leave_action_my
