@@ -31,8 +31,8 @@ class Job(models.Model):
         'res.partner', "Job Location", default=_default_address_id,
         domain=lambda self: self._address_id_domain(),
         help="Select the location where the applicant will work. Addresses listed here are defined on the company's contact information.")
-    application_ids = fields.One2many('hr.applicant', 'job_id', "Job Applications")
-    application_count = fields.Integer(compute='_compute_application_count', string="Application Count")
+    application_ids = fields.One2many('hr.applicant', 'job_id', "Job Applications", groups="hr_recruitment.group_hr_recruitment_interviewer")
+    application_count = fields.Integer(compute='_compute_application_count', string="Application Count", groups="hr_recruitment.group_hr_recruitment_interviewer")
     all_application_count = fields.Integer(compute='_compute_all_application_count', string="All Application Count")
     new_application_count = fields.Integer(
         compute='_compute_new_application_count', string="New Application",
