@@ -9,7 +9,7 @@ class HrApplicant(models.Model):
 
     applicant_skill_ids = fields.One2many('hr.applicant.skill', 'applicant_id', string="Skills")
     skill_ids = fields.Many2many('hr.skill', compute='_compute_skill_ids', store=True)
-    is_interviewer = fields.Boolean(compute='_compute_is_interviewer')
+    is_interviewer = fields.Boolean(compute='_compute_is_interviewer', groups='hr_recruitment.group_hr_recruitment_interviewer')
 
     @api.depends_context('uid')
     @api.depends('interviewer_ids', 'job_id.interviewer_ids')

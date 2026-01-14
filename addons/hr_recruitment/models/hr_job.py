@@ -31,17 +31,23 @@ class Job(models.Model):
         'res.partner', "Job Location", default=_default_address_id,
         domain=lambda self: self._address_id_domain(),
         help="Select the location where the applicant will work. Addresses listed here are defined on the company's contact information.")
-    application_ids = fields.One2many('hr.applicant', 'job_id', "Job Applications")
-    application_count = fields.Integer(compute='_compute_application_count', string="Application Count")
-    all_application_count = fields.Integer(compute='_compute_all_application_count', string="All Application Count")
+    application_ids = fields.One2many('hr.applicant', 'job_id', "Job Applications", groups="hr_recruitment.group_hr_recruitment_interviewer")
+    application_count = fields.Integer(compute='_compute_application_count', string="Application Count",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
+    all_application_count = fields.Integer(compute='_compute_all_application_count', string="All Application Count",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
     new_application_count = fields.Integer(
         compute='_compute_new_application_count', string="New Application",
+        groups="hr_recruitment.group_hr_recruitment_interviewer",
         help="Number of applications that are new in the flow (typically at first step of the flow)")
     old_application_count = fields.Integer(
-        compute='_compute_old_application_count', string="Old Application")
-    applicant_hired = fields.Integer(compute='_compute_applicant_hired', string="Applicants Hired")
+        compute='_compute_old_application_count', string="Old Application",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
+    applicant_hired = fields.Integer(compute='_compute_applicant_hired', string="Applicants Hired",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
     manager_id = fields.Many2one(
         'hr.employee', related='department_id.manager_id', string="Department Manager",
+        groups="hr_recruitment.group_hr_recruitment_interviewer,hr.group_hr_user",
         readonly=True, store=True)
     user_id = fields.Many2one(
         "res.users",
@@ -51,9 +57,12 @@ class Job(models.Model):
         help="The Recruiter will be the default value for all Applicants Recruiter's field in this job position. The Recruiter is automatically added to all meetings with the Applicant.",
     )
     allowed_user_ids = fields.Many2many('res.users', compute='_compute_allowed_user_ids', readonly=True)
-    document_ids = fields.One2many('ir.attachment', compute='_compute_document_ids', string="Documents", readonly=True)
-    documents_count = fields.Integer(compute='_compute_document_ids', string="Document Count")
-    alias_id = fields.Many2one(help="Email alias for this job position. New emails will automatically create new applicants for this job position.")
+    document_ids = fields.One2many('ir.attachment', compute='_compute_document_ids', string="Documents", readonly=True,
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
+    documents_count = fields.Integer(compute='_compute_document_ids', string="Document Count",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
+    alias_id = fields.Many2one(help="Email alias for this job position. New emails will automatically create new applicants for this job position.",
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
     color = fields.Integer("Color Index")
     is_favorite = fields.Boolean(compute='_compute_is_favorite', inverse='_inverse_is_favorite')
     favorite_user_ids = fields.Many2many('res.users', 'job_favorite_user_rel', 'job_id', 'user_id', default=_get_default_favorite_user_ids)
@@ -61,14 +70,17 @@ class Job(models.Model):
         "res.users",
         domain="[('id', 'in', allowed_user_ids)]",
         string="Interviewers",
+        groups="hr_recruitment.group_hr_recruitment_interviewer",
         help="The Interviewers set on the job position can see all Applicants in it. They have access to the information, the attachments, the meeting management and they can refuse him. You don't need to have Recruitment rights to be set as an interviewer.",
     )
-    extended_interviewer_ids = fields.Many2many('res.users', 'hr_job_extended_interviewer_res_users', compute='_compute_extended_interviewer_ids', store=True)
+    extended_interviewer_ids = fields.Many2many('res.users', 'hr_job_extended_interviewer_res_users', compute='_compute_extended_interviewer_ids', store=True,
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
 
-    activities_overdue = fields.Integer(compute='_compute_activities')
-    activities_today = fields.Integer(compute='_compute_activities')
+    activities_overdue = fields.Integer(compute='_compute_activities', groups="hr_recruitment.group_hr_recruitment_interviewer")
+    activities_today = fields.Integer(compute='_compute_activities', groups="hr_recruitment.group_hr_recruitment_interviewer")
 
-    applicant_properties_definition = fields.PropertiesDefinition('Applicant Properties')
+    applicant_properties_definition = fields.PropertiesDefinition('Applicant Properties',
+        groups="hr_recruitment.group_hr_recruitment_interviewer")
 
     @api.depends_context('uid')
     def _compute_activities(self):
@@ -264,12 +276,20 @@ class Job(models.Model):
                 'source_id': utm_linkedin.id,
                 'job_id': job.id,
             } for job in jobs]
-            self.env['hr.recruitment.source'].create(source_vals)
+            self.env['hr.recruitment.source'].sudo().create(source_vals)
         jobs.sudo().interviewer_ids._create_recruitment_interviewers()
         return jobs
 
     def write(self, vals):
-        old_interviewers = self.interviewer_ids
+        ## In Odoo 19, groups are assigned to hr.recruitment-related fields to allow users
+        # to read hr.job without access errors, and the interviewer_ids field is hidden.
+        # However, accessing interviewer_ids unnecessarily may still trigger read access
+        # checks and lead to AccessError.
+        # Therefore, interviewer_ids is only read when explicitly present in vals, to
+        # avoid accessing a field the user did not intend to modify.
+        old_interviewers = self.env['res.users']
+        if 'interviewer_ids' in vals:
+            old_interviewers = self.interviewer_ids
         if 'active' in vals and not vals['active']:
             self.application_ids.active = False
         res = super().write(vals)
