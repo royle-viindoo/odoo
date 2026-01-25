@@ -107,7 +107,7 @@ async function executeImport(data, shouldWait = false) {
 
 function parsePreview(opts) {
     const fakePreviewData = [
-        ["Foo", "Deco addict", "Azure Interior", "Brandon Freeman"],
+        ["Foo", "Acme Corporation", "Azure Interior", "Brandon Freeman"],
         ["Bar", "1", "1", "0"],
         ["Display name", "Azure Interior"],
     ];
@@ -334,7 +334,7 @@ QUnit.module("Base Import Tests", (hooks) => {
                     {
                         label: "Another Import Template",
                         template: secondTemplateURL,
-                    }
+                    },
                 ]);
             },
             "base_import.import/create": (route, args) => {
@@ -355,7 +355,7 @@ QUnit.module("Base Import Tests", (hooks) => {
             target.querySelectorAll(".o_nocontent_help .btn-outline-primary").length,
             2,
             "there are two import template buttons"
-        )
+        );
         assert.strictEqual(
             target.querySelectorAll(".o_nocontent_help .btn-outline-primary")[0].textContent,
             " Some Import Template"
@@ -462,13 +462,13 @@ QUnit.module("Base Import Tests", (hooks) => {
         assert.strictEqual(
             target.querySelector(".o_import_data_content tr:first-child td span:nth-child(2)")
                 .textContent,
-            "Deco addict",
+            "Acme Corporation",
             "first example is shown"
         );
         assert.strictEqual(
             target.querySelector(".o_import_data_content tr:first-child td span:nth-child(2)")
                 .dataset.tooltipInfo,
-            '{"lines":["Deco addict","Azure Interior","Brandon Freeman"]}',
+            '{"lines":["Acme Corporation","Azure Interior","Brandon Freeman"]}',
             "tooltip contains other examples"
         );
         assert.containsNone(
@@ -804,7 +804,7 @@ QUnit.module("Base Import Tests", (hooks) => {
             assert.strictEqual(
                 target.querySelector(".o_import_data_content tr:first-child td span:first-child")
                     .textContent,
-                "Foo, Deco addict, Azure Interior, Brandon Freeman",
+                "Foo, Acme Corporation, Azure Interior, Brandon Freeman",
                 "column title is shown as a list of rows elements"
             );
             assert.strictEqual(
