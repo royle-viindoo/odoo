@@ -60,7 +60,7 @@ msgstr "Ngày để cung ứng thành phần"
 #. module: mrp_subcontracting_purchase
 #: model:ir.model,name:mrp_subcontracting_purchase.model_account_move_line
 msgid "Journal Item"
-msgstr "Hạng mục bút toán"
+msgstr "Phát sinh KT"
 
 #. module: mrp_subcontracting_purchase
 #. odoo-python
