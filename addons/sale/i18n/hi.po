@@ -2,13 +2,13 @@
 # This file contains the translation of the following modules:
 # * sale
 #
-# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2025-12-31 11:43+0000\n"
+"POT-Creation-Date: 2026-01-29 18:36+0000\n"
+"PO-Revision-Date: 2026-01-24 08:10+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Hindi <https://translate.odoo.com/projects/odoo-17/sale/hi/>\n"
 "Language: hi\n"
@@ -1752,7 +1752,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Delivered"
-msgstr ""
+msgstr "डिलीवर किया गया"
 
 #. module: sale
 #. odoo-python
@@ -2531,7 +2531,7 @@ msgstr "एडिटर है"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__is_expired
 msgid "Is Expired"
-msgstr ""
+msgstr "समय सीमा खत्म हुआ"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__message_is_follower
@@ -2785,7 +2785,7 @@ msgstr "मेरी गतिविधि की डेडलाइन"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
 msgid "My Orders"
-msgstr ""
+msgstr "मेरे ऑर्डर"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_view_search_inherit_quotation
@@ -3998,7 +3998,7 @@ msgstr "सेल्स टीम"
 #: model:ir.ui.menu,name:sale.report_sales_team
 #: model:ir.ui.menu,name:sale.sales_team_config
 msgid "Sales Teams"
-msgstr ""
+msgstr "सेल्स टीम"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_partner__sale_warn
@@ -4157,7 +4157,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Send by Email"
-msgstr ""
+msgstr "ईमेल के ज़रिए भेजें"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
@@ -4711,6 +4711,14 @@ msgstr "दिए गए पैरामीटर अमान्य हैं�
 
 #. module: sale
 #. odoo-python
+#: code:addons/sale/controllers/portal.py:0
+#: code:addons/sale/wizard/payment_link_wizard.py:0
+#, python-format
+msgid "The sale order has expired."
+msgstr ""
+
+#. module: sale
+#. odoo-python
 #: code:addons/sale/wizard/sale_make_invoice_advance.py:0
 #, python-format
 msgid "The value of the down payment amount must be positive."
@@ -4813,10 +4821,10 @@ msgid ""
 "having invoiced yet. If you want to analyse your turnover, you should use "
 "the Invoice Analysis report in the Accounting application."
 msgstr ""
-"यह रिपोर्ट आपके कोटेशन और सेल्स ऑर्डर का विश्लेषण करती है. यह सेल्स रेवेन्यू की जांच करती है और उसे विक्रेता"
-", पार्टनर या प्रॉडक्ट जैसे ग्रुप में बांटती है. उन सेल्स का विश्लेषण करने के लिए इस रिपोर्ट का उपयोग करें जिनका"
-" अभी इनवॉइस नहीं बना है. टर्नओवर के विश्लेषण के लिए, अकाउंटिंग ऐप में इनवॉइस एनालिसिस रिपोर्ट का उपयोग "
-"करें।"
+"यह रिपोर्ट आपके कोटेशन और सेल्स ऑर्डर का विश्लेषण करती है. यह सेल्स रेवेन्यू की जांच करती है "
+"और उसे विक्रेता, पार्टनर या प्रॉडक्ट जैसे ग्रुप में बांटती है. उन सेल्स का विश्लेषण करने के लिए "
+"इस रिपोर्ट का उपयोग करें जिनका अभी इनवॉइस नहीं बना है. टर्नओवर के विश्लेषण के लिए, "
+"अकाउंटिंग ऐप में इनवॉइस एनालिसिस रिपोर्ट का उपयोग करें।"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_order_report_quotation_salesteam
@@ -4827,10 +4835,11 @@ msgid ""
 "invoiced yet. If you want to analyse your turnover, you should use the "
 "Invoice Analysis report in the Accounting application."
 msgstr ""
-"यह रिपोर्ट आपके क्वोटेशन का विश्लेषण करती है. विश्लेषण आपके सेल्स रेवेन्यू की जांच करता है और उसे अलग-अलग "
-"ग्रुप मापदंडों (सेल्समैन, पार्टनर, प्रॉडक्ट, वगैरह) के अनुसार छाँटता है. उन सेल्स का विश्लेषण करने के लिए "
-"इस रिपोर्ट का इस्तेमाल करें जिनका अभी इनवॉइस नहीं बना है. अगर आप अपने टर्नओवर का विश्लेषण करना चाहते हैं"
-", तो आपको अकाउंटिंग एप्लिकेशन में इनवॉइस एनालिसिस रिपोर्ट का इस्तेमाल करना चाहिए।"
+"यह रिपोर्ट आपके क्वोटेशन का विश्लेषण करती है. विश्लेषण आपके सेल्स रेवेन्यू की जांच करता है और "
+"उसे अलग-अलग ग्रुप मापदंडों (सेल्समैन, पार्टनर, प्रॉडक्ट, वगैरह) के अनुसार छाँटता है. उन सेल्स "
+"का विश्लेषण करने के लिए इस रिपोर्ट का इस्तेमाल करें जिनका अभी इनवॉइस नहीं बना है. अगर "
+"आप अपने टर्नओवर का विश्लेषण करना चाहते हैं, तो आपको अकाउंटिंग एप्लिकेशन में इनवॉइस "
+"एनालिसिस रिपोर्ट का इस्तेमाल करना चाहिए।"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_order_report_so_salesteam

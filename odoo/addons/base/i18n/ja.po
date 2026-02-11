@@ -9,13 +9,14 @@
 # Ryoko Tsuda <ryoko@quartile.co>, 2024, 2025.
 # Wil Odoo, 2025
 # Junko Augias, 2025
-# "Junko Augias (juau)" <juau@odoo.com>, 2025.
+# "Junko Augias (juau)" <juau@odoo.com>, 2025, 2026.
+# "Tiffany Chang (tic)" <tic@odoo.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-03 11:38+0000\n"
-"PO-Revision-Date: 2025-12-13 08:03+0000\n"
+"PO-Revision-Date: 2026-02-07 08:09+0000\n"
 "Last-Translator: \"Junko Augias (juau)\" <juau@odoo.com>\n"
 "Language-Team: Japanese <https://translate.odoo.com/projects/odoo-17/base/ja/"
 ">\n"
@@ -786,7 +787,7 @@ msgid ""
 msgstr ""
 "\n"
 "*タイムシートの提出と検証\n"
-"*タイムシートのグリッドビューをアクティブにする\n"
+"*タイムシートのグリッドビューを有効にする\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_helpdesk_timesheet
@@ -2148,8 +2149,8 @@ msgstr ""
 "る必要があります。一般的に、これらの識別情報のタイプは、財政運営を規制する政"
 "府当局によって定義されています。例えば、以下のようになります。\n"
 "\n"
-"* アルゼンチンの AFIP は、DNI、CUIT (法人のためのvat)、CUIL (自然人のための "
-"vat)、およびその他 80 種類の有効な識別タイプを定義しています。\n"
+"* アルゼンチンの AFIP は、DNI、CUIT (法人のためのvat)、CUIL (自然人のための v"
+"at)、およびその他 80 種類の有効な識別タイプを定義しています。\n"
 "\n"
 "各識別情報は以下の情報を保持しています。\n"
 "\n"
@@ -2159,22 +2160,22 @@ msgstr ""
 "* is_vat: このレコードを特定の国の対応するVATとして識別します\n"
 "* シーケンス: 最もよく使用される識別タイプに応じて、識別タイプを並べ替えるこ"
 "とができます。\n"
-"* 有効: 顧客の利便性を高めるために、識別情報を有効化/無効化することができま"
-"す。\n"
+"* 有効: 顧客の利便性を高めるために、識別情報を有効化/無効化することができます"
+"。\n"
 "\n"
 "このモジュールは、この要件を必要としない/サポートしない企業がある複数企業環境"
-"に対応するために、連絡先情報を管理するための汎用識別タイプと汎用規則を追加"
+"に対応するために、連絡先情報を管理するための汎用識別タイプと汎用ルールを追加"
 "し、既知のVATのみを使用する場合にユーザにとって透明性のあるものにしました。\n"
 "\n"
 "汎用識別:\n"
 "\n"
-"* VAT: 財政税識別またはVAT番号がデフォルトで選択されるため、ユーザは関連する"
-"VAT番号を追加するだけで済みます。\n"
+"* VAT: 財政税識別またはVAT番号がデフォルトで選択されるため、ユーザは関連するV"
+"AT番号を追加するだけで済みます。\n"
 "* パスポート\n"
 "* 外国人登録証(外国人の国籍証明書)\n"
 "\n"
-"新しい取引先を作成するときの規則: これらの規則を考慮して、意味のある識別タイ"
-"プのみが表示されます。\n"
+"新しい取引先を作成するときのルール: これらのルールを考慮して、意味のある識別"
+"タイプのみが表示されます。\n"
 "\n"
 "* 取引先が国の住所を設定していない場合: 汎用識別タイプと取引先の関連企業の属"
 "する国により提示された識別タイプを表示します。(取引先が特定の会社を持たない場"
@@ -2191,7 +2192,6 @@ msgstr ""
 "\n"
 "このモジュールは、複数の識別タイプを管理する可能性がある国とない国のVAT番号を"
 "検証できるように、base_vatモジュールと互換性があります。\n"
-"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_contract
@@ -2308,8 +2308,8 @@ msgid ""
 "Order (MTO) is activated on one sold product.\n"
 msgstr ""
 "\n"
-"1つの販売済みプロダクトで受注生産（MTO）がアクティブ化された場合、受注と発注"
-"書の間に関係情報を追加します。\n"
+"1つの販売済みプロダクトで受注生産（MTO）が有効化された場合、受注と発注書の間"
+"に関係情報を追加します。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_it_edi_doi
@@ -3091,9 +3091,9 @@ msgstr ""
 "\n"
 "年次報告書は、会計年度の終了後8月28日までに長官に提出する必要があります。希望"
 "する人には、より頻繁にレポートを送信できます。\n"
-"レポートでは、適切な仕訳項目を見つけるために、税タグ\"サービス\"と\"源泉徴収"
-"\"を使用しています。これらは、会計ポジションと適切なタイプのプロダクト(サービ"
-"ス)を使用して設定されます。\n"
+"レポートでは、適切な仕訳明細を見つけるために、税タグ ``サービス`` と``源泉徴"
+"収`` を使用しています。これらは、会計ポジションと適切なタイプのプロダクト(サ"
+"ービス)を使用して設定されます。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_au_hr_payroll
@@ -3883,7 +3883,7 @@ msgid ""
 "- Extended address fields.\n"
 msgstr ""
 "\n"
-"バージョン3.0の配送伝票(Complemento XML Carta de Porte)を拡張するためのブリッ"
+"バージョン3.0の納品伝票(Complemento XML Carta de Porte)を拡張するためのブリッ"
 "ジモジュール。\n"
 "- 輸出商品 (COMEX)\n"
 "- 拡張住所フィールド\n"
@@ -3898,8 +3898,8 @@ msgid ""
 "- Extended address fields.\n"
 msgstr ""
 "\n"
-"バージョン3.1の配送伝票(Complemento XML Carta de Porte)を拡張するブリッジモ"
-"ジュールです。\n"
+"バージョン3.1の納品伝票(Complemento XML Carta de Porte)を拡張するブリッジモジ"
+"ュールです。\n"
 "- 輸出品 (COMEX)\n"
 "- 拡張アドレスフィールド\n"
 
@@ -3912,7 +3912,7 @@ msgid ""
 "- extended address fields\n"
 msgstr ""
 "\n"
-"配送伝票を拡長するブリッジモジュール(Complemento XML Carta de Porte)\n"
+"納品伝票を拡長するブリッジモジュール(Complemento XML Carta de Porte)\n"
 "- 輸出商品 (COMEX)\n"
 "- 拡張住所フィールド\n"
 
@@ -5078,9 +5078,9 @@ msgstr ""
 "\n"
 "2021年7月1日以降、EU域内で10,000ユーロを超える商品を他のEU加盟国に所在する買"
 "い手に販売するEU企業は、買い手の加盟国でVATを登録・納付する必要があります。\n"
-"この新しいEU全体の閾値以下であれば、国境を越えた売上に対 するVATの国内規則を"
-"引き続き適用することができます。このEU指令の適用を簡素化するため、OSS(One "
-"Stop Shop)登録制度により、企業は独自の納税申告を行うことができます。\n"
+"この新しいEU全体の閾値以下であれば、国境を越えた売上に対 するVATの国内ルール"
+"を引き続き適用することができます。このEU指令の適用を簡素化するため、OSS"
+"(One Stop Shop)登録制度により、企業は独自の納税申告を行うことができます。\n"
 "\n"
 "このモジュールは、必要なEUの財政ポジションと税金の作成をサポートすることで、"
 "必要な税金を自動的に適用し、記録することを可能にします。\n"
@@ -5282,7 +5282,7 @@ msgstr ""
 "また、Chorus Proが自動的に\"PDF/A-3 (Factur-X)\"フォーマットを検出するには、"
 "仕訳帳の\n"
 " \"Factur-X PDF/A-3\" オプションを有効化して下さい。このオプションはFactur-X "
-"and Chorus Pro規則に対する xmlを検証し\n"
+"and Chorus Proルールに対する xmlを検証し\n"
 "エラーを表示します。\n"
 
 #. module: base
@@ -5554,7 +5554,7 @@ msgid ""
 "      payslip interface, but not in the payslip report\n"
 msgstr ""
 "\n"
-"フランスの給与規則。\n"
+"フランスの給与ルール。\n"
 "=====================\n"
 "\n"
 "    - Configuration of hr_payroll for French localization\n"
@@ -6804,12 +6804,12 @@ msgid ""
 "    - Yearly Salary by Head and Yearly Salary by Employee Report\n"
 msgstr ""
 "\n"
-"インドの給与給与規則。\n"
+"インドの給与給与ルール。\n"
 "============================\n"
 "\n"
 "\n"
 "-インドのローカリゼーションのためのhr_payrollの構成\n"
-"-インドの給与明細のすべての主要な拠出規則。 \n"
+"-インドの給与明細のすべての主要な拠出ルール。 \n"
 "*新しい給与明細レポート\n"
 "*従業員契約\n"
 "*基本/総額/正味給与の構成を許可\n"
@@ -6883,16 +6883,15 @@ msgid ""
 "having to encode complete abstracts of account.\n"
 msgstr ""
 "\n"
-"請求と支払\n"
-"==================\n"
-"Odooの特定の使いやすい請求書発行システムにより、会計士でなくても経理状況を把"
-"握することができます。 ベンダーや顧客にフォローアップする簡単な方法を提供しま"
-"す。\n"
+"支払・請求業務\n"
+"====================\n"
+"Odoo の特化された使いやすい請求システムを使えば、会計の専門知識がなくても経理"
+"を管理できます。取引先(仕入先・顧客)とのやり取りを簡単にフォローアップするこ"
+"とが可能です。\n"
 "\n"
-"あなたはあなたの帳簿の維持ため(外部の)経理で働いていて、しかし依然として支払"
-"を追跡したい場合に、この簡単な会計を使うことができます。 また、このモジュール"
-"では、完全な抄録をコード化することなく、簡単に支払を登録することができま"
-"す。\n"
+"会計業務を（外部の）会計士に依頼している場合でも、この簡易会計機能を使用して"
+"支払い状況を把握することができます。また本モジュールでは、複雑な仕訳を入力せ"
+"ずに、支払いの登録が簡単に行える機能も備わっています。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_hw_posbox_homepage
@@ -6909,6 +6908,7 @@ msgid ""
 "regular Odoo interface anymore.\n"
 "\n"
 msgstr ""
+"\n"
 "IoTボックスのホームページ\n"
 "================\n"
 "\n"
@@ -6919,8 +6919,9 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"このモジュールをアクティブにすると、通常のOdooインターフェースにアクセスでき"
-"なくなります。"
+"このモジュールを有効にすると、通常のOdooインターフェースにアクセスできなくな"
+"ります。\n"
+"\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_comparison_wishlist
@@ -6970,7 +6971,7 @@ msgid ""
 "    * Integrated with Leaves Management\n"
 msgstr ""
 "\n"
-"ケニア給与規則\n"
+"ケニア給与ルール\n"
 "=====================\n"
 "\n"
 "　* 従業員詳細\n"
@@ -9381,7 +9382,7 @@ msgid ""
 "- Unpaid leaves\n"
 msgstr ""
 "\n"
-"サウジアラビア給与および退職金規則\n"
+"サウジアラビア給与および退職金ルール\n"
 "===========================================================\n"
 "- 基本計算\n"
 "- 退職金計算\n"
@@ -10029,10 +10030,10 @@ msgid ""
 "guide.\n"
 msgstr ""
 "\n"
-"AからBの間で商品を送った証明として配送伝票 (Complemento XML Carta de Porte)\n"
+"AからBの間で商品を送った証明として納品伝票 (Complemento XML Carta de Porte)\n"
 "が必要です。\n"
 "\n"
-"配送伝票を作成できるのは、配送オーダが検証されて\n"
+"納品伝票を作成できるのは、出荷オーダが検証されて\n"
 "からです。\n"
 
 #. module: base
@@ -10047,10 +10048,10 @@ msgid ""
 "guide.\n"
 msgstr ""
 "\n"
-"AからBの間で商品を送った証明として配送伝票 (Guía de Remisión) \n"
+"AからBの間で商品を送った証明として納品伝票 (Guía de Remisión) \n"
 "が必要です。\n"
 "\n"
-"配送伝票を作成できるのは、配送オーダが検証されて\n"
+"納品伝票を作成できるのは、出荷オーダが検証されて\n"
 "からです。\n"
 
 #. module: base
@@ -10071,14 +10072,14 @@ msgid ""
 "the SII.\n"
 msgstr ""
 "\n"
-"AからBの間で商品を送った証明として配送伝票 (guia de despacho) \n"
+"AからBの間で商品を送った証明として納品伝票 (guia de despacho) \n"
 "が必要です。\n"
 "\n"
-"それが取引先で設定可能なのは価格が配送伝票で必要で\n"
+"それが取引先で設定可能なのは価格が納品伝票で必要で\n"
 "それが販売オーダまたはプロダクト自体に由来する\n"
 "必要がある場合です\n"
 "\n"
-"配送伝票を作成できるのは、配送オーダが検証されてからです。その後、請求書と同"
+"納品伝票を作成できるのは、出荷オーダが検証されてからです。その後、請求書と同"
 "じ流れで\n"
 "SIIに送られます。\n"
 
@@ -11299,10 +11300,10 @@ msgstr ""
 "てプロダクトを簡単に比較できるようにします。それは彼らの購入決定をかなり加速"
 "するでしょう。\n"
 "\n"
-"プロダクト属性を構成するには、ウェブサイト設定で*属性とバリアント*をアクティ"
-"ブにします。これにより、製品フォームに専用のセクションが追加されます。構成で"
-"は、モジュールは、買い物客の比較テーブルを構造化するために、プロダクト属性に"
-"カテゴリーフィールドを追加します。\n"
+"プロダクト属性を構成するには、ウェブサイト設定で*属性とバリアント*を有効にし"
+"ます。これにより、製品フォームに専用のセクションが追加されます。構成では、モ"
+"ジュールは、買い物客の比較テーブルを構造化するために、プロダクト属性にカテゴ"
+"リーフィールドを追加します。\n"
 "\n"
 "最後に、モジュールには、プロダクトのウェブページに属性の要約テーブルを表示す"
 "るオプションが付属しています('カスタマイズ'メニューで利用可能)。\n"
@@ -11575,8 +11576,8 @@ msgstr ""
 "とができます。\n"
 "このモジュールはWebServiceを実装しません。ウィジェットの統合だけです。\n"
 "\n"
-"予め設定されている配送価格はその一例で、価格設定の規則を適応させる必要があり"
-"ます。\n"
+"予め設定されている配送価格はその一例で、価格設定のルールを適応させる必要があ"
+"ります。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_hr
@@ -11610,8 +11611,8 @@ msgid ""
 "using cash on delivery feature.\n"
 msgstr ""
 "\n"
-"このモジュールにより、eコマースユーザがshiprocketで代引き機能を使用して配送"
-"オーダを予約できるようになります。\n"
+"このモジュールにより、eコマースユーザがshiprocketで代引き機能を使用して出荷オ"
+"ーダを予約できるようになります。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_ups
@@ -11682,12 +11683,12 @@ msgid ""
 "trigger an automatic reminder email.\n"
 msgstr ""
 "\n"
-"このモジュールで、あらゆるオブジェクトに自動化規則を実装することができるよう"
-"になります。\n"
+"このモジュールで、あらゆるオブジェクトに自動化ルールを実装することができるよ"
+"うになります。\n"
 "============================================================\n"
 "\n"
-"自動化アクションを使用して、さまざまな画面のアクションを自動的にトリガしま"
-"す。\n"
+"自動化アクションを使用して、さまざまな画面のアクションを自動的にトリガします"
+"。\n"
 "\n"
 "**例:** 特定のユーザによって作成されたリードは、自動的に特定の営業チームに設"
 "定されるかもしれません。または案件が14日後もまだ保留のステータスの場合\n"
@@ -13529,7 +13530,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"アラブ首長国連邦の給与および退職に関する規則\n"
+"アラブ首長国連邦の給与および退職に関するルール\n"
 "=======================================================\n"
 "- 基本給与計算\n"
 "- EOS計算\n"
@@ -13949,7 +13950,7 @@ msgstr "＃グループ"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__rules_count
 msgid "# Record Rules"
-msgstr "＃規則を記録する"
+msgstr "＃ルールを記録する"
 
 #. module: base
 #. odoo-python
@@ -16214,7 +16215,7 @@ msgstr "有効化"
 #: model:ir.model.fields,field_description:base.field_res_partner__active_lang_count
 #: model:ir.model.fields,field_description:base.field_res_users__active_lang_count
 msgid "Active Lang Count"
-msgstr "アクティブラングカウント"
+msgstr "有効ラングカウント"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence__number_next_actual
@@ -17690,12 +17691,12 @@ msgstr "LDAPによる認証"
 #: model:ir.model.fields,field_description:base.field_ir_module_module__author
 #: model_terms:ir.ui.view,arch_db:base.view_module_filter
 msgid "Author"
-msgstr "著作者"
+msgstr "作成者"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_form
 msgid "Author Name"
-msgstr "著作者名"
+msgstr "作成者名"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_module_module_dependency__auto_install_required
@@ -17744,12 +17745,12 @@ msgstr "自動化"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_automation
 msgid "Automation Rules"
-msgstr "自動化規則"
+msgstr "自動化ルール"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_automation_hr_contract
 msgid "Automation Rules based on Employee Contracts"
-msgstr "従業員契約に基づく自動化規則"
+msgstr "従業員契約に基づく自動化ルール"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__available_model_ids
@@ -18047,7 +18048,7 @@ msgstr "バーコード %s"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_barcodes_gs1_nomenclature
 msgid "Barcode - GS1 Nomenclature"
-msgstr "バーコード - GS1 表現規則"
+msgstr "バーコード - GS1 表現ルール"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_stock_barcode_product_expiry
@@ -18431,7 +18432,7 @@ msgid ""
 "Blame the following rules:\n"
 "%s"
 msgstr ""
-"以下の規則のため:\n"
+"以下のルールのため:\n"
 "%s"
 
 #. module: base
@@ -19375,7 +19376,7 @@ msgstr "チリ-会計報告"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_cl_edi_stock
 msgid "Chile - E-Invoicing Delivery Guide"
-msgstr "チリ - 電子請求配送伝票"
+msgstr "チリ - 電子請求納品伝票"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_cl_edi
@@ -22938,8 +22939,8 @@ msgid ""
 "Example: GLOBAL_RULE_1 AND GLOBAL_RULE_2 AND ( (GROUP_A_RULE_1 OR "
 "GROUP_A_RULE_2) OR (GROUP_B_RULE_1 OR GROUP_B_RULE_2) )"
 msgstr ""
-"例: グローバル規則1 AND グローバル規則2 AND ( (グループA依存規則1 OR グループ"
-"A依存規則2) OR (グループB依存規則1 OR グループB依存規則2) )"
+"例: グローバルルール1 AND グローバルルール2 AND ( (グループA依存ルール1 OR グ"
+"ループA依存ルール2) OR (グループB依存ルール1 OR グループB依存ルール2) )"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
@@ -22974,7 +22975,7 @@ msgstr "排他"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_module_category__exclusive
 msgid "Exclusive"
-msgstr "独占"
+msgstr "排他"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_server__state__code
@@ -24227,7 +24228,7 @@ msgstr "完全なトレーサビリティレポートのデモデータ"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_logging__func
 msgid "Function"
-msgstr "ファンクション"
+msgstr "関数"
 
 #. module: base
 #: model:res.partner.industry,full_name:base.res_partner_industry_G
@@ -24560,19 +24561,18 @@ msgid ""
 "                         The first group rules restrict further the global "
 "rules, but can be relaxed by additional group rules."
 msgstr ""
-"グローバル規則(グループ非依存)は制約であり、回避できません。グループ依存の"
-"ローカル規則は追加で権限を付与しますが、グローバル規則の制約を越えることはで"
-"きません。1つ目のグループ依存規則はグローバル規則にさらなる制約を加えますが、"
-"その他のグループ規則により制約を緩めることができます。"
+"グローバルルール(グループ非依存)は制約であり、回避できません。グループ依存の"
+"ローカルルールは追加で権限を付与しますが、グローバルルールの制約を越えること"
+"はできません。1つ目のグループ依存ルールはグローバルルールにさらなる制約を加え"
+"ますが、その他のグループルールにより制約を緩めることができます。"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_form
 msgid ""
 "Global rules are combined together with a logical AND operator, and with the "
 "result of the following steps"
-msgstr ""
-"グローバル規則は、他のグローバル規則および以下ステップの結果と、論理演算子 "
-"AND により結合されます。"
+msgstr "グローバルルールは、他のグローバルルールおよび以下ステップの結果と、論理演算"
+"子 AND により結合されます。"
 
 #. module: base
 #: model:ir.module.module,description:base.module_google_gmail
@@ -24741,7 +24741,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_form
 msgid "Group-specific rules are combined together with a logical OR operator"
-msgstr "グループ依存規則は論理演算子 OR で結合されます。"
+msgstr "グループ依存ルールは論理演算子 OR で結合されます。"
 
 #. module: base
 #. odoo-python
@@ -24911,7 +24911,7 @@ msgstr "スポンサーになりたい"
 #. module: base
 #: model:ir.module.module,summary:base.module_hw_escpos
 msgid "Hardware Driver for ESC/POS Printers and Cashdrawers"
-msgstr "ESC/POSプリンタおよびキャッシュドロア用ハードウエアドライバ"
+msgstr "ESC/POSプリンタおよびキャッシュドロワー用ハードウエアドライバ"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hw_drivers
@@ -25623,9 +25623,8 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_rule__global
 msgid "If no group is specified the rule is global and applied to everyone"
-msgstr ""
-"グループが定義されていない場合は、その規則はグローバルであり、全ての人に適用"
-"されます。"
+msgstr "グループが定義されていない場合は、そのルールはグローバルであり、全ての人に適"
+"用されます。"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_property__res_id
@@ -25707,9 +25706,8 @@ msgstr ""
 msgid ""
 "If user belongs to several groups, the results from step 2 are combined with "
 "logical OR operator"
-msgstr ""
-"ユーザが複数グループに属す場合、ステップ2の結果は、各グループ内でのグループ依"
-"存規則結合結果が論理演算子 OR で結合されたものになります。"
+msgstr "ユーザが複数グループに属す場合、ステップ2の結果は、各グループ内でのグループ依"
+"存ルール結合結果が論理演算子 OR で結合されたものになります。"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_base_language_install__overwrite
@@ -25756,9 +25754,8 @@ msgid ""
 "(if you delete a native ACL, it will be re-created when you reload the "
 "module)."
 msgstr ""
-"アクティブなフィールドをオフにした場合、(ネイティブACLを削除した場合、それは"
-"モジュールをリロードするときに再作成されます)、それを削除せずにACLを無効にし"
-"ます。"
+"有効なフィールドをオフにした場合、(ネイティブACLを削除した場合、それはモジュ"
+"ールをリロードするときに再作成されます)、それを削除せずにACLを無効にします。"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_rule__active
@@ -25767,9 +25764,9 @@ msgid ""
 "deleting it (if you delete a native record rule, it may be re-created when "
 "you reload the module)."
 msgstr ""
-"アクティブなフィールドをオフにした場合、それを削除せずに、レコードの規則を無"
-"効にします。(ネイティブ記録規則を削除した場合、モジュールをリロードするときに"
-"再作成することができます)。"
+"有効なフィールドをオフにした場合、それを削除せずに、レコードのルールを無効に"
+"します。(ネイティブ記録ルールを削除した場合、モジュールをリロードするときに再"
+"作成することができます)。"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_upgrade
@@ -26417,13 +26414,13 @@ msgstr "営業アプリとサービスアプリの相互作用 (プロジェク�
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_form
 msgid "Interaction between rules"
-msgstr "規則間の作用"
+msgstr "ルール間の作用"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_inter_company_rules
 #: model:ir.module.module,summary:base.module_sale_purchase_inter_company_rules
 msgid "Intercompany SO/PO/INV rules"
-msgstr "会社間販売オーダ /購買オーダ /請求書規則"
+msgstr "会社間販売オーダ /購買オーダ /請求書ルール"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_groups_search
@@ -27047,7 +27044,7 @@ msgstr "ヨルダン 電子請求"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__exclude_journal_item
 msgid "Journal Items associated to the contact"
-msgstr "連絡先に関連付けた仕訳項目"
+msgstr "連絡先に関連付けた仕訳明細"
 
 #. module: base
 #. odoo-python
@@ -28877,27 +28874,27 @@ msgstr "メキシコ - 会計"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_stock
 msgid "Mexico - Electronic Delivery Guide"
-msgstr "メキシコ - 電子配送伝票"
+msgstr "メキシコ - 電子納品伝票"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_stock_30
 msgid "Mexico - Electronic Delivery Guide - Version 3.0"
-msgstr "メキシコ - 電子配送伝票 - Version 3.0"
+msgstr "メキシコ - 電子納品伝票 - Version 3.0"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_stock_extended
 msgid "Mexico - Electronic Delivery Guide Comex"
-msgstr "メキシコ - 電子配送伝票Comex"
+msgstr "メキシコ - 電子納品伝票Comex"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_stock_extended_30
 msgid "Mexico - Electronic Delivery Guide Comex - Version 3.0"
-msgstr "メキシコ - 電子配送伝票Comex - Version 3.0"
+msgstr "メキシコ - 電子納品伝票Comex - Version 3.0"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_stock_extended_31
 msgid "Mexico - Electronic Delivery Guide Comex - Version 3.1"
-msgstr "メキシコ - 電子配送伝票 Comex - Version 3.1"
+msgstr "メキシコ - 電子納品伝票 Comex - Version 3.1"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_reports_closing
@@ -30195,7 +30192,7 @@ msgstr "複数のモジュールが更新されました。"
 #. module: base
 #: model:ir.model.fields,help:base.field_res_users__rules_count
 msgid "Number of record rules that apply to the current user"
-msgstr "現在のユーザに適用されるレコード規則の数"
+msgstr "現在のユーザに適用されるレコードルールの数"
 
 #. module: base
 #: model:res.country,vat_label:base.pf
@@ -30594,8 +30591,8 @@ msgstr ""
 "受信メールから自動的にリードを作成します。リード効率を分析し\n"
 "キャンペーン、チャネル、販売チームごとにパフォーマンスを比較します。\n"
 "1つの作業で重複を見つけて、リードをマージし、相応しい販売担当者に\n"
-"割当ます。管理に費やす時間を減らし、リードの選別にもっと時間をかけましょ"
-"う。\n"
+"割当ます。管理に費やす時間を減らし、リードの選別にもっと時間をかけましょう。"
+"\n"
 "\n"
 "案件を整理する\n"
 "---------------------------\n"
@@ -30626,8 +30623,8 @@ msgstr ""
 "\n"
 "統合されたカレンダーを使用してミーティングや電話をスケジュールしましょう。自"
 "分の\n"
-"アジェンダと同僚のアジェンダを1つのビューで見ることができます。マネージャー"
-"は\n"
+"アジェンダと同僚のアジェンダを1つのビューで見ることができます。マネージャーは"
+"\n"
 "チームが何で忙しいのか一目で把握することができます。\n"
 "\n"
 "リード自動化とマーケティングキャンペーン\n"
@@ -30636,10 +30633,10 @@ msgstr ""
 "Odoo <a href=\"https://www.odoo.com/app/crm\">CRM</a>でタスクを自動化し生産性"
 "を向上\n"
 "\n"
-"マーケティングキャンペーンを利用して、リード獲得、フォローアップ、プロモー"
-"ションを\n"
-"自動化しましょう。自動規則(例:販売担当者に電話、Eメール送信させるなど)をトリ"
-"ガ(20日間アクティビティがない、プロモーション\n"
+"マーケティングキャンペーンを利用して、リード獲得、フォローアップ、プロモーシ"
+"ョンを\n"
+"自動化しましょう。自動ルール(例:販売担当者に電話、Eメール送信させるなど)をト"
+"リガ(20日間アクティビティがない、プロモーション\n"
 "Eメールに回答済など)に基づいて定義します。\n"
 "\n"
 "全てのチャネルで、リードから成約までキャンペーンを最適化します。どこに投資す"
@@ -30987,8 +30984,8 @@ msgstr ""
 "製造オーダを効率的に予定\n"
 "-----------------------------------------\n"
 "\n"
-"調達規則、予測数量、依存需要(別の部品がその部品を消費することに基づくこの部品"
-"の需要)\n"
+"調達ルール、予測数量、依存需要(別の部品がその部品を消費することに基づくこの部"
+"品の需要)\n"
 "に基づいて、製造オーダや作業オーダが自動的に\n"
 "予定されます。\n"
 "\n"
@@ -31003,8 +31000,8 @@ msgstr ""
 "全ての業務に柔軟性を\n"
 "---------------------------------\n"
 "\n"
-"進行中のあらゆるレベルで、提案された全ての操作を手動で編集することが可能で"
-"す。Odooを使えば、\n"
+"進行中のあらゆるレベルで、提案された全ての操作を手動で編集することが可能です"
+"。Odooを使えば、\n"
 "融通の利かないシステムにいら立つことはありません。\n"
 "\n"
 "作業オーダを予定する\n"
@@ -31037,7 +31034,6 @@ msgstr ""
 "正確に行います。会計統合により、リアルタイムで会計評価\n"
 "および製造業務における原価と収益に関するより\n"
 "深いレポーティングが可能になります。\n"
-"\n"
 "\n"
 
 #. module: base
@@ -31181,8 +31177,8 @@ msgstr ""
 "\n"
 "メールテンプレートを定義して、ニュースレターのコンテンツや特定のデザインを再"
 "利用できます。\n"
-"独自のIP/ドメインで複数のメールサーバーをセットアップし開封率を最適化しま"
-"す。\n"
+"独自のIP/ドメインで複数のメールサーバーをセットアップし開封率を最適化します。"
+"\n"
 "\n"
 "マーケティングキャンペーンの実施\n"
 "----------------------------\n"
@@ -31204,11 +31200,10 @@ msgstr ""
 "コミュニケーション方法を改善しましょう。\n"
 "\n"
 " <a href=\"https://www.odoo.com/app/email-marketing\">CRM案件</a>からEメール"
-"テンプレートを送り、マーケティングセグメントに応じてリードを選択、<a "
-"href=\"https://www.odoo.com/app/recruitment\">仕事のオファー</a>を送信し、応"
-"募者\n"
-"への回答を自動化、リード自動マーケティングキャンペーンでEメールテンプレート"
-"を\n"
+"テンプレートを送り、マーケティングセグメントに応じてリードを選択、<a href="
+"\"https://www.odoo.com/app/recruitment\">仕事のオファー</a>を送信し、応募者\n"
+"への回答を自動化、リード自動マーケティングキャンペーンでEメールテンプレートを"
+"\n"
 "再利用します。\n"
 "\n"
 "電子メールへの回答は、ソーシャルネットワークモジュールで全ての\n"
@@ -31256,9 +31251,9 @@ msgstr ""
 "他のアプリとの完全統合\n"
 "---------------------------------\n"
 "\n"
-"トリガ(20日間アクティビティなし、プロモーションEメールに回答した等)に基づい"
-"て\n"
-"自動規則 (例:販売担当者に電話を依頼、Eメールを送るなど)を定義します。\n"
+"トリガ(20日間アクティビティなし、プロモーションEメールに回答した等)に基づいて"
+"\n"
+"自動ルール (例:販売担当者に電話を依頼、Eメールを送るなど)を定義します。\n"
 "\n"
 "リードから成約まで、あらゆるチャネルでキャンペーンを最適化します。\n"
 "投資先をより賢く決定し、マーケティング活動が企業の収益に与える影響\n"
@@ -31459,8 +31454,8 @@ msgstr ""
 "\n"
 "### 接続が不安定でも信頼できるOdooのPOS\n"
 "\n"
-"インターネットに接続するだけで、新しい店舗を展開できます： **インストール不"
-"要\n"
+"インターネットに接続するだけで、新しい店舗を展開できます： **インストール不要"
+"\n"
 "特定のハードウェアは必要ありません**。iPad、タブレットPC、ラップトップ**、ま"
 "たは産業用POSマシンで動作します。\n"
 "\n"
@@ -31501,7 +31496,7 @@ msgstr ""
 "----------------------------------\n"
 "\n"
 "店舗での顧客サービスを統合し、買い物客に素晴らしい体験を提供\n"
-"しましょう。修理の処理、保証の追跡、顧客のクレーム対応、配送オーダの計画など"
+"しましょう。修理の処理、保証の追跡、顧客のクレーム対応、出荷オーダの計画など"
 "を行います。\n"
 "\n"
 "請求と会計の統合\n"
@@ -31517,13 +31512,13 @@ msgstr ""
 "全店舗でデータを統一\n"
 "------------------------------\n"
 "\n"
-"新規プロダクト、価格戦略、プロモーションを選択した店舗に自動的に適用しま"
-"す。\n"
+"新規プロダクト、価格戦略、プロモーションを選択した店舗に自動的に適用します。"
+"\n"
 "選択された店舗に自動的に適用されます。統一された顧客ベースに対応します。全て"
 "の店舗間でグローバル戦略を実施するのに複雑なインターフェースは不要です。\n"
 "\n"
-"Odooをバックエンドとして使用することで、小規模店舗から大規模な多国籍企業ま"
-"で、完璧に対応できることが証明されているシステムが手に入るのです。\n"
+"Odooをバックエンドとして使用することで、小規模店舗から大規模な多国籍企業まで"
+"、完璧に対応できることが証明されているシステムが手に入るのです。\n"
 "\n"
 "顧客を知る - 店内でも外でも\n"
 "--------------------------------------\n"
@@ -31534,7 +31529,6 @@ msgstr ""
 "\n"
 "Odooを使えば、インタラクション履歴、プロフィールなど、クロスチャネルセールス"
 "を含む360°の顧客ビューが得られます。\n"
-"\n"
 "\n"
 
 #. module: base
@@ -31622,26 +31616,26 @@ msgid ""
 msgstr ""
 "Odooサプライチェーン\n"
 "----------------- \n"
-"Odoo<a href=\"https://www.odoo.com/app/purchase\">オープンソースサプライ"
-"チェーン</a>で、支払い要求を自動化し、請求を管理します。\n"
+"Odoo<a href=\"https://www.odoo.com/app/purchase\">オープンソースサプライチェ"
+"ーン</a>で、支払い要求を自動化し、請求を管理します。\n"
 "調達提案の自動化、見積依頼の開始、オーダの追跡、仕入先の情報の管理、プロダク"
 "トの受け取りの管理、仕入先の請求書の確認を行います。\n"
 "\n"
 "\n"
 "自動調達提案\n"
 "----------------------------------\n"
-"調達規則を使用して在庫レベルを削減します。適切なタイミングで適切な購入提案を"
-"取得して、在庫レベルを下げます。\n"
-"在庫レベル、ロジスティック規則、販売オーダ、予測製造オーダなどに応じた調達規"
-"則を使用して、購入と在庫のパフォーマンスを向上させます。\n"
+"調達ルールを使用して在庫レベルを削減します。適切なタイミングで適切な購入提案"
+"を取得して、在庫レベルを下げます。\n"
+"在庫レベル、ロジスティックルール、販売オーダ、予測製造オーダなどに応じた調達"
+"ルールを使用して、購入と在庫のパフォーマンスを向上させます。\n"
 "見積依頼またはオーダを仕入先にワンクリックで送信します。オーダからプロダクト"
 "の入荷と請求書にアクセスできます。\n"
 "\n"
 "\n"
 "入札購入\n"
 "----------------\n"
-"入札を開始し、プロセスに仕入先の回答を統合し、提案を比較します。最良のオ"
-"ファーを選択し、オーダを簡単に送信します。\n"
+"入札を開始し、プロセスに仕入先の回答を統合し、提案を比較します。最良のオファ"
+"ーを選択し、オーダを簡単に送信します。\n"
 "その後、レポーティングを使用して仕入先の質を分析します。\n"
 "\n"
 "\n"
@@ -31665,8 +31659,8 @@ msgstr ""
 "最良の価格を使用して賢明な購入決定を下します。\n"
 "仕入先の価格表を簡単にインポートして、プロモーション、数量に\n"
 "応じた価格、特別な契約条件に基づいて、よりスマートな購入決定を\n"
-"下すことができます。仕入先の価格に応じて、販売価格を基準にすることもできま"
-"す。\n"
+"下すことができます。仕入先の価格に応じて、販売価格を基準にすることもできます"
+"。\n"
 "\n"
 "\n"
 "プロダクトと請求書の管理\n"
@@ -32167,8 +32161,8 @@ msgstr ""
 "す。\n"
 "\n"
 "インライン編集機能により、ワンクリックで簡単に価格を変更したり、\n"
-"プロモーションを開始したり、プロダクト説明を微調整したりすることができま"
-"す。\n"
+"プロモーションを開始したり、プロダクト説明を微調整したりすることができます。"
+"\n"
 "\n"
 "クリーンなGoogleアナリティクスの統合\n"
 "------------------------------------\n"
@@ -32197,8 +32191,8 @@ msgstr ""
 "----------------------\n"
 "\n"
 "カタログページでの商品の表示方法を完全にコントロールできます:\n"
-"プロモーションリボン、商品の関連サイズ、割引、バリアント、グリッド/リスト表"
-"示\n"
+"プロモーションリボン、商品の関連サイズ、割引、バリアント、グリッド/リスト表示"
+"\n"
 "ビューなど。\n"
 "\n"
 "あらゆるプロダクトをインラインで編集し、顧客のニーズに合わせてウェブサイトを"
@@ -32228,8 +32222,7 @@ msgstr ""
 "\n"
 "リセラーネットワークを管理することで、新しい市場をターゲットにしたり、現地に"
 "拠点を持ったり、流通を拡大したりすることができます。\n"
-"効率的なコラボレーションのために、リセラーにリセラーポータルへのアクセス権"
-"を\n"
+"効率的なコラボレーションのために、リセラーにリセラーポータルへのアクセス権を"
 "与えましょう。\n"
 "\n"
 "特定の価格リストの定義、ロイヤリティプログラムのローンチ\n"
@@ -32237,10 +32230,10 @@ msgstr ""
 "で宣伝し、(ビルトインのジオローカライゼーション機能で)リードをリセラーに転送"
 "しましょう。\n"
 "\n"
-"オンラインショップでOdooのパワーの恩恵を受けましょう。強力なタックスエンジ"
-"ン、フレキシブルな価格設定、リアルな在庫管理ソリューション、リセラー用イン"
-"ターフェースや、物理的な商品、イベント、サービス、バリアント、オプションな"
-"ど、さまざまな動作のプロダクトをサポートします。\n"
+"オンラインショップでOdooのパワーの恩恵を受けましょう。強力なタックスエンジン"
+"、フレキシブルな価格設定、リアルな在庫管理ソリューション、リセラー用インター"
+"フェースや、物理的な商品、イベント、サービス、バリアント、オプションなど、さ"
+"まざまな動作のプロダクトをサポートします。\n"
 "\n"
 "倉庫、販売、会計ソフトとのインターフェースは必要ありません。\n"
 "全てOdooに統合されています。手間なく、リアルタイムで利用できます。\n"
@@ -32272,7 +32265,7 @@ msgstr ""
 "-   オーダを追跡する顧客ポータル\n"
 "-   ウェブサイトライブチャットで買い物をサポート\n"
 "-   返品管理\n"
-"-   高レベルな配送規則\n"
+"-   高レベルな配送ルール\n"
 "-   クーポンまたはギフト券\n"
 "\n"
 "### オーダ管理\n"
@@ -32740,8 +32733,8 @@ msgstr ""
 "------------------------------------- \n"
 "###スケジュール、宣伝、販売、整理イベントごとに追加機能を取得します。\n"
 "複数のページ、スポンサー、複数の講演、講演提案フォーム、議題、イベント関連の"
-"ニュース、ドキュメント(プレゼンテーションのスライド)、イベント固有のメ"
-"ニュー。\n"
+"ニュース、ドキュメント(プレゼンテーションのスライド)、イベント固有のメニュー"
+"。\n"
 "\n"
 "トラックを整理する\n"
 "-------------------- \n"
@@ -32770,8 +32763,7 @@ msgstr ""
 "\n"
 "効率的なコミュニケーション\n"
 "----------------------- \n"
-"###一部のイベントのブログをアクティブ化するイベントごとにブログをアクティブ化"
-"して、\n"
+"###一部のイベントのブログを有効化するイベントごとにブログを有効化して、\n"
 "特定のイベントについてコミュニケーションをとることができます。訪問者はニュー"
 "スを購読して情報を得ることができます。"
 
@@ -33546,7 +33538,7 @@ msgstr "取引先タイトル"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__active_partner
 msgid "Partner is Active"
-msgstr "パートナーはアクティブです"
+msgstr "パートナーは有効です"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_partner
@@ -33865,7 +33857,7 @@ msgstr "ペルー - 在庫レポート"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_pe_edi_stock
 msgid "Peruvian - Electronic Delivery Note"
-msgstr "ペルー - 電子配送伝票"
+msgstr "ペルー - 電子納品伝票"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_pe_pos
@@ -34140,8 +34132,8 @@ msgid ""
 "restricted menus).\n"
 "                They usually do not belong to the usual Odoo groups."
 msgstr ""
-"ポータルのメンバーは（そのようなレコード規則や制限されたメニューなどの）特定"
-"のアクセス権を持っています。\n"
+"ポータルのメンバーは（そのようなレコードルールや制限されたメニューなどの）特"
+"定のアクセス権を持っています。\n"
 "彼らは、通常のOdooグループに属していません。"
 
 #. module: base
@@ -34825,8 +34817,8 @@ msgid ""
 "restricted menus).\n"
 "                They usually do not belong to the usual Odoo groups."
 msgstr ""
-"パブリックユーザは、特定のアクセス権を持っています(レコード規則やメニュー制限"
-"等)。\n"
+"パブリックユーザは、特定のアクセス権を持っています(レコードルールやメニュー制"
+"限等)。\n"
 "彼らは、通常のOdooグループに属していません。"
 
 #. module: base
@@ -35258,7 +35250,7 @@ msgstr "レコードID"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_search
 msgid "Record Rule"
-msgstr "レコード規則"
+msgstr "レコードルール"
 
 #. module: base
 #. odoo-python
@@ -35273,7 +35265,7 @@ msgstr "レコード規則"
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
 #, python-format
 msgid "Record Rules"
-msgstr "レコード規則"
+msgstr "レコードルール"
 
 #. module: base
 #. odoo-python
@@ -35296,7 +35288,7 @@ msgstr "レコードが存在しないか、削除されました。"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_form
 msgid "Record rules"
-msgstr "レコード規則"
+msgstr "レコードルール"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_timer
@@ -35834,29 +35826,29 @@ msgstr "丸め単位"
 #. module: base
 #: model:ir.model,name:base.model_ir_rule
 msgid "Rule"
-msgstr "規則"
+msgstr "ルール"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_rule_form
 msgid "Rule Definition (Domain Filter)"
-msgstr "規則定義 (ドメインフィルタ)"
+msgstr "ルール定義 (ドメインフィルタ)"
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_ir_rule_no_access_rights
 msgid "Rule must have at least one checked access right!"
-msgstr "規則は少なくとも１つのチェック済のアクセス権限を持たねばなりません。"
+msgstr "ルールは少なくとも１つのチェック済のアクセス権限を持たねばなりません。"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_groups__rule_groups
 msgid "Rules"
-msgstr "規則"
+msgstr "ルール"
 
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_rule.py:0
 #, python-format
 msgid "Rules can not be applied on the Record Rules model."
-msgstr "規則はレコードの規則モデルに適用することはできません。"
+msgstr "ルールはレコードのルールモデルに適用することはできません。"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
@@ -36210,11 +36202,11 @@ msgstr ""
 "\n"
 "販売サブスクリプション在庫は、 sale_subscriptionとsale_stock間のブリッジ\n"
 "モジュールです。このモジュールの目的は、ユーザが在庫可能品でサブスクリプショ"
-"ン販売オーダを作成し、それらのプロダクトの定期配送オーダと請求書発行ができる"
+"ン販売オーダを作成し、それらのプロダクトの定期出荷オーダと請求書発行ができる"
 "ようにすることです。\n"
 "特徴：\n"
 "- 定期在庫可能品の作成が可能です。\n"
-"- 定期在庫可能品の配送オーダを自動的に作成します。\n"
+"- 定期在庫可能品の出荷オーダを自動的に作成します。\n"
 "- 請求期間終了時に、納品済の定期プロダクトの請求書を発行します。\n"
 "- 有効なサブスクリプションの配送予定を報告します。\n"
 
@@ -37171,12 +37163,12 @@ msgstr "通貨レートを表示"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 msgid "Show active currencies"
-msgstr "アクティブな通貨を表示"
+msgstr "有効な通貨を表示"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 msgid "Show inactive currencies"
-msgstr "アクティブでない通貨を表示"
+msgstr "有効でない通貨を表示"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_google_map
@@ -38912,8 +38904,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner_category__active
 msgid "The active field allows you to hide the category without removing it."
-msgstr ""
-"このアクティブな項目はその分類を削除することなく非表示にすることができます。"
+msgstr "この有効な項目はその分類を削除することなく非表示にすることができます。"
 
 #. module: base
 #. odoo-python
@@ -41902,7 +41893,7 @@ msgstr "ベネズエラ - 会計"
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_mx_edi_stock_30
 msgid "Version 3.0 of the delivery guide (Complemento XML Carta de Porte)."
-msgstr "配送伝票(Complemento XML Carta de Porte)のバージョン3.0。"
+msgstr "納品伝票(Complemento XML Carta de Porte)のバージョン3.0。"
 
 #. module: base
 #. odoo-python
@@ -42913,7 +42904,7 @@ msgstr ""
 #: code:addons/base/models/res_users.py:0
 #, python-format
 msgid "You cannot activate the superuser."
-msgstr "スーパーユーザーをアクティブ化することはできません。"
+msgstr "スーパーユーザーを有効化することはできません。"
 
 #. module: base
 #. odoo-python
@@ -42926,11 +42917,10 @@ msgid ""
 "Linked active users :\n"
 "%(names)s"
 msgstr ""
-"アクティブなユーザにリンクされている連絡先をアーカイブすることはできませ"
-"ん。\n"
+"有効なユーザにリンクされている連絡先をアーカイブすることはできません。\n"
 "まず管理者に関連するユーザをアーカイブするよう依頼して下さい。\n"
 "\n"
-"リンクしたアクティブなユーザ :\n"
+"リンクした有効なユーザ :\n"
 "%(names)s"
 
 #. module: base
@@ -42943,11 +42933,10 @@ msgid ""
 "\n"
 "Linked active users : %(names)s"
 msgstr ""
-"アクティブなユーザにリンクされている連絡先をアーカイブすることはできませ"
-"ん。\n"
+"有効なユーザにリンクされている連絡先をアーカイブすることはできません。\n"
 "まず関連するユーザをアーカイブして下さい。\n"
 "\n"
-"リンクしたアクティブなユーザ :\n"
+"リンクした有効なユーザ :\n"
 "%(names)s"
 
 #. module: base
@@ -43026,10 +43015,10 @@ msgid ""
 "Linked active users :\n"
 "%(names)s"
 msgstr ""
-"アクティブなユーザにリンクされている連絡先を削除することはできません。\n"
+"有効なユーザにリンクされている連絡先を削除することはできません。\n"
 "まず管理者に関連するユーザをアーカイブするよう依頼して下さい。\n"
 "\n"
-"リンクしたアクティブなユーザ :\n"
+"リンクした有効なユーザ :\n"
 "%(names)s"
 
 #. module: base
@@ -43042,10 +43031,10 @@ msgid ""
 "\n"
 "Linked active users : %(names)s"
 msgstr ""
-"アクティブなユーザにリンクされている連絡先を削除することはできません。\n"
+"有効なユーザにリンクされている連絡先を削除することはできません。\n"
 "関連するユーザをアーカイブした後でそれらをアーカイブして下さい。\n"
 "\n"
-"リンクしたアクティブなユーザ :\n"
+"リンクした有効なユーザ :\n"
 "%(names)s"
 
 #. module: base
@@ -43074,8 +43063,8 @@ msgid ""
 "You cannot delete the language which is Active!\n"
 "Please de-activate the language first."
 msgstr ""
-"あなたは、アクティブである言語を削除することはできません！\n"
-"まず、その言語を非アクティブにしてください。"
+"あなたは、有効である言語を削除することはできません！\n"
+"まず、その言語を無効にしてください。"
 
 #. module: base
 #. odoo-python
@@ -43098,9 +43087,8 @@ msgstr "連絡先を親の1つにマージすることはできません。"
 msgid ""
 "You cannot merge contacts linked to more than one user even if only one is "
 "active."
-msgstr ""
-"アクティブなユーザが1人であっても、複数のユーザにリンクされた連絡先をマージす"
-"ることはできません。"
+msgstr "有効なユーザが1人であっても、複数のユーザにリンクされた連絡先をマージすること"
+"はできません。"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_currency_form
@@ -43300,7 +43288,7 @@ msgstr "account_qr_code_emv"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_asset__active
 msgid "active"
-msgstr "アクティブ"
+msgstr "有効"
 
 #. module: base
 #. odoo-python
@@ -43851,7 +43839,7 @@ msgstr "テストデータ専用モジュールをテストするモジュール
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_access_rights
 msgid "test of access rights and rules"
-msgstr "アクセス権と規則のテスト"
+msgstr "アクセス権とルールのテスト"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_read_group

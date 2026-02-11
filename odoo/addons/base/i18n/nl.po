@@ -12,13 +12,13 @@
 # Erwin van der Ploeg <erwin@odooexperts.nl>, 2025
 # Manon Rondou, 2025
 # "Manon Rondou (ronm)" <ronm@odoo.com>, 2025.
-# Bren Driesen <brdri@odoo.com>, 2025.
+# Bren Driesen <brdri@odoo.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-03 11:38+0000\n"
-"PO-Revision-Date: 2025-12-20 08:39+0000\n"
+"PO-Revision-Date: 2026-02-07 08:09+0000\n"
 "Last-Translator: Bren Driesen <brdri@odoo.com>\n"
 "Language-Team: Dutch <https://translate.odoo.com/projects/odoo-17/base/nl/>\n"
 "Language: nl\n"
@@ -4314,10 +4314,10 @@ msgid ""
 "better schedule your resources.\n"
 msgstr ""
 "\n"
-"Vergelijk urenstaten en prognoses voor uw projecten.\n"
+"Vergelijk urenstaten en voorspellingen voor je projecten.\n"
 "=================================================\n"
 "\n"
-"In uw projectplan kunt u uw urenstaten en uw prognose vergelijken om uw "
+"In je projectplan kun je je urenstaten en je voorspelling vergelijken om je "
 "resources beter te plannen.\n"
 
 #. module: base
@@ -11698,8 +11698,8 @@ msgid ""
 "your visitors to subscribe with their phone number.\n"
 msgstr ""
 "\n"
-"Deze module voegt een nieuwe sjabloon toe aan het Nieuwsbriefblok om:\n"
-"je bezoekers zich abonneren met hun telefoonnummer.\n"
+"Deze module voegt een nieuw sjabloon toe aan het Nieuwsbriefblok zodat\n"
+"je bezoekers zich kunnen abonneren met hun telefoonnummer.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_renting_crm
@@ -12369,18 +12369,16 @@ msgid ""
 "products.\n"
 msgstr ""
 "\n"
-"Met deze module kunt u uw verkooporder plannen op basis van de "
+"Met deze module kun je je verkooporder plannen op basis van de "
 "productconfiguratie.\n"
 "\n"
-"Voor producten waarvoor de optie \"Services plannen\" is ingeschakeld, heeft "
-"u de mogelijkheid\n"
-"om automatisch de diensten te voorspellen voor werknemers die de dienst "
-"kunnen vervullen\n"
-"(d.w.z. werknemers die dezelfde rol hebben als degene die op het product is "
-"geconfigureerd).\n"
+"Voor producten waarvoor de optie \"Diensten plannen\" is ingeschakeld, heb "
+"je de mogelijkheid om automatisch de shifts te voorspellen voor werknemers "
+"die de shift kunnen vervullen (d.w.z. werknemers die dezelfde rol hebben als "
+"degene die op het product is geconfigureerd).\n"
 "\n"
-"Voorspel ploegendiensten en houd het urenverbruik van uw planbare producten "
-"in de gaten.\n"
+"Voorspel shifts en houd het urenverbruik van je planbare producten in de "
+"gaten.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_planning
@@ -14255,12 +14253,12 @@ msgstr ""
 "\n"
 "WMS boekhoudmodule\n"
 "======================\n"
-"Deze module maakt de link tussen 'voorraad' en 'boekhouding' modules en "
+"Deze module maakt de link tussen de modules 'Voorraad' en 'Boekhouding' en "
 "staat je toe om financiële boekingen te maken om je voorraad te waarderen\n"
 "\n"
-"Hoofd eigenschappen\n"
+"Hoofdeigenschappen\n"
 "------------\n"
-"* Voorrraadwaardering (periodiek of automatisch)\n"
+"* Voorraadwaardering (periodiek of automatisch)\n"
 "* Factuur vanuit levering\n"
 "\n"
 "Dashboard / Rapportages van magazijnen bevatten:\n"
@@ -18853,7 +18851,7 @@ msgstr "België - Gegevens over verworpen uitgaven"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_account_disallowed_expenses_fleet
 msgid "Belgium - Disallowed Expenses Fleet"
-msgstr "België - Niet-toegestane uitgavenvloot"
+msgstr "België - Niet-toegestane uitgaven Wagenpark"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_coda
@@ -20999,7 +20997,7 @@ msgstr "Maak een bankrekening"
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_category_form
 msgid "Create a Contact Tag"
-msgstr "Een contacttag maken"
+msgstr "Contactlabel aanmaken"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
@@ -37575,7 +37573,7 @@ msgstr "Selectie"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__selection_ids
 msgid "Selection Options"
-msgstr "Selectie opties"
+msgstr "Keuzemogelijkheden"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__selection
@@ -37784,11 +37782,12 @@ msgid ""
 "emails are compromised. Once verified, you can activate the ability to send "
 "money."
 msgstr ""
-"Het verzenden van valse facturen met een frauduleus rekeningnummer is een "
-"veel voorkomende phishingpraktijk. Om jezelf te beschermen moet je altijd "
-"nieuwe rekeningsnummers controleren, bij voorkeur door de leverancier te "
-"bellen, want phishing gebeurt meestal wanneer hun e-mails gecompromitteerd "
-"zijn. Eenmaal gecontroleerd, kan je de functie om geld te sturen inschakelen."
+"Het versturen van valse facturen met een frauduleus rekeningnummer is een "
+"veelvoorkomende manier van phising. Om jezelf te beschermen moet je nieuwe "
+"rekeningnummers altijd controleren, bij voorkeur door de leverancier te "
+"bellen, aangezien phishing meestal plaatsvindt wanneer hun e-mails zijn "
+"gehackt. Na de controle kun je de mogelijkheid om geld over te maken "
+"activeren."
 
 #. module: base
 #: model:res.country,name:base.sn
@@ -42073,7 +42072,7 @@ msgstr "Niet gecategoriseerd"
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_uninstall
 #, python-format
 msgid "Uninstall"
-msgstr "Deïnstalleren"
+msgstr "De-installeren"
 
 #. module: base
 #. odoo-python

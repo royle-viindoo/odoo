@@ -1,24 +1,27 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* sale
+# * sale
 #
 # Translators:
 # Wil Odoo, 2025
 # Thi Huong Nguyen, 2025
 #
+# "Thi Huong Nguyen (thng)" <thng@odoo.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2023-10-26 23:09+0000\n"
-"Last-Translator: Thi Huong Nguyen, 2025\n"
-"Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"POT-Creation-Date: 2026-01-29 18:36+0000\n"
+"PO-Revision-Date: 2026-01-10 08:06+0000\n"
+"Last-Translator: \"Thi Huong Nguyen (thng)\" <thng@odoo.com>\n"
+"Language-Team: Vietnamese <https://translate.odoo.com/projects/odoo-17/sale/"
+"vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_payment_provider_onboarding_wizard___data_fetched
@@ -1414,7 +1417,7 @@ msgstr "Đã thanh toán"
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__amount_invoiced
 #: model:ir.model.fields,field_description:sale.field_sale_order__amount_invoiced
 msgid "Already invoiced"
-msgstr "Đã xuất hoá đơn"
+msgstr "Đã lập hoá đơn"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_sale_amazon
@@ -1991,7 +1994,7 @@ msgid ""
 "invoicing address"
 msgstr ""
 "Tạo một hóa đơn cho tất cả đơn hàng liên quan đến cùng một khách hàng và "
-"cùng một địa chỉ xuất hoá đơn"
+"cùng một địa chỉ lập hoá đơn"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__create_uid
@@ -2941,7 +2944,7 @@ msgstr "SL đã xuất hóa đơn: %s"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_crm_team__invoiced
 msgid "Invoiced This Month"
-msgstr "Đã xuất hoá đơn tháng này"
+msgstr "Đã lập hoá đơn tháng này"
 
 #. module: sale
 #: model:ir.actions.act_window,name:sale.action_invoice_salesteams
@@ -3206,7 +3209,7 @@ msgstr ""
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_sale_margin
 msgid "Margins"
-msgstr "Biên lợi nhuận"
+msgstr "Lợi nhuận"
 
 #. module: sale
 #: model:ir.actions.server,name:sale.model_sale_order_action_quotation_sent
@@ -4163,7 +4166,7 @@ msgstr "Đánh giá"
 #: model:ir.model.fields,field_description:sale.field_product_product__expense_policy
 #: model:ir.model.fields,field_description:sale.field_product_template__expense_policy
 msgid "Re-Invoice Expenses"
-msgstr "Chi phí tái xuất hoá đơn"
+msgstr "Chi phí tái lập hoá đơn"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_product_product__visible_expense_policy
@@ -5148,9 +5151,11 @@ msgid ""
 "You can archive these products and recreate them with your company "
 "restriction instead, or leave them as shared product."
 msgstr ""
-"Các sản phẩm sau không thể chỉ giới hạn cho công ty %(company)s vì đã được sử dụng trong báo giá hoặc đơn bán của công ty khác:\n"
+"Các sản phẩm sau không thể chỉ giới hạn cho công ty %(company)s vì chúng đã "
+"được sử dụng trong báo giá hoặc đơn bán hàng của công ty khác:\n"
 "%(used_products)s\n"
-"Bạn có thể lưu trữ những sản phẩm này và tạo lại chúng với hạn chế cho công ty bạn, hoặc đặt là sản phẩm chia sẻ."
+"Bạn có thể lưu trữ những sản phẩm này và tạo lại chúng với hạn chế cho công "
+"ty, hoặc đặt là sản phẩm chia sẻ. "
 
 #. module: sale
 #: model:ir.model.fields,help:sale.field_res_config_settings__automatic_invoice
@@ -5162,9 +5167,13 @@ msgid ""
 "This mode is advised if you issue the final invoice at the order and not "
 "after the delivery."
 msgstr ""
-"Hóa đơn được tạo tự dộng và sẵn sàng ở cổng thông tin khách hàng khi giao dịch được xác nhận bởi nhà cung cấp thanh toán.\n"
-"Hóa đơn được coi là đã thanh toán và thanh toán được vào sổ nhật ký được thiết lập trong cấu hình của nhà cung cấp thanh toán.\n"
-"Bạn nên sử dụng chế độ này nếu bạn phát hành hóa đơn cuối cùng khi xác nhận đơn và trước khi giao hàng."
+"Hóa đơn được tạo tự động và có sẵn trong cổng thông tin khách hàng khi giao "
+"dịch được xác nhận bởi nhà cung cấp dịch vụ thanh toán.\n"
+"Hóa đơn được đánh dấu là đã thanh toán và khoản thanh toán được ghi nhận "
+"trong nhật ký thanh toán được xác định trong cấu hình của nhà cung cấp dịch "
+"vụ thanh toán.\n"
+"Nên dùng chế độ này nếu bạn phát hành hóa đơn chính thức vào lúc đặt hàng mà "
+"không phải sau khi giao hàng."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -5267,6 +5276,22 @@ msgstr ""
 #, python-format
 msgid "The provided parameters are invalid."
 msgstr "Các tham số được cung cấp không hợp lệ."
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/controllers/portal.py:0
+#: code:addons/sale/wizard/payment_link_wizard.py:0
+#, python-format
+msgid "The sale order has expired."
+msgstr ""
+
+#. module: sale
+#. odoo-python
+#: code:addons/sale/controllers/portal.py:0
+#: code:addons/sale/wizard/payment_link_wizard.py:0
+#, python-format
+msgid "The sale order has expired."
+msgstr "Đơn bán đã hết hạn."
 
 #. module: sale
 #. odoo-python
@@ -5976,7 +6001,7 @@ msgid ""
 "a' }})"
 msgstr ""
 "{{ object.company_id.name }} {{ (object.get_portal_last_transaction().state "
-"== 'pending') and 'Đơn bán đang chờ' or 'Đơn bán' }} (số tham chiếu {{ "
+"== 'pending') and 'Đơn bán đang chờ' or 'Đơn bán' }} (Mã số {{ "
 "object.name or 'n/a' }})"
 
 #. module: sale
@@ -5988,7 +6013,7 @@ msgid ""
 msgstr ""
 "{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
 "(ctx.get('proforma') and 'Hóa đơn chiếu lệ' or 'Báo giá') or 'Đơn bán' }} "
-"(số tham chiếu {{ object.name or 'n/a' }})"
+"(mã số {{ object.name or 'n/a' }})"
 
 #. module: sale
 #: model:mail.template,subject:sale.mail_template_sale_cancellation
@@ -5996,5 +6021,5 @@ msgid ""
 "{{ object.company_id.name }} {{ object.type_name }} Cancelled (Ref "
 "{{ object.name or 'n/a' }})"
 msgstr ""
-"{{ object.company_id.name }} {{ object.type_name }} Đã hủy (số tham chiếu {{"
+"{{ object.company_id.name }} {{ object.type_name }} Đã hủy (mã số {{"
 " object.name or 'n/a' }})"

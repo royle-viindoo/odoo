@@ -2,13 +2,13 @@
 # This file contains the translation of the following modules:
 # * point_of_sale
 #
-# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-29 18:36+0000\n"
-"PO-Revision-Date: 2025-12-31 11:34+0000\n"
+"PO-Revision-Date: 2026-02-07 08:11+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Hindi <https://translate.odoo.com/projects/odoo-17/"
 "point_of_sale/hi/>\n"
@@ -1057,7 +1057,7 @@ msgstr "बारकोड"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
 msgid "Barcode Nomenclature"
-msgstr ""
+msgstr "बारकोड के नाम रखने के नियम"
 
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_barcode_rule
@@ -1069,7 +1069,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/app/debug/debug_widget.xml:0
 #, python-format
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "बारकोड स्कैनर"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
@@ -1351,7 +1351,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
 msgid "Cashdrawer"
-msgstr ""
+msgstr "कैशड्रावर"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -2343,7 +2343,7 @@ msgstr "खारिज करें"
 #: code:addons/point_of_sale/static/src/app/navbar/customer_facing_display_button/customer_facing_display_button.js:0
 #, python-format
 msgid "Disconnected"
-msgstr ""
+msgstr "डिस्कनेक्ट हो गया है"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -2392,7 +2392,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/app/debug/debug_widget.xml:0
 #, python-format
 msgid "Dismiss"
-msgstr ""
+msgstr "खारिज करें"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_bill__display_name
@@ -3767,7 +3767,7 @@ msgstr "नया"
 #: code:addons/point_of_sale/static/src/app/screens/ticket_screen/ticket_screen.xml:0
 #, python-format
 msgid "New Order"
-msgstr ""
+msgstr "नया ऑर्डर"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_config_kanban
@@ -5334,7 +5334,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/app/navbar/proxy_status/proxy_status.js:0
 #, python-format
 msgid "Printer"
-msgstr ""
+msgstr "प्रिंटर"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_printer__name
@@ -5420,7 +5420,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/app/generic_components/product_card/product_card.xml:0
 #, python-format
 msgid "Product Information"
-msgstr ""
+msgstr "प्रॉडक्ट की जानकारी"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_combo__base_price
@@ -5657,7 +5657,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
 msgid "Receipt Printer"
-msgstr ""
+msgstr "रसीद निकालने वाला प्रिंटर"
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_payment_method__use_payment_terminal
@@ -6040,7 +6040,7 @@ msgstr "इस पेज को सेव करें और फिर इस �
 #: code:addons/point_of_sale/static/src/app/navbar/proxy_status/proxy_status.js:0
 #, python-format
 msgid "Scale"
-msgstr ""
+msgstr "स्केल"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -6605,7 +6605,7 @@ msgstr "चाल स्टॉक"
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_stock_rule
 msgid "Stock Rule"
-msgstr ""
+msgstr "स्टॉक रूल"
 
 #. module: point_of_sale
 #. odoo-python
@@ -7535,6 +7535,10 @@ msgid ""
 "a hamburger from a customer’s hand mid-bite; chaos will ensue as ketchup and "
 "mayo go flying everywhere!"
 msgstr ""
+"प्रॉडक्ट मिटाने के लिए, पक्का करें कि सभी पॉइंट ऑफ़ सेल सेशन बंद हैं.\n"
+"\n"
+"सेशन में मौजूद प्रॉडक्ट को मिटाना किसी ग्राहक के हाथ से बीच में पिज़्ज़ा छीनने जैसा होगा; मतलब चलते काम में प्रोडक्ट "
+"हटाना सिस्टम में भारी गड़बड़ी पैदा कर सकता है!"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order__to_invoice
@@ -7615,7 +7619,7 @@ msgstr "कुल भुगतान राशि"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_report_pos_order__price_total
 msgid "Total Price"
-msgstr ""
+msgstr "कुल कीमत"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -8217,7 +8221,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/app/customer_display/customer_display_template.xml:0
 #, python-format
 msgid "Your Order"
-msgstr ""
+msgstr "आपका ऑर्डर"
 
 #. module: point_of_sale
 #. odoo-python

@@ -7,14 +7,14 @@
 # Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2024
 # Junko Augias, 2025
 # Wil Odoo, 2025
-# "Junko Augias (juau)" <juau@odoo.com>, 2025.
+# "Junko Augias (juau)" <juau@odoo.com>, 2025, 2026.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2025-12-13 08:04+0000\n"
+"PO-Revision-Date: 2026-02-07 08:10+0000\n"
 "Last-Translator: \"Junko Augias (juau)\" <juau@odoo.com>\n"
 "Language-Team: Japanese <https://translate.odoo.com/projects/odoo-17/survey/"
 "ja/>\n"
@@ -972,7 +972,7 @@ msgstr "活動状態"
 #: model:ir.model.fields,field_description:survey.field_survey_survey__activity_type_icon
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "活動種別アイコン"
+msgstr "活動タイプアイコン"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_form
@@ -997,7 +997,7 @@ msgstr "ライブで質問を共有することで、プレゼンテーション
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_invite__emails
 msgid "Additional emails"
-msgstr "追加の電子メール"
+msgstr "追加のメールアドレス"
 
 #. module: survey
 #: model:res.groups,name:survey.group_survey_manager
@@ -1220,7 +1220,7 @@ msgstr "参加者はすぐに答えると、より多くのポイントを取得
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_invite__author_id
 msgid "Author"
-msgstr "著作者"
+msgstr "作成者"
 
 #. module: survey
 #: model:ir.model.fields,help:survey.field_survey_survey__certification_mail_template_id
@@ -1641,7 +1641,7 @@ msgstr "条件付きの質問が含まれています"
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_invite__body
 msgid "Contents"
-msgstr "内容"
+msgstr "本文"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_fill_form_in_progress
@@ -1900,7 +1900,7 @@ msgstr "説明"
 #. module: survey
 #: model:survey.question.answer,value:survey.vendor_certification_page_2_question_2_choice_2
 msgid "Desk Combination"
-msgstr "デスクコンビネーション"
+msgstr "デスクの組み合わせ"
 
 #. module: survey
 #: model:ir.actions.act_window,name:survey.survey_user_input_line_action
@@ -2010,7 +2010,7 @@ msgstr "ライブセッションを終了"
 #: model:ir.model.fields,field_description:survey.field_survey_survey__description_done
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_form
 msgid "End Message"
-msgstr "最後のメッセージ"
+msgstr "終了メッセージ"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__end_datetime
@@ -2057,7 +2057,7 @@ msgstr "既存のパートナー"
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_invite__existing_emails
 msgid "Existing emails"
-msgstr "既存の電子メール"
+msgstr "既存のメール"
 
 #. module: survey
 #: model:survey.question.answer,value:survey.survey_demo_burger_quiz_p2_q3_sug2
@@ -2857,7 +2857,7 @@ msgstr "リーダーボード"
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_access_error
 msgid "Leave"
-msgstr "解除"
+msgstr "戻る"
 
 #. module: survey
 #: model:survey.question.answer,value:survey.vendor_certification_page_1_question_3_choice_4
@@ -3999,7 +3999,7 @@ msgstr "必要なスコア (%)"
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_invite__existing_text
 msgid "Resend Comment"
-msgstr "再送コメント"
+msgstr "コメントを再送信"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_user_input_view_form
@@ -4821,9 +4821,8 @@ msgstr "次のメールアドレスはすでに招待を受けています"
 msgid ""
 "The following recipients have no user account: %s. You should create user "
 "accounts for them or allow external signup in configuration."
-msgstr ""
-"受信者:%sは、ユーザーアカウントを持っていません。それらのユーザーにアカウント"
-"を作成するか、外部連携での登録を可能にすべきです。"
+msgstr "次の受信者にはユーザアカウントがありません：%s。ユーザアカウントを作成するか"
+"、設定で外部ユーザのサインアップを許可してください。"
 
 #. module: survey
 #: model:survey.question.answer,value:survey.survey_feedback_p2_q2_row1

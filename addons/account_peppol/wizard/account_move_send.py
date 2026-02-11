@@ -162,11 +162,11 @@ class AccountMoveSend(models.TransientModel):
         params = {'documents': []}
         invoices_data_peppol = {}
         for invoice, invoice_data in invoices_data.items():
-            if invoice_data.get('send_peppol'):
+            if invoice_data.get('send_peppol') and invoice.peppol_move_state not in ('processing', 'done'):
                 if invoice_data.get('ubl_cii_xml_attachment_values'):
                     xml_file = invoice_data['ubl_cii_xml_attachment_values']['raw']
                     filename = invoice_data['ubl_cii_xml_attachment_values']['name']
-                elif invoice.ubl_cii_xml_id and invoice.peppol_move_state not in ('processing', 'canceled', 'done'):
+                elif invoice.ubl_cii_xml_id and invoice.peppol_move_state != 'canceled':
                     xml_file = invoice.ubl_cii_xml_id.raw
                     filename = invoice.ubl_cii_xml_id.name
                 else:
@@ -241,10 +241,17 @@ class AccountMoveSend(models.TransientModel):
                         for attachment in attachments_linked
                     ] + base_attachments
 
-                    invoice.with_context(no_new_invoice=True).message_post(
+                    new_message = invoice.with_context(no_new_invoice=True).message_post(
                         body=attachments_linked_message,
                         attachments=attachments_embedded,
                     )
+
+                    if new_message.attachment_ids.ids:
+                        self.env.cr.execute("UPDATE ir_attachment SET res_id = NULL WHERE id IN %s", [tuple(new_message.attachment_ids.ids)])
+                    new_message.attachment_ids.write({
+                        'res_model': new_message._name,
+                        'res_id': new_message.id,
+                    })
 
         if self._can_commit():
             self._cr.commit()
