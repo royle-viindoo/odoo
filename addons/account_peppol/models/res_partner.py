@@ -303,13 +303,13 @@ class ResPartner(models.Model):
             if not service_href:
                 return True
 
-            access_point_contact = True
+            access_point_description = True
             with contextlib.suppress(requests.exceptions.RequestException, etree.XMLSyntaxError):
                 response = requests.get(service_href, timeout=TIMEOUT)
                 if response.status_code == 200:
                     access_point_info = etree.fromstring(response.content)
-                    access_point_contact = access_point_info.findtext('.//{*}TechnicalContactUrl') or access_point_info.findtext('.//{*}TechnicalInformationUrl')
-            return access_point_contact
+                    access_point_description = access_point_info.findtext('.//{*}ServiceDescription')
+            return access_point_description
 
         return self._check_document_type_support(participant_info, ubl_cii_format)
 
@@ -432,7 +432,10 @@ class ResPartner(models.Model):
     @api.depends(lambda self: self._peppol_eas_endpoint_depends() + ['peppol_eas'])
     def _compute_peppol_endpoint(self):
         """ If the EAS changes and a valid endpoint is available, set it. Otherwise, keep the existing value."""
+        partners_not_to_recompute = self._get_partners_to_skip_peppol_computation()
         for partner in self:
+            if partner._origin in partners_not_to_recompute:
+                continue
             partner.peppol_endpoint = partner.peppol_endpoint
             country_code = partner._deduce_country_code()
             if country_code in EAS_MAPPING:
@@ -447,7 +450,10 @@ class ResPartner(models.Model):
         If the country_code changes, recompute the EAS only if there is a country_code, it exists in the
         EAS_MAPPING, and the current EAS is not consistent with the new country_code.
         """
+        partners_not_to_recompute = self._get_partners_to_skip_peppol_computation()
         for partner in self:
+            if partner._origin in partners_not_to_recompute:
+                continue
             partner.peppol_eas = partner.peppol_eas
             country_code = partner._deduce_country_code()
             if country_code in EAS_MAPPING:
@@ -498,3 +504,8 @@ class ResPartner(models.Model):
                     self.peppol_endpoint = inverse_endpoint
                     self.account_peppol_is_endpoint_valid = True
         return False
+
+    def _get_partners_to_skip_peppol_computation(self):
+        return self.env['res.company'].search([
+            ('account_peppol_proxy_state', 'in', ['pending', 'active']),
+        ]).mapped('partner_id')
