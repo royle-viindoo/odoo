@@ -134,6 +134,12 @@ BROWSER_WAIT = CHECK_BROWSER_SLEEP * CHECK_BROWSER_ITERATIONS # seconds
 DEFAULT_SUCCESS_SIGNAL = 'test successful'
 TEST_CURSOR_COOKIE_NAME = 'test_request_key'
 
+IGNORED_MSGS = re.compile(r"""
+    failed\ to\ fetch  # base error
+  | connectionlosterror:  # conversion by offlineFailToFetchErrorHandler
+  | assetsloadingerror: # lazy loaded bundle
+""", flags=re.VERBOSE | re.IGNORECASE).search
+
 def get_db_name():
     db = odoo.tools.config['db_name']
     # If the database name is not provided on the command-line,
@@ -1020,7 +1026,7 @@ class TransactionCase(BaseCase):
         cls.startClassPatcher(cls._signal_changes_patcher)
 
         cls.attrs_before = {
-            model: {
+            model._name: {
                 *vars(model),
                 # __annotations__ pops up during testing on *some* models
                 '__annotations__',
@@ -1115,7 +1121,7 @@ class TransactionCase(BaseCase):
         }
         with self._outcome.testPartExecutor(self, isTest=False):
             # need defaults for custom models created during the test
-            default_attrs = self.attrs_before[self.registry['base']] | {'_rec_name', '_active_name'}
+            default_attrs = self.attrs_before['base'] | {'_rec_name', '_active_name'}
             # TODO: maybe retrieve all abstractmodels and either create a big
             #       set of mixin attributes to always remove or have a mapping
             #       of mixin: attributes to remove on a per-model basis?
@@ -1130,7 +1136,7 @@ class TransactionCase(BaseCase):
                     # registry in place, adding fields on leaf classes
                     if not (f.startswith('x_') and f in model._fields)
                     if (model, f) not in modelClassPatches
-                }.difference(self.attrs_before.get(model, default_attrs))
+                }.difference(self.attrs_before.get(model._name, default_attrs))
                 if extras:
                     sets = "\n\n".join(
                         f"======== {k} ========\n{v}:\n{tb}\n"
@@ -1670,7 +1676,7 @@ class ChromeBrowser:
 
         log_type = type
         _logger = self._logger.getChild('browser')
-        if self._result.done() and 'failed to fetch' in message.casefold():
+        if self._result.done() and IGNORED_MSGS(message):
             log_type = 'dir'
         _logger.log(
             self._TO_LEVEL.get(log_type, logging.INFO),
@@ -1750,7 +1756,7 @@ which leads to stray network requests and inconsistencies."""
             message += '\n' + stack
 
         if self._result.done():
-            if 'failed to fetch' not in message.casefold():
+            if not IGNORED_MSGS(message):
                 self._logger.getChild('browser').error(
                     "Exception received after termination: %s", message)
             return
@@ -2199,6 +2205,9 @@ class HttpCase(TransactionCase):
 
         start_time = time.time()
         request_threads = get_http_request_threads()
+        if not request_threads:
+            return
+
         self._logger.info('waiting for threads: %s', request_threads)
 
         for thread in request_threads:
