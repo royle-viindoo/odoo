@@ -163,6 +163,7 @@ class TestPoSSale(TestPointOfSaleHttpCommon):
         self.assertEqual(sale_order.order_line[1].qty_delivered, 0)
 
         self.main_pos_config.open_ui()
+        self.main_pos_config.current_session_id.update_stock_at_closing = True
         self.start_pos_tour('PosSettleOrder2', login="accountman")
 
         sale_order = self.env['sale.order'].browse(sale_order.id)
@@ -1637,25 +1638,34 @@ class TestPoSSale(TestPointOfSaleHttpCommon):
             'location_id': self.warehouse.lot_stock_id.id,
         })
 
+        lot_1001, lot_1002 = self.env['stock.lot'].create([{
+                'name': '1001',
+                'product_id': self.product.id,
+                'location_id': self.shelf_1.id,
+            },
+            {
+                'name': '1002',
+                'product_id': self.product.id,
+                'location_id': self.shelf_2.id,
+            },
+            ])
         quants = self.env['stock.quant'].with_context(inventory_mode=True).create({
             'product_id': self.product.id,
             'inventory_quantity': 1,
             'location_id': self.shelf_1.id,
-            'lot_id': self.env['stock.lot'].create({
-                'name': '1001',
-                'product_id': self.product.id,
-                'location_id': self.shelf_1.id,
-            }).id,
+            'lot_id': lot_1001.id,
         })
         quants |= self.env['stock.quant'].with_context(inventory_mode=True).create({
             'product_id': self.product.id,
             'inventory_quantity': 2,
             'location_id': self.shelf_2.id,
-            'lot_id': self.env['stock.lot'].create({
-                'name': '1002',
-                'product_id': self.product.id,
-                'location_id': self.shelf_2.id,
-            }).id,
+            'lot_id': lot_1002.id
+        })
+        quants |= self.env['stock.quant'].with_context(inventory_mode=True).create({
+            'product_id': self.product.id,
+            'inventory_quantity': 3,
+            'location_id': self.shelf_2.id,
+            'lot_id': lot_1001.id,
         })
         quants.action_apply_inventory()
 
@@ -1666,7 +1676,7 @@ class TestPoSSale(TestPointOfSaleHttpCommon):
             'order_line': [Command.create({
                 'product_id': self.product.id,
                 'name': self.product.name,
-                'product_uom_qty': 3,
+                'product_uom_qty': 6,
                 'price_unit': self.product.lst_price,
             })],
         })
@@ -1677,12 +1687,13 @@ class TestPoSSale(TestPointOfSaleHttpCommon):
         self.start_tour("/pos/ui?config_id=%d" % self.main_pos_config.id, 'test_multiple_lots_sale_order_3', login="accountman")
         self.main_pos_config.current_session_id.action_pos_session_close()
         picking = sale_order.pos_order_line_ids.order_id.picking_ids
-        self.assertEqual(picking.move_ids.quantity, 3)
-        self.assertEqual(len(picking.move_ids.move_line_ids), 2)
-        self.assertEqual(picking.move_ids.move_line_ids[0].lot_id.name, '1001')
-        self.assertEqual(picking.move_ids.move_line_ids[0].quantity, 1)
-        self.assertEqual(picking.move_ids.move_line_ids[1].lot_id.name, '1002')
-        self.assertEqual(picking.move_ids.move_line_ids[1].quantity, 2)
+        self.assertEqual(picking.move_ids.quantity, 6)
+        self.assertEqual(len(picking.move_ids.move_line_ids), 3)
+        self.assertRecordValues(picking.move_ids.move_line_ids, [
+            {'lot_id': lot_1001.id, 'quantity': 3, 'location_id': self.shelf_2.id},
+            {'lot_id': lot_1001.id, 'quantity': 1, 'location_id': self.shelf_1.id},
+            {'lot_id': lot_1002.id, 'quantity': 2, 'location_id': self.shelf_2.id},
+        ])
 
     def test_selected_partner_quotation_loading(self):
         """
