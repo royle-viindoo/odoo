@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
+
 from lxml import etree
 from unittest import SkipTest
 from unittest.mock import patch
@@ -784,6 +785,18 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
         """
         Test the group/ungroup lines action on account.move
         """
+
+        def create_bill(file_path):
+            file_path = f"{self.test_module}/tests/test_files/{file_path}"
+            with file_open(file_path, 'rb') as file:
+                xml_attachment = self.env['ir.attachment'].create({
+                    'mimetype': 'application/xml',
+                    'name': 'bis3_bill_group_by_tax.xml',
+                    'raw': file.read(),
+                })
+            return self.import_attachment(xml_attachment)
+
+        # Datas
         self.env.ref('base.EUR').active = True
         tax_16 = self.env["account.tax"].create({
             'name': '16 %',
@@ -798,19 +811,7 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
             'amount': 21.0,
         })
 
-        file_path = "bis3_bill_group_by_tax.xml"
-        file_path = f"{self.test_module}/tests/test_files/{file_path}"
-        with file_open(file_path, 'rb') as file:
-            xml_attachment = self.env['ir.attachment'].create({
-                'mimetype': 'application/xml',
-                'name': 'bis3_bill_group_by_tax.xml',
-                'raw': file.read(),
-            })
-        bill = self.import_attachment(xml_attachment)
-
-        # Should group lines by tax
-        bill.action_group_ungroup_lines_by_tax()
-        self.assertRecordValues(bill.invoice_line_ids, [
+        lines_grouped = [
             {
                 'quantity': 1.0,
                 'price_unit': 600.0,
@@ -825,16 +826,31 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
                 'price_total': 1573.00,
                 'tax_ids': tax_21.ids,
             },
-        ])
-        self.assertRecordValues(bill, [{
+        ]
+        total_values = [{
             'amount_untaxed': 1900.0,
             'amount_tax': 369,
             'amount_total': 2269.00,
-        }])
+        }]
+
+        # Import bill
+        file_path = "bis3_bill_group_by_tax.xml"
+        bill = create_bill(file_path)
+
+        # Group lines by tax and post
+        bill.action_group_ungroup_lines_by_tax()
+        self.assertRecordValues(bill.invoice_line_ids, lines_grouped)
+        self.assertRecordValues(bill, total_values)
+        bill.action_post()
+
+        # Import the bill a second time, should be grouped as last posted bill from this supplier is grouped
+        bill_2 = create_bill(file_path)
+        self.assertRecordValues(bill_2.invoice_line_ids, lines_grouped)
+        self.assertRecordValues(bill_2, total_values)
 
         # Should ungroup lines from xml
-        bill.action_group_ungroup_lines_by_tax()
-        self.assertRecordValues(bill.invoice_line_ids, [
+        bill_2.action_group_ungroup_lines_by_tax()
+        self.assertRecordValues(bill_2.invoice_line_ids, [
             {
                 'quantity': 1.0,
                 'price_unit': 600.0,
@@ -857,11 +873,7 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
                 'tax_ids': tax_21.ids,
             },
         ])
-        self.assertRecordValues(bill, [{
-            'amount_untaxed': 1900.0,
-            'amount_tax': 369,
-            'amount_total': 2269.00,
-        }])
+        self.assertRecordValues(bill_2, total_values)
 
     def test_ubl_split_fixed_taxes_into_allowance_charges_or_extra_invoice_lines(self):
         """Test that fixed taxes are split correctly:
@@ -961,3 +973,61 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
         partner_bank.active = True
         self.env['account.edi.common']._import_retrieve_and_fill_partner_bank_details(invoice, [acc_number])
         self.assertEqual(invoice.partner_bank_id, partner_bank)
+
+    def test_payment_terms_immediate_in_cii_xml(self):
+        self.partner_a.ubl_cii_format = 'facturx'
+        invoice = self._create_invoice_one_line(
+            product_id=self.product_a,
+            partner_id=self.partner_a,
+            invoice_date="2025-12-01",
+            post=True,
+        )
+
+        xml_tree = etree.fromstring(self.env['account.edi.xml.cii']._export_invoice(invoice)[0])
+        description = xml_tree.find('.//ram:SpecifiedTradePaymentTerms/ram:Description', self.namespaces)
+        due_date = xml_tree.find('.//ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString',
+                                 self.namespaces)
+        self.assertEqual(description.text, 'Immediate Payment')
+        self.assertEqual(due_date.text, '20251201')
+
+    def test_payment_terms_early_payment_discount_in_cii_xml(self):
+        pay_terms = self.env['account.payment.term'].create({
+            'name': '3% Before 15 Days',
+            'note': 'Payment terms: 3% Before 15 Days',
+            'early_discount': True,
+            'discount_days': 15,
+            'discount_percentage': 3.0,
+            'early_pay_discount_computation': 'mixed',
+            'line_ids': [Command.create({
+                'value': 'percent',
+                'value_amount': 100.0,
+                'nb_days': 30,
+            })],
+        })
+        partner = self.partner_a
+        partner.ubl_cii_format = 'facturx'
+        partner.property_payment_term_id = pay_terms.id
+        partner.property_supplier_payment_term_id = pay_terms.id
+
+        invoice = self._create_invoice_one_line(
+            product_id=self.product_a,
+            partner_id=self.partner_a,
+            invoice_date="2025-12-01",
+            post=True,
+        )
+
+        xml_tree = etree.fromstring(self.env['account.edi.xml.cii']._export_invoice(invoice)[0])
+        description = xml_tree.find('.//ram:SpecifiedTradePaymentTerms/ram:Description', self.namespaces)
+        due_date = xml_tree.find('.//ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString',
+                                 self.namespaces)
+        days = xml_tree.find(
+            './/ram:SpecifiedTradePaymentTerms/ram:ApplicableTradePaymentDiscountTerms/ram:BasisPeriodMeasure',
+            self.namespaces)
+        percent = xml_tree.find(
+            './/ram:SpecifiedTradePaymentTerms/ram:ApplicableTradePaymentDiscountTerms/ram:CalculationPercent',
+            self.namespaces)
+
+        self.assertEqual(description.text, '3% Before 15 Days')
+        self.assertEqual(due_date.text, '20251231')
+        self.assertEqual(days.text, '15')
+        self.assertEqual(percent.text, '3.0')
