@@ -32,7 +32,7 @@ UOM_TO_UNECE_CODE = {
     'uom.product_uom_foot': 'FOT',
     'uom.product_uom_mile': 'SMI',
     'uom.product_uom_floz': 'OZA',
-    'uom.product_uom_qt': 'QT',
+    'uom.product_uom_qt': 'QTL',
     'uom.product_uom_gal': 'GLL',
     'uom.product_uom_cubic_inch': 'INQ',
     'uom.product_uom_cubic_foot': 'FTQ',
@@ -204,8 +204,7 @@ class AccountEdiCommon(models.AbstractModel):
 
     def _get_uom_unece_code(self, uom):
         """
-        list of codes: https://docs.peppol.eu/poacc/billing/3.0/codelist/UNECERec20/
-        or https://unece.org/fileadmin/DAM/cefact/recommendations/bkup_htm/add2c.htm (sorted by letter)
+        list of codes: https://docs.peppol.eu/poacc/billing/3.0/codelist/UNECERec20/ (sorted by letter)
         """
         xmlid = uom.get_external_id()
         if xmlid and uom.id in xmlid:
@@ -446,6 +445,9 @@ class AccountEdiCommon(models.AbstractModel):
         with invoice._get_edi_creation() as invoice:
             self._correct_invoice_tax_amount(tree, invoice)
 
+        # Set XML as ubl_cii_xml_file (XML used to import)
+        file_data['attachment'].res_field = 'ubl_cii_xml_file'
+
         attachments = self._import_attachments(invoice, tree)
         if attachments:
             invoice.with_context(no_new_invoice=True).message_post(attachment_ids=attachments.ids)
@@ -455,6 +457,9 @@ class AccountEdiCommon(models.AbstractModel):
     def _import_attachments(self, invoice, tree):
         # Import the embedded documents in the xml if some are found
         attachments = self.env['ir.attachment']
+        if invoice.message_main_attachment_id:
+            # Invoice look like it was already imported, don't import attachments again
+            return attachments
         additional_docs = tree.findall('./{*}AdditionalDocumentReference')
         for document in additional_docs:
             attachment_name = document.find('{*}ID')
