@@ -2080,7 +2080,7 @@ msgstr "Biểu thức báo cáo kế toán"
 #. module: account
 #: model:ir.model,name:account.model_account_report_external_value
 msgid "Accounting Report External Value"
-msgstr "Báo cáo kế toán Giá trị bên ngoài"
+msgstr "Giá trị bên ngoài cho Báo cáo kế toán"
 
 #. module: account
 #: model:ir.model,name:account.model_account_report_line
@@ -14727,7 +14727,7 @@ msgstr ""
 #. module: account
 #: model:ir.model.fields,help:account.field_account_report_external_value__foreign_vat_fiscal_position_id
 msgid "The foreign fiscal position for which this external value is made."
-msgstr "Vị thế tài chính nước ngoài mà giá trị bên ngoài này được tạo ra."
+msgstr "Vị thế tài chính (fiscal position) nước ngoài mà giá trị nhập ngoài này áp dụng."
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_hash_integrity
