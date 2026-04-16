@@ -1683,7 +1683,7 @@ msgid ""
 "A journal entry consists of several journal items, each of\n"
 "                which is either a debit or a credit transaction."
 msgstr ""
-"Một bút toán chứa một số hạng mục bút toán, mỗi hạng mục\n"
+"Một bút toán chứa một số phát sinh kế toán, mỗi hạng mục\n"
 "                có thể là một giao dịch phát sinh nợ hoặc phát sinh có."
 
 #. module: account
@@ -3208,7 +3208,7 @@ msgstr ""
 msgid ""
 "Any journal item on a payable account must have a due date and vice versa."
 msgstr ""
-"Bất kỳ hạng mục bút toán nào trên khoản phải trả đều phải có ngày đến hạn "
+"Bất kỳ phát sinh kế toán nào trên khoản phải trả đều phải có ngày đến hạn "
 "thanh toán và ngược lại."
 
 #. module: account
@@ -3217,7 +3217,7 @@ msgstr ""
 msgid ""
 "Any journal item on a receivable account must have a due date and vice versa."
 msgstr ""
-"Bất kỳ hạng mục bút toán nào trên khoản phải thu đều phải có ngày đến hạn "
+"Bất kỳ phát sinh kế toán nào trên khoản phải thu đều phải có ngày đến hạn "
 "thanh toán và ngược lại."
 
 #. module: account
@@ -4609,7 +4609,7 @@ msgid ""
 "journal items."
 msgstr ""
 "Chọn ô này nếu tài khoản này cho phép đối chiếu các hoá đơn và khoản thanh "
-"toán với hạng mục bút toán."
+"toán với phát sinh kế toán."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_journal__refund_sequence
@@ -5611,7 +5611,7 @@ msgstr "Thẻ"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__matched_credit_ids
 msgid "Credit journal items that are matched with this journal item."
-msgstr "Bút toán ghi có có khớp với hạng mục bút toán này."
+msgstr "Bút toán ghi có có khớp với phát sinh kế toán này."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_res_partner__credit_limit
@@ -5699,12 +5699,12 @@ msgstr "Tiền tệ phải luôn được cung cấp để tạo mã QR"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_partial_reconcile__credit_currency_id
 msgid "Currency of the credit journal item."
-msgstr "Tiền tệ của hạng mục bút toán ghi có."
+msgstr "Tiền tệ của phát sinh kế toán ghi có."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_partial_reconcile__debit_currency_id
 msgid "Currency of the debit journal item."
-msgstr "Tiền tệ của hạng mục bút toán ghi nợ."
+msgstr "Tiền tệ của phát sinh kế toán ghi nợ."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement_line__invoice_currency_rate
@@ -6077,7 +6077,7 @@ msgstr "Bút toán ghi nợ"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__matched_debit_ids
 msgid "Debit journal items that are matched with this journal item."
-msgstr "Hạng mục bút toán ghi nợ khớp với hạng mục bút toán này."
+msgstr "Phát sinh kế toán ghi nợ khớp với phát sinh kế toán này."
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__res_company__fiscalyear_last_month__12
@@ -7840,7 +7840,7 @@ msgid ""
 "Forces all journal items in this account to have a specific currency (i.e. "
 "bank journals). If no currency is set, entries can use any currency."
 msgstr ""
-"Buộc tất cả hạng mục bút toán trong tài khoản này phải có một loại tiền tệ "
+"Buộc tất cả phát sinh kế toán trong tài khoản này phải có một loại tiền tệ "
 "cụ thể (ví dụ: sổ nhật ký ngân hàng). Nếu không có loại tiền tệ nào được cài "
 "đặt, các bút toán có thể sử dụng bất kỳ loại tiền tệ nào."
 
@@ -8444,7 +8444,7 @@ msgid ""
 "If activated, user-defined filters on journal items can be selected on this "
 "report"
 msgstr ""
-"Nếu được kích hoạt, những bộ lọc người dùng tạo trên các hạng mục bút toán "
+"Nếu được kích hoạt, những bộ lọc người dùng tạo trên các phát sinh kế toán "
 "có thể được chọn trên báo cáo này"
 
 #. module: account
@@ -8681,7 +8681,7 @@ msgstr "Nhập mẫu hệ thống tài khoản"
 #. odoo-python
 #: code:addons/account/models/account_move_line.py:0
 msgid "Import Template for Journal Items"
-msgstr "Nhập mẫu hạng mục bút toán"
+msgstr "Nhập mẫu phát sinh kế toán"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__module_account_bank_statement_import_csv
@@ -8875,7 +8875,7 @@ msgstr ""
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__tax_line_id
 msgid "Indicates that this journal item is a tax line"
-msgstr "Cho biết hạng mục bút toán này là một dòng thuế"
+msgstr "Cho biết phát sinh kế toán này là một dòng thuế"
 
 #. module: account
 #. odoo-javascript
@@ -9755,25 +9755,25 @@ msgstr "Phát sinh KT"
 #. odoo-python
 #: code:addons/account/models/account_move_line.py:0
 msgid "Journal Item %s created"
-msgstr "Hạng mục bút toán %s đã được tạo"
+msgstr "Phát sinh kế toán %s đã được tạo"
 
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_move_line.py:0
 msgid "Journal Item %s deleted"
-msgstr "Hạng mục bút toán %s đã bị xoá"
+msgstr "Phát sinh kế toán %s đã bị xoá"
 
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_move_line.py:0
 msgid "Journal Item %s updated"
-msgstr "Hạng mục bút toán %s đã được cập nhật"
+msgstr "Phát sinh kế toán %s đã được cập nhật"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_register__writeoff_label
 #: model:ir.model.fields,field_description:account.field_account_reconcile_model_line__label
 msgid "Journal Item Label"
-msgstr "Nhãn hạng mục bút toán"
+msgstr "Nhãn phát sinh kế toán"
 
 #. module: account
 #. odoo-python
@@ -9819,7 +9819,7 @@ msgstr "Phát sinh KT"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 msgid "Journal items where matching number isn't set"
-msgstr "Hạng mục bút toán không có số đối chiếu"
+msgstr "Phát sinh kế toán không có số đối chiếu"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
@@ -10562,7 +10562,7 @@ msgstr "Khoản nợ đã khớp"
 #: model:ir.model.fields,field_description:account.field_account_full_reconcile__reconciled_line_ids
 #: model_terms:ir.ui.view,arch_db:account.view_full_reconcile_form
 msgid "Matched Journal Items"
-msgstr "Hạng mục bút toán đã khớp"
+msgstr "Phát sinh kế toán đã khớp"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__matched_payment_ids
@@ -12647,7 +12647,7 @@ msgstr "Bút toán đã vào sổ"
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_payment_filter
 msgid "Posted Journal Items"
-msgstr "Hạng mục bút toán đã vào sổ"
+msgstr "Phát sinh kế toán đã vào sổ"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_tax_group__preceding_subtotal
@@ -13874,7 +13874,7 @@ msgstr "Tìm kiếm hóa đơn"
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_payment_filter
 msgid "Search Journal Items"
-msgstr "Tìm kiếm hạng mục bút toán"
+msgstr "Tìm kiếm phát sinh kế toán"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_reconcile_model__past_months_limit
@@ -14864,7 +14864,7 @@ msgstr ""
 msgid ""
 "Tags to be set on the base and tax journal items created for this product."
 msgstr ""
-"Thẻ được thiết lập trên các hạng mục bút toán thuế và cơ sở được tạo cho sản "
+"Thẻ được thiết lập trên các phát sinh kế toán thuế và cơ sở được tạo cho sản "
 "phẩm này."
 
 #. module: account
@@ -15202,7 +15202,7 @@ msgid ""
 "item if they share some tag."
 msgstr ""
 "Không thể trộn lẫn các khoản thuế có hiệu lực trong thanh toán và hóa đơn "
-"trên cùng một hạng mục bút toán nếu chúng có chung thẻ."
+"trên cùng một phát sinh kế toán nếu chúng có chung thẻ."
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company__display_invoice_tax_company_currency
@@ -16038,7 +16038,7 @@ msgstr "Sổ để tải hóa đơn lên chưađược chỉ định. "
 #: code:addons/account/models/account_analytic_line.py:0
 msgid "The journal item is not linked to the correct financial account"
 msgstr ""
-"Hạng mục bút toán này không được liên kết với tài khoản tài chính chính xác"
+"Phát sinh kế toán này không được liên kết với tài khoản tài chính chính xác"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_financial_year_op__fiscalyear_last_day
@@ -16146,7 +16146,7 @@ msgstr "Số tiền thanh toán không thể là số âm."
 #: model:ir.model.fields,help:account.field_account_bank_statement_line__payment_reference
 #: model:ir.model.fields,help:account.field_account_move__payment_reference
 msgid "The payment reference to set on journal items."
-msgstr "Thông tin thanh toán hiển thị trên hạng mục bút toán."
+msgstr "Thông tin thanh toán hiển thị trên phát sinh kế toán."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__payment_id
@@ -16307,7 +16307,7 @@ msgid ""
 "The residual amount on a journal item expressed in its currency (possibly "
 "not the company currency)."
 msgstr ""
-"Số tiền còn lại trên hạng mục bút toán được biểu thị bằng loại tiền tệ của "
+"Số tiền còn lại trên phát sinh kế toán được biểu thị bằng loại tiền tệ của "
 "nó (có thể không phải là tiền tệ của công ty)."
 
 #. module: account
@@ -16315,7 +16315,7 @@ msgstr ""
 msgid ""
 "The residual amount on a journal item expressed in the company currency."
 msgstr ""
-"Số tiền còn lại trên hạng mục bút toán được biểu thị bằng loại tiền tệ của "
+"Số tiền còn lại trên phát sinh kế toán được biểu thị bằng loại tiền tệ của "
 "công ty."
 
 #. module: account
@@ -16576,7 +16576,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/account/wizard/account_validate_account_move.py:0
 msgid "There are no journal items in the draft state to post."
-msgstr "Không có hạng mục bút toán nào ở trạng thái nháp để vào sổ."
+msgstr "Không có phát sinh kế toán nào ở trạng thái nháp để vào sổ."
 
 #. module: account
 #. odoo-python
@@ -16775,7 +16775,7 @@ msgstr "Chỉ có thể sử dụng trên tài khoản."
 #. odoo-python
 #: code:addons/account/wizard/account_automatic_entry_wizard.py:0
 msgid "This can only be used on journal items"
-msgstr "Chỉ có thể sử dụng cho hạng mục bút toán"
+msgstr "Chỉ có thể sử dụng cho phát sinh kế toán"
 
 #. module: account
 #. odoo-python
@@ -17040,7 +17040,7 @@ msgid ""
 "Those can be used to quickly create a journal items when reconciling\n"
 "                a bank statement or an account."
 msgstr ""
-"Tính năng này được dùng để tạo nhanh các hạng mục bút toán khi đối chiếu\n"
+"Tính năng này được dùng để tạo nhanh các phát sinh kế toán khi đối chiếu\n"
 "                một sao kê ngân hàng hoặc một tài khoản."
 
 #. module: account
@@ -17376,7 +17376,7 @@ msgstr "Ngày luân chuyển"
 #. module: account
 #: model:ir.actions.act_window,name:account.account_automatic_entry_wizard_action
 msgid "Transfer Journal Items"
-msgstr "Chuyển hạng mục bút toán"
+msgstr "Chuyển phát sinh kế toán"
 
 #. module: account
 #. odoo-python
@@ -17581,7 +17581,7 @@ msgstr "Bút toán chưa vào sổ"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_move_line_filter
 msgid "Unposted Journal Items"
-msgstr "Hạng mục bút toán chưa vào sổ"
+msgstr "Phát sinh kế toán chưa vào sổ"
 
 #. module: account
 #. odoo-javascript
@@ -18423,7 +18423,7 @@ msgstr ""
 #: code:addons/account/wizard/account_automatic_entry_wizard.py:0
 msgid "You can only change the period/account for posted journal items."
 msgstr ""
-"Bạn chỉ được phép thay đổi kỳ/tài khoản đối với các hạng mục bút toán đã vào "
+"Bạn chỉ được phép thay đổi kỳ/tài khoản đối với các phát sinh kế toán đã vào "
 "sổ."
 
 #. module: account
@@ -18497,7 +18497,7 @@ msgid ""
 "You can't change the company of your tax since there are some journal items "
 "linked to it."
 msgstr ""
-"Bạn không thể thay đổi công ty của thuế vì có một số hạng mục bút toán được "
+"Bạn không thể thay đổi công ty của thuế vì có một số phát sinh kế toán được "
 "liên kết với nó."
 
 #. module: account
@@ -18546,8 +18546,8 @@ msgid ""
 "You can't delete a posted journal item. Don’t play games with your "
 "accounting records; reset the journal entry to draft before deleting it."
 msgstr ""
-"Bạn không thể xóa một hạng mục bút toán đã ghi sổ. Hãy cẩn thận với hồ sơ kế "
-"toán; đặt lại hạng mục bút toán thành nháp trước khi xóa nó."
+"Bạn không thể xóa một phát sinh kế toán đã ghi sổ. Hãy cẩn thận với hồ sơ kế "
+"toán; đặt lại phát sinh kế toán thành nháp trước khi xóa nó."
 
 #. module: account
 #. odoo-python
@@ -18665,7 +18665,7 @@ msgid ""
 "You cannot change the currency of the company since some journal items "
 "already exist"
 msgstr ""
-"Bạn không thể thay đổi tiền tệ của công ty vì một số hạng mục bút toán đã "
+"Bạn không thể thay đổi tiền tệ của công ty vì một số phát sinh kế toán đã "
 "tồn tại"
 
 #. module: account
@@ -18917,7 +18917,7 @@ msgid ""
 "You cannot modify the taxes related to a posted journal item, you should "
 "reset the journal entry to draft to do so."
 msgstr ""
-"Bạn không thể sửa đổi các loại thuế liên quan đến một hạng mục bút toán đã "
+"Bạn không thể sửa đổi các loại thuế liên quan đến một phát sinh kế toán đã "
 "vào sổ, bạn nên cài lại bút toán về nháp rồi chỉnh sửa."
 
 #. module: account
@@ -18926,7 +18926,7 @@ msgstr ""
 msgid ""
 "You cannot perform this action on an account that contains journal items."
 msgstr ""
-"Bạn không thể thực hiện thao tác này trên một tài khoản có hạng mục bút toán."
+"Bạn không thể thực hiện thao tác này trên một tài khoản có phát sinh kế toán."
 
 #. module: account
 #. odoo-python

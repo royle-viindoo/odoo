@@ -388,7 +388,7 @@ msgstr "<span class=\"o_stat_text\">Máy tính tiền</span>"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_session_form
 msgid "<span class=\"o_stat_text\">Journal Items</span>"
-msgstr "<span class=\"o_stat_text\">Hạng mục bút toán</span>"
+msgstr "<span class=\"o_stat_text\">Phát sinh kế toán</span>"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
