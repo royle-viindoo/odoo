@@ -1411,10 +1411,18 @@ class MailThread(models.AbstractModel):
         if strip_attachments:
             msg_dict.pop('attachments', None)
 
-        existing_msg_ids = self.env['mail.message'].search([('message_id', '=', msg_dict['message_id'])], limit=1)
-        if existing_msg_ids:
+        msg_id = msg_dict.get('message_id')
+        is_duplicate = bool(self.env['mail.message'].search_count([('message_id', '=', msg_id)], limit=1))
+        if not is_duplicate and msg_id:
+            # Synchronize concurrent transactions for the same message_id to make the duplicate check reliable.
+            # Use pg_try_advisory_xact_lock: if another transaction is already processing the same message_id,
+            # treat it as a duplicate.
+            self.env.cr.execute(SQL('SELECT pg_try_advisory_xact_lock(hashtext(%s))', msg_id))
+            is_duplicate = not self.env.cr.fetchone()[0]
+
+        if is_duplicate:
             _logger.info('Ignored mail from %s to %s with Message-Id %s: found duplicated Message-Id during processing',
-                         msg_dict.get('email_from'), msg_dict.get('to'), msg_dict.get('message_id'))
+                         msg_dict.get('email_from'), msg_dict.get('to'), msg_id)
             return False
 
         if self._detect_loop_headers(msg_dict):
@@ -2070,10 +2078,15 @@ class MailThread(models.AbstractModel):
                     self.env.user.partner_id == p,           # prioritize user
                     p.company_id in records[company_fname],  # then partner associated w/ records
                     not p.company_id,                        # else pick partner w/out company_id
+                    -p.id,                                   # finally use a deterministic id ASC tie-breaker
                 )
         else:
             def sort_key(p):
-                return (self.env.user.partner_id == p, not p.company_id)
+                return (
+                    self.env.user.partner_id == p,          # prioritize user
+                    not p.company_id,                       # else pick partner w/out company_id
+                    -p.id,                                  # finally use a deterministic id ASC tie-breaker
+                )
 
         done_partners.sort(key=sort_key, reverse=True)  # reverse because False < True
 

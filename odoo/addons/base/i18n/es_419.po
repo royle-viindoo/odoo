@@ -9,14 +9,14 @@
 # Patricia Gutiérrez Capetillo <pagc@odoo.com>, 2025
 # Fernanda Alvarez, 2025
 # "Fernanda Alvarez (mfar)" <mfar@odoo.com>, 2025, 2026.
-# "Patricia Gutiérrez (pagc)" <pagc@odoo.com>, 2025.
+# "Patricia Gutiérrez (pagc)" <pagc@odoo.com>, 2025, 2026.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-16 16:38+0000\n"
-"PO-Revision-Date: 2026-03-05 18:14+0000\n"
+"PO-Revision-Date: 2026-05-09 09:07+0000\n"
 "Last-Translator: \"Fernanda Alvarez (mfar)\" <mfar@odoo.com>\n"
 "Language-Team: Spanish (Latin America) <https://translate.odoo.com/projects/"
 "odoo-18/base/es_419/>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n != 0 && n % 1000000 == "
 "0) ? 1 : 2);\n"
-"X-Generator: Weblate 5.16.1\n"
+"X-Generator: Weblate 5.17\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_at_reports
@@ -8433,31 +8433,31 @@ msgid ""
 "request is accepted by setting up a type of meeting in time off Type.\n"
 msgstr ""
 "\n"
-"Gestione permisos y solicitudes de asignación\n"
+"Gestiona permisos y solicitudes de asignación\n"
 "====================================\n"
 "\n"
-"Esta aplicación controla la planificación de permisos de su empresa. Los "
+"Esta aplicación controla la planificación de permisos de tu empresa. Los "
 "empleados podrán solicitar vacaciones y sus gerentes podrán revisar estas "
-"solicitudes para aprobarlas o rechazarlas. De esta manera usted puede "
-"controlar toda la planificación de permisos de su empresa o departamento.\n"
+"solicitudes para aprobarlas o rechazarlas. De esta manera, podrás controlar "
+"toda la planificación de permisos de tu empresa o departamento.\n"
 "\n"
-"Puede configurar varios tipos de permisos (enfermedad, vacaciones, etc.) y "
+"Puedes configurar varios tipos de permisos (enfermedad, vacaciones, etc.) y "
 "distribuirlos para un empleado o departamento con rapidez mediante las "
-"solicitudes de asignación. Un empleado también puede puede solicitar más "
-"días creando una nueva asignación, esta incrementará el total de días "
-"disponibles para ese tipo de ausencia (si acepta la solicitud).\n"
+"solicitudes de asignación. Un empleado también puede solicitar más días "
+"creando una nueva asignación, lo que incrementará el total de días "
+"disponibles para ese tipo de ausencia (si se acepta la solicitud).\n"
 "\n"
-"Puede dar seguimiento a las ausencias de diferentes maneras con los "
+"Puedes dar seguimiento a las ausencias de diferentes maneras con los "
 "siguientes reportes: \n"
 "\n"
-"* Resumen de tiempo personal\n"
-"* Tiempo personal por departamento\n"
+"* Resumen de vacaciones\n"
+"* Vacaciones por departamento\n"
 "* Análisis de permisos\n"
 "\n"
 "También es posible sincronizar estos permisos con la agenda interna "
 "(Reuniones del módulo de CRM) para crear una reunión de forma automática al "
-"aceptar una solicitud de permiso si configura un tipo de reunión como tipo "
-"de tiempo personal.\n"
+"aceptar una solicitud de permiso si configuras un tipo de reunión como tipo "
+"de permiso.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mail_group
@@ -11229,7 +11229,7 @@ msgstr ""
 "Adapta el formato XML del pago para pagos ISO20022 si el número de cuenta\n"
 "es de una cuenta BBAN, Plusgiro o Bankgiro.\n"
 "Este módulo se puede instalar sin instalar la localización sueca\n"
-"para activar el uso de esas cuentas para empresas no suecas.\n"
+"para activar el uso de esas cuentas para empresas que no son suecas.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_subcontracting_purchase
@@ -12065,8 +12065,8 @@ msgid ""
 "an invoice.\n"
 msgstr ""
 "\n"
-"Este módulo agrega el número de identificación CPV "
-"(Vocabulario común de contratación pública) al producto.\n"
+"Este módulo agrega el número de identificación CPV (Vocabulario común de "
+"contratación pública) al producto.\n"
 "El formato rumano CIUS-RO exige, en algunos casos, incluir la categorización "
 "precisa de los productos vendidos en el detalle de la línea de la factura.\n"
 
@@ -12901,14 +12901,12 @@ msgid ""
 "Three layouts copied from the US check printing module, adjusted for DO\n"
 msgstr ""
 "\n"
-"Con este módulo podrás imprimir tus pagos en un papel de cheques preimpresos."
-"\n"
-"Puedes configurar el lo que se imprima "
-"(el diseño, la información en el talón y más) en los ajustes de la empresa. "
-"También puedes gestionar\n"
-"la numeración de los cheques "
-"(si usas cheques cheques preimpresos sin números) en los ajustes del diario."
-"\n"
+"Con este módulo podrás imprimir tus pagos en un papel de cheques "
+"preimpresos.\n"
+"Puedes configurar el lo que se imprima (el diseño, la información en el "
+"talón y más) en los ajustes de la empresa. También puedes gestionar\n"
+"la numeración de los cheques (si usas cheques cheques preimpresos sin "
+"números) en los ajustes del diario.\n"
 "\n"
 "Formatos compatibles\n"
 "-----------------\n"
@@ -13327,8 +13325,8 @@ msgid ""
 "Install this if you are using the Point of Sale app in Uruguay.\n"
 msgstr ""
 "\n"
-"Este módulo agrega los requisitos técnicos para las normas de Uruguay.\n"
-"Instálalo si estás usando la aplicación Punto de venta en Uruguay.\n"
+"Este módulo agrega los requisitos técnicos para las leyes de Uruguay.\n"
+"Instálalo si usas la aplicación Punto de venta en Uruguay.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_de_pos_cert
@@ -13374,11 +13372,11 @@ msgid ""
 "can be verified to make sure the code has not been tampered with.\n"
 msgstr ""
 "\n"
-"Este módulo certifica el Punto de venta ante el LNE "
-"(Laboratoire national de métrologie et d'essais),\n"
+"Este módulo certifica el Punto de venta ante el LNE (Laboratoire national de "
+"métrologie et d'essais),\n"
 "un requisito legal en algunos países de la UE. Hace cumplir algunos ajustes "
-"y otorga un checksum\n"
-"que se puede verificar para asegurar que no se falsifique el código.\n"
+"y proporciona una suma de verificación\n"
+"que puedes verificar para asegurar que nadie alteró el código.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale
@@ -14095,8 +14093,8 @@ msgstr ""
 "\n"
 "Este módulo mejora la facturación electrónica de Jordania (JoFotara) con lo "
 "siguiente:\n"
-"   1. Agrega compatibilidad con distintos tipos de factura y métodos de pago."
-"\n"
+"   1. Agrega compatibilidad con distintos tipos de factura y métodos de "
+"pago.\n"
 "   2. Introduce un modo de demostración.\n"
 
 #. module: base
@@ -17256,7 +17254,7 @@ msgstr "Extracto de la factura de la cuenta de compra"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_no_followup
 msgid "Account No Followup"
-msgstr ""
+msgstr "Cuenta sin seguimiento"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__acc_number
@@ -17604,7 +17602,7 @@ msgstr "Agregar"
 #. module: base
 #: model:ir.module.module,summary:base.module_account_no_followup
 msgid "Add \"no followup\" field to journal items."
-msgstr ""
+msgstr "Agrega el campo \"Sin seguimiento\" a los asientos contables."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_avatax
@@ -20046,7 +20044,7 @@ msgstr "Diferencia de arquitectura"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_architects
 msgid "Architecture Firm"
-msgstr "Firma de arquitectura"
+msgstr "Estudio de arquitectura"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_bank_form
@@ -21047,7 +21045,7 @@ msgstr "Reglas de automatización según los contratos de los empleados"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_automobile
 msgid "Automobile Spare Parts"
-msgstr "Piezas de recambio para automóviles"
+msgstr "Refacciones para automóviles"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__available_model_ids
@@ -22508,10 +22506,10 @@ msgid ""
 "                                the rightmost column (value) contains the "
 "translations"
 msgstr ""
-"Formato CSV: puede editarlo de forma directa con su software de hojas de "
-"cálculo favorito,\n"
-"                                la columna de más a la derecha (valor) "
-"contiene las traducciones"
+"Formato CSV: Puedes editarlo directo con tu software de hojas de cálculo "
+"favorito,\n"
+"                                la columna más a la derecha (valor) contiene "
+"las traducciones"
 
 #. module: base
 #: model:res.country,vat_label:base.ar
@@ -22544,17 +22542,17 @@ msgstr "Llamar a"
 #. module: base
 #: model:res.country,name:base.kh
 msgid "Cambodia"
-msgstr "Cambodia"
+msgstr "Camboya"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_kh
 msgid "Cambodia - Accounting"
-msgstr "Cambodia - Contabilidad"
+msgstr "Camboya - Contabilidad"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_kh_reports
 msgid "Cambodia - Accounting Reports"
-msgstr "Cambodia - Reportes contables"
+msgstr "Camboya - Reportes contables"
 
 #. module: base
 #: model:res.country,name:base.cm
@@ -23807,7 +23805,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_gr_edi
 msgid "Connect to myDATA API implementation for Greece"
-msgstr "Implementación de conexión a MyDATA API para Grecia"
+msgstr "Implementación de conexión a la API de MyDATA para Grecia"
 
 #. module: base
 #. odoo-python
@@ -23850,7 +23848,7 @@ msgstr "Prueba de conexión exitosa."
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_my_edi_pos
 msgid "Consolidated E-invoicing using MyInvois"
-msgstr "Facturación electrónica consolidada usando MyInvois"
+msgstr "Facturación electrónica consolidada con MyInvois"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_constraint__name
@@ -26269,6 +26267,12 @@ msgid ""
 "back in 19.0.\n"
 "    This module ports the feature back in 18.0"
 msgstr ""
+"Durante la revisión del reporte de seguimiento en 18.0\n"
+"    eliminamos el campo \"Sin seguimiento\" de los asientos contables, lo "
+"que impidió excluir\n"
+"    asientos contables individuales que activan un seguimiento. Este campo "
+"volvió en 19.0.\n"
+"    Este módulo restaura esta función en 18.0"
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_no_followup
@@ -26280,6 +26284,12 @@ msgid ""
 "back in 19.0.\n"
 "    This module ports the feature back in 18.0 for point of sale."
 msgstr ""
+"Durante la revisión del reporte de seguimiento en 18.0\n"
+"    eliminamos el campo \"Sin seguimiento\" de los asientos contables, lo "
+"que impidió excluir\n"
+"    asientos contables individuales que activan un seguimiento. Este campo "
+"volvió en 19.0.\n"
+"    Este módulo restaura esta función en 18.0 para Punto de venta."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_nl_reports_sbr
@@ -26321,7 +26331,7 @@ msgstr "Facturación electrónica, OIOUBL"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_tw_edi_ecpay
 msgid "E-invoicing using ECpay"
-msgstr "Facturación electrónica usando ECpay"
+msgstr "Facturación electrónica con ECpay"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_my_edi
@@ -30295,7 +30305,7 @@ msgstr "Hong Kong - Nómina y contabilidad "
 #. module: base
 #: model:ir.module.category,name:base.module_category_hospitality
 msgid "Hospitality"
-msgstr "Hospitalidad "
+msgstr "Hospitalidad"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_mail_server__smtp_host
@@ -38132,148 +38142,148 @@ msgstr ""
 "Comercio electrónico de Odoo\n"
 "---------------\n"
 "\n"
-"### Optimice sus ventas con una increíble tienda en línea.\n"
+"### Optimiza tus ventas con una increíble tienda en línea.\n"
 "\n"
-"Odoo es un <a href=\"https://www.odoo.com/app/ecommerce\">comercio "
+"Odoo es un <a href=\"https://www.odoo.com/es/app/ecommerce\">comercio "
 "electrónico de código abierto</a> \n"
-"muy distinto a cualquier otro. Obtenga un catálogo de productos\n"
+"muy distinto a cualquier otro. Obtén un increíble catálogo de productos\n"
 "y maravillosas páginas de descripción de productos.\n"
 "\n"
-"Cuenta con cientos de funciones y está integrado a su software de gestión, "
-"puede personalizarlo por\n"
+"Cuenta con cientos de funciones y está integrado a tu software de gestión, "
+"puedes personalizarlo por\n"
 "completo y es muy fácil de usar.\n"
 "\n"
-"Cree páginas de productos llamativas\n"
+"Crea páginas de productos llamativas\n"
 "----------------------------\n"
 "\n"
 "El enfoque único de *\"editor incorporado\"* y bloques de creación de Odoo "
-"hace que sea fácil\n"
-"crear páginas de productos. \"¿Quiere cambiar el precio de un producto o "
-"ponerlo\n"
-"en negritas? ¿Quiere agregar un encabezado para un producto en específico?\" "
-"solo haga clic y realice los cambios.\n"
-"Lo que ve es lo que obtiene, se lo prometemos.\n"
+"hace que \n"
+"crear páginas de productos sea fácil. \"¿Quieres cambiar el precio de un "
+"producto o ponerlo\n"
+"en negrita? ¿Quieres agregar un encabezado para un producto en específico?\" "
+"Solo haz clic y realiza los cambios.\n"
+"Lo que ves es lo que recibes, te lo prometemos.\n"
 "\n"
-"*\"Bloques de creación\"* que solo tiene que arrastrar y soltar para crear "
-"increíbles páginas de productos\n"
-"que le encantarán a sus clientes.\n"
+"Arrastra y suelta *bloques de creación* para crear increíbles páginas de "
+"productos\n"
+"que le encantarán a tus clientes.\n"
 "\n"
-"Aumente sus ganancias por orden\n"
+"Aumenta tus ganancias por orden\n"
 "-------------------------------\n"
 "\n"
-"La función de venta cruzada que ya viene incluida le ayuda a ofrecer "
+"La función de venta cruzada que ya está incluida te ayudará a ofrecer "
 "productos adicionales\n"
-"además de los que el cliente agregó a su carrito (por ejemplo, accesorios).\n"
+"relacionados con los que el cliente agregó a su carrito (por ejemplo, "
+"accesorios).\n"
 "\n"
-"El algoritmo de venta sugestiva de Odoo permite que pueda mostrarle "
-"productos a los compradores\n"
+"El algoritmo de venta adicional de Odoo te permite mostrar a los visitantes "
+"productos similares \n"
 "que son más caros que el que están viendo pero con incentivos.\n"
 "\n"
-"La función de editor incorporado le permite modificar el precio, activar una "
+"La función de editor incorporado te permite modificar el precio, activar una "
 "promoción\n"
-"o mejorar la descripción de un producto con facilidad, solo necesita un "
-"clic.\n"
+"o mejorar la descripción de un producto con facilidad, con un solo clic.\n"
 "\n"
 "Una integración sencilla con Google Analytics\n"
 "------------------------------------\n"
 "\n"
-"Obtenga una buena visibilidad de su canal de ventas. Los rastreadores de "
+"Obtén una buena visibilidad de tu canal de ventas. Los rastreadores de "
 "Google Analytics en Odoo\n"
-"están configurados en automático para rastrear todos los tipos de eventos "
-"relacionados a carritos\n"
+"están configurados en automático para rastrear todo tipo de eventos "
+"relacionados con carritos\n"
 "de compra, llamadas a la acción, etc.\n"
 "\n"
-"Tendrá una vista completa de su negocio gracias a que las herramientas de "
+"Tendrás una vista completa de tu negocio gracias a que las herramientas de "
 "marketing de Odoo (correos masivos, campañas, entre otras) también están "
-"vinculadas a\n"
+"vinculadas con\n"
 "Google Analytics.\n"
 "\n"
-"Diríjase a nuevos mercados\n"
+"Llega a nuevos mercados\n"
 "------------------\n"
 "\n"
-"Traduzca su sitio web a varios idiomas sin dificultad. Odoo propone\n"
-"y propaga traducciones en automático en varias páginas.\n"
+"Traduce tu sitio web a varios idiomas con facilidad. Odoo propone\n"
+"y propaga traducciones en automático entre varias páginas.\n"
 "\n"
-"Nuestra función de traducción \"bajo solicitud\" le permite beneficiarse de "
+"Nuestra función de traducción \"bajo solicitud\" te permite beneficiarte de "
 "traductores\n"
-"profesionales que traducirán todos sus cambios de forma automática. Solo "
-"cambie cualquier parte\n"
-"de su sitio web (una nueva publicación en su blog, una modificación en una "
+"profesionales que traducirán todos tus cambios de forma automática. Solo "
+"cambia cualquier parte\n"
+"de tu sitio web (una nueva publicación de blog, una modificación en una "
 "página, descripciones de productos...)\n"
 "y las versiones traducidas se actualizarán en automático cada 32 horas "
 "aproximadamente.\n"
 "\n"
-"Perfeccione su catálogo\n"
+"Perfecciona tu catálogo\n"
 "----------------------\n"
 "\n"
-"Tenga todo el control sobre cómo muestra sus productos en la página de su "
+"Obtén control total sobre cómo muestras tus productos en la página del "
 "catálogo:\n"
-"mensajes promocionales, tamaño relacionado de los productos, descuentos, "
+"mensajes promocionales, tamaño relativo de los productos, descuentos, "
 "variantes, vista de\n"
 "tabla o lista, etc.\n"
 "\n"
-"Edite cualquier producto con el editor incorporado para que su sitio web "
-"evolucione junto con las necesidades de su cliente.\n"
+"Edita cualquier producto con el editor incorporado para que tu sitio web "
+"evolucione junto con las necesidades de tus clientes.\n"
 "\n"
-"Obtenga nuevos clientes\n"
+"Consigue nuevos clientes\n"
 "---------------------\n"
 "\n"
 "Las herramientas SEO están listas para su uso, no es necesario que las "
-"configure. Odoo le sugiere\n"
+"configures. Odoo te sugiere\n"
 "palabras clave según los términos más buscados en Google. Google Analytics "
-"rastrea sus\n"
-"eventos de carritos de compra, los mapas del sitio se crean en automático "
-"para indexarlos en Google,\n"
+"rastrea los\n"
+"eventos de los carritos de compra, los mapas del sitio se crean en "
+"automático para indexarlos en Google,\n"
 "etc.\n"
 "\n"
-"Incluso estructuramos el contenido de forma automática para promover sus "
-"productos y eventos\n"
+"Incluso generamos contenido estructurado de forma automática para "
+"promocionar tus productos y eventos\n"
 "en Google con eficacia.\n"
 "\n"
-"Aproveche las redes sociales\n"
+"Aprovecha las redes sociales\n"
 "---------------------\n"
 "\n"
-"Cree nuevas páginas de inicio con facilidad con la función de editor "
-"integrado de Odoo. Envíe\n"
-"a los visitantes de sus diferentes campañas de marketing a páginas de inicio "
-"específicas para\n"
+"Crea nuevas páginas de inicio con facilidad con la función de editor "
+"integrado de Odoo. Envía\n"
+"a los visitantes de tus diferentes campañas de marketing a páginas de "
+"destino específicas para\n"
 "optimizar las conversiones.\n"
 "\n"
-"Gestione una red de distribuidores\n"
+"Gestiona una red de distribuidores\n"
 "-------------------------\n"
 "\n"
-"Gestione una red de distribuidores para dirigirse a un mercado nuevo, tener "
+"Gestiona una red de distribuidores para llegar a un mercado nuevo, tener "
 "presencia local o ampliar\n"
-"su distribución. Deles acceso al portal de distribuidores para lograr una "
+"tu distribución. Dales acceso al portal de distribuidores para lograr una "
 "colaboración\n"
 "eficiente.\n"
 "\n"
-"Anuncie a sus distribuidores en línea y reenvíeles leads (con una función\n"
-"de geolocalización integrada), defina listas de precios específicas, "
-"inaugure un programa de lealtad\n"
-"(ofrezca descuentos específicos para sus mejores compradores o "
-"distribuidores), etc.\n"
+"Promociona a tus distribuidores en línea y envíales leads (con una función\n"
+"de geolocalización integrada), define listas de precios específicas, lanza "
+"un programa de lealtad\n"
+"(ofrece descuentos específicos a tus mejores compradores o distribuidores), "
+"etc.\n"
 "\n"
-"Obtenga los beneficios del poder de Odoo en su tienda en línea, tendrá un "
-"gran motor de impuestos,\n"
-"estructuras de precios flexibles, una solución de gestión de inventario "
-"real, una interfaz\n"
-"de revendedores, compatibilidad para productos con un comportamiento "
+"Aprovecha las ventajas del poder de Odoo en tu tienda en línea, como un gran "
+"motor de impuestos,\n"
+"estructuras de precios flexibles, una solución real de gestión de "
+"inventario, una interfaz\n"
+"para distribuidores, compatibilidad para productos con un comportamiento "
 "distinto como bienes físicos,\n"
 "eventos, servicios, variantes y opciones, etc.\n"
 "\n"
-"No necesita conectarlo a su software de almacén, ventas o contabilidad.\n"
-"En Odoo todo está integrado, olvídese de las complicaciones.\n"
+"No necesitas conectarlo a tu software de almacén, ventas o contabilidad.\n"
+"En Odoo todo está integrado, olvídate de las complicaciones.\n"
 "\n"
 "Un proceso de pago sencillo\n"
 "------------------------\n"
 "\n"
-"Convierta los intereses de la mayoría de los visitantes en verdaderas "
+"Convierte la mayoría de los intereses de los visitantes en verdaderas "
 "órdenes con procesos de pago fáciles,\n"
-"con pocos pasos y una maravillosa usabilidad en cada página.\n"
+"con pocos pasos y una maravillosa experiencia de uso en cada página.\n"
 "\n"
-"Personalice su proceso de pago para que se adecúe a sus necesidades "
-"empresariales: modos de pago,\n"
+"Personaliza tu proceso de pago para adaptarlo a las necesidades de tu "
+"empresa: métodos de pago,\n"
 "métodos de entrega, ventas cruzadas, condiciones especiales, etc.\n"
 "\n"
 "Y mucho más...\n"
@@ -38309,17 +38319,17 @@ msgstr ""
 "\n"
 "### Sistema de gestión de contenidos\n"
 "\n"
-"Cree sitios web llamativos con facilidad sin contar com conocimiento "
-"técnico.\n"
+"Crea sitios web llamativos con facilidad, no es necesario que tengas "
+"conocimiento técnico.\n"
 "\n"
 "### Blogs\n"
 "\n"
-"Escriba noticias, atraiga nuevos visitantes y mejore la lealtad de sus "
+"Escribe noticias, atrae nuevos visitantes y fortalece la lealtad de tus "
 "clientes.\n"
 "\n"
 "### Eventos en línea\n"
 "\n"
-"Programe, organice, anuncie o venda eventos en línea, como conferencias, "
+"Programa, organiza, promociona o vende eventos en línea, como conferencias, "
 "webinarios, capacitaciones, etc.\n"
 "\n"
 
@@ -39318,7 +39328,7 @@ msgstr "POEdit"
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_no_followup
 msgid "POS \"no followup\" handeling."
-msgstr ""
+msgstr "Gestión de \"sin seguimiento\" en PdV."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_barcodelookup
@@ -39403,7 +39413,7 @@ msgstr "PdV - Mercado Pago"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_no_followup
 msgid "POS No Followup"
-msgstr ""
+msgstr "PdV sin seguimiento"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_paytm
@@ -40650,12 +40660,12 @@ msgstr "Polonia - Nómina y contabilidad "
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_pl_reports_account_saft
 msgid "Poland - SAFT Income Tax Report (JPK KR PD)"
-msgstr ""
+msgstr "Polonia - Reporte de impuesto sobre la renta SAFT (JPK KR PD)"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_pl_taxable_supply_date
 msgid "Poland - Taxable Supply Date"
-msgstr ""
+msgstr "Polonia - Fecha de suministro gravable"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_pl_edi
@@ -43704,7 +43714,7 @@ msgstr "Enviar notificación webhook"
 #. module: base
 #: model:ir.module.module,summary:base.module_account_peppol_selfbilling
 msgid "Send and receive self-billing invoices on PEPPOL"
-msgstr ""
+msgstr "Envía y recibe facturas de autofacturación en Peppol"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sign
@@ -47734,7 +47744,7 @@ msgstr "Esos módulos no se pueden desinstalar: %s"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_lang__thousands_sep
 msgid "Thousands Separator"
-msgstr "Separador de millares"
+msgstr "Separador de miles"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__4
@@ -48318,7 +48328,7 @@ msgstr "Turquía - Facturación electrónica Nilvera"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_tr_nilvera_einvoice_extended
 msgid "Türkiye - Nilvera E-Invoice Extended"
-msgstr ""
+msgstr "Turquía - Factura electrónica de Nilvera ampliada"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_tr_hr_payroll
@@ -49282,7 +49292,7 @@ msgstr "Claves API de los usuarios"
 #. module: base
 #: model:ir.model,name:base.model_res_users_deletion
 msgid "Users Deletion Request"
-msgstr "Solicitud de eliminación del usario"
+msgstr "Solicitud de eliminación de usuario"
 
 #. module: base
 #: model:ir.model,name:base.model_res_users_log

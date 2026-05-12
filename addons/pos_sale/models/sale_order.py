@@ -47,10 +47,11 @@ class SaleOrder(models.Model):
     @api.depends('transaction_ids.state', 'transaction_ids.amount', 'order_line', 'amount_total', 'order_line.invoice_lines.parent_state', 'order_line.invoice_lines.price_total', 'order_line.pos_order_line_ids')
     def _compute_amount_unpaid(self):
         for sale_order in self:
+            online_payments_invoices = sale_order.transaction_ids.filtered(lambda tx_move: tx_move.state in ('authorized', 'done')).mapped('invoice_ids')
             total_invoice_paid = sum(
                 sale_order.order_line.filtered(lambda l: not l.display_type)
                 .mapped('invoice_lines')
-                .filtered(lambda l: l.parent_state != 'cancel')
+                .filtered(lambda l: l.parent_state != 'cancel' and l.move_id not in online_payments_invoices)
                 .mapped(lambda l: math.copysign(l.price_total, -l.balance))
             )
             total_pos_paid = sum(sale_order.order_line.filtered(lambda l: not l.display_type).mapped('pos_order_line_ids.price_subtotal_incl'))
@@ -88,7 +89,8 @@ class SaleOrderLine(models.Model):
     @api.model
     def _load_pos_data_fields(self, config_id):
         return ['discount', 'display_name', 'price_total', 'price_unit', 'product_id', 'product_uom_qty', 'qty_delivered',
-            'qty_invoiced', 'qty_to_invoice', 'display_type', 'name', 'tax_id', 'is_downpayment', 'write_date']
+            'qty_invoiced', 'qty_to_invoice', 'display_type', 'name', 'tax_id', 'is_downpayment', 'write_date',
+            'product_no_variant_attribute_value_ids', 'product_custom_attribute_value_ids']
 
     @api.depends('pos_order_line_ids.qty', 'pos_order_line_ids.order_id.picking_ids', 'pos_order_line_ids.order_id.picking_ids.state', 'pos_order_line_ids.refund_orderline_ids.order_id.picking_ids.state')
     def _compute_qty_delivered(self):
@@ -124,11 +126,22 @@ class SaleOrderLine(models.Model):
                 sale_line_uom = sale_line.product_uom
                 item = sale_line.read(field_names, load=False)[0]
                 if sale_line.product_id.tracking != 'none':
-                    move_lines = sale_line.move_ids.move_line_ids.filtered(lambda ml: ml.product_id.id == sale_line.product_id.id)
+                    candidates = self.env['stock.move.line'].search([
+                        ('picking_id', 'in', sale_line.order_id.picking_ids.ids),
+                        ('product_id', '=', sale_line.product_id.id),
+                        ('move_id.sale_line_id', '=', sale_line.id),
+                        ('move_id.is_inventory', '=', False),
+                    ], order='picking_id, id')
+                    if candidates:
+                        first_picking = candidates[:1].picking_id
+                        move_lines = candidates.filtered(lambda ml: ml.picking_id == first_picking)
+                    else:
+                        move_lines = self.env['stock.move.line']
                     item['lot_names'] = move_lines.lot_id.mapped('name')
                     lot_qty_by_name = {}
                     for line in move_lines:
-                        lot_qty_by_name[line.lot_id.name] = lot_qty_by_name.get(line.lot_id.name, 0.0) + line.quantity
+                        if line.lot_id:
+                            lot_qty_by_name[line.lot_id.name] = lot_qty_by_name.get(line.lot_id.name, 0.0) + line.quantity
                     item['lot_qty_by_name'] = lot_qty_by_name
                 if product_uom == sale_line_uom:
                     results.append(item)

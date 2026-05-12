@@ -181,7 +181,7 @@ class AccountMoveSend(models.AbstractModel):
 
         attachment_name = 'factur-x.xml'
         if invoice.commercial_partner_id.country_code == 'DE' and invoice.commercial_partner_id.peppol_eas != '0204':
-            attachment_name = 'zugferd.xml'
+            attachment_name = 'zugferd-invoice.xml'
 
         writer.addAttachment(attachment_name, xml_facturx, subtype='text/xml')
 
@@ -259,6 +259,8 @@ class AccountMoveSend(models.AbstractModel):
         })
 
         for attachment_values in attachments_to_embed:
+            # Some XML validator need a strict embed content without ligne break and whitespace
+            embed_content = base64.b64encode(attachment_values['raw']).decode()
             to_inject = f'''
                 <cac:AdditionalDocumentReference
                     {attachment_values.get("xmlns", "")}
@@ -269,9 +271,7 @@ class AccountMoveSend(models.AbstractModel):
                     <cac:Attachment>
                         <cbc:EmbeddedDocumentBinaryObject
                             mimeCode={quoteattr(attachment_values["mimetype"])}
-                            filename={quoteattr(attachment_values['filename'])}>
-                            {base64.b64encode(attachment_values['raw']).decode()}
-                        </cbc:EmbeddedDocumentBinaryObject>
+                            filename={quoteattr(attachment_values['filename'])}>{embed_content}</cbc:EmbeddedDocumentBinaryObject>
                     </cac:Attachment>
                 </cac:AdditionalDocumentReference>
             '''
