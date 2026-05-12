@@ -2273,6 +2273,60 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
         account_moves = self.env['account.move'].search([('pos_payment_ids', 'in', pos_order.payment_ids.ids)])
         self.assertEqual(sum(account_moves.mapped('amount_total')), pos_order.amount_total)
 
+    def test_change_with_card_only(self):
+        """Test that the change is not skipped if order was overpaid only with card"""
+        self.pos_config.open_ui()
+        pos_session = self.pos_config.current_session_id
+        cash_payment_method = pos_session.payment_method_ids.filtered('is_cash_count')[:1]
+        product_order = {
+            'amount_paid': 450,
+            'amount_return': 50,
+            'amount_tax': 0,
+            'amount_total': 450,
+            'date_order': fields.Datetime.to_string(fields.Datetime.now()),
+            'fiscal_position_id': False,
+            'pricelist_id': self.pos_config.pricelist_id.id,
+            'lines': [Command.create({
+                'discount': 0,
+                'id': 42,
+                'pack_lot_ids': [],
+                'price_unit': 450.0,
+                'product_id': self.product3.id,
+                'price_subtotal': 450.0,
+                'price_subtotal_incl': 450.0,
+                'tax_ids': [[6, False, []]],
+                'qty': 1,
+            })],
+            'name': 'Order 12346-123-1234',
+            'partner_id': self.partner1.id,
+            'session_id': pos_session.id,
+            'sequence_number': 2,
+            'payment_ids': [Command.create({
+                'amount': 500,
+                'name': fields.Datetime.now(),
+                'payment_method_id': self.bank_payment_method.id
+            })],
+            'uuid': '12346-123-1234',
+            'user_id': self.env.uid,
+            'to_invoice': True
+        }
+        pos_order_id = self.PosOrder.sync_from_ui([product_order])['pos.order'][0]['id']
+        pos_order = self.PosOrder.search([('id', '=', pos_order_id)])
+        payments = pos_order.payment_ids
+        self.assertRecordValues(payments.sorted(), [
+            {'amount': -50.0, 'payment_method_id': cash_payment_method.id, 'is_change': True},
+            {'amount': 500.0, 'payment_method_id': self.bank_payment_method.id, 'is_change': False},
+        ])
+        order_account_move = pos_order.account_move
+        self.assertEqual(order_account_move.amount_total, pos_order.amount_total)
+
+        account_moves = self.env['account.move'].search([('pos_payment_ids', 'in', pos_order.payment_ids.ids)])
+        self.assertEqual(len(account_moves), 2)
+        self.assertRecordValues(account_moves.sorted(), [
+            {'amount_total': 50},
+            {'amount_total': 500},
+        ])
+
     def test_refund_qty_refund_cancel(self):
         """
         Test the refunded qty of an order, when the refund order has been cancelled
@@ -2986,7 +3040,7 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
         self.assertEqual(order_balance + payment_balance, 0)
 
     def test_pos_payment_direction_and_accounts(self):
-        """Ensure POS payments create correct inbound/outbound payments and accounts."""
+        """Ensure POS payments create correct inbound/outbound payments and accounts and related journal items"""
 
         def _do_pos_transaction(amount, split, index):
             self.bank_payment_method.write({'split_transactions': split})
@@ -3025,8 +3079,9 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
             _do_pos_transaction(amount, split, idx).id
             for idx, (amount, split) in enumerate([(100, False), (-100, False), (100, True), (-100, True)])
         ]
+        payments = self.env['account.payment'].search([('pos_session_id', 'in', session_ids)], order='id')
         self.assertRecordValues(
-            self.env['account.payment'].search([('pos_session_id', 'in', session_ids)], order='id'),
+            payments,
             [
                 {
                     "payment_type": "inbound",
@@ -3035,8 +3090,8 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
                 },
                 {
                     "payment_type": "outbound",
-                    "outstanding_account_id": self.bank_payment_method.receivable_account_id.id,
-                    "destination_account_id": self.bank_payment_method.outstanding_account_id.id,
+                    "outstanding_account_id": self.bank_payment_method.outstanding_account_id.id,
+                    "destination_account_id": self.bank_payment_method.receivable_account_id.id,
                 },
                 {
                     "payment_type": "inbound",
@@ -3045,8 +3100,21 @@ class TestPointOfSaleFlow(TestPointOfSaleCommon):
                 },
                 {
                     "payment_type": "outbound",
-                    "outstanding_account_id": self.bank_payment_method.receivable_account_id.id,
-                    "destination_account_id": self.bank_payment_method.outstanding_account_id.id,
+                    "outstanding_account_id": self.bank_payment_method.outstanding_account_id.id,
+                    "destination_account_id": self.bank_payment_method.receivable_account_id.id,
                 },
             ],
         )
+
+        for payment in payments:
+            move_lines = payment.move_id.line_ids.sorted('balance')
+            if payment.payment_type == "inbound":
+                self.assertRecordValues(move_lines, [
+                    {'account_id': self.bank_payment_method.receivable_account_id.id},
+                    {'account_id': self.bank_payment_method.outstanding_account_id.id},
+                ])
+            else:
+                self.assertRecordValues(move_lines, [
+                    {'account_id': self.bank_payment_method.outstanding_account_id.id},
+                    {'account_id': self.bank_payment_method.receivable_account_id.id},
+                ])
