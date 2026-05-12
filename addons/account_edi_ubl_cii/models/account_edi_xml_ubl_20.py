@@ -256,10 +256,10 @@ class AccountEdiXmlUBL20(models.AbstractModel):
                 'tax_amount_currency': 0.0,
             })
             if epd_tax_to_discount:
-                for percentage, base_amount_currency in epd_tax_to_discount.items():
-                    epd_base_tax_amounts[percentage]['base_amount_currency'] += base_amount_currency
+                for (percentage, tax_category), base_amount_currency in epd_tax_to_discount.items():
+                    epd_base_tax_amounts[percentage, tax_category]['base_amount_currency'] += base_amount_currency
                 epd_accounted_tax_amount = 0.0
-                for percentage, amounts in epd_base_tax_amounts.items():
+                for (percentage, _tax_category), amounts in epd_base_tax_amounts.items():
                     amounts['tax_amount_currency'] = invoice.currency_id.round(
                         amounts['base_amount_currency'] * percentage / 100.0)
                     epd_accounted_tax_amount += amounts['tax_amount_currency']
@@ -277,7 +277,8 @@ class AccountEdiXmlUBL20(models.AbstractModel):
                 }
                 if epd_tax_to_discount:
                     # early payment discounts: need to recompute the tax/taxable amounts
-                    epd_base_amount = epd_base_tax_amounts.get(subtotal['percent'], {}).get('base_amount_currency', 0.0)
+                    tax_category_id = subtotal['tax_category_vals']['id']
+                    epd_base_amount = epd_base_tax_amounts.get((subtotal['percent'], tax_category_id), {}).get('base_amount_currency', 0.0)
                     taxable_amount_after_epd = subtotal['taxable_amount'] - epd_base_amount
                     subtotal.update({
                         'taxable_amount': taxable_amount_after_epd,
@@ -304,21 +305,30 @@ class AccountEdiXmlUBL20(models.AbstractModel):
             tax_totals_vals['tax_subtotal_vals'].append(subtotal)
 
         if epd_tax_to_discount:
-            # early payment discounts: hence, need to add a subtotal section
-            tax_totals_vals['tax_subtotal_vals'].append({
-                'currency': invoice.currency_id,
-                'currency_dp': invoice.currency_id.decimal_places,
-                'taxable_amount': sum(epd_tax_to_discount.values()),
-                'tax_amount': 0.0,
-                'tax_category_vals': {
-                    'id': 'E',
-                    'percent': 0.0,
-                    'tax_scheme_vals': {
-                        'id': "VAT",
+            epd_amount = sum(epd_tax_to_discount.values())
+            # if a 0% subtotal already exists : we merge it with the EPD subtotal.
+            # otherwise, we create a new subtotal node for EPD.
+            is_merged = False
+            for vals in tax_totals_vals['tax_subtotal_vals']:
+                if vals['tax_category_vals']['id'] == 'E':
+                    vals['taxable_amount'] += epd_amount
+                    is_merged = True
+                    break
+            if not is_merged:
+                tax_totals_vals['tax_subtotal_vals'].append({
+                    'currency': invoice.currency_id,
+                    'currency_dp': invoice.currency_id.decimal_places,
+                    'taxable_amount': epd_amount,
+                    'tax_amount': 0.0,
+                    'tax_category_vals': {
+                        'id': 'E',
+                        'percent': 0.0,
+                        'tax_scheme_vals': {
+                            'id': "VAT",
+                        },
+                        'tax_exemption_reason': _("Exempt from tax"),
                     },
-                    'tax_exemption_reason': _("Exempt from tax"),
-                },
-            })
+                })
         return [tax_totals_vals]
 
     def _get_invoice_line_item_vals(self, line, taxes_vals):
@@ -357,7 +367,7 @@ class AccountEdiXmlUBL20(models.AbstractModel):
         epd_tax_to_discount = self._get_early_payment_discount_grouped_by_tax_rate(invoice)
         if epd_tax_to_discount:
             # One Allowance per tax rate (VAT included)
-            for tax_amount, discount_amount in epd_tax_to_discount.items():
+            for (tax_amount, tax_category), discount_amount in epd_tax_to_discount.items():
                 vals_list.append({
                     'charge_indicator': 'false',
                     'allowance_charge_reason_code': '64',
@@ -366,7 +376,7 @@ class AccountEdiXmlUBL20(models.AbstractModel):
                     'currency_dp': 2,
                     'currency_name': invoice.currency_id.name,
                     'tax_category_vals': [{
-                        'id': 'S',
+                        'id': tax_category,
                         'percent': tax_amount,
                         'tax_scheme_vals': {'id': 'VAT'},
                     }],
@@ -385,6 +395,7 @@ class AccountEdiXmlUBL20(models.AbstractModel):
                     'tax_scheme_vals': {'id': 'VAT'},
                 }],
             })
+
         return vals_list
 
     def _get_pricing_exchange_rate_vals_list(self, invoice):
@@ -589,15 +600,17 @@ class AccountEdiXmlUBL20(models.AbstractModel):
     def _get_early_payment_discount_grouped_by_tax_rate(self, invoice):
         """
         Get the early payment discounts grouped by the tax rate of the product it is linked to
-        :returns {float: float}: mapping tax amounts to early payment discount amounts
+        :returns {float, str: float}: mapping (tax amount, tax category) pairs to early payment discount amounts
         """
         if invoice.invoice_payment_term_id.early_pay_discount_computation != 'mixed':
             return {}
         tax_to_discount = defaultdict(lambda: 0)
         sign = -1 if invoice.move_type == 'out_refund' else 1
         for line in invoice.line_ids.filtered(lambda l: l.display_type == 'epd'):
-            for tax in line.tax_ids:
-                tax_to_discount[tax.amount] += line.amount_currency * sign
+            tax_category_list = self._get_tax_category_list(invoice, line.tax_ids)
+            for i, tax in enumerate(line.tax_ids):
+                tax_category = tax_category_list[i]['id']
+                tax_to_discount[tax.amount, tax_category] += line.amount_currency * sign
         return tax_to_discount
 
     def _split_fixed_taxes(self, taxes_vals):
@@ -700,7 +713,7 @@ class AccountEdiXmlUBL20(models.AbstractModel):
         _fixed_taxes, emptying_taxes = self._split_fixed_taxes(taxes_vals)
 
         # Compute values for invoice lines.
-        line_extension_amount = 0.0
+        expected_line_extension_amount = line_extension_amount = 0.0
 
         document_allowance_charge_vals_list = self._get_document_allowance_charge_vals_list(invoice)
         invoice_line_vals_list = []
@@ -711,6 +724,23 @@ class AccountEdiXmlUBL20(models.AbstractModel):
             invoice_line_vals_list.append(line_vals)
 
             line_extension_amount += line_vals['line_extension_amount']
+            expected_line_extension_amount += invoice.currency_id.round(line_vals['line_extension_amount'])
+
+        delta_amount = line_extension_amount - expected_line_extension_amount
+        if not invoice.currency_id.is_zero(delta_amount) and invoice.currency_id.decimal_places <= 2:
+            # distribute rounding error from low precision computation on lines
+            delta_sign = 1 if delta_amount > 0 else -1
+            lines_len = len(invoice_line_vals_list)
+            remaining = delta_amount
+            for line in invoice_line_vals_list:
+                if invoice.currency_id.compare_amounts(remaining, 0) != delta_sign:
+                    break
+                amt = delta_sign * max(
+                    invoice.currency_id.rounding,
+                    abs(invoice.currency_id.round(remaining / lines_len)),
+                )
+                remaining -= amt
+                line['line_extension_amount'] += amt
 
         # add emptying taxes as extra invoice lines
         for tax_key, tax_vals in emptying_taxes:
@@ -876,7 +906,8 @@ class AccountEdiXmlUBL20(models.AbstractModel):
     def _import_retrieve_partner_vals(self, tree, role):
         """ Returns a dict of values that will be used to retrieve the partner """
         return {
-            'vat': self._find_value(f'.//cac:Accounting{role}Party/cac:Party//cbc:CompanyID[string-length(text()) > 5]', tree),
+            'vat': self._find_value(f'.//cac:Accounting{role}Party/cac:Party//cbc:CompanyID[string-length(text()) > 5]', tree)
+                or self._find_value(f'.//cac:Accounting{role}Party/cac:Party/cac:PartyIdentification/cbc:ID[string-length(text()) > 5]', tree),
             'phone': self._find_value(f'.//cac:Accounting{role}Party/cac:Party//cbc:Telephone', tree),
             'mail': self._find_value(f'.//cac:Accounting{role}Party/cac:Party//cbc:ElectronicMail', tree),
             'name': self._find_value(f'.//cac:Accounting{role}Party/cac:Party//cbc:RegistrationName', tree) or
