@@ -3,7 +3,6 @@ from typing import Dict, List
 
 import babel.dates
 import base64
-import copy
 import itertools
 import json
 import pytz

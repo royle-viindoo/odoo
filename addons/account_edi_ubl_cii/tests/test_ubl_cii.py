@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+import base64
+import textwrap
+import uuid
 from lxml import etree
 from unittest import SkipTest
 from unittest.mock import patch
@@ -57,6 +60,49 @@ class TestAccountEdiUblCii(AccountTestInvoicingCommon):
         return self.env['account.journal'] \
             .with_context(default_journal_id=journal.id) \
             ._create_document_from_attachment(attachment.id)
+
+    def _get_raw_mail_message_str(self, attachments, email_to, message_id=None):
+        """
+        :param attachments: Odoo recordset of ir.attachment.
+        :param email_to: string that will fill email_to field in the email, probably you'll want to use some journal alias here.
+        :param message_id: Optional. Custom message ID for the email. If not provided, a UUID will be generated.
+
+        Returns:
+            Formatted email string.
+        """
+        if not message_id:
+            message_id = str(uuid.uuid4())
+
+        attachment_parts = []
+        for attachment in attachments:
+            encoded_attachment = base64.b64encode(attachment['raw']).decode()
+            attachment_part = textwrap.dedent(f"""\
+                --000000000000a47519057e029630
+                Content-Type: {attachment['mimetype']}
+                Content-Transfer-Encoding: base64
+                Content-Disposition: attachment; filename="{attachment['name']}"
+
+                {encoded_attachment}
+            """)
+            attachment_parts.append(attachment_part)
+
+        email_raw = textwrap.dedent(f"""\
+            MIME-Version: 1.0
+            Date: Fri, 26 Nov 2021 16:27:45 +0100
+            Message-ID: {message_id}
+            Subject: Incoming bill
+            From: Someone <someone@some.company.com>
+            To: {email_to}
+            Content-Type: multipart/alternative; boundary="000000000000a47519057e029630"
+
+            --000000000000a47519057e029630
+            Content-Type: text/plain; charset="UTF-8"
+
+            Here is your requested document(s).
+        """)
+        email_raw += "\n".join(attachment_parts)
+        email_raw += "\n--000000000000a47519057e029630--"
+        return email_raw
 
     def test_export_import_product(self):
         products = self.env['product.product'].create([{
@@ -219,6 +265,34 @@ class TestAccountEdiUblCii(AccountTestInvoicingCommon):
         # Import the bill again and ensure the prediction did his work
         bill = self.import_attachment(xml_attachment, self.company_data["default_journal_purchase"])
         self.assertEqual(bill.invoice_line_ids.tax_ids, new_tax_2)
+
+    def test_import_embedded_pdf(self):
+        """
+        Importing an xml with embedded pdf should correctly import the
+        pdf in the newly created bill
+        """
+        journal = self.company_data['default_journal_purchase']
+        file_path = "bis3_bill_example.xml"
+        file_path = f"{self.test_module}/tests/test_files/{file_path}"
+
+        with file_open(file_path, 'rb') as file:
+            xml_attachment = self.env['ir.attachment'].create({
+                'mimetype': 'application/xml',
+                'name': 'test_invoice.xml',
+                'raw': file.read(),
+            })
+
+        # Import the document manually
+        bill = self.import_attachment(xml_attachment, journal)
+        self.assertEqual(len(bill.attachment_ids), 1)
+
+        init_vals = {'move_type': 'in_invoice', 'journal_id': journal.id}
+        email_raw = self._get_raw_mail_message_str(attachments=xml_attachment, email_to=journal.alias_id.display_name)
+        # Import the document via mail alias
+        move_id = self.env['mail.thread'].message_process('account.move', email_raw, custom_values=init_vals)
+        bill = self.env['account.move'].browse(move_id)
+
+        self.assertEqual(len(bill.attachment_ids), 1)
 
     def test_peppol_eas_endpoint_compute(self):
         partner = self.partner_a
@@ -986,6 +1060,21 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
         self.env['account.edi.common']._import_retrieve_and_fill_partner_bank_details(invoice, [acc_number])
         self.assertEqual(invoice.partner_bank_id, partner_bank)
 
+    def test_import_bill_vat_in_party_identification(self):
+        """ Some Peppol emitters add the supplier VAT only in
+        cac:PartyIdentification/cbc:ID, not in PartyTaxScheme/cbc:CompanyID.
+        """
+        file_path = f"{self.test_module}/tests/test_files/bis3_bill_vat_in_party_identification.xml"
+        with file_open(file_path, 'rb') as file:
+            attachment = self.env['ir.attachment'].create({
+                'mimetype': 'application/xml',
+                'name': 'test_invoice.xml',
+                'raw': file.read(),
+            })
+        bill = self.import_attachment(attachment, self.company_data["default_journal_purchase"])
+        self.assertEqual(bill.partner_id.vat, 'BE0239843188')
+        self.assertEqual(bill.partner_bank_id.partner_id, bill.partner_id)
+
     def test_payment_terms_immediate_in_cii_xml(self):
         self.partner_a.ubl_cii_format = 'facturx'
         invoice = self._create_invoice_one_line(
@@ -1282,3 +1371,74 @@ comment-->1000.0</TaxExclusiveAmount></xpath>"""
         buyers_item_id = xml_tree.findall('.//cac:CreditNoteLine/cac:Item/cac:BuyersItemIdentification/cbc:ID', self.ubl_namespaces)
         self.assertEqual(buyers_item_id[0].text, 'item1-1234')
         self.assertEqual(buyers_item_id[1].text, 'item2-1234')
+
+    def test_ubl_line_extension_global_rounding_distribution(self):
+        """ Test that rounding errors in line extensions are distributed
+            to ensure the sum of lines equals the total.
+        """
+        self.env.company.tax_calculation_rounding_method = 'round_globally'
+        decimal_precision_name = self.env['account.move.line']._fields['price_unit']._digits
+        decimal_precision = self.env['decimal.precision'].search([('name', '=', decimal_precision_name)])
+        decimal_precision.digits = 4
+        tax_21 = self.env['account.tax'].create({
+            'name': 'tax 21',
+            'amount': 21.0,
+        })
+        fixed_tax_1 = self.env['account.tax'].create({
+            'name': "fixed tax 1",
+            'amount_type': 'fixed',
+            'amount': 0.1488,
+            'include_base_amount': True,
+            'is_base_affected': False,
+        })
+        fixed_tax_2 = self.env['account.tax'].create({
+            'name': "fixed tax 2",
+            'amount_type': 'fixed',
+            'amount': 0.0800,
+            'include_base_amount': True,
+            'is_base_affected': False,
+        })
+
+        invoice_line_vals = [
+            (2.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (2.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (3.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (3.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (3.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (3.00, 7.3770, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (2.00, 3.6270, fixed_tax_1 | fixed_tax_2 | tax_21),
+            (6.00, 7.2500, tax_21),
+            (6.00, 7.2500, tax_21),
+            (12.00, 7.2500, tax_21),
+            (12.00, 7.2500, tax_21),
+            (12.00, 7.2500, tax_21),
+            (12.00, 7.2500, tax_21),
+            (12.00, 7.2500, tax_21),
+        ]
+
+        invoice = self.env['account.move'].create({
+            'move_type': 'out_invoice',
+            'partner_id': self.partner_a.id,
+            'invoice_line_ids': [
+                Command.create({
+                    'name': f'line {idx}',
+                    'quantity': quantity,
+                    'price_unit': price_unit,
+                    'tax_ids': [Command.set(taxes.ids)],
+                })
+                for idx, (quantity, price_unit, taxes) in enumerate(invoice_line_vals)
+            ]
+        })
+        invoice.action_post()
+        xml = self.env['account.edi.xml.ubl_bis3']._export_invoice(invoice)[0]
+
+        root = etree.fromstring(xml)
+        line_extension_amounts = [elem.text for elem in root.findall('./{*}InvoiceLine/{*}LineExtensionAmount')]
+        # Ensure the delta amount of 0.02 was distributed
+        # Expected total is 651.39
+        self.assertEqual(
+            line_extension_amounts,
+            ['15.20', '15.20', '22.82', '22.82', '22.82', '22.82', '7.71',
+             '43.50', '43.50', '87.00', '87.00', '87.00', '87.00', '87.00']
+        )
+        self.assertEqual(root.findtext('./{*}LegalMonetaryTotal/{*}LineExtensionAmount'), '651.39')
