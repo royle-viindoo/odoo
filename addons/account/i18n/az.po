@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 17:38+0000\n"
-"PO-Revision-Date: 2026-04-24 07:53+0000\n"
+"POT-Creation-Date: 2026-05-29 17:37+0000\n"
+"PO-Revision-Date: 2026-06-12 17:17+0000\n"
 "Last-Translator: ERPGo Odoo <erpgo.odoo@gmail.com>\n"
 "Language-Team: Azerbaijani <https://translate.odoo.com/projects/odoo-18/"
 "account/az/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_journal__type
@@ -8650,7 +8650,7 @@ msgstr "Keçən gün etibarsız maliyyə ili"
 #. module: account
 #: model:account.journal,name:account.1_inventory_valuation
 msgid "Inventory Valuation"
-msgstr "İntentarın Qiymətləndirilməsi"
+msgstr "İnventarın Qiymətləndirilməsi"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_report__inventory_value
@@ -9034,7 +9034,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:account.view_partner_property_form
 msgid "Invoicing"
-msgstr "Hesab-faktura göndərilməsi"
+msgstr "Fakturalaşdırma"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_invoice_report__payment_state__invoicing_legacy
@@ -12378,6 +12378,7 @@ msgstr "Məhsul Kateqoriyaları"
 #: model:ir.model,name:account.model_product_category
 #: model:ir.model.fields,field_description:account.field_account_analytic_applicability__product_categ_id
 #: model:ir.model.fields,field_description:account.field_account_analytic_distribution_model__product_categ_id
+#: model:ir.model.fields,field_description:account.field_account_analytic_line__product_category
 #: model:ir.model.fields,field_description:account.field_account_invoice_report__product_categ_id
 #: model:ir.model.fields,field_description:account.field_account_move_line__product_category_id
 #: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search
@@ -13118,7 +13119,7 @@ msgstr ""
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_lock_exception_form
 msgid "Revoke"
-msgstr ""
+msgstr "Ləğv edin"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_lock_exception__state__revoked

@@ -215,6 +215,10 @@ class AccountMove(models.Model):
         fields_list.append('l10n_it_edi_attachment_file')
         return fields_list
 
+    def _should_detach_attachments(self):
+        # EXTENDS account
+        return self.l10n_it_edi_is_self_invoice or super()._should_detach_attachments()
+
     # -------------------------------------------------------------------------
     # Business actions
     # -------------------------------------------------------------------------
@@ -1061,6 +1065,58 @@ class AccountMove(models.Model):
                 return partner
         return self.env['res.partner']
 
+    def _l10n_it_edi_import_partner(self, company_id, name, phone, email, vat, country_code=False, street=False, street2=False, city=False, zip_code=False, **_kwargs):
+        """Retrieve the partner, create one when no match is found.
+
+        Local copy of account.edi.common._import_partner so l10n_it_edi does not
+        need to depend on account_edi_ubl_cii for the FatturaPA import flow.
+        """
+        logs = []
+        partner = self.env['res.partner'] \
+            .with_company(company_id) \
+            ._retrieve_partner(name=name, phone=phone, email=email, vat=vat)
+        if not partner and name and vat:
+            partner_vals = {
+                'name': name, 'email': email, 'phone': phone,
+                'street': street, 'street2': street2,
+                'zip': zip_code, 'city': city, 'is_company': True,
+            }
+            if country_code == 'GB':
+                country_code = 'UK'
+            country = self.env.ref(f'base.{country_code.lower()}', raise_if_not_found=False) if country_code else False
+            if country:
+                partner_vals['country_id'] = country.id
+            partner = self.env['res.partner'].create(partner_vals)
+            if vat and self.env['res.partner']._run_vat_test(vat, country, partner.is_company):
+                partner.vat = vat
+            logs.append(_("Could not retrieve a partner corresponding to '%s'. A new partner was created.", name))
+        return partner, logs
+
+    def _l10n_it_edi_import_partner_bank(self, invoice, bank_details):
+        """Search or create the partner bank account for the imported invoice.
+
+        Local copy of account.edi.common._import_partner_bank so l10n_it_edi does
+        not need to depend on account_edi_ubl_cii for the FatturaPA import flow.
+        """
+        if invoice.move_type in ('out_refund', 'in_invoice'):
+            partner = invoice.partner_id
+        elif invoice.move_type in ('out_invoice', 'in_refund'):
+            partner = invoice.company_id.partner_id
+        else:
+            return
+        banks = self.env['res.partner.bank']
+        for account_number in bank_details:
+            try:
+                banks += self.env['res.partner.bank']._find_or_create_bank_account(
+                    account_number=account_number,
+                    partner=partner,
+                    company=invoice.company_id,
+                )
+            except UserError as e:
+                invoice._message_log(body=_("The bank account couldn't be fetched: %s", str(e)))
+        if banks:
+            invoice.partner_bank_id = banks[0]
+
     def _l10n_it_edi_search_tax_for_import(self, company, percentage, extra_domain=None, l10n_it_exempt_reason=None):
         """ Returns the VAT, Withholding or Pension Fund tax that suits the conditions given
             and matches the percentage found in the XML for the company. """
@@ -1264,7 +1320,7 @@ class AccountMove(models.Model):
             # If not found by Codice Fiscale, search for VAT or create, just like all other EDIs do
             if not self.partner_id:
                 import_partner_args = {k: v for k, v in partner_info.items() if k not in ('codice_fiscale', 'is_company')}
-                self.partner_id, logs = self.env['account.edi.common']._import_partner(company_id=company, **import_partner_args)
+                self.partner_id, logs = self._l10n_it_edi_import_partner(company_id=company, **import_partner_args)
                 if logs:
                     self.partner_id.is_company = partner_info.get('is_company')
                     self.partner_id.l10n_it_codice_fiscale = partner_info.get('codice_fiscale', False)
@@ -1315,20 +1371,19 @@ class AccountMove(models.Model):
                 self.invoice_origin = ", ".join(po_refs)
 
             # Payment / Bank --------------------------------------
-            if self.move_type not in ('out_invoice', 'in_refund'):
-                payments_info = self._l10n_it_edi_get_payment_info(tree)
-                if payments_info['info']:
-                    message_to_log.append(_("Total amount from the XML File: %s", payments_info['amount_total']))
-                    payment_due_dates = []
-                    for payment_info in payments_info['info']:
-                        # Search / Create the bank account if iban is present
-                        if iban := payment_info.get('acc_number'):
-                            self.env['account.edi.common'].with_company(company)._import_partner_bank(self, [iban])
-                        # Set payment data on the bill
-                        self.payment_reference = self.payment_reference or payment_info.get('payment_code', False)
-                        payment_due_dates.append(payment_info.get('invoice_date_due'))
-                    if payment_due_dates := [x for x in payment_due_dates if x]:
-                        self.invoice_date_due = max(payment_due_dates)
+            payments_info = self._l10n_it_edi_get_payment_info(tree)
+            if payments_info['info']:
+                message_to_log.append(_("Total amount from the XML File: %s", payments_info['amount_total']))
+                payment_due_dates = []
+                for payment_info in payments_info['info']:
+                    # Search / Create the bank account only on incoming docs
+                    if self.move_type not in ('out_invoice', 'in_refund') and (iban := payment_info.get('acc_number')):
+                        self.with_company(company)._l10n_it_edi_import_partner_bank(self, [iban])
+                    # Set payment data on the bill
+                    self.payment_reference = self.payment_reference or payment_info.get('payment_code', False)
+                    payment_due_dates.append(payment_info.get('invoice_date_due'))
+                if payment_due_dates := [x for x in payment_due_dates if x]:
+                    self.invoice_date_due = max(payment_due_dates)
 
             # Invoice lines ---------------------------------------
             tag_name = './/DettaglioLinee' if not extra_info['simplified'] else './/DatiBeniServizi'
@@ -1441,7 +1496,10 @@ class AccountMove(models.Model):
         elif amount := get_float(element, './/Importo'):
             percentage = get_float(element, './/Aliquota')
             if not percentage and (tax_amount := get_float(element, './/Imposta')):
-                percentage = round(tax_amount / (amount - tax_amount) * 100)
+                if amount == tax_amount:
+                    percentage = 0.0
+                else:
+                    percentage = round(tax_amount / (amount - tax_amount) * 100)
             move_line.price_unit = amount / (1 + percentage / 100)
 
         move_line.tax_ids = [Command.clear()]

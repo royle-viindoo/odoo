@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-08 17:36+0000\n"
-"PO-Revision-Date: 2026-04-24 07:52+0000\n"
+"POT-Creation-Date: 2026-06-12 17:37+0000\n"
+"PO-Revision-Date: 2026-06-11 07:52+0000\n"
 "Last-Translator: Alina Lisnenko <alina.lisnenko@erp.co.ua>\n"
 "Language-Team: Ukrainian <https://translate.odoo.com/projects/odoo-18/"
 "account_edi_ubl_cii/uk/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -67,6 +67,12 @@ msgstr "<span class=\"text-muted\">ДО</span>"
 #: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
 msgid "A"
 msgstr "A"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_pint_eu.py:0
+msgid "A buyer reference or purchase order reference must be provided."
+msgstr ""
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -255,6 +261,16 @@ msgstr "Контакт"
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl.py:0
+msgid ""
+"Could not retrieve a partner corresponding to '%s' with the same VAT. A new "
+"partner was created."
+msgstr ""
+"Не вдалося отримати партнера, що відповідає '%s' з таким самим ПДВ. Створено "
+"нового партнера."
+
+#. module: account_edi_ubl_cii
+#. odoo-python
 #: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_ubl.py:0
 msgid ""
@@ -360,23 +376,25 @@ msgid "EAN Location Code"
 msgstr "Код локації EAN"
 
 #. module: account_edi_ubl_cii
-#: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
-msgid "EN 16931"
-msgstr "EN 16931"
-
-#. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__invoice_edi_format__ubl_bis3
 msgid "EU Standard (Peppol Bis 3.0)"
 msgstr "Стандарт ЄС (Peppol Bis 3.0)"
 
 #. module: account_edi_ubl_cii
+#: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
+msgid "EXTENDED"
+msgstr "РОЗШИРЕНО"
+
+#. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid "Each invoice line shall have one and only one tax."
 msgstr "Кожен рядок рахунка-фактури має мати лише один податок."
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid "Each invoice line should have a product or a label."
 msgstr "Кожен рядок рахунку повинен мати товар або мітку."
@@ -411,7 +429,8 @@ msgstr "ПДВ Естонії"
 #. module: account_edi_ubl_cii
 #. odoo-python
 #: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
-#: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
+#: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_20.py:0
 msgid "Exempt from tax"
 msgstr "Звільнено від податку"
 
@@ -448,6 +467,7 @@ msgstr "ПДВ Фінляндія"
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid ""
 "For intracommunity supply, the actual delivery date or the invoicing period "
@@ -458,6 +478,7 @@ msgstr ""
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid "For intracommunity supply, the delivery address should be included."
 msgstr "Для внутрішнього постачання необхідно вказати адресу доставки."
@@ -503,6 +524,18 @@ msgstr "ПДВ Франція"
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0209
 msgid "GS1 identification keys"
 msgstr "Ключі ідентифікації GS1"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl.py:0
+msgid "General discount"
+msgstr "Загальна знижка"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl.py:0
+msgid "General upsell"
+msgstr ""
 
 #. module: account_edi_ubl_cii
 #. odoo-python
@@ -572,6 +605,17 @@ msgstr "Встановити Chorus Pro"
 #: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
 msgid "Intra-Community supply"
 msgstr "Внтурішнє постачання"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_common.py:0
+msgid ""
+"Invalid Tax Setup for Co-Contractor. Please apply the standard co-contractor "
+"tax, or ensure your custom tax uses a tax amount of 0"
+msgstr ""
+"Недійсне налаштування податку для співпідрядника. Будь ласка, застосуйте "
+"стандартний податок співпідрядника або переконайтеся, що ваш індивідуальний "
+"податок використовує суму податку 0"
 
 #. module: account_edi_ubl_cii
 #: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
@@ -802,6 +846,11 @@ msgid ""
 "met, the customer will be liable for the payment of the tax, interest, and "
 "penalties due in relation to this condition."
 msgstr ""
+"Зворотне нарахування: За відсутності письмового заперечення протягом одного "
+"місяця з моменту отримання рахунку-фактури, вважається, що клієнт визнає, що "
+"він є платником податків, зобов'язаним подавати періодичні декларації. Якщо "
+"ця умова не виконується, клієнт несе відповідальність за сплату податку, "
+"відсотків та штрафів, що належать у зв'язку з цією умовою."
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__9947
@@ -923,6 +972,17 @@ msgstr ""
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
+msgid ""
+"Taxes of category 'Service outside scope of tax' shall not be mixed with tax "
+"from other categories. You should split your invoice in two"
+msgstr ""
+"Податки категорії «Послуги поза межами оподатковуваного обсягу» не повинні "
+"змішуватися з податками з інших категорій. Вам слід розділити свій рахунок-"
+"фактуру на дві частини"
+
+#. module: account_edi_ubl_cii
+#. odoo-python
 #: code:addons/account_edi_ubl_cii/models/res_partner.py:0
 msgid ""
 "The Peppol endpoint is not valid. It should contain exactly 10 digits "
@@ -956,6 +1016,7 @@ msgstr ""
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid "The VAT of the %s should be prefixed with its country code."
 msgstr "ПДВ %s повинен мати префікс коду країни."
@@ -969,6 +1030,7 @@ msgstr "Не вдалося отримати доступ до банківсь�
 
 #. module: account_edi_ubl_cii
 #. odoo-python
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_cen_en16931.py:0
 #: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
 msgid "The country is required for the %s."
 msgstr "Необхідна країна для %s."
@@ -1010,7 +1072,7 @@ msgstr "Рахунок-фактуру перетворено на сторно, 
 
 #. module: account_edi_ubl_cii
 #. odoo-python
-#: code:addons/account_edi_ubl_cii/models/account_edi_xml_ubl_bis3.py:0
+#: code:addons/account_edi_ubl_cii/models/account_edi_ubl_pint.py:0
 msgid "The prepaid amount of %s corresponds to the withholding tax applied."
 msgstr ""
 "Передплачена сума %s відповідає застосованому податку, утриманому у джерела "
@@ -1040,6 +1102,21 @@ msgstr "UBL 2.1"
 #: model:ir.model,name:account_edi_ubl_cii.model_account_edi_xml_ubl_bis3
 msgid "UBL BIS Billing 3.0.12"
 msgstr "UBL BIS Billing 3.0.12"
+
+#. module: account_edi_ubl_cii
+#: model:ir.model,name:account_edi_ubl_cii.model_account_edi_ubl_cen_en16931
+msgid "UBL CEN-EN16931"
+msgstr ""
+
+#. module: account_edi_ubl_cii
+#: model:ir.model,name:account_edi_ubl_cii.model_account_edi_ubl_pint
+msgid "UBL PINT"
+msgstr ""
+
+#. module: account_edi_ubl_cii
+#: model:ir.model,name:account_edi_ubl_cii.model_account_edi_ubl_pint_eu
+msgid "UBL PINT-EU Layer"
+msgstr ""
 
 #. module: account_edi_ubl_cii
 #: model:ir.model.fields.selection,name:account_edi_ubl_cii.selection__res_partner__peppol_eas__0193
@@ -1177,6 +1254,12 @@ msgstr "fx"
 #: model_terms:ir.ui.view,arch_db:account_edi_ubl_cii.account_invoice_pdfa_3_facturx_metadata
 msgid "urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#"
 msgstr "urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#"
+
+#~ msgid "Discount lines must have a negative amount."
+#~ msgstr "Рядки знижок повинні мати від'ємну суму."
+
+#~ msgid "EN 16931"
+#~ msgstr "EN 16931"
 
 #~ msgid "Cannot decode the origin file, try by importing it again"
 #~ msgstr ""

@@ -105,6 +105,22 @@ class TestUblExportBis3BE(TestUblBis3Common, TestUblCiiBECommon):
         self._generate_invoice_ubl_file(invoice)
         self._assert_invoice_ubl_file(invoice, 'test_invoice_BR_CO_10_line_extension_amount_sum_lines')
 
+    def test_invoice_PEPPOL_EN16931_R120_line_extension_amount_huge_number_of_decimals(self):
+        """ [PEPPOL-EN16931-R120]-Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity)
+        + Sum of invoice line charge amount - sum of invoice line allowance amount
+        """
+        tax_21 = self.percent_tax(21.0)
+        product = self._create_product(lst_price=0.01110515963896, taxes_id=tax_21)
+        invoice = self._create_invoice_one_line(
+            product_id=product,
+            quantity=278362.5,
+            partner_id=self.partner_be,
+            post=True,
+        )
+
+        self._generate_invoice_ubl_file(invoice)
+        self._assert_invoice_ubl_file(invoice, 'test_invoice_PEPPOL_EN16931_R120_line_extension_amount_huge_number_of_decimals')
+
     def test_invoice_price_amount_rounding_precision_with_price_included_taxes(self):
         tax_21 = self.percent_tax(21.0, price_include_override='tax_included')
         product = self._create_product(lst_price=1039.99, taxes_id=tax_21)
@@ -503,6 +519,32 @@ class TestUblExportBis3BE(TestUblBis3Common, TestUblCiiBECommon):
 
         self._generate_invoice_ubl_file(invoice)
         self._assert_invoice_ubl_file(invoice, 'test_invoice_early_pay_discount_with_discount_on_lines')
+
+    def test_invoice_early_pay_discount_with_0_tax(self):
+        invoice = self._create_invoice_one_line(
+            partner_id=self.partner_be,
+            product_id=self.product_a,
+            tax_ids=self.percent_tax(0.0),
+            invoice_payment_term_id=self._create_mixed_early_payment_term(),
+            invoice_date="2026-05-12",
+            post=True,
+        )
+        self._generate_invoice_ubl_file(invoice)
+        self._assert_invoice_ubl_file(invoice, 'test_invoice_early_pay_discount_with_0_tax')
+
+    def test_invoice_with_global_discount_line_sale_order(self):
+        self.ensure_installed('sale')
+
+        tax_21 = self.percent_tax(21.0)
+        product_a = self._create_product(name='product_a', lst_price=1000, taxes_id=tax_21)
+        sale_order = self._create_sale_order_one_line(
+            partner_id=self.partner_be.id,
+            product_id=product_a,
+        )
+        self._apply_sale_order_discount(sale_order, 'percent', 10)  # Global Discount of 10%
+        invoice = self._create_final_invoice(sale_order, post=True)
+        self._generate_invoice_ubl_file(invoice)
+        self._assert_invoice_ubl_file(invoice, 'test_invoice_with_global_discount_line_sale_order')
 
     def test_invoice_cash_rounding_add_invoice_line(self):
         tax_21 = self.percent_tax(21.0)
@@ -912,10 +954,12 @@ class TestBeExport(TestUblExportBis3BE):
     def test_invoice_cocontractant_tax_exemption_reason(self):
 
         co_contractant = self.env['account.chart.template'].ref('fiscal_position_template_4', raise_if_not_found=False)
+        valid_tax = self.env['account.chart.template'].ref('attn_VAT-OUT-00-CC', raise_if_not_found=False)
         co_contractant.note = "Test note"
         invoice = self._create_invoice_one_line(
             product_id=self.product_a,
             partner_id=self.partner_be,
+            tax_ids=valid_tax
         )
         invoice.fiscal_position_id = co_contractant
         invoice.action_post()

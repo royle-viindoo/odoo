@@ -49,7 +49,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-17 18:36+0000\n"
-"PO-Revision-Date: 2026-05-09 09:02+0000\n"
+"PO-Revision-Date: 2026-06-08 13:05+0000\n"
 "Last-Translator: Saara Hakanen <sahak@odoo.com>\n"
 "Language-Team: Finnish <https://translate.odoo.com/projects/odoo-18/mail/fi/>"
 "\n"
@@ -58,7 +58,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: mail
 #. odoo-python
@@ -955,7 +955,7 @@ msgstr ""
 #. module: mail
 #: model:ir.model,name:mail.model_mail_activity_schedule
 msgid "Activity schedule plan Wizard"
-msgstr "Toiminta-aikataulun suunnittelun ohjattu toiminto"
+msgstr "Ohjattu toimenpideaikataulun suunnittelutoiminto"
 
 #. module: mail
 #. odoo-javascript
@@ -4042,6 +4042,13 @@ msgid ""
 "Template Source Snippet:\n"
 "%(template_src)s"
 msgstr ""
+"Renderöinti epäonnistui QWeb-mallipohjalle %(template_label)s\n"
+"Kohdemalli: %(model_name)s\n"
+"Kielikonteksti: %(lang_context)s\n"
+"Virhe: %(error_details)s\n"
+"\n"
+"Mallipohjan lähdekoodin katkelma:\n"
+"%(template_src)s"
 
 #. module: mail
 #. odoo-python
@@ -5836,7 +5843,7 @@ msgstr "Kirjaa sisäinen huomautus…"
 #: code:addons/mail/static/src/chatter/web/chatter.xml:0
 #: code:addons/mail/static/src/core/common/composer.js:0
 msgid "Log note"
-msgstr "Kirjaa muistiinpano"
+msgstr "Muistiinpano"
 
 #. module: mail
 #. odoo-javascript
@@ -6130,7 +6137,7 @@ msgstr "Merkitse tehdyksi"
 #. odoo-python
 #: code:addons/mail/models/mail_render_mixin.py:0
 msgid "Mass Mailing Template: '%(name)s' (ID: %(record_id)s)"
-msgstr ""
+msgstr "Massapostituksen mallipohja: '%(name)s' (Tunnus: %(record_id)s)"
 
 #. module: mail
 #. odoo-javascript
@@ -6193,7 +6200,7 @@ msgstr "Valikko"
 #. module: mail
 #: model:ir.model,name:mail.model_base_partner_merge_automatic_wizard
 msgid "Merge Partner Wizard"
-msgstr "Kumppanin yhdistämistyökalu"
+msgstr "Ohjattu kumppaneiden yhdistämistoiminto"
 
 #. module: mail
 #. odoo-python
@@ -6251,7 +6258,7 @@ msgstr "Ongelma viestin toimituksessa"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_tracking_value__mail_message_id
 msgid "Message ID"
-msgstr "Viestin ID"
+msgstr "Viestin tunnus"
 
 #. module: mail
 #. odoo-javascript
@@ -6378,7 +6385,7 @@ msgstr "Viestin yksilöivä tunniste"
 #: model:ir.model.fields,field_description:mail.field_mail_mail__message_id
 #: model:ir.model.fields,field_description:mail.field_mail_message__message_id
 msgid "Message-Id"
-msgstr "Viestin ID"
+msgstr "Viestin tunnus"
 
 #. module: mail
 #. odoo-javascript
@@ -9071,7 +9078,7 @@ msgstr "Lähetä postituksia tai ilmoituksia suoraan"
 #: code:addons/mail/static/src/chatter/web/chatter.xml:0
 #: code:addons/mail/static/src/discuss/web/avatar_card/avatar_card_popover.xml:0
 msgid "Send message"
-msgstr "Lähetä viesti"
+msgstr "Viestin lähetys"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_template_preview__email_from
@@ -10454,12 +10461,12 @@ msgstr "Käännös epäonnistui"
 #: model:ir.model.fields,field_description:mail.field_mail_activity_plan_template__delay_from
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__triggered_next_type_id
 msgid "Trigger"
-msgstr "Liipaisin"
+msgstr "Laukaisin"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__chaining_type__trigger
 msgid "Trigger Next Activity"
-msgstr "Laukaise seuraava toimenpide"
+msgstr "Käynnistä seuraava toiminto"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_resend_partner__resend
@@ -12305,7 +12312,7 @@ msgstr "\"%(member_name)s\" kohdassa \"%(channel_name)s\""
 #. odoo-javascript
 #: code:addons/mail/static/src/core/web/activity.js:0
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #~ msgid ""
 #~ "Failed to render QWeb template: %(template_src)s\n"
