@@ -302,7 +302,7 @@ class TestItEdiImport(TestItEdi):
         })
         self.env['ir.attachment'].with_company(other_company).create({
             'name': filename,
-            'datas': self.fake_test_content,
+            'raw': self.fake_test_content,
             'res_model': 'account.move',
             'res_id': invoice.id,
             'res_field': 'l10n_it_edi_attachment_file',
@@ -478,6 +478,37 @@ class TestItEdiImport(TestItEdi):
 
         alpha_partner.invalidate_recordset(['is_company'])
         self.assertFalse(alpha_partner.is_company)
+
+    def test_import_due_date_on_issued_invoice(self):
+        """ DataScadenzaPagamento and CodicePagamento populate
+        invoice_date_due and payment_reference on out_invoice and
+        in_refund too. The bank account block stays incoming-only
+        and never writes the XML IBAN on res.partner.bank.
+        """
+        iban = "IT75F0200839061000400xxxxx"
+        applied_xml = f"""
+            <xpath expr="//FatturaElettronicaBody/DatiPagamento/DettaglioPagamento/DataScadenzaPagamento" position="replace">
+                <DataScadenzaPagamento>2020-02-29</DataScadenzaPagamento>
+            </xpath>
+            <xpath expr="//FatturaElettronicaBody/DatiPagamento/DettaglioPagamento" position="inside">
+                <CodicePagamento>REF-OUT-2020-001</CodicePagamento>
+                <IBAN>{iban}</IBAN>
+            </xpath>
+        """
+        self._assert_import_invoice(
+            'IT01234567890_FPR01.xml',
+            [{
+                'invoice_date_due': fields.Date.from_string('2020-02-29'),
+                'payment_reference': 'REF-OUT-2020-001',
+            }],
+            applied_xml,
+            move_type='out_invoice',
+        )
+        # Bank account block stays incoming-only: no res.partner.bank
+        # carries the XML IBAN.
+        self.assertFalse(self.env['res.partner.bank'].search([
+            ('acc_number', '=', iban),
+        ]))
 
     def test_receive_bill_with_multiple_discounts_in_line(self):
         applied_xml = """
@@ -682,3 +713,23 @@ class TestItEdiImport(TestItEdi):
                 },
             ],
         }], applied_xml)
+
+    def test_import_simplified_invoice_zero_base(self):
+        """Test the import of a xml bill where the total amount equals the tax amount (Importo == Imposta)."""
+
+        self._assert_import_invoice('IT01234567890_FPR05.xml', [{
+            'move_type': 'in_refund',
+            'amount_untaxed': 0.0,
+            'invoice_line_ids': [
+                {
+                    'name': 'IVA ANNO PRECEDENTE',
+                    'quantity': 1.0,
+                    'price_unit': 9.20,
+                },
+                {
+                    'name': 'TOTALE IMPORTO IN ADDEBITO',
+                    'quantity': 1.0,
+                    'price_unit': -9.20,
+                }
+            ],
+        }])

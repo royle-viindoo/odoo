@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-10 18:37+0000\n"
-"PO-Revision-Date: 2026-04-24 16:32+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
+"PO-Revision-Date: 2026-06-06 09:47+0000\n"
+"Last-Translator: Alina Lisnenko <alina.lisnenko@erp.co.ua>\n"
 "Language-Team: Ukrainian <https://translate.odoo.com/projects/odoo-18/stock/"
 "uk/>\n"
 "Language: uk\n"
@@ -27,7 +27,7 @@ msgstr ""
 "? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > "
 "14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % "
 "100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: stock
 #. odoo-python
@@ -287,8 +287,7 @@ msgstr "'Таблиця підрахунку'"
 #. module: stock
 #: model:ir.actions.report,print_report_name:stock.action_report_delivery
 msgid "'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
-msgstr ""
-"'Лист доставки - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr "'Лист доставки - %s - %s' % (object.partner_id.name or '', object.name)"
 
 #. module: stock
 #: model:ir.actions.report,print_report_name:stock.action_report_location_barcode
@@ -1217,7 +1216,7 @@ msgid ""
 msgstr ""
 "Місяць річної інвентаризації для товарів, які не знаходяться в "
 "місцезнаходженні з циклічною датою інвентаризації. Установіть значення без "
-"місяцезнаходження, якщо немає автоматичної річної інвентаризації."
+"місцезнаходження, якщо немає автоматичної річної інвентаризації."
 
 #. module: stock
 #. odoo-python
@@ -1643,7 +1642,7 @@ msgstr "Коробка управління кабелем"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_picking_calendar
 msgid "Calendar View"
-msgstr "Календарний вид"
+msgstr "Перегляд календаря"
 
 #. module: stock
 #. odoo-python
@@ -2553,7 +2552,7 @@ msgstr "Дата"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_picking__search_date_category
 msgid "Date Category"
-msgstr ""
+msgstr "Категорія дати"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_move_form
@@ -3345,8 +3344,7 @@ msgstr "Шаблон електронного листа підтверджен�
 #. module: stock
 #: model:ir.model.fields,help:stock.field_res_company__stock_mail_confirmation_template_id
 msgid "Email sent to the customer once the order is done."
-msgstr ""
-"Електронний лист надсилається клієнту після того, як замовлення готове."
+msgstr "Електронний лист надсилається клієнту після того, як замовлення готове."
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_location_search
@@ -4291,7 +4289,7 @@ msgstr "На складі"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse__in_type_id
 msgid "In Type"
-msgstr "Для надходженя"
+msgstr "Для надходження"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__date_deadline
@@ -4694,8 +4692,7 @@ msgstr "Неможливо відновити більше товарів %s н�
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking__move_type
 msgid "It specifies goods to be deliver partially or all at once"
-msgstr ""
-"Це вказує товари, які можуть бути доставлені частково або все одночасно"
+msgstr "Це вказує товари, які можуть бути доставлені частково або все одночасно"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking_type__move_type
@@ -4949,7 +4946,7 @@ msgstr "Останні дії"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Late Availability"
-msgstr ""
+msgstr "Пізня доступність"
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.action_picking_tree_late
@@ -5521,7 +5518,7 @@ msgstr "Переміщення"
 #: model:ir.actions.act_window,name:stock.stock_move_action
 #: model:ir.ui.menu,name:stock.stock_move_menu
 msgid "Moves Analysis"
-msgstr ""
+msgstr "Аналіз перемішень"
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.stock_move_line_action
@@ -5821,8 +5818,8 @@ msgid ""
 "No rule has been found to replenish \"%(product)s\" in \"%(location)s\".\n"
 "Verify the routes configuration on the product."
 msgstr ""
-"Не знайдено жодного правила для поповнення \"%(product)s\" в \"%"
-"(location)s\".\n"
+"Не знайдено жодного правила для поповнення \"%(product)s\" в \"%(location)"
+"s\".\n"
 "Перевірте налаштування маршрутів на товарі."
 
 #. module: stock
@@ -5978,7 +5975,7 @@ msgstr "Офісний стілець"
 #: model_terms:ir.ui.view,arch_db:stock.view_stock_product_tree
 #: model_terms:ir.ui.view,arch_db:stock.view_stock_quant_tree_simple
 msgid "On Hand"
-msgstr " В наявності"
+msgstr "В наявності"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_lot__product_qty
@@ -6004,7 +6001,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.product_template_kanban_stock_view
 msgid "On hand:"
-msgstr " В наявності:"
+msgstr "В наявності:"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__lot_label_layout__label_quantity__lots
@@ -6972,7 +6969,7 @@ msgstr "Поповнення товару"
 #. module: stock
 #: model:ir.model,name:stock.model_stock_replenish_mixin
 msgid "Product Replenish Mixin"
-msgstr ""
+msgstr "Поповнення товару Mixin"
 
 #. module: stock
 #: model:ir.actions.report,name:stock.action_report_stock_rule
@@ -7018,7 +7015,7 @@ msgstr "Варіанти товару"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_package_barcode
 msgid "Product barcode"
-msgstr ""
+msgstr "Штрих-код товару"
 
 #. module: stock
 #. odoo-python
@@ -7691,7 +7688,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock.field_product_product__reordering_max_qty
 #: model:ir.model.fields,field_description:stock.field_product_template__reordering_max_qty
 msgid "Reordering Max Qty"
-msgstr "Перезамовлення максимальної кількості"
+msgstr "Дозамовлення максимальної кількості"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_product__reordering_min_qty
@@ -8723,8 +8720,7 @@ msgstr "Відкладено"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.inventory_warning_set_view
 msgid "Some selected lines already have quantities set, they will be ignored."
-msgstr ""
-"Деякі вибрані рядки вже мають задані кількості, вони будуть ігноровані."
+msgstr "Деякі вибрані рядки вже мають задані кількості, вони будуть ігноровані."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move_line__origin
@@ -8972,7 +8968,7 @@ msgstr "Рядок відстеження запасу"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_picking__move_ids_without_package
 msgid "Stock move"
-msgstr "Складське переміщення "
+msgstr "Складське переміщення"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_move_search
@@ -9175,7 +9171,7 @@ msgstr ""
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_change_product_qty__product_tmpl_id
 msgid "Template"
-msgstr "Шаблон "
+msgstr "Шаблон"
 
 #. module: stock
 #. odoo-python
@@ -9233,8 +9229,7 @@ msgstr "Дозамовлення %s створене."
 #. module: stock
 #: model:ir.model.constraint,message:stock.constraint_stock_location_barcode_company_uniq
 msgid "The barcode for a location must be unique per company!"
-msgstr ""
-"Штрих-код для розташування повинен бути унікальним для кожної компанії!"
+msgstr "Штрих-код для розташування повинен бути унікальним для кожної компанії!"
 
 #. module: stock
 #: model_terms:res.company,invoice_terms_html:stock.res_company_1
@@ -9272,7 +9267,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking__search_date_category__day_2
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "The day after tomorrow"
-msgstr ""
+msgstr "Післязавтра"
 
 #. module: stock
 #. odoo-python
@@ -9731,8 +9726,7 @@ msgstr ""
 #: model:ir.model.fields,help:stock.field_stock_change_product_qty__new_quantity
 msgid ""
 "This quantity is expressed in the Default Unit of Measure of the product."
-msgstr ""
-"Ця кількість виражається в одиниці вимірювання за замовчуванням товару."
+msgstr "Ця кількість виражається в одиниці вимірювання за замовчуванням товару."
 
 #. module: stock
 #. odoo-javascript
