@@ -4,6 +4,7 @@
 import datetime
 import errno
 import logging
+import multiprocessing
 import os
 import os.path
 import platform
@@ -67,6 +68,19 @@ from odoo.tools import stripped_sys_argv, dumpstacks, log_ormcache_stats
 _logger = logging.getLogger(__name__)
 
 SLEEP_INTERVAL = 60     # 1 min
+
+# Host-level admission control for the dynamic HTTP worker pool: never scale up
+# while the *whole machine's* memory usage is at/above this percent. Because every
+# instance on the host reads the same figure, this acts as a self-coordinating
+# global cap - a correlated spike across all instances cannot exhaust RAM and hang
+# the box; excess requests queue in the listen backlog instead. RAM is the metric
+# that hangs a host (CPU contention only slows things down).
+HOST_MEM_MAX_PCT = 80
+
+# Seconds the pool must stay over-capacity before a worker is retired. A short
+# grace keeps one spare alive between sporadic requests, so an isolated request
+# at the floor doesn't spawn-and-kill a worker (churn) on every single request.
+SCALE_DOWN_GRACE = 5
 
 def memory_info(process):
     """
@@ -824,6 +838,81 @@ class PreforkServer(CommonServer):
         self.generation = 0
         self.queue = []
         self.long_polling_pid = None
+        # --- dynamic HTTP worker pool ---
+        # The live worker count floats between 1 and 2x the configured `workers`,
+        # following load. Start at the floor: an idle server keeps just one worker
+        # and the pool grows on demand. Starting at min (rather than spawning the
+        # full `workers` set and trimming it straight back down) avoids SIGINT-ing a
+        # still-initializing worker during that trim, which could leak it.
+        self.worker_http_min = 1 if config['workers'] else 0
+        self.worker_http_max = config['workers'] * 2 if config['workers'] else 2
+        self.population = self.worker_http_min
+        # Per-worker "busy" flags in lock-free shared memory (created before any
+        # fork, so children inherit it). Each HTTP worker owns one slot and writes
+        # only its own byte (1 while serving a request, 0 otherwise); the master
+        # reads sum(self.busy). Owning a slot makes the count leak-proof: if a
+        # worker is hard-killed (SIGKILL by the watchdog, the OOM killer, a crash)
+        # mid-request its slot is reset when the master reaps it in worker_pop(),
+        # whereas a single shared counter would drift up forever.
+        self.busy = multiprocessing.Array('b', self.worker_http_max + 8, lock=False)
+        self._free_busy_slots = list(range(self.worker_http_max + 8))
+        # pids already SIGINT'd by scale-down, awaiting exit. Excluded from victim
+        # selection so rapid consecutive scale-downs retire DIFFERENT workers
+        # instead of re-signalling the newest one (which would leave the rest alive).
+        self._retiring = set()
+        # timestamp since the pool has been over-capacity (drives SCALE_DOWN_GRACE)
+        self._overcap_since = None
+        # host-memory admission control state (see HOST_MEM_MAX_PCT).
+        # Jittered 1-2s interval so that, with hundreds/thousands of instances on
+        # one host, they don't all read /proc/meminfo (and decide) in lockstep.
+        self._scaleup_held = False
+        self._last_mem_pct = 0.0
+        self._mem_checked_at = 0.0
+        self._mem_check_interval = 1.0 + random.random()
+
+    def _acquire_busy_slot(self):
+        return self._free_busy_slots.pop() if self._free_busy_slots else None
+
+    @staticmethod
+    def _read_host_mem_used_pct():
+        """Host memory used %, read directly from /proc/meminfo (cheap: 2 lines).
+
+        Cheaper than psutil.virtual_memory() (which parses the whole file and
+        computes several figures) - matters because every instance polls this.
+
+        Fail-closed: on any read/parse error return 100.0 so the caller treats the
+        host as full and refuses to scale up. A failure to read /proc tends to
+        coincide with the host being in trouble - assuming "safe to grow" then
+        would be exactly the wrong call.
+        """
+        try:
+            total = avail = None
+            with open('/proc/meminfo', 'rb') as f:
+                for line in f:
+                    if line.startswith(b'MemTotal:'):
+                        total = int(line.split()[1])
+                    elif line.startswith(b'MemAvailable:'):
+                        avail = int(line.split()[1])
+                    if total is not None and avail is not None:
+                        break
+            if total and avail is not None:
+                return 100.0 * (total - avail) / total
+        except Exception:
+            pass
+        return 100.0  # fail-closed: unknown -> treat as overloaded, don't grow
+
+    def _host_mem_overloaded(self):
+        """True when host memory usage is at/above HOST_MEM_MAX_PCT (don't grow).
+
+        Throttled to a jittered ~1-2s: the master loop can wake once per request
+        under load, but host memory does not move meaningfully sub-second, so a
+        cached value keeps this off the hot path even with many instances.
+        """
+        now = time.time()
+        if now - self._mem_checked_at >= self._mem_check_interval:
+            self._mem_checked_at = now
+            self._last_mem_pct = self._read_host_mem_used_pct()
+        return self._last_mem_pct >= HOST_MEM_MAX_PCT
 
     def pipe_new(self):
         pipe = os.pipe()
@@ -853,6 +942,8 @@ class PreforkServer(CommonServer):
     def worker_spawn(self, klass, workers_registry):
         self.generation += 1
         worker = klass(self)
+        if klass is WorkerHTTP:
+            worker.busy_slot = self._acquire_busy_slot()
         pid = os.fork()
         if pid != 0:
             worker.pid = pid
@@ -878,6 +969,13 @@ class PreforkServer(CommonServer):
                 self.workers_http.pop(pid, None)
                 self.workers_cron.pop(pid, None)
                 u = self.workers.pop(pid)
+                self._retiring.discard(pid)
+                # Free the busy slot and clear it, even if the worker was killed
+                # mid-request (its `finally` never ran) -> no leak.
+                slot = getattr(u, 'busy_slot', None)
+                if slot is not None:
+                    self.busy[slot] = 0
+                    self._free_busy_slots.append(slot)
                 u.close()
             except OSError:
                 return
@@ -939,8 +1037,63 @@ class PreforkServer(CommonServer):
                               worker.watchdog_timeout)
                 self.worker_kill(pid, signal.SIGKILL)
 
+    def _autoscale_http(self):
+        """Keep the live HTTP worker count between 1 and 2x the configured value.
+
+        Deliberately tiny (process_spawn runs very often): a couple of integer
+        comparisons, no timers, no per-call allocation. The "<= current - 2" idle
+        rule leaves a one-worker dead zone so the pool settles at busy+1 (one spare)
+        instead of flapping. SIGINT lets the retired worker finish its current
+        request before exiting.
+        """
+        if self.worker_http_max <= self.worker_http_min:
+            return  # 0 or 1 worker configured: nothing to scale
+        if len(self.workers_http) < self.population:
+            return  # pool still filling to target; let process_spawn catch up
+        # Decide against the committed target `population`, not the live worker
+        # count: a worker retired below still lingers (it finishes its request
+        # before exiting), so len(workers_http) lags and would overshoot. Using
+        # population makes the pool settle at busy+1 (one spare).
+        busy = sum(self.busy)
+        if busy >= self.population and self.population < self.worker_http_max:
+            self._overcap_since = None  # load high -> cancel any pending scale-down
+            # Don't grow when the host is low on memory: hold here and let
+            # requests queue, rather than risk OOM-ing/hanging the whole box.
+            if self._host_mem_overloaded():
+                if not self._scaleup_held:
+                    self._scaleup_held = True
+                    _logger.warning("HTTP scale-up paused: host RAM at %.0f%% (>= %s%%); requests will queue",
+                                    self._last_mem_pct, HOST_MEM_MAX_PCT)
+            else:
+                self._scaleup_held = False
+                self.population += 1  # every worker busy -> grow toward the ceiling
+                _logger.debug("HTTP workers UP -> %s (busy=%s, max=%s)", self.population, busy, self.worker_http_max)
+                if self.population == self.worker_http_max:
+                    # exactly one increment lands on max per climb -> warns once/episode
+                    _logger.warning("HTTP workers hit the ceiling (%s = 2x configured 'workers')", self.worker_http_max)
+        elif busy <= self.population - 2 and self.population > self.worker_http_min:
+            # Over-capacity: only shrink after it has held for SCALE_DOWN_GRACE
+            # seconds, so a spare is kept between sporadic requests instead of being
+            # spawned and killed for each one (churn). Then drain one worker/beat.
+            now = time.time()
+            if self._overcap_since is None:
+                self._overcap_since = now
+            elif now - self._overcap_since >= SCALE_DOWN_GRACE:
+                self.population -= 1
+                candidates = [w for w in self.workers_http.values() if w.pid not in self._retiring]
+                victim = max(candidates, key=lambda w: w.pid, default=None)
+                if victim is not None:
+                    self._retiring.add(victim.pid)
+                    self.worker_kill(victim.pid, signal.SIGINT)
+                _logger.debug("HTTP workers DOWN -> %s (busy=%s, min=%s)", self.population, busy, self.worker_http_min)
+        else:
+            self._overcap_since = None  # at equilibrium (busy+1) -> nothing pending
+        # Always keep the target within [min, max] (also tames manual SIGTTIN/SIGTTOU).
+        self.population = min(max(self.population, self.worker_http_min), self.worker_http_max)
+
     def process_spawn(self):
         if config['http_enable']:
+            self._autoscale_http()
             while len(self.workers_http) < self.population:
                 self.worker_spawn(WorkerHTTP, self.workers_http)
             if not self.long_polling_pid:
@@ -989,7 +1142,7 @@ class PreforkServer(CommonServer):
             self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             self.socket.setblocking(0)
             self.socket.bind((self.interface, self.port))
-            self.socket.listen(8 * self.population)
+            self.socket.listen(8 * self.worker_http_max)
 
     def stop(self, graceful=True):
         if self.long_polling_pid is not None:
@@ -1063,6 +1216,8 @@ class Worker(object):
         # should we rename into lifetime ?
         self.request_max = multi.limit_request
         self.request_count = 0
+        # Index into multi.busy; set by worker_spawn for HTTP workers only.
+        self.busy_slot = None
 
     def setproctitle(self, title=""):
         setproctitle('odoo: %s %s %s' % (self.__class__.__name__, self.pid, title))
@@ -1202,11 +1357,18 @@ class WorkerHTTP(Worker):
         self.server.socket = client
         # tolerate broken pipe when the http client closes the socket before
         # receiving the full reply
+        slot = self.busy_slot
+        if slot is not None:
+            self.multi.busy[slot] = 1  # lock-free: only this worker writes this byte
         try:
-            self.server.process_request(client, addr)
-        except IOError as e:
-            if e.errno != errno.EPIPE:
-                raise
+            try:
+                self.server.process_request(client, addr)
+            except IOError as e:
+                if e.errno != errno.EPIPE:
+                    raise
+        finally:
+            if slot is not None:
+                self.multi.busy[slot] = 0
         self.request_count += 1
 
     def process_work(self):
