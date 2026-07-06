@@ -1070,7 +1070,7 @@ msgstr "Trước"
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_bom_form_view
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_routing_workcenter_filter
 msgid "Bill of Material"
-msgstr "Định mực nguyên liệu"
+msgstr "Định mức nguyên liệu"
 
 #. module: mrp
 #: model:ir.model,name:mrp.model_mrp_bom_line
@@ -1085,7 +1085,7 @@ msgstr "Chi tiết định mức"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_unbuild__mo_bom_id
 msgid "Bill of Material used on the Production Order"
-msgstr "Định mực nguyên liệu được sử dụng cho lệnh sản xuất"
+msgstr "Định mức nguyên liệu được sử dụng cho lệnh sản xuất"
 
 #. module: mrp
 #: model:ir.actions.act_window,name:mrp.product_open_bom
@@ -1099,13 +1099,13 @@ msgstr "Định mực nguyên liệu được sử dụng cho lệnh sản xuấ
 #: model_terms:ir.ui.view,arch_db:mrp.product_template_form_view_bom_button
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_bom_filter
 msgid "Bill of Materials"
-msgstr "Định mực nguyên liệu"
+msgstr "Định mức nguyên liệu"
 
 #. module: mrp
 #: model:ir.actions.act_window,name:mrp.mrp_bom_form_action
 #: model:ir.ui.menu,name:mrp.menu_mrp_bom_form_action
 msgid "Bills of Materials"
-msgstr "Định mực nguyên liệu"
+msgstr "Định mức nguyên liệu"
 
 #. module: mrp
 #: model:ir.model.fields,help:mrp.field_mrp_production__bom_id
@@ -1115,7 +1115,7 @@ msgid ""
 "Bills of Materials, also called recipes, are used to autocomplete components "
 "and work order instructions."
 msgstr ""
-"Định mực nguyên liệu, còn được gọi là công thức, được sử dụng để tự động "
+"Định mức nguyên liệu, còn được gọi là công thức, được sử dụng để tự động "
 "hoàn thiện các thành phần và hướng dẫn cho công đoạn sản xuất."
 
 #. module: mrp
@@ -1126,7 +1126,7 @@ msgid ""
 "manufacturing\n"
 "                order or a pack of products."
 msgstr ""
-"Định mực nguyên liệu cho phép bạn xác định danh sách các nguyên liệu thô\n"
+"Định mức nguyên liệu cho phép bạn xác định danh sách các nguyên liệu thô\n"
 "                cần thiết để sản xuất một thành phẩm; thông qua lệnh sản "
 "xuất\n"
 "                hoặc gói sản phẩm."
@@ -3044,7 +3044,7 @@ msgid ""
 "when this product is in a bill of material."
 msgstr ""
 "Để ẩn nếu tài liệu chỉ có thể truy cập được trên biểu mẫu sản phẩm.\n"
-"Chọn Định mực nguyên liệu để trực quan hóa tài liệu này dưới dạng tệp đính "
+"Chọn Định mức nguyên liệu để trực quan hóa tài liệu này dưới dạng tệp đính "
 "kèm sản phẩm khi sản phẩm này nằm trong định mức nguyên liệu."
 
 #. module: mrp
