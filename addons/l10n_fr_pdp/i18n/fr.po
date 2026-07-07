@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 20:03+0000\n"
+"POT-Creation-Date: 2026-07-03 18:18+0000\n"
 "PO-Revision-Date: 2026-06-05 20:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -39,17 +40,30 @@ msgid "%(amount)s %(currency_code)s (including %(tax_percent)s%% VAT)"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move_send.py:0
+msgid "%s has requested electronic invoices reception via French E-Invoicing."
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/wizard/pdp_registration.py:0
+msgid "%s will be used as SIREN for the KYC"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-exclamation-triangle\"/>You can only send and receive <span"
-" class=\"o_form_label\">unregulated</span> messages currently (via Peppol)."
+"<i class=\"fa fa-exclamation-triangle\"/>You can only send and receive <span "
+"class=\"o_form_label\">unregulated</span> messages currently (via Peppol)."
 msgstr ""
 
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
 msgid ""
 "<span class=\"text-muted\">\n"
-"                                    Enable e-reporting &amp; sending of invoices to the PPF\n"
+"                                    Enable e-reporting &amp; sending of "
+"invoices to the PPF\n"
 "                                </span>\n"
 "                                <br/>"
 msgstr ""
@@ -66,8 +80,11 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
 msgid ""
-"<span invisible=\"account_peppol_proxy_state != 'smp_registration'\" class=\"o_form_label\"> is waiting to be activated</span>\n"
-"                                <span invisible=\"account_peppol_proxy_state == 'smp_registration'\" class=\"o_form_label\"> invoices and credit notes.</span>"
+"<span invisible=\"account_peppol_proxy_state != 'smp_registration'\" "
+"class=\"o_form_label\"> is waiting to be activated</span>\n"
+"                                <span invisible=\"account_peppol_proxy_state "
+"== 'smp_registration'\" class=\"o_form_label\"> invoices and credit notes.</"
+"span>"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -126,8 +143,8 @@ msgstr ""
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_company__l10n_fr_pdp_send_to_ppf
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_config_settings__l10n_fr_pdp_send_to_ppf
 msgid ""
-"Activate Flux 1 regulatory data, Flux 6 mandatory statuses and Flux 10 "
-"e-reporting generation for this company."
+"Activate Flux 1 regulatory data, Flux 6 mandatory statuses and Flux 10 e-"
+"reporting generation for this company."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -168,8 +185,7 @@ msgstr ""
 
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
-msgid ""
-"Allow sending and receiving invoices through the approved platform (AP)"
+msgid "Allow sending and receiving invoices through the approved platform (AP)"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -200,8 +216,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
 msgid ""
-"An error occurred with the Approved Platform while sending a "
-"response.%(br)sStatus: %(status)s - %(error)s"
+"An error occurred with the Approved Platform while sending a response.%"
+"(br)sStatus: %(status)s - %(error)s"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -348,6 +364,12 @@ msgid "Cannot send response for any of the journal entries."
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/wizard/pdp_registration.py:0
+msgid "Check Company Data"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_view_send_wizard_form
 msgid "Click \"Send anyway\" to submit without them."
 msgstr ""
@@ -386,6 +408,13 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move_send.py:0
+msgid ""
+"Consider registering to use the Approved Platform for French E-Invoicing"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.model,name:l10n_fr_pdp.model_res_partner
 msgid "Contact"
 msgstr ""
@@ -398,6 +427,12 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model:ir.model.fields.selection,name:l10n_fr_pdp.selection__pdp_response_wizard__reason_code__ref_ct_absent
 msgid "Contract reference required to process the missing invoice"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "Create, send and receive e-invoices for free."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -525,9 +560,14 @@ msgid "E-Invoicing ready invoices"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "E-Invoicing will be mandatory starting September 1 2026"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.actions.act_window,name:l10n_fr_pdp.l10n_fr_pdp_reports_action_flows
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_reports_view_flow_form
-#: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_reports_view_move_form
 msgid "E-Reporting"
 msgstr ""
 
@@ -554,6 +594,24 @@ msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move.py:0
+msgid "E-reporting Errors:"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move.py:0
+msgid "E-reporting Flow:"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move.py:0
+msgid "E-reporting Status:"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
 #: code:addons/l10n_fr_pdp/models/pdp_flow.py:0
 msgid "E-reports %s sent"
 msgstr ""
@@ -566,6 +624,14 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model:ir.model.fields,field_description:l10n_fr_pdp.field_pdp_registration__edi_user_id
 msgid "EDI user"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid ""
+"Electronic Invoicing allows for complete automation of sending and receiving "
+"e-invoices."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -717,8 +783,8 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
 msgid ""
-"For information: French administration annuaire can be updated once a day so"
-" your validation should be done tomorrow."
+"For information: French administration annuaire can be updated once a day so "
+"your validation should be done tomorrow."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -736,6 +802,12 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model:ir.model.fields.selection,name:l10n_fr_pdp.selection__res_company__l10n_fr_pdp_periodicity__simplified_bimonthly
 msgid "Franchised VAT Regime (Bimonthly)"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "Free on Odoo"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -761,6 +833,12 @@ msgid "French e-invoicing response error: %s"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "Fully automated"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.model.fields,field_description:l10n_fr_pdp.field_pdp_response_wizard__fully_paid
 msgid "Fully paid"
 msgstr ""
@@ -773,8 +851,6 @@ msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
-#: code:addons/l10n_fr_pdp/models/pdp_flow.py:0
-#: code:addons/l10n_fr_pdp/wizard/account_move_send_wizard.py:0
 #: code:addons/l10n_fr_pdp/wizard/pdp_registration.py:0
 msgid "Go to the Preferences panel"
 msgstr ""
@@ -859,7 +935,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.pdp_registration_form
 msgid ""
 "In demo mode sending invoices is simulated.\n"
-"                            There will be no communication with the French e-Invoicing network."
+"                            There will be no communication with the French e-"
+"Invoicing network."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -929,12 +1006,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_move.py:0
 msgid "Invalid partner VAT (%(vat)s)."
-msgstr ""
-
-#. module: l10n_fr_pdp
-#. odoo-python
-#: code:addons/l10n_fr_pdp/models/account_move.py:0
-msgid "Invoice/credit note has not been sent to the customer."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1041,11 +1112,16 @@ msgstr ""
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_company__l10n_fr_pdp_periodicity
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_config_settings__l10n_fr_pdp_periodicity
 msgid ""
-"Legal reporting period for transaction and payments flows according to the TVA regime table.\n"
-"        Real Monthly Normal Regime : transactions reported by decade, payments reported monthly\n"
-"        Real Normal Quarterly Regime : transactions reported monthly, payments reported monthly\n"
-"        Simplified VAT Regime (Monthly) : transactions reported monthly, payments reported monthly\n"
-"        Franchised VAT Regime (Bimonthly) : transactions reported bimonthly, payments reported bimonthly\n"
+"Legal reporting period for transaction and payments flows according to the "
+"TVA regime table.\n"
+"        Real Monthly Normal Regime : transactions reported by decade, "
+"payments reported monthly\n"
+"        Real Normal Quarterly Regime : transactions reported monthly, "
+"payments reported monthly\n"
+"        Simplified VAT Regime (Monthly) : transactions reported monthly, "
+"payments reported monthly\n"
+"        Franchised VAT Regime (Bimonthly) : transactions reported bimonthly, "
+"payments reported bimonthly\n"
 "        "
 msgstr ""
 
@@ -1174,6 +1250,12 @@ msgid "No valid transactions/payments to send."
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move.py:0
+msgid "None"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.model.fields.selection,name:l10n_fr_pdp.selection__res_partner__pdp_verification_display_state__not_verified
 msgid "Not verified yet"
 msgstr ""
@@ -1285,6 +1367,13 @@ msgid "PDP: Send lifecycles"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid ""
+"PEPPOL is the secure standard for e-invoices used in EU and across the world."
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.model.fields,field_description:l10n_fr_pdp.field_pdp_registration__account_peppol_proxy_state
 msgid "PEPPOL status"
 msgstr ""
@@ -1361,8 +1450,7 @@ msgstr ""
 #. module: l10n_fr_pdp
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/pdp_flow.py:0
-msgid ""
-"Payload built with %(valid)s valid invoice(s) and %(invalid)s error(s)."
+msgid "Payload built with %(valid)s valid invoice(s) and %(invalid)s error(s)."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1503,8 +1591,10 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model:ir.model.fields,help:l10n_fr_pdp.field_pdp_registration__contact_email
 msgid ""
-"Primary contact email for Peppol connection related communications and notifications.\n"
-"In particular, this email is used by Odoo to reconnect your Peppol account in case of database change."
+"Primary contact email for Peppol connection related communications and "
+"notifications.\n"
+"In particular, this email is used by Odoo to reconnect your Peppol account "
+"in case of database change."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1573,16 +1663,16 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
 msgid ""
-"Received response for status %(ref_status_info)s with Response Code "
-"'%(response_code)s' issued on %(issue_date)s."
+"Received response for status %(ref_status_info)s with Response Code '%"
+"(response_code)s' issued on %(issue_date)s."
 msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
 msgid ""
-"Received response with Response Code '%(response_code)s' issued on "
-"%(issue_date)s."
+"Received response with Response Code '%(response_code)s' issued on %"
+"(issue_date)s."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1701,7 +1791,7 @@ msgid "Send PDP Flow Wizard"
 msgstr ""
 
 #. module: l10n_fr_pdp
-#: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_view_move_form
+#: model:ir.actions.server,name:l10n_fr_pdp.l10n_fr_pdp_action_open_response_wizard
 msgid "Send Response"
 msgstr ""
 
@@ -1823,9 +1913,23 @@ msgid "Something went wrong."
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/wizard/pdp_registration.py:0
+msgid "Something wrong happened."
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_reports_view_flow_form
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.l10n_fr_pdp_reports_view_flow_list
 msgid "Start date"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid ""
+"Starting in September 2026 all French companies need to be able to receive "
+"electronic invoices"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1902,8 +2006,10 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.pdp_registration_form
 msgid ""
-"Test mode allows sending e-invoices through the test French e-Invoicing network.\n"
-"                            By clicking the button below I accept that Odoo may process my e-invoices."
+"Test mode allows sending e-invoices through the test French e-Invoicing "
+"network.\n"
+"                            By clicking the button below I accept that Odoo "
+"may process my e-invoices."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1938,8 +2044,14 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
 msgid ""
-"The Response issued on %(issue_date)s with Response Code '%(response_code)s'"
-" was sent by the access point."
+"The Response issued on %(issue_date)s with Response Code '%(response_code)s' "
+"was sent by the access point."
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/wizard/pdp_registration.py:0
+msgid "The SIREN of the company could not be determined."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1952,8 +2064,14 @@ msgstr ""
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_company__l10n_fr_pdp_annuaire_start_date
 #: model:ir.model.fields,help:l10n_fr_pdp.field_res_config_settings__l10n_fr_pdp_annuaire_start_date
 msgid ""
-"The date on which the company is registered on the annuaire for the French "
-"e-invoicing."
+"The date on which the company is registered on the annuaire for the French e-"
+"invoicing."
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "The e-invoicing network"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -1986,6 +2104,22 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_xml_ubl_21_fr.py:0
 msgid "The following partner's VAT is missing: %s"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/res_company.py:0
+msgid ""
+"The identifier %s is not valid. The expected format is: SIREN, SIREN_SIRET, "
+"SIREN_SIRET_CodeRoutage or SIREN_SuffixeAdressage"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#: model:ir.model.fields,help:l10n_fr_pdp.field_pdp_registration__pdp_identifier
+msgid ""
+"The identifier starts with the SIREN, the part after the SIREN is optional. "
+"The expected format of the identifier is: SIREN, SIREN_SIRET, "
+"SIREN_SIRET_CodeRoutage or SIREN_SuffixeAdressage"
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -2028,14 +2162,6 @@ msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
-#: code:addons/l10n_fr_pdp/models/pdp_flow.py:0
-msgid ""
-"To be able to send the report, you need to enable the two-factor "
-"authentication."
-msgstr ""
-
-#. module: l10n_fr_pdp
-#. odoo-python
 #: code:addons/l10n_fr_pdp/wizard/pdp_response_wizard.py:0
 msgid "To refuse an invoice please enter a Note."
 msgstr ""
@@ -2044,14 +2170,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/wizard/pdp_response_wizard.py:0
 msgid "To refuse an invoice please select a Reason Code."
-msgstr ""
-
-#. module: l10n_fr_pdp
-#. odoo-python
-#: code:addons/l10n_fr_pdp/wizard/account_move_send_wizard.py:0
-msgid ""
-"To use the French e-invoicing, you need to enable the two-factor "
-"authentication."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -2154,6 +2272,24 @@ msgid "Website communication history"
 msgstr ""
 
 #. module: l10n_fr_pdp
+#. odoo-javascript
+#: code:addons/l10n_fr_pdp/static/src/js/pdp_info.xml:0
+msgid "What is electronic invoicing and why is it great?"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move_send.py:0
+msgid "Why should I use E-Invoicing?"
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move_send.py:0
+msgid "Why should you use it ?"
+msgstr ""
+
+#. module: l10n_fr_pdp
 #: model:ir.model.fields.selection,name:l10n_fr_pdp.selection__account_move__peppol_move_state__pd
 msgid "With Payments"
 msgstr ""
@@ -2191,6 +2327,12 @@ msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
+#: code:addons/l10n_fr_pdp/models/account_move_send.py:0
+msgid "You can send this invoice electronically via Approved Platform."
+msgstr ""
+
+#. module: l10n_fr_pdp
+#. odoo-python
 #: code:addons/l10n_fr_pdp/models/ir_attachment.py:0
 msgid "You can't delete an attachment linked to a sent Flow."
 msgstr ""
@@ -2205,8 +2347,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_move.py:0
 msgid ""
-"You cannot reset an invoice to draft if it was already sent to PDP. Create a"
-" credit note and issue a new invoice instead or cancel this invoice."
+"You cannot reset an invoice to draft if it was already sent to PDP. Create a "
+"credit note and issue a new invoice instead or cancel this invoice."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -2218,8 +2360,10 @@ msgstr ""
 #. module: l10n_fr_pdp
 #: model_terms:ir.ui.view,arch_db:l10n_fr_pdp.res_config_settings_view_form
 msgid ""
-"You registration has been rejected, the reason has been sent to you via email.\n"
-"                                Please contact our support if you need further assistance."
+"You registration has been rejected, the reason has been sent to you via "
+"email.\n"
+"                                Please contact our support if you need "
+"further assistance."
 msgstr ""
 
 #. module: l10n_fr_pdp
@@ -2258,16 +2402,15 @@ msgstr ""
 #. module: l10n_fr_pdp
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
-msgid ""
-"[Flow 1] There was an error when sending the tax extract to the PPF: %s"
+msgid "[Flow 1] There was an error when sending the tax extract to the PPF: %s"
 msgstr ""
 
 #. module: l10n_fr_pdp
 #. odoo-python
 #: code:addons/l10n_fr_pdp/models/account_edi_proxy_user.py:0
 msgid ""
-"[Flow 6] There was an error when sending a '%(status)s' response (UUID "
-"%(uuid)s) to the PPF: %(error)s"
+"[Flow 6] There was an error when sending a '%(status)s' response (UUID %"
+"(uuid)s) to the PPF: %(error)s"
 msgstr ""
 
 #. module: l10n_fr_pdp
