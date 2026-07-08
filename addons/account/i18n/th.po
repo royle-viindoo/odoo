@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-17 18:36+0000\n"
-"PO-Revision-Date: 2026-05-22 09:36+0000\n"
-"Last-Translator: Nusara Boonma <nuboo@odoo.com>\n"
+"PO-Revision-Date: 2026-07-04 09:52+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Thai <https://translate.odoo.com/projects/odoo-17/account/th/>"
 "\n"
 "Language: th\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: account
 #. odoo-python
@@ -1094,7 +1094,7 @@ msgstr "<span>การดำเนินงาน</span>"
 #: model_terms:ir.ui.view,arch_db:account.bill_preview
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "<span>Quantity</span>"
-msgstr "<span>จำนวน</span>"
+msgstr "<span>ปริมาณ</span>"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_payment_receipt_document
@@ -1947,6 +1947,8 @@ msgid ""
 "Accrual entry created on %(date)s: %(accrual_entry)s.                And its "
 "reverse entry: %(reverse_entry)s."
 msgstr ""
+"รายการคงค้างที่สร้างขึ้นเมื่อ %(date)s: %(accrual_entry)s.                และรายการย้อ"
+"นกลับ: %(reverse_entry)s."
 
 #. module: account
 #. odoo-python
@@ -2806,7 +2808,7 @@ msgstr "แนบ"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_send__attachments_not_supported
 msgid "Attachments Not Supported"
-msgstr ""
+msgstr "ไม่รองรับไฟล์แนบนี้"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_report_expression__auditable
@@ -3402,7 +3404,7 @@ msgstr "เมื่อยกเลิกการเลือกช่องท
 #: code:addons/account/wizard/account_automatic_entry_wizard.py:0
 #, python-format
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #. module: account
 #. odoo-python
@@ -5042,7 +5044,7 @@ msgstr "ตัดออก"
 #: code:addons/account/wizard/account_automatic_entry_wizard.py:0
 #, python-format
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #. module: account
 #: model:account.incoterms,name:account.incoterm_DAP
@@ -5533,7 +5535,7 @@ msgstr "ปิดการใช้งาน"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Disc.%"
-msgstr "ลด%"
+msgstr "ส่วนลด%"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_tour_upload_bill
@@ -11530,7 +11532,7 @@ msgstr "ปริมาณ"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Quantity:"
-msgstr "จำนวน:"
+msgstr "ปริมาณ:"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_move__auto_post__quarterly
