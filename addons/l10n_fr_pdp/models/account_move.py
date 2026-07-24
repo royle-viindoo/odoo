@@ -159,7 +159,7 @@ class AccountMove(models.Model):
             if move.peppol_move_state != 'error' and (response_status := move._pdp_get_response_status()):
                 move.peppol_move_state = response_status
 
-    @api.depends('peppol_response_ids', 'peppol_response_ids.peppol_state', 'peppol_response_ids.response_code')
+    @api.depends('peppol_message_uuid', 'peppol_move_state', 'peppol_response_ids', 'peppol_response_ids.peppol_state', 'peppol_response_ids.response_code')
     def _compute_pdp_ppf_state(self):
         for move in self:
             processed = move.peppol_move_state and move.peppol_move_state not in ('ready', 'to_send', 'processing', 'error')
@@ -283,6 +283,7 @@ class AccountMove(models.Model):
         pdp_moves = self.filtered(lambda move: move.state == 'posted')
         # The e-reporting chatter message must use the final values in the same transaction.
         # Recompute the chained fields in dependency order before logging it.
+        pdp_moves = pdp_moves.with_context(skip_is_manually_modified=True)
         pdp_moves._compute_l10n_fr_pdp_flow_10_operation_type()
         pdp_moves._compute_l10n_fr_pdp_flow_10_report_type()
         pdp_moves._compute_l10n_fr_pdp_has_error()
@@ -627,6 +628,17 @@ class AccountMove(models.Model):
 
         # All other cases: International
         return 'b2bi'
+
+    def _need_ubl_cii_xml(self, invoice_edi_format):
+        self.ensure_one()
+        builder = self.partner_id.commercial_partner_id._get_edi_builder(invoice_edi_format)
+        if 'email' not in self.env.context.get('sending_method', []) or not invoice_edi_format or not builder:
+            return super()._need_ubl_cii_xml(invoice_edi_format)
+
+        _xml_content, errors = builder._export_invoice(self)
+        if errors:
+            return False
+        return super()._need_ubl_cii_xml(invoice_edi_format)
 
     # -------------------------------------------------------------------------
     # CRUD Override
