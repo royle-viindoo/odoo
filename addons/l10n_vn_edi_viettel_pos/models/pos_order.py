@@ -21,7 +21,14 @@ class PosOrder(models.Model):
         if self.country_code != 'VN' or not self.config_id.l10n_vn_auto_send_to_sinvoice:
             return vals
 
-        sinvoice_symbol = self.config_id.l10n_vn_pos_symbol or self.config_id.company_id.l10n_vn_pos_default_symbol
+        # sudo: l10n_vn_pos_symbol is restricted to group_system / group_pos_manager,
+        # but this runs while an ordinary salesperson closes an order - _process_saved_order
+        # invoices as the acting user, with no sudo - so reading it directly raised
+        # AccessError and the order never finished syncing. The salesperson is not being
+        # shown the symbol, only having it stamped on the invoice their sale produces,
+        # which is what the configuration is for.
+        config_sudo = self.config_id.sudo()
+        sinvoice_symbol = config_sudo.l10n_vn_pos_symbol or config_sudo.company_id.l10n_vn_pos_default_symbol
         if sinvoice_symbol:
             vals['l10n_vn_edi_invoice_symbol'] = sinvoice_symbol.id
 
